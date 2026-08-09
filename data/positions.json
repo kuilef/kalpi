@@ -31,9 +31,9 @@
   {
     "party": "likud",
     "question": "death_penalty_terror",
-    "value": 2,
+    "value": 1,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.9,
     "entity_scope": "FACTION",
     "evidence": [
       "src_death_penalty_vote_2026"
@@ -1481,11 +1481,13 @@
   {
     "party": "otzma",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_otzma_gaza_2024"
+    ]
   },
   {
     "party": "otzma",
@@ -1504,10 +1506,11 @@
     "question": "military_control_priority",
     "value": 2,
     "status": "known",
-    "confidence": 0.8,
+    "confidence": 0.95,
     "entity_scope": "PARTY",
     "evidence": [
-      "src_otzma_idi"
+      "src_otzma_idi",
+      "src_otzma_gaza_2024"
     ]
   },
   {
@@ -2526,11 +2529,13 @@
   {
     "party": "yashar",
     "question": "nonservice_sanctions",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.98,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_yashar_service_2026"
+    ]
   },
   {
     "party": "yashar",
@@ -2685,11 +2690,13 @@
   {
     "party": "yashar",
     "question": "nation_state_equality",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_yashar_missions_2026"
+    ]
   },
   {
     "party": "yashar",
