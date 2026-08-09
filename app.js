@@ -5,6 +5,7 @@
   const DEFAULT_DATA = window.KALPI_DATA;
   const BASELINE_DATA = window.KALPI_BASELINE_DATA || null;
   const Loader = window.KalpiDataLoader;
+  const AxisStrips = window.KalpiAxisStrips;
   const ANSWER_KEY = 'kalpiPrototypeAnswersV1';
   const MIN_PARTY_AXIS_COVERAGE = 0.22;
   const MIN_USER_AXIS_COVERAGE = 0.18;
@@ -14,6 +15,30 @@
     ru: { prototype: 'Kalpi · экспериментальный прототип', headline: 'Какая партия ближе к вашим позициям?', lede: 'Ответьте на конкретные вопросы. Неизвестная позиция партии не считается нейтральной: она уменьшает покрытие данных и приближает итоговый рейтинг к 50%.', languageLabel: 'Язык', questionnaireEyebrow: 'Опрос', questionnaireTitle: 'Политические вопросы', answerHint: '«Нейтрально / не уверен» — это содержательный ответ 0. «Пропустить» исключает вопрос из расчёта.', calculate: 'Показать результат', reset: 'Сбросить ответы', resultEyebrow: 'Результат', recommendation: 'Рекомендация', ranking: 'Рейтинг партий', whyThisParty: 'Почему эта партия', mapTitle: 'Многомерная карта', mapHint: 'Выберите любые две оси. Партии без достаточных данных по одной из осей не помещаются искусственно в центр.', axisProfile: 'Профиль по пяти осям', transparencyEyebrow: 'Прозрачность', inspectionTitle: 'Ответы и данные партий', showData: 'Показать данные', hideData: 'Скрыть данные', qualityEyebrow: 'Качество данных', qualityTitle: 'Насколько заполнена база партий?', qualityHint: 'Здесь считается доказательная база: известные позиции, confidence, происхождение evidence и покрытие пяти осей. insufficient_data не считается нейтральной позицией.', partyCoverage: 'Покрытие по партиям', axisReliability: 'Надёжность пяти осей', weakQuestions: 'Какие вопросы заполнены хуже всего', heatmapTitle: 'Heatmap: партия × вопрос', heatmapHint: 'Каждая клетка — одна позиция партии. Нажмите на клетку, чтобы увидеть статус, confidence и источники.', provenance: 'Provenance и типы источников', gaps: 'Оставшиеся пробелы', footer: 'Это исследовательский инструмент, а не прогноз поведения партии после выборов. Проверяйте evidence и даты источников.', answers: { '-2': 'Категорически против', '-1': 'Скорее против', '0': 'Нейтрально / не уверен', '1': 'Скорее за', '2': 'Полностью за', skip: 'Пропустить' } },
     he: { prototype: 'Kalpi · אבטיפוס ניסויי', headline: 'איזו מפלגה קרובה ביותר לעמדותיך?', lede: 'ענו על שאלות מדיניות קונקרטיות. עמדה לא ידועה של מפלגה אינה ניטרלית: היא מפחיתה את כיסוי הנתונים ומקרבת את הדירוג ל־50%.', languageLabel: 'שפה', questionnaireEyebrow: 'שאלון', questionnaireTitle: 'שאלות מדיניות', answerHint: '״ניטרלי / לא בטוח״ היא תשובה מהותית 0. ״דלג/י״ מוציאה את השאלה מהחישוב.', calculate: 'הצג תוצאה', reset: 'אפס תשובות', resultEyebrow: 'תוצאה', recommendation: 'המלצה', ranking: 'דירוג מפלגות', whyThisParty: 'למה המפלגה הזו', mapTitle: 'מפה רב־ממדית', mapHint: 'בחרו שני צירים. מפלגות ללא נתונים מספקים באחד הצירים אינן ממוקמות באופן מלאכותי במרכז.', axisProfile: 'פרופיל לפי חמישה צירים', transparencyEyebrow: 'שקיפות', inspectionTitle: 'התשובות שלך ונתוני המפלגות', showData: 'הצג נתונים', hideData: 'הסתר נתונים', qualityEyebrow: 'איכות נתונים', qualityTitle: 'עד כמה מאגר המפלגות מלא?', qualityHint: 'זהו בסיס הראיות: עמדות ידועות, confidence, מקור וכיסוי של חמישה צירים. insufficient_data אינו עמדה ניטרלית.', partyCoverage: 'כיסוי לפי מפלגה', axisReliability: 'מהימנות חמשת הצירים', weakQuestions: 'השאלות עם הכיסוי החלש ביותר', heatmapTitle: 'מפת חום: מפלגה × שאלה', heatmapHint: 'כל תא הוא עמדת מפלגה. בחרו תא כדי לראות סטטוס, confidence ומקורות.', provenance: 'מקור וסוגי מקורות', gaps: 'פערים שנותרו', footer: 'זהו כלי מחקרי, לא תחזית להתנהגות מפלגה לאחר בחירות. בדקו את הראיות ותאריכי המקורות.', answers: { '-2': 'מתנגד/ת מאוד', '-1': 'נוטה להתנגד', '0': 'ניטרלי / לא בטוח', '1': 'נוטה לתמוך', '2': 'תומך/ת מאוד', skip: 'דלג/י' } },
   };
+  Object.assign(COPY.en, {
+    axisStripsTitle: 'Positions across five axes',
+    axisStripsHint: 'Coloured dots are parties; the separate dot is you. Hover or use the keyboard to see details.',
+    mapDetailsTitle: 'Additional: multidimensional map',
+    you: 'You', axisValue: 'Position', axisCoverage: 'Coverage',
+    notShown: 'Not shown because of insufficient data',
+    userNotShown: 'Your position is not shown: not enough answers on this axis.',
+  });
+  Object.assign(COPY.ru, {
+    axisStripsTitle: 'Позиции по пяти осям',
+    axisStripsHint: 'Цветные точки — партии; отдельная точка — вы. Наведите или перейдите к точке с клавиатуры, чтобы увидеть детали.',
+    mapDetailsTitle: 'Дополнительно: многомерная карта',
+    you: 'Вы', axisValue: 'Позиция', axisCoverage: 'Покрытие',
+    notShown: 'Не показаны из-за недостатка данных',
+    userNotShown: 'Ваша позиция не показана: недостаточно ответов по этой оси.',
+  });
+  Object.assign(COPY.he, {
+    axisStripsTitle: 'מיקומים לאורך חמשת הצירים',
+    axisStripsHint: 'נקודות צבעוניות הן מפלגות; הנקודה הנפרדת היא שלך. רחפו או עברו עם המקלדת לפרטים.',
+    mapDetailsTitle: 'נוסף: מפה רב־ממדית',
+    you: 'את/ה', axisValue: 'מיקום', axisCoverage: 'כיסוי',
+    notShown: 'לא מוצגים בגלל מחסור בנתונים',
+    userNotShown: 'המיקום שלך לא מוצג: אין מספיק תשובות בציר הזה.',
+  });
 
   let data = DEFAULT_DATA;
   let dataSource = 'bundle';
@@ -230,7 +255,7 @@
       xSelect.dataset.bound = '1'; ySelect.dataset.bound = '1';
     }
     drawMap(userAxes, partyAxes);
-    renderAxisProfile(userAxes, partyAxes);
+    renderAxisStrips(userAxes, partyAxes);
   }
 
   function drawMap(userAxes, partyAxes) {
@@ -290,14 +315,67 @@
     $('map-omitted').textContent = omitted.length ? (locale === 'he' ? `לא מוצגים בגלל מחסור בנתונים: ${omitted.join(', ')}.` : locale === 'en' ? `Not shown because of insufficient data: ${omitted.join(', ')}.` : `Не показаны из-за недостатка данных: ${omitted.join(', ')}.`) : (locale === 'he' ? 'לכל המפלגות יש כיסוי נתונים מספק בצירים שנבחרו.' : locale === 'en' ? 'All parties have adequate coverage on the selected axes.' : 'Все партии имеют достаточное покрытие по выбранным осям.');
   }
 
-  function renderAxisProfile(userAxes, partyAxes) {
-    const order = latestResults ? latestResults.map((r) => r.party) : activeParties();
-    const head = `<thead><tr><th>${locale === 'he' ? 'ציר' : locale === 'en' ? 'Axis' : 'Ось'}</th><th>${locale === 'he' ? 'את/ה' : locale === 'en' ? 'You' : 'Вы'}</th>${order.map((p) => `<th>${esc(text(p, 'name'))}</th>`).join('')}</tr></thead>`;
-    const cell = (axisResult) => axisResult?.status === 'known'
-      ? `<span class="axis-value-known">${axisResult.value > 0 ? '+' : ''}${Math.round(axisResult.value)}</span><br><span class="coverage-mini">${pct(axisResult.coverage)}</span>`
-      : `<span class="axis-value-missing">?</span>`;
-    const body = `<tbody>${data.axes.map((axis) => `<tr><td><strong>${esc(text(axis, 'name'))}</strong></td><td>${cell(userAxes[axis.id])}</td>${order.map((party) => `<td>${cell(partyAxes[party.id]?.[axis.id])}</td>`).join('')}</tr>`).join('')}</tbody>`;
-    $('axis-profile').innerHTML = `<table class="axis-table">${head}${body}</table>`;
+  function axisValue(value) {
+    const rounded = Math.round(value);
+    return `${rounded > 0 ? '+' : ''}${rounded}`;
+  }
+
+  function markerDescription(name, coordinate) {
+    return `${name}: ${t('axisValue')} ${axisValue(coordinate.value)}, ${t('axisCoverage')} ${pct(coordinate.coverage)}.`;
+  }
+
+  function bindAxisStripTooltip(host) {
+    if (host.dataset.tooltipBound) return;
+    const marker = (target) => target?.closest?.('.axis-marker');
+    const show = (target) => {
+      const activeMarker = marker(target);
+      if (!activeMarker) return;
+      const strip = activeMarker.closest('.axis-strip');
+      const tooltip = strip?.querySelector('.axis-strip-tooltip');
+      if (!tooltip) return;
+      tooltip.textContent = activeMarker.dataset.tooltip;
+      tooltip.style.setProperty('--marker-left', activeMarker.style.getPropertyValue('--marker-left'));
+      tooltip.hidden = false;
+    };
+    const hideWhenLeaving = (event) => {
+      const strip = event.target.closest?.('.axis-strip');
+      if (!strip || strip.contains(event.relatedTarget)) return;
+      const tooltip = strip.querySelector('.axis-strip-tooltip');
+      if (tooltip) tooltip.hidden = true;
+    };
+    host.addEventListener('pointerover', (event) => show(event.target));
+    host.addEventListener('focusin', (event) => show(event.target));
+    host.addEventListener('pointerout', hideWhenLeaving);
+    host.addEventListener('focusout', hideWhenLeaving);
+    host.dataset.tooltipBound = '1';
+  }
+
+  function renderAxisStrips(userAxes, partyAxes) {
+    const host = $('axis-strips');
+    const parties = latestResults ? latestResults.map((result) => result.party) : activeParties();
+    host.innerHTML = data.axes.map((axis) => {
+      const markers = AxisStrips.buildMarkers({ parties, partyAxes, axisId: axis.id });
+      const knownPartyIds = new Set(markers.map((marker) => marker.partyId));
+      const omittedParties = parties.filter((party) => !knownPartyIds.has(party.id)).map((party) => text(party, 'name'));
+      const userCoordinate = userAxes[axis.id];
+      const tooltipId = `axis-strip-tooltip-${axis.id}`;
+      const partyMarkers = markers.map((marker) => {
+        const party = partyById(marker.partyId);
+        const description = markerDescription(text(party, 'name'), marker);
+        const position = Math.max(0, Math.min(100, (marker.value + 100) / 2));
+        return `<button type="button" class="axis-marker party-marker" style="--marker-left:${position}%;--marker-color:${esc(marker.color)}" aria-label="${esc(description)}" aria-describedby="${tooltipId}" data-tooltip="${esc(description)}"></button>`;
+      }).join('');
+      const userMarker = userCoordinate?.status === 'known' ? (() => {
+        const description = markerDescription(t('you'), userCoordinate);
+        const position = Math.max(0, Math.min(100, (userCoordinate.value + 100) / 2));
+        return `<button type="button" class="axis-marker user-marker" style="--marker-left:${position}%" aria-label="${esc(description)}" aria-describedby="${tooltipId}" data-tooltip="${esc(description)}"></button>`;
+      })() : '';
+      const omitted = [];
+      if (omittedParties.length) omitted.push(`${t('notShown')}: ${omittedParties.join(', ')}.`);
+      if (userCoordinate?.status !== 'known') omitted.push(t('userNotShown'));
+      return `<article class="axis-strip"><div class="axis-strip-label"><h4>${esc(text(axis, 'name'))}</h4></div><div class="axis-strip-content"><div class="axis-poles"><span>${esc(text(axis, 'negative'))}</span><span>${esc(text(axis, 'positive'))}</span></div><div class="axis-track"><span class="axis-track-centre" aria-hidden="true"></span>${partyMarkers}${userMarker}<div id="${tooltipId}" class="axis-strip-tooltip" role="tooltip" hidden></div></div>${omitted.length ? `<p class="axis-strip-missing">${esc(omitted.join(' '))}</p>` : ''}</div></article>`;
+    }).join('');
+    bindAxisStripTooltip(host);
   }
 
   function positionDisplay(position) {

@@ -44,6 +44,15 @@ test('results include five axis strips and retain the 2D map as collapsed detail
   assert.ok(html.indexOf('axis-strips.js') < html.indexOf('app.js'));
 });
 
+test('app renders focusable strip markers with a shared tooltip', () => {
+  const app = read('app.js');
+  assert.match(app, /function renderAxisStrips\s*\(/);
+  assert.match(app, /function bindAxisStripTooltip\s*\(/);
+  assert.match(app, /aria-label/);
+  assert.match(app, /role=["']tooltip["']/);
+  assert.match(app, /AxisStrips\.buildMarkers/);
+});
+
 test('page offers three locales and no browser data controls', () => {
   const html = read('index.html');
   for (const id of ['locale-en', 'locale-ru', 'locale-he']) {
