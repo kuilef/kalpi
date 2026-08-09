@@ -13,20 +13,27 @@
   {
     "party": "likud",
     "question": "westbank_sovereignty",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_westbank_annexation_2025",
+      "src_likud_westbank_sovereignty_2026"
+    ]
   },
   {
     "party": "likud",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "mixed",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_gaza_control_2026",
+      "src_netanyahu_gaza_withdrawal_2026",
+      "src_likud_gaza_resettlement_split_2026"
+    ]
   },
   {
     "party": "likud",
@@ -76,38 +83,49 @@
   {
     "party": "likud",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "known",
+    "confidence": 0.7,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_local_transport_autonomy_2026",
+      "src_shabbat_transport_vote_2025"
+    ]
   },
   {
     "party": "likud",
     "question": "reduce_rabbinate_monopoly",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "known",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_rabbinate_kashrut_monopoly_vote_2026",
+      "src_likud_civil_marriage_2025"
+    ]
   },
   {
     "party": "likud",
     "question": "haredi_draft",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 0,
+    "status": "mixed",
+    "confidence": 0.95,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_haredi_draft_freeze_2026",
+      "src_netanyahu_haredi_draft_shift_2026"
+    ]
   },
   {
     "party": "likud",
     "question": "arab_service",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "historical",
+    "confidence": 0.8,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_netanyahu_arab_service_2012"
+    ]
   },
   {
     "party": "likud",
@@ -145,20 +163,27 @@
   {
     "party": "likud",
     "question": "unified_state_standards",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 0,
+    "status": "mixed",
+    "confidence": 0.85,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_kisch_core_standards_2026",
+      "src_haredi_core_non_enforcement_2026",
+      "src_core_curriculum_vote_2023"
+    ]
   },
   {
     "party": "likud",
     "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "mixed",
+    "confidence": 0.75,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civics_exam_report_2026",
+      "src_education_ministry_civics_2025"
+    ]
   },
   {
     "party": "likud",
@@ -208,11 +233,13 @@
   {
     "party": "likud",
     "question": "basic_law_legislation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_levin_basic_law_legislation_2025"
+    ]
   },
   {
     "party": "likud",
@@ -239,11 +266,14 @@
   {
     "party": "likud",
     "question": "expand_public_services",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "known",
+    "confidence": 0.8,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_mako_compass_2026",
+      "src_likud_budget_public_services_2026"
+    ]
   },
   {
     "party": "likud",
@@ -292,11 +322,14 @@
   {
     "party": "likud",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "mixed",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_lgbt_split_2023",
+      "src_likud_civil_marriage_2025"
+    ]
   },
   {
     "party": "likud",
@@ -312,29 +345,35 @@
   {
     "party": "beyahad",
     "question": "palestinian_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "mixed",
+    "confidence": 0.8,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_beyahad_2026"
+    ]
   },
   {
     "party": "beyahad",
     "question": "westbank_sovereignty",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "mixed",
+    "confidence": 0.8,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_beyahad_2026"
+    ]
   },
   {
     "party": "beyahad",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "mixed",
+    "confidence": 0.8,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_beyahad_2026"
+    ]
   },
   {
     "party": "beyahad",
@@ -533,11 +572,14 @@
   {
     "party": "beyahad",
     "question": "watchdog_independence",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_bchiromat_beyahad_2026",
+      "src_ag_reform_vote_2026"
+    ]
   },
   {
     "party": "beyahad",
@@ -554,11 +596,14 @@
   {
     "party": "beyahad",
     "question": "expand_public_services",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.7,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_beyahad_2026",
+      "src_beyahad_program"
+    ]
   },
   {
     "party": "beyahad",
@@ -574,20 +619,24 @@
   {
     "party": "beyahad",
     "question": "social_housing",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.7,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_public_housing_vote_2025"
+    ]
   },
   {
     "party": "beyahad",
     "question": "nation_state_equality",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_nation_state_equality_vote_2024"
+    ]
   },
   {
     "party": "beyahad",
@@ -632,20 +681,24 @@
   {
     "party": "shas",
     "question": "westbank_sovereignty",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_bchiromat_shas_2026"
+    ]
   },
   {
     "party": "shas",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.7,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_shas_2026"
+    ]
   },
   {
     "party": "shas",
@@ -661,11 +714,14 @@
   {
     "party": "shas",
     "question": "military_control_priority",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "known",
+    "confidence": 0.85,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_shas_2026",
+      "src_knesset_pal_state_2024"
+    ]
   },
   {
     "party": "shas",
@@ -693,11 +749,13 @@
   {
     "party": "shas",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "known",
+    "confidence": 0.8,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_shas_2026"
+    ]
   },
   {
     "party": "shas",
@@ -923,11 +981,13 @@
   {
     "party": "shas",
     "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.7,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_shas_idi"
+    ]
   },
   {
     "party": "utj",
@@ -952,11 +1012,13 @@
   {
     "party": "utj",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.65,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_utj_2026"
+    ]
   },
   {
     "party": "utj",
@@ -1004,11 +1066,13 @@
   {
     "party": "utj",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.7,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_utj_2026"
+    ]
   },
   {
     "party": "utj",
@@ -1162,20 +1226,26 @@
   {
     "party": "utj",
     "question": "lower_taxes_smaller_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.65,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_utj_2026",
+      "src_utj_idi"
+    ]
   },
   {
     "party": "utj",
     "question": "expand_public_services",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.6,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_utj_2026",
+      "src_utj_idi"
+    ]
   },
   {
     "party": "utj",
@@ -1296,11 +1366,13 @@
   {
     "party": "raam",
     "question": "civil_marriage",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_raam_2026"
+    ]
   },
   {
     "party": "raam",
@@ -1332,11 +1404,14 @@
   {
     "party": "raam",
     "question": "haredi_draft",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.8,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_raam_service_2026",
+      "src_bchiromat_raam_2026"
+    ]
   },
   {
     "party": "raam",
@@ -1397,11 +1472,14 @@
   {
     "party": "raam",
     "question": "pm_term_limits",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_pm_term_limits_vote_2026",
+      "src_bchiromat_raam_2026"
+    ]
   },
   {
     "party": "raam",
@@ -1426,11 +1504,13 @@
   {
     "party": "raam",
     "question": "supreme_court_review",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.9,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_raam_2026"
+    ]
   },
   {
     "party": "raam",
@@ -1515,11 +1595,13 @@
   {
     "party": "raam",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.8,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_raam_lgbt_2020"
+    ]
   },
   {
     "party": "raam",
@@ -1613,29 +1695,36 @@
   {
     "party": "otzma",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.7,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_otzma_2026"
+    ]
   },
   {
     "party": "otzma",
     "question": "reduce_rabbinate_monopoly",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.65,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_otzma_2026",
+      "src_civil_marriage_vote_2025"
+    ]
   },
   {
     "party": "otzma",
     "question": "haredi_draft",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 0,
+    "status": "mixed",
+    "confidence": 0.8,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_otzma_2026"
+    ]
   },
   {
     "party": "otzma",
@@ -1798,11 +1887,13 @@
   {
     "party": "otzma",
     "question": "nation_state_equality",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.9,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_nation_state_equality_vote_2024"
+    ]
   },
   {
     "party": "otzma",
@@ -1848,11 +1939,14 @@
   {
     "party": "yisrael_beytenu",
     "question": "westbank_sovereignty",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_ndi_2026",
+      "src_ndi_platform"
+    ]
   },
   {
     "party": "yisrael_beytenu",
@@ -2503,20 +2597,24 @@
   {
     "party": "democrats",
     "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_democrats_labor_constitution_2025"
+    ]
   },
   {
     "party": "yashar",
     "question": "palestinian_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "known",
+    "confidence": 0.75,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_yashar_2026"
+    ]
   },
   {
     "party": "yashar",
@@ -2530,11 +2628,14 @@
   {
     "party": "yashar",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "known",
+    "confidence": 0.9,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_yashar_2026",
+      "src_yashar_program"
+    ]
   },
   {
     "party": "yashar",
@@ -2560,20 +2661,26 @@
   {
     "party": "yashar",
     "question": "civil_marriage",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.8,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bchiromat_yashar_2026",
+      "src_yashar_sagi_laws_2026"
+    ]
   },
   {
     "party": "yashar",
     "question": "shabbat_transport",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.85,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_yashar_2026",
+      "src_yashar_program"
+    ]
   },
   {
     "party": "yashar",
@@ -2590,11 +2697,14 @@
   {
     "party": "yashar",
     "question": "reduce_rabbinate_monopoly",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "known",
+    "confidence": 0.7,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_yashar_2026",
+      "src_yashar_program"
+    ]
   },
   {
     "party": "yashar",
@@ -2823,11 +2933,13 @@
   {
     "party": "yashar",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.85,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_yashar_sagi_laws_2026"
+    ]
   },
   {
     "party": "yashar",
@@ -2922,20 +3034,25 @@
   {
     "party": "religious_zionism",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.7,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_rz_2026"
+    ]
   },
   {
     "party": "religious_zionism",
     "question": "reduce_rabbinate_monopoly",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.65,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_bchiromat_rz_2026",
+      "src_rz_platform"
+    ]
   },
   {
     "party": "religious_zionism",
@@ -3106,11 +3223,13 @@
   {
     "party": "religious_zionism",
     "question": "social_housing",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.6,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_public_housing_vote_2025"
+    ]
   },
   {
     "party": "religious_zionism",
@@ -3135,11 +3254,13 @@
   {
     "party": "religious_zionism",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.8,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_rz_lgbt_2018"
+    ]
   },
   {
     "party": "religious_zionism",
@@ -3155,29 +3276,37 @@
   {
     "party": "bait_zioni",
     "question": "palestinian_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "known",
+    "confidence": 0.9,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_bait_zioni_2026"
+    ]
   },
   {
     "party": "bait_zioni",
     "question": "westbank_sovereignty",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.8,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_bait_zioni_2026",
+      "src_miluimniks_goals"
+    ]
   },
   {
     "party": "bait_zioni",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.8,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bchiromat_bait_zioni_2026",
+      "src_miluimniks_goals"
+    ]
   },
   {
     "party": "bait_zioni",
@@ -3226,11 +3355,13 @@
   {
     "party": "bait_zioni",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.65,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_bchiromat_bait_zioni_2026"
+    ]
   },
   {
     "party": "bait_zioni",
@@ -3289,20 +3420,24 @@
   {
     "party": "bait_zioni",
     "question": "core_curriculum",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ]
   },
   {
     "party": "bait_zioni",
     "question": "unified_state_standards",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.85,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ]
   },
   {
     "party": "bait_zioni",
@@ -3388,20 +3523,24 @@
   {
     "party": "bait_zioni",
     "question": "expand_public_services",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.75,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ]
   },
   {
     "party": "bait_zioni",
     "question": "anti_monopoly_competition",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ]
   },
   {
     "party": "bait_zioni",
@@ -3538,11 +3677,13 @@
   {
     "party": "hadash_taal",
     "question": "municipal_religion_autonomy",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_bchiromat_hadash_joint_2026"
+    ]
   },
   {
     "party": "hadash_taal",
@@ -3556,20 +3697,24 @@
   {
     "party": "hadash_taal",
     "question": "haredi_draft",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.75,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_joint_list_haredi_draft_2022"
+    ]
   },
   {
     "party": "hadash_taal",
     "question": "arab_service",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.7,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_bchiromat_hadash_joint_2026"
+    ]
   },
   {
     "party": "hadash_taal",
@@ -3619,11 +3764,14 @@
   {
     "party": "hadash_taal",
     "question": "pm_term_limits",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "historical",
+    "confidence": 0.8,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_bchiromat_hadash_joint_2026",
+      "src_pm_term_limits_vote_2026"
+    ]
   },
   {
     "party": "hadash_taal",
@@ -3648,11 +3796,14 @@
   {
     "party": "hadash_taal",
     "question": "supreme_court_review",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.8,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_bchiromat_hadash_joint_2026",
+      "src_reasonableness_vote_2023"
+    ]
   },
   {
     "party": "hadash_taal",
@@ -3678,11 +3829,13 @@
   {
     "party": "hadash_taal",
     "question": "lower_taxes_smaller_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -1,
+    "status": "historical",
+    "confidence": 0.7,
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "src_bchiromat_hadash_joint_2026"
+    ]
   },
   {
     "party": "hadash_taal",
@@ -3742,11 +3895,14 @@
   {
     "party": "hadash_taal",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 0,
+    "status": "mixed",
+    "confidence": 0.85,
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_taal_lgbt_2021",
+      "src_hadash_lgbt_2020"
+    ]
   },
   {
     "party": "hadash_taal",

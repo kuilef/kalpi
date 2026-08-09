@@ -457,5 +457,320 @@
     "date": "2022-06-14",
     "notes_ru": "Исторический опрос депутатов: сообщается, что Авигдор Либерман и вся НДИ поддержали однополые браки. Используется только как historical evidence.",
     "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_westbank_annexation_2025",
+    "title": "Likud ministers urge Netanyahu to apply sovereignty in Judea and Samaria",
+    "url": "https://www.reuters.com/world/asia-pacific/israeli-likud-party-ministers-urge-netanyahu-annex-west-bank-2025-07-02/",
+    "source_type": "secondary_research",
+    "date": "2025-07-02",
+    "notes_ru": "Петиция 15 министров Ликуда и спикера Кнессета Амира Оханы с прямым призывом немедленно распространить израильский суверенитет и право на Иудею и Самарию.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_westbank_sovereignty_2026",
+    "title": "Likud minister Eli Cohen calls West Bank measures 'de facto sovereignty'",
+    "url": "https://www.timesofisrael.com/liveblog_entry/likud-minister-says-west-bank-measures-amount-to-de-facto-sovereignty/",
+    "source_type": "secondary_research",
+    "date": "2026-02-10",
+    "notes_ru": "Министр от Ликуда Эли Коэн охарактеризовал шаги правительства как фактическое осуществление суверенитета и средство не допустить палестинского государства.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_gaza_control_2026",
+    "title": "Netanyahu directs Israeli forces to expand Gaza control to 70 percent",
+    "url": "https://www.reuters.com/world/middle-east/netanyahu-directs-israeli-forces-expand-gaza-control-70-percent-2026-05-28/",
+    "source_type": "secondary_research",
+    "date": "2026-05-28",
+    "notes_ru": "Нетаньяху публично распорядился расширить территориальный контроль ЦАХАЛ в Газе до 70%; захваченные территории он описывал как зоны безопасности.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_netanyahu_gaza_withdrawal_2026",
+    "title": "Netanyahu says Israel won't pull out of Gaza before Hamas disarms",
+    "url": "https://www.reuters.com/world/middle-east/israel-rejects-trumps-15-point-plan-gaza-pm-netanyahu-says-2026-08-09/",
+    "source_type": "secondary_research",
+    "date": "2026-08-09",
+    "notes_ru": "Самое свежее заявление Нетаньяху: Израиль не начнёт вывод сил из Газы до полного разоружения ХАМАС. Подтверждает приоритет длительного военного контроля при выполнении условий безопасности, но не само по себе формальную аннексию.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_gaza_resettlement_split_2026",
+    "title": "Likud-backed march calls for renewed Jewish settlement in Gaza",
+    "url": "https://www.timesofisrael.com/military-closes-area-around-gaza-ahead-of-likud-backed-settler-march-into-strip/",
+    "source_type": "secondary_research",
+    "date": "2026-07-19",
+    "notes_ru": "Ликуд указан среди соорганизаторов/спонсоров марша за восстановление поселений в Газе; в мероприятии заявлялось участие нескольких министров и депутатов Ликуда. Одновременно Нетаньяху неоднократно заявлял, что Израиль не будет восстанавливать поселения в Газе. Прямое свидетельство внутрипартийного расхождения.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_local_transport_autonomy_2026",
+    "title": "Likud committee chair drops transport decentralization reform after Haredi demand",
+    "url": "https://www.timesofisrael.com/knesset-passes-law-banning-arrests-of-haredi-draft-dodgers-legitimizing-ongoing-non-enlistment/",
+    "source_type": "secondary_research",
+    "date": "2026-07-14",
+    "notes_ru": "Реформа должна была передать местным властям больше полномочий по транспорту и позволить адаптацию к местному населению; харедим опасались использования полномочий для транспорта в шаббат. Председатель комиссии Кнессета от Ликуда Офир Кац снял реформу с повестки по требованию харедим. Косвенное, но актуальное свидетельство против расширения местной автономии в этой сфере.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_rabbinate_kashrut_monopoly_vote_2026",
+    "title": "Knesset restores Chief Rabbinate's monopoly over kosher certification",
+    "url": "https://www.timesofisrael.com/knesset-passes-law-restoring-chief-rabbinates-monopoly-over-kosher-certification/",
+    "source_type": "secondary_research",
+    "date": "2026-07-15",
+    "notes_ru": "Коалиция Ликуда провела закон 46–41, восстановивший исключительное право Главного раввината на сертификацию кашрута и отменивший конкуренцию частных ортодоксальных организаций. Доказательство относится непосредственно к религиозным услугам/кашруту, а не ко всем аспектам брака и гиюра.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_haredi_draft_freeze_2026",
+    "title": "Coalition passes law freezing arrests of Haredi draft evaders",
+    "url": "https://www.timesofisrael.com/knesset-passes-law-banning-arrests-of-haredi-draft-dodgers-legitimizing-ongoing-non-enlistment/",
+    "source_type": "secondary_research",
+    "date": "2026-07-14",
+    "notes_ru": "Коалиционный закон временно запретил арест и преследование харедим, уклоняющихся от призыва; министр обороны Исраэль Кац (Ликуд) голосовал за, а депутаты Ликуда Юлий Эдельштейн и Дан Илуз — против. Нетаньяху голосование пропустил.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_netanyahu_haredi_draft_shift_2026",
+    "title": "Netanyahu distances himself from Haredi draft-evasion law before election",
+    "url": "https://www.timesofisrael.com/opposition-pans-netanyahu-spin-as-he-distances-himself-from-haredi-draft-evasion-law/",
+    "source_type": "secondary_research",
+    "date": "2026-08-02",
+    "notes_ru": "Нетаньяху заявил, что не учащийся Торе должен служить или отвечать по закону, и обещал после выборов полноценный закон о призыве под нужды ЦАХАЛ; при этом сохраняет идею освобождения для очных учащихся ешив. В сочетании с июльским голосованием позиция Ликуда смешанная.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_netanyahu_arab_service_2012",
+    "title": "Netanyahu backs national or military service including Arab citizens",
+    "url": "https://www.timesofisrael.com/netanyahu-aims-for-ultra-orthodox-arab-mandatory-service/",
+    "source_type": "secondary_research",
+    "date": "2012-07-04",
+    "notes_ru": "Историческое прямое заявление Нетаньяху: арабские граждане должны интегрироваться в национальную службу, а универсальный закон должен охватывать арабов и харедим. Свежего эквивалентного обязательства Ликуда 2025–2026 не найдено.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_kisch_core_standards_2026",
+    "title": "Education Minister Yoav Kisch on expanding core curriculum and state-Haredi education",
+    "url": "https://m.knesset.gov.il/en/news/pressreleases/pages/press27126q.aspx",
+    "source_type": "official_statement",
+    "date": "2026-01-27",
+    "notes_ru": "Министр образования Йоав Киш (Ликуд) заявил в Кнессете, что министерство борется за расширение לימודי ליבה и государственно-харедимского образования. Прямое свидетельство в пользу единых стандартов.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_haredi_core_non_enforcement_2026",
+    "title": "State reportedly not cutting funds to Haredi schools that fail to teach core subjects",
+    "url": "https://www.timesofisrael.com/state-reportedly-not-cutting-funds-to-haredi-schools-that-fail-to-teach-core-subjects/",
+    "source_type": "secondary_research",
+    "date": "2026-08-03",
+    "notes_ru": "По данным Channel 13, опубликованным Times of Israel, за три года Минобразования практически не сокращало финансирование школ, нарушающих требования по базовым предметам; одновременно обсуждались дополнительные средства харедимским школам. Противоречит заявленной линии Киша и делает позицию по единым стандартам смешанной.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_civics_exam_report_2026",
+    "title": "Liberal democracy and workers' rights remain out of Israeli matriculation exams",
+    "url": "https://www.haaretz.com/israel-news/israel-politics/2026-07-29/ty-article/.premium/liberal-democracy-workers-rights-remain-out-of-israeli-matriculation-exams/0000019f-ae19-d993-af9f-be5fedef0000",
+    "source_type": "secondary_research",
+    "date": "2026-07-29",
+    "notes_ru": "Актуальный отчёт о том, что темы либеральной демократии и ряда гражданских прав остаются исключёнными из экзаменационных материалов по граждановедению на 2027 год. Продолжает спор, начавшийся в 2025 году.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_education_ministry_civics_2025",
+    "title": "Education Ministry response on civics matriculation curriculum",
+    "url": "https://www.gov.il/he/pages/bagrut-citizenship",
+    "source_type": "official_statement",
+    "date": "2025-09-02",
+    "notes_ru": "Официальное Минобразования отрицало сообщения об удалении тем либеральной демократии из учебной программы; при этом сообщения СМИ касались прежде всего экзаменационного фокуса. Используется вместе с независимыми сообщениями, поэтому итоговая оценка не трактует спор как однозначный.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_levin_basic_law_legislation_2025",
+    "title": "Levin and Sa'ar present principles for Basic Law: Legislation",
+    "url": "https://en.globes.co.il/en/article-levin-saar-present-judical-overhaul-compromise-1001499112",
+    "source_type": "secondary_research",
+    "date": "2025-01-09",
+    "notes_ru": "Министр юстиции от Ликуда Ярив Левин совместно с Гидеоном Сааром представил конкретные принципы Основного закона о законодательстве, регулирующего статус Основных законов и судебный контроль. Прямое подтверждение поддержки такого конституционного урегулирования.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_budget_public_services_2026",
+    "title": "2026 budget shifts spending toward defense while civilian ministries absorb cuts",
+    "url": "https://www.ynetnews.com/business/article/bjcpvkws11x",
+    "source_type": "secondary_research",
+    "date": "2026-03-29",
+    "notes_ru": "Принятый правительственной коалицией бюджет 2026 сопровождался сокращением более чем на 3% по гражданским министерствам, включая образование, здравоохранение и социальную сферу, на фоне резкого роста оборонных расходов. Используется вместе с текущим экономическим профилем Ликуда.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_likud_lgbt_split_2023",
+    "title": "Likud MKs split on bill expanding adoption rights to gay couples",
+    "url": "https://www.jpost.com/breaking-news/article-732393",
+    "source_type": "secondary_research",
+    "date": "2023-02-22",
+    "notes_ru": "Спикер Кнессета Амир Охана (Ликуд) поддержал законопроект о расширении права на усыновление для однополых пар, тогда как остальные депутаты Ликуда голосовали по коалиционной линии против. Свидетельство внутрипартийного расхождения по равным гражданским правам ЛГБТ.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_raam_2026",
+    "title": "בחירומט 2026 — позиции РААМ",
+    "url": "https://bchiro-mat.vercel.app/parties/raam/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с явными ссылками на публичные источники. Используется только там, где на странице приведена конкретная позиция/действие; пометка «позиция не найдена» не трактуется как нейтральность.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_shas_2026",
+    "title": "בחירומט 2026 — позиции ШАС",
+    "url": "https://bchiro-mat.vercel.app/parties/shas/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками; использованы только конкретно обоснованные позиции, включая суверенитет, долгосрочный контроль Газы и локальный транспорт в шаббат.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_utj_2026",
+    "title": "בחירומט 2026 — позиции Яхадут ха-Тора",
+    "url": "https://bchiro-mat.vercel.app/parties/utj/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками; старые заявления маркируются historical. Отсутствие ясной позиции на странице не заменяется идеологической экстраполяцией.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_rz_2026",
+    "title": "בחירומט 2026 — позиции Религиозного сионизма",
+    "url": "https://bchiro-mat.vercel.app/parties/religious_zionism/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками; использована для ограниченных выводов по религии/государству и только при наличии конкретного основания.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_otzma_2026",
+    "title": "בחירומט 2026 — позиции Оцма Йехудит",
+    "url": "https://bchiro-mat.vercel.app/parties/otzma_yehudit/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками; фиксирует, в частности, поддержку расширения службы харедим при одновременном неприятии принуждения, поэтому по обязательному призыву используется статус mixed.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_yashar_2026",
+    "title": "בחירומט 2026 — позиции Яшар!",
+    "url": "https://bchiro-mat.vercel.app/parties/yashar_eisenkot/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками и актуальными заявлениями/программой Яшар!; использована для Газы, палестинского государства, гражданского брака и транспорта в шаббат.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_bait_zioni_2026",
+    "title": "בחירומט 2026 — позиции Байт Циони–Милуимники",
+    "url": "https://bchiro-mat.vercel.app/parties/zionist_home_reservists/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка по новому объединённому списку. Позиции компонента/лидера не выдаются автоматически за позицию всего списка; scope отражает уровень attribution.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_beyahad_2026",
+    "title": "בחירומט 2026 — позиции Беяхад (Беннет + Еш Атид)",
+    "url": "https://bchiro-mat.vercel.app/parties/together_bennett_lapid/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка по объединённому списку; внутренние расхождения Беннета и Еш Атид сохраняются как mixed/умеренное значение, а evidence одного компонента маркируется COMPONENT_PARTY.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_hadash_joint_2026",
+    "title": "בחירומט 2026 — технический список ХАДАШ–ТААЛ–БАЛАД",
+    "url": "https://bchiro-mat.vercel.app/parties/joint_hadash_taal_balad/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Страница относится к более широкому техническому списку ХАДАШ–ТААЛ–БАЛАД; для объекта hadash_taal используются только свидетельства, явно относимые к ХАДАШ–ТААЛ, его компонентам либо прежней фракции.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bchiromat_ndi_2026",
+    "title": "בחירומט 2026 — позиции НДИ",
+    "url": "https://bchiro-mat.vercel.app/parties/yisrael_beiteinu/",
+    "source_type": "secondary_research",
+    "date": "2026-08-06",
+    "notes_ru": "Вторичная сводка с исходными ссылками; использована для текущего обязательства НДИ поддержать распространение суверенитета в Иудее и Самарии.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_bait_zioni_program_aug2026",
+    "title": "Israel Hayom — программа «Маген Давид» Байт Циони–Милуимники",
+    "url": "https://www.israelhayom.co.il/news/politics/article/21135719",
+    "source_type": "secondary_research",
+    "date": "2026-08-05",
+    "notes_ru": "Свежий репортаж с презентации программы объединённой партии: государственное финансирование только школ с לימודי ליבה, усиление публичного образования, демонополизация/конкуренция, снижение регуляторной нагрузки и другие программные пункты.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_raam_lgbt_2020",
+    "title": "Исламское движение / РААМ — заявление против законов, расширяющих права ЛГБТ",
+    "url": "https://www.inn.co.il/news/460679",
+    "source_type": "secondary_research",
+    "date": "2020-12-14",
+    "notes_ru": "Историческое сообщение о заявлении Исламского движения, представляющего РААМ: депутаты РААМ не будут поддерживать законы, предоставляющие права ЛГБТ. Используется только как historical evidence.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_taal_lgbt_2021",
+    "title": "Ахмад Тиби — против законодательства о полных правах ЛГБТ",
+    "url": "https://www.ynet.co.il/articles/0%2C7340%2CL-5893692%2C00.html",
+    "source_type": "secondary_research",
+    "date": "2021-03-03",
+    "notes_ru": "Историческая позиция лидера ТААЛ: прямое возражение против законов, предоставляющих полные права ЛГБТ; используется вместе с отдельным evidence по ХАДАШ для статуса mixed.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_hadash_lgbt_2020",
+    "title": "Haaretz — раскол арабских фракций по правам ЛГБТ; ХАДАШ голосует за",
+    "url": "https://www.haaretz.co.il/news/politi/2020-07-28/ty-article/.premium/0000017f-e3ee-d804-ad7f-f3fed9eb0000",
+    "source_type": "secondary_research",
+    "date": "2020-07-28",
+    "notes_ru": "Исторический отчёт о расколе внутри Объединённого списка: депутаты ХАДАШ поддерживали соответствующие законопроекты; используется вместе с позицией ТААЛ только для фиксации mixed.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_rz_lgbt_2018",
+    "title": "Смотрич — против нормализации однополых семей",
+    "url": "https://www.srugim.co.il/263893-%D7%A1%D7%9E%D7%95%D7%98%D7%A8%D7%99%D7%A5-%D7%9E%D7%A9%D7%A4%D7%97%D7%95%D7%AA-%D7%97%D7%93-%D7%9E%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%94%D7%95%D7%A8%D7%A1%D7%95%D7%AA-%D7%90%D7%AA-%D7%94%D7%97",
+    "source_type": "secondary_research",
+    "date": "2018-07-02",
+    "notes_ru": "Историческое заявление Бецалеля Смотрича против общественного и правового признания однополых семей; attribution только к лидеру/исторической позиции.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_yashar_sagi_laws_2026",
+    "title": "Mako — Айзенкот поддержал пакет «Законы Саги» о равноправии ЛГБТ",
+    "url": "https://www.mako.co.il/special-more_articles/Article-e4b5ea435614f91027.htm",
+    "source_type": "secondary_research",
+    "date": "2026-07-12",
+    "notes_ru": "Сообщение о публичном обязательстве Гади Айзенкота продвигать пакет, включающий гражданский брак и равные гражданские права ЛГБТ; используется как текущая позиция лидера.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_joint_list_haredi_draft_2022",
+    "title": "Объединённый список против закона о призыве харедим",
+    "url": "https://zoha.org.il/110032/",
+    "source_type": "secondary_research",
+    "date": "2022-01-18",
+    "notes_ru": "Архивное свидетельство: тогдашний Объединённый список, включавший ХАДАШ и ТААЛ, выступил против законопроекта о призыве харедим. Используется только как historical evidence, не как автоматическая текущая позиция списка 2026.",
+    "verification_status": "researched_2026-08-09"
+  },
+  {
+    "id": "src_democrats_labor_constitution_2025",
+    "title": "Устав Партии труда на сайте «Демократов»: алия и абсорбция",
+    "url": "https://democrats.org.il/wp-content/uploads/2025/10/constitution_240725.pdf",
+    "source_type": "component_party_platform",
+    "date": "2025",
+    "notes_ru": "Документ партии-компонента на домене «Демократов»: призывает возобновить импульс алии, создавать условия для абсорбции и привлекательности алии. Используется как historical/component evidence, а не как автоматически актуальная программа всего объединения.",
+    "verification_status": "researched_2026-08-09"
   }
 ]
