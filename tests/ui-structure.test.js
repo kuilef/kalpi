@@ -104,6 +104,14 @@ test('stylesheet defines editorial and RTL treatment', () => {
   assert.match(css, /overflow-wrap:\s*anywhere/);
 });
 
+test('stylesheet gives the strip markers, tooltip, and details block dedicated treatment', () => {
+  const css = read('styles.css');
+  for (const selector of ['.axis-strips', '.axis-track', '.axis-marker', '.user-marker', '.axis-strip-tooltip', '.multidimensional-map']) {
+    assert.match(css, new RegExp(selector.replace('.', '\\.') + '\\s*\\{'));
+  }
+  assert.match(css, /\.axis-marker:focus-visible/);
+});
+
 test('app attempts direct data-json loading outside file protocol and warns in file mode', () => {
   const app = read('app.js');
   assert.match(app, /location\.protocol\s*!==\s*['"]file:['"]/);
