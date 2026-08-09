@@ -144,6 +144,7 @@
           return `<article class="question-card ${current !== undefined ? 'answered' : ''}" data-question="${esc(q.id)}">
             <div class="question-number">${locale === 'he' ? 'שאלה' : locale === 'en' ? 'Question' : 'Вопрос'} ${index}</div>
             <div class="question-text">${esc(text(q, 'text'))}</div>
+            ${locale === 'ru' ? `<p class="question-explanation">${esc(q.explanation_ru)}</p>` : ''}
             <div class="answer-options">${options}</div>
           </article>`;
         }).join('')}

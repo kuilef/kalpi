@@ -32,6 +32,13 @@ test('canonical user-facing data is complete in English, Russian and Hebrew', ()
   for (const question of load('questions.json')) assertLocalized(question, ['text', 'group'], 'question');
 });
 
+test('every question has a complete Russian explanation', () => {
+  for (const question of load('questions.json')) {
+    assert.equal(typeof question.explanation_ru, 'string', `question ${question.id}: missing explanation_ru`);
+    assert.ok(question.explanation_ru.trim(), `question ${question.id}: blank explanation_ru`);
+  }
+});
+
 test('every active party has an explicit position record for every enabled question', () => {
   const parties = load('parties.json').filter((p) => p.active);
   const questions = load('questions.json').filter((q) => q.enabled);

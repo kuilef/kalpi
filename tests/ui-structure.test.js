@@ -31,6 +31,15 @@ test('questionnaire markup includes progress, question host and result action', 
   assert.match(html, /id=["']calculate-results["']/);
 });
 
+test('Russian question explanations are rendered before answer controls without hover-only UI', () => {
+  const app = read('app.js');
+  const questionText = app.indexOf('class="question-text"');
+  const explanation = app.indexOf('class="question-explanation"');
+  const answers = app.indexOf('class="answer-options"');
+  assert.ok(questionText >= 0 && explanation > questionText && answers > explanation);
+  assert.match(app, /locale === 'ru' \? `<p class="question-explanation">\$\{esc\(q\.explanation_ru\)\}<\/p>` : ''/);
+});
+
 test('results include five axis strips and retain the 2D map as collapsed details', () => {
   const html = read('index.html');
   assert.match(html, /id=["']axis-strips["']/);

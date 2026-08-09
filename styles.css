@@ -34,6 +34,7 @@ h3 { margin-top: 0; }
 .question-card.answered { border-color: #b7cce5; background: #fbfdff; }
 .question-number { color: var(--muted); font-size: .82rem; }
 .question-text { margin: 5px 0 14px; font-weight: 650; }
+.question-explanation { margin: -5px 0 14px; color: var(--muted); font-size: .92rem; line-height: 1.48; overflow-wrap: anywhere; }
 .answer-options { display: grid; grid-template-columns: repeat(6, minmax(110px, 1fr)); gap: 8px; }
 .answer-option { position: relative; }
 .answer-option input { position: absolute; opacity: 0; pointer-events: none; }
