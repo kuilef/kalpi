@@ -7,6 +7,8 @@ Status: Approved design, awaiting review of this specification
 
 Make the prototype feel like a restrained editorial questionnaire rather than a data dashboard. A visitor's first and only initial task is to answer policy questions. Recommendation and research analytics appear only after the visitor explicitly asks to calculate the result.
 
+The whole product interface is available in Russian, English and Hebrew. The visitor can switch language before answering, and the selected language remains active throughout the questionnaire and results.
+
 ## Information order
 
 The page order becomes:
@@ -17,6 +19,17 @@ The page order becomes:
 4. Data-quality analytics: dataset coverage, gaps, provenance and matrix. It follows the completed questionnaire and stays below the result.
 
 Developer warnings and the active-data status remain functional notices. They must be compact, visually subordinate, and must not precede the questionnaire.
+
+## Languages and direction
+
+The header contains a compact three-option language switcher: `EN`, `RU`, `HE`. It changes the language of all product copy without clearing answers, changing the active data set or recalculating the result. The selection is persisted with the existing browser preferences and defaults to Russian until the visitor chooses otherwise.
+
+- Russian (`ru`) and English (`en`) use left-to-right document direction.
+- Hebrew (`he`) sets `lang="he"` and `dir="rtl"` on the document root. Section hierarchy, progress, controls, tables, map labels and focus order must remain usable in RTL rather than merely right-aligning text.
+- The language switcher itself stays compact and recognisable in every locale; its accessible label and selected state are translated.
+- A language change updates static UI copy, question groups and prompts, axis names/poles, party names/leader labels, status labels, result explanations, analytics labels and validation text. External-source titles and URLs retain their original language.
+
+The data schema gains explicit localized fields for all user-facing political content: Russian, English and Hebrew question text and group labels; axis names and poles; party/list names and leader names; and any display labels used in result explanations. No language may silently fall back to Russian when a localized field is missing; dataset validation reports the incomplete record instead. Calculation IDs, numerical values, evidence and scoring remain language-independent.
 
 ## Visual direction
 
@@ -55,6 +68,9 @@ Add or update structural tests to assert that:
 1. the questionnaire appears before results and `#data-quality` in the document;
 2. `#data-update` and browser data-control IDs are absent;
 3. the page still loads its data/core/application scripts in the required order;
-4. existing scoring and data-bundle tests continue to pass.
+4. the language switcher offers Russian, English and Hebrew;
+5. changing language preserves stored answers and changes only localized display text;
+6. Hebrew switches the document to RTL; and
+7. existing scoring and data-bundle tests continue to pass.
 
 Perform a browser or static visual smoke check at desktop and narrow viewport widths. Confirm that the initial screen presents questions without dashboard analytics and that calculation reveals the analytics below the result.
