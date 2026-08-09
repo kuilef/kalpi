@@ -31,11 +31,17 @@ test('questionnaire markup includes progress, question host and result action', 
   assert.match(html, /id=["']calculate-results["']/);
 });
 
-test('results include selectable two-dimensional map and five-axis profile', () => {
+test('results include five axis strips and retain the 2D map as collapsed details', () => {
   const html = read('index.html');
-  for (const id of ['map-x-axis','map-y-axis','party-map','map-omitted','axis-profile']) {
+  assert.match(html, /id=["']axis-strips["']/);
+  assert.match(html, /<details id=["']multidimensional-map["']/);
+  assert.match(html, /<details id=["']multidimensional-map["'][^>]*>/);
+  assert.doesNotMatch(html, /<details id=["']multidimensional-map["'][^>]*\sopen(?:\s|=|>)/);
+  assert.doesNotMatch(html, /id=["']axis-profile["']/);
+  for (const id of ['map-x-axis','map-y-axis','party-map','map-omitted']) {
     assert.match(html, new RegExp(`id=["']${id}["']`));
   }
+  assert.ok(html.indexOf('axis-strips.js') < html.indexOf('app.js'));
 });
 
 test('page offers three locales and no browser data controls', () => {

@@ -47,15 +47,21 @@
         <div><h3 data-i18n="ranking"></h3><div id="ranking"></div></div>
         <div><h3 data-i18n="whyThisParty"></h3><div id="explanation"></div></div>
       </div>
-      <div class="axis-section">
+      <section class="axis-section" aria-labelledby="axis-strips-title">
         <div class="section-heading compact-heading">
-          <div><h3 data-i18n="mapTitle"></h3><p class="hint" data-i18n="mapHint"></p></div>
-          <div class="axis-selectors"><label>X <select id="map-x-axis"></select></label><label>Y <select id="map-y-axis"></select></label></div>
+          <div><h3 id="axis-strips-title" data-i18n="axisStripsTitle"></h3><p class="hint" data-i18n="axisStripsHint"></p></div>
         </div>
-        <div class="map-wrap"><canvas id="party-map" width="900" height="600"></canvas></div>
-        <p id="map-omitted" class="hint"></p>
-        <h3 data-i18n="axisProfile"></h3><div id="axis-profile" class="table-scroll"></div>
-      </div>
+        <div id="axis-strips" class="axis-strips" aria-live="polite"></div>
+        <details id="multidimensional-map" class="multidimensional-map">
+          <summary data-i18n="mapDetailsTitle"></summary>
+          <div class="section-heading compact-heading">
+            <div><h3 data-i18n="mapTitle"></h3><p class="hint" data-i18n="mapHint"></p></div>
+            <div class="axis-selectors"><label>X <select id="map-x-axis"></select></label><label>Y <select id="map-y-axis"></select></label></div>
+          </div>
+          <div class="map-wrap"><canvas id="party-map" width="900" height="600"></canvas></div>
+          <p id="map-omitted" class="hint"></p>
+        </details>
+      </section>
     </section>
 
     <section id="data-inspection" class="panel hidden">
@@ -82,6 +88,7 @@
   <script src="data/baseline-data.js"></script>
   <script src="data-loader.js"></script>
   <script src="i18n.js"></script>
+  <script src="axis-strips.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
