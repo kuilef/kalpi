@@ -2063,11 +2063,13 @@
   {
     "party": "democrats",
     "question": "palestinian_state",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
@@ -2084,11 +2086,13 @@
   {
     "party": "democrats",
     "question": "gaza_annexation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -2,
+    "status": "known",
+    "confidence": 0.9,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
@@ -2104,11 +2108,13 @@
   {
     "party": "democrats",
     "question": "military_control_priority",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": -2,
+    "status": "known",
+    "confidence": 0.9,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
@@ -2239,11 +2245,13 @@
   {
     "party": "democrats",
     "question": "pm_term_limits",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "known",
+    "confidence": 0.75,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
@@ -2329,20 +2337,24 @@
   {
     "party": "democrats",
     "question": "anti_monopoly_competition",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.9,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
     "question": "social_housing",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.9,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
@@ -2371,11 +2383,13 @@
   {
     "party": "democrats",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "known",
+    "confidence": 0.95,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ]
   },
   {
     "party": "democrats",
