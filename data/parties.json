@@ -1,0 +1,88 @@
+[
+  {
+    "id": "likud",
+    "name_ru": "Ликуд",
+    "name_he": "הליכוד",
+    "leader": "Биньямин Нетаньяху",
+    "active": true
+  },
+  {
+    "id": "beyahad",
+    "name_ru": "Беяхад",
+    "name_he": "ביחד",
+    "leader": "Нафтали Беннет / Яир Лапид",
+    "active": true,
+    "notes_ru": "Технический объединённый список; позиции компонентов не автоматически считаются позицией списка."
+  },
+  {
+    "id": "shas",
+    "name_ru": "ШАС",
+    "name_he": "ש״ס",
+    "leader": "Арье Дери",
+    "active": true
+  },
+  {
+    "id": "utj",
+    "name_ru": "Яхадут ха-Тора",
+    "name_he": "יהדות התורה",
+    "leader": "Ицхак Гольдкнопф",
+    "active": true
+  },
+  {
+    "id": "raam",
+    "name_ru": "РААМ",
+    "name_he": "רע״ם",
+    "leader": "Мансур Аббас",
+    "active": true
+  },
+  {
+    "id": "otzma",
+    "name_ru": "Еврейская мощь (Оцма Йехудит)",
+    "name_he": "עוצמה יהודית",
+    "leader": "Итамар Бен-Гвир",
+    "active": true
+  },
+  {
+    "id": "yisrael_beytenu",
+    "name_ru": "Наш дом Израиль (НДИ)",
+    "name_he": "ישראל ביתנו",
+    "leader": "Авигдор Либерман",
+    "active": true
+  },
+  {
+    "id": "democrats",
+    "name_ru": "Демократы",
+    "name_he": "הדמוקרטים",
+    "leader": "Яир Голан",
+    "active": true
+  },
+  {
+    "id": "yashar",
+    "name_ru": "Яшар!",
+    "name_he": "ישר!",
+    "leader": "Гади Айзенкот",
+    "active": true
+  },
+  {
+    "id": "religious_zionism",
+    "name_ru": "Религиозный сионизм",
+    "name_he": "הציונות הדתית",
+    "leader": "Бецалель Смотрич",
+    "active": true
+  },
+  {
+    "id": "bait_zioni",
+    "name_ru": "Байт Циони / Милуимники",
+    "name_he": "בית ציוני / המילואימניקים",
+    "leader": "Хили Тропер / Йоаз Гендель",
+    "active": true,
+    "notes_ru": "Новый объединённый список; часть evidence относится к партии-компоненту или лидеру."
+  },
+  {
+    "id": "hadash_taal",
+    "name_ru": "ХАДАШ–ТААЛ",
+    "name_he": "חד״ש–תע״ל",
+    "leader": "Йосеф Джабарин / Ахмад Тиби",
+    "active": true
+  }
+]

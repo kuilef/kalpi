@@ -1,0 +1,254 @@
+[
+  {
+    "id": "src_knesset_pal_state_2024",
+    "title": "Knesset resolution opposing establishment of a Palestinian state",
+    "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press18724w.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2024-07-18",
+    "notes_ru": "Конкретная парламентская позиция; не используется как автоматическое доказательство по другим территориальным вопросам.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_death_penalty_vote_2026",
+    "title": "Голосование по смертной казни за террористическое убийство",
+    "url": "https://zmanknesset.co.il/vote/93827",
+    "source_type": "parliamentary_vote",
+    "date": "2026-03-30",
+    "notes_ru": "Конкретное голосование.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_likud_idi",
+    "title": "Likud — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/likud/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Долгосрочная идеология/устав, не программа 2026.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_likud_civil_marriage_2025",
+    "title": "Разногласия в Ликуде по гражданскому браку",
+    "url": "https://news.walla.co.il/item/3803883",
+    "source_type": "parliamentary_vote",
+    "date": "2025-12-24",
+    "notes_ru": "Используется только для статуса mixed.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_beyahad_program",
+    "title": "Беяхад — официальный сайт и программа",
+    "url": "https://be-yahad.org.il/",
+    "source_type": "party_platform",
+    "date": "2026",
+    "notes_ru": "Актуальный материал объединённого списка.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_bennett_religion_2026",
+    "title": "Заявления Нафтали Беннета о религии и гражданском статусе",
+    "url": "https://www.inn.co.il/news/694990",
+    "source_type": "official_statement",
+    "date": "2026-04-20",
+    "notes_ru": "Позиция лидера, а не автоматически всего списка.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_shas_idi",
+    "title": "ШАС — профиль IDI",
+    "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Устойчивая партийная идеология.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_shas_draft_2026",
+    "title": "ШАС о статусе учащихся ешив и санкциях",
+    "url": "https://www.kikar.co.il/haredim-news/tgofwa",
+    "source_type": "official_statement",
+    "date": "2026-06",
+    "notes_ru": "Актуальная позиция по механизму призыва/санкций.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_utj_idi",
+    "title": "United Torah Judaism — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Устойчивая идеология и секторальные приоритеты.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_utj_sanctions_2025",
+    "title": "Яхадут ха-Тора о санкциях в законе о призыве",
+    "url": "https://www.bhol.co.il/news/1711677",
+    "source_type": "official_statement",
+    "date": "2025-12",
+    "notes_ru": "Позиция против санкций для изучающих Тору.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_raam_idi",
+    "title": "Ra'am — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/raam/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Долгосрочные позиции; не автоматически программа 2026.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_raam_service_2026",
+    "title": "Мансур Аббас о гражданской службе арабской молодёжи",
+    "url": "https://www.israelhayom.co.il/news/politics/article/20522851",
+    "source_type": "official_statement",
+    "date": "2026-05",
+    "notes_ru": "Поддержка адаптированного гражданского формата, не всеобщей военной службы.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_otzma_idi",
+    "title": "Otzma Yehudit — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/otzma-yehudit/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Устойчивая идеология по территориям и судебной системе.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_ndi_platform",
+    "title": "НДИ — официальная программа",
+    "url": "https://beytenu.org.il/party-platform/",
+    "source_type": "party_platform",
+    "date": "2026",
+    "notes_ru": "Основной текущий источник.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_ndi_government",
+    "title": "НДИ — основы следующего правительства",
+    "url": "https://beytenu.org.il/party-platform-israel-beytenu-next-government/",
+    "source_type": "party_platform",
+    "date": "2026",
+    "notes_ru": "Институциональные предложения.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_ndi_idi",
+    "title": "НДИ — профиль IDI",
+    "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Исторический контекст; используется вместе с более свежими голосованиями.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_democrats_platform",
+    "title": "Демократы — официальный сайт",
+    "url": "https://democrats.org.il/",
+    "source_type": "party_platform",
+    "date": "2026",
+    "notes_ru": "Актуальная программная повестка.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_democrats_idi",
+    "title": "The Democrats — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/the-democrats/",
+    "source_type": "party_ideology",
+    "date": "2026",
+    "notes_ru": "Сводка актуальных позиций.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_yashar_program",
+    "title": "Яшар! — официальный сайт / десять шагов",
+    "url": "https://yasharwitheisenkot.com/",
+    "source_type": "party_platform",
+    "date": "2026",
+    "notes_ru": "Основной актуальный источник.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_yashar_idi",
+    "title": "Яшар! — зарегистрированные цели / IDI",
+    "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yashar/",
+    "source_type": "party_charter",
+    "date": "2026",
+    "notes_ru": "Дополняет программу по институтам.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_rz_platform",
+    "title": "Религиозный сионизм — программа",
+    "url": "https://zionutdatit.org.il/%D7%9E%D7%A6%D7%A2-%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальный программный раздел; отдельные материалы могут быть старше 2026.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_rz_sovereignty",
+    "title": "Религиозный сионизм — план суверенитета",
+    "url": "https://zionutdatit.org.il/hityashvut/sovereignty/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Прямая территориальная позиция.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_rz_gaza",
+    "title": "Религиозный сионизм — план по Газе",
+    "url": "https://zionutdatit.org.il/victory/",
+    "source_type": "party_platform",
+    "date": "2025-09",
+    "notes_ru": "Отдельно датированный план по Газе.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_rz_draft_2026",
+    "title": "Религиозный сионизм о призыве харедим",
+    "url": "https://www.israelhayom.co.il/israelnow/article/19362665",
+    "source_type": "official_statement",
+    "date": "2026-07-25",
+    "notes_ru": "Актуальное заявление фракции.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_bait_zioni_launch",
+    "title": "Байт Циони — запуск нового списка",
+    "url": "https://news.walla.co.il/item/3852755",
+    "source_type": "official_statement",
+    "date": "2026-07",
+    "notes_ru": "Текущие заявления нового списка.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_miluimniks_goals",
+    "title": "Милуимники — зарегистрированные цели",
+    "url": "https://www.mako.co.il/news-politics/2025_q3/Article-1fed54c6d0c5991026.htm?partner=lobby",
+    "source_type": "component_party_platform",
+    "date": "2025",
+    "notes_ru": "Только контекст партии-компонента.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_taal_idi",
+    "title": "Ta'al — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/taal/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Позиции ТААЛ; для совместного списка уверенность снижена.",
+    "verification_status": "previously_researched_2026-08-08"
+  },
+  {
+    "id": "src_hadash_taal_knesset",
+    "title": "ХАДАШ–ТААЛ — обзор Кнессет 99",
+    "url": "https://www.knesset.tv/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA/47334/",
+    "source_type": "secondary_research",
+    "date": null,
+    "notes_ru": "Общие позиции списка.",
+    "verification_status": "previously_researched_2026-08-08"
+  }
+]

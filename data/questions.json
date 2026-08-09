@@ -1,0 +1,318 @@
+[
+  {
+    "id": "palestinian_state",
+    "text_ru": "Следует ли поддержать создание независимого палестинского государства в рамках политического урегулирования?",
+    "importance_default": 1.25,
+    "axis_weights": {
+      "security_territories": -1.0
+    },
+    "enabled": true,
+    "group_ru": "Безопасность и территории"
+  },
+  {
+    "id": "westbank_sovereignty",
+    "text_ru": "Следует ли распространить израильский суверенитет на значительные части Иудеи и Самарии?",
+    "importance_default": 1.2,
+    "axis_weights": {
+      "security_territories": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Безопасность и территории"
+  },
+  {
+    "id": "gaza_annexation",
+    "text_ru": "Следует ли сохранять долгосрочный израильский территориальный контроль или аннексировать части Газы после войны?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "security_territories": 0.9
+    },
+    "enabled": true,
+    "group_ru": "Безопасность и территории"
+  },
+  {
+    "id": "death_penalty_terror",
+    "text_ru": "Следует ли применять смертную казнь за террористическое убийство?",
+    "importance_default": 0.9,
+    "axis_weights": {
+      "security_territories": 0.55,
+      "civil_social_rights": -0.3
+    },
+    "enabled": true,
+    "group_ru": "Безопасность и территории"
+  },
+  {
+    "id": "military_control_priority",
+    "text_ru": "В израильско-палестинском конфликте следует отдавать больший приоритет долговременному военному контролю, чем территориальному компромиссу и дипломатическому решению.",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "security_territories": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Безопасность и территории"
+  },
+  {
+    "id": "civil_marriage",
+    "text_ru": "Следует ли разрешить гражданский брак в Израиле?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "religion_state": -1.0,
+      "civil_social_rights": 0.4
+    },
+    "enabled": true,
+    "group_ru": "Религия и государство"
+  },
+  {
+    "id": "shabbat_transport",
+    "text_ru": "Следует ли разрешить общественный транспорт в шаббат там, где этого хочет местная община?",
+    "importance_default": 0.9,
+    "axis_weights": {
+      "religion_state": -0.9
+    },
+    "enabled": true,
+    "group_ru": "Религия и государство"
+  },
+  {
+    "id": "municipal_religion_autonomy",
+    "text_ru": "Следует ли дать муниципалитетам больше свободы самим определять правила по вопросам религии и образа жизни?",
+    "importance_default": 0.75,
+    "axis_weights": {
+      "religion_state": -0.55,
+      "civil_social_rights": 0.2
+    },
+    "enabled": true,
+    "group_ru": "Религия и государство"
+  },
+  {
+    "id": "reduce_rabbinate_monopoly",
+    "text_ru": "Следует ли уменьшить монополию Главного раввината на брак, гиюр и религиозные услуги?",
+    "importance_default": 0.9,
+    "axis_weights": {
+      "religion_state": -1.0,
+      "civil_social_rights": 0.3
+    },
+    "enabled": true,
+    "group_ru": "Религия и государство"
+  },
+  {
+    "id": "haredi_draft",
+    "text_ru": "Следует ли существенно расширить обязательный призыв харедим в ЦАХАЛ?",
+    "importance_default": 1.1,
+    "axis_weights": {
+      "security_territories": 0.3,
+      "religion_state": -0.65,
+      "civil_social_rights": 0.25
+    },
+    "enabled": true,
+    "group_ru": "Служба и равенство"
+  },
+  {
+    "id": "arab_service",
+    "text_ru": "Следует ли требовать от арабских граждан военную или адаптированную гражданскую/национальную службу?",
+    "importance_default": 0.9,
+    "axis_weights": {
+      "security_territories": 0.25,
+      "civil_social_rights": 0.15
+    },
+    "enabled": true,
+    "group_ru": "Служба и равенство"
+  },
+  {
+    "id": "service_benefits",
+    "text_ru": "Следует ли давать заметные государственные льготы гражданам, проходящим военную или национальную службу?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "security_territories": 0.2,
+      "economy_redistribution": -0.15
+    },
+    "enabled": true,
+    "group_ru": "Служба и равенство"
+  },
+  {
+    "id": "nonservice_sanctions",
+    "text_ru": "Следует ли сокращать государственные льготы гражданам, которые обязаны служить, но уклоняются без законного основания?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "religion_state": -0.25,
+      "civil_social_rights": -0.2
+    },
+    "enabled": true,
+    "group_ru": "Служба и равенство"
+  },
+  {
+    "id": "core_curriculum",
+    "text_ru": "Должно ли государственное финансирование школ зависеть от преподавания обязательных базовых предметов (לימודי ליבה)?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "religion_state": -0.65,
+      "civil_social_rights": 0.2,
+      "economy_redistribution": 0.1
+    },
+    "enabled": true,
+    "group_ru": "Образование"
+  },
+  {
+    "id": "unified_state_standards",
+    "text_ru": "Следует ли усилить единые государственные образовательные стандарты для разных школьных систем?",
+    "importance_default": 0.75,
+    "axis_weights": {
+      "religion_state": -0.4,
+      "civil_social_rights": 0.2
+    },
+    "enabled": true,
+    "group_ru": "Образование"
+  },
+  {
+    "id": "civic_democratic_education",
+    "text_ru": "Следует ли усилить обязательное изучение демократии, граждановедения и Декларации независимости в школах?",
+    "importance_default": 0.75,
+    "axis_weights": {
+      "institutions_rule_of_law": 0.45,
+      "civil_social_rights": 0.35,
+      "religion_state": -0.2
+    },
+    "enabled": true,
+    "group_ru": "Образование"
+  },
+  {
+    "id": "pm_term_limits",
+    "text_ru": "Следует ли ограничить срок пребывания премьер-министра у власти двумя сроками или примерно восемью годами?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "institutions_rule_of_law": 0.75
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "oct7_state_commission",
+    "text_ru": "Следует ли создать обычную государственную комиссию расследования событий 7 октября и решений, приведших к ним?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "institutions_rule_of_law": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "political_judicial_appointments",
+    "text_ru": "Следует ли существенно увеличить влияние избранных политиков на назначение судей Верховного суда?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "institutions_rule_of_law": -1.0
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "supreme_court_review",
+    "text_ru": "Следует ли сохранять сильные полномочия Верховного суда по судебному контролю над решениями власти?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "institutions_rule_of_law": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "basic_law_legislation",
+    "text_ru": "Нужен ли Основной закон о законодательстве / конституционное урегулирование отношений Кнессета, правительства и суда?",
+    "importance_default": 0.75,
+    "axis_weights": {
+      "institutions_rule_of_law": 0.8
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "watchdog_independence",
+    "text_ru": "Следует ли укреплять независимость юридических советников, контролёров и других государственных надзорных институтов от правительства?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "institutions_rule_of_law": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Институты"
+  },
+  {
+    "id": "lower_taxes_smaller_state",
+    "text_ru": "Следует ли отдавать приоритет снижению налогов и регулирования даже ценой более ограниченного государственного сектора?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "economy_redistribution": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Экономика"
+  },
+  {
+    "id": "expand_public_services",
+    "text_ru": "Следует ли расширять государственные расходы на здравоохранение, образование и социальные услуги, даже если для этого нужны дополнительные бюджетные ресурсы?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "economy_redistribution": -1.0,
+      "civil_social_rights": 0.15
+    },
+    "enabled": true,
+    "group_ru": "Экономика"
+  },
+  {
+    "id": "anti_monopoly_competition",
+    "text_ru": "Следует ли активнее вмешиваться против монополий и концентрации, чтобы усиливать рыночную конкуренцию и снижать цены?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "economy_redistribution": 0.55
+    },
+    "enabled": true,
+    "group_ru": "Экономика"
+  },
+  {
+    "id": "social_housing",
+    "text_ru": "Следует ли значительно расширять государственное/субсидируемое жильё и жилищную помощь?",
+    "importance_default": 0.75,
+    "axis_weights": {
+      "economy_redistribution": -0.8,
+      "civil_social_rights": 0.2
+    },
+    "enabled": true,
+    "group_ru": "Экономика"
+  },
+  {
+    "id": "nation_state_equality",
+    "text_ru": "Следует ли изменить Основной закон «Израиль — национальное государство еврейского народа», чтобы яснее закрепить принцип гражданского равенства?",
+    "importance_default": 0.9,
+    "axis_weights": {
+      "civil_social_rights": 1.0,
+      "institutions_rule_of_law": 0.3
+    },
+    "enabled": true,
+    "group_ru": "Гражданские права"
+  },
+  {
+    "id": "minority_equal_participation",
+    "text_ru": "Следует ли активно обеспечивать равное участие арабских граждан и других меньшинств в государственных институтах и распределении публичных ресурсов?",
+    "importance_default": 1.0,
+    "axis_weights": {
+      "civil_social_rights": 1.0
+    },
+    "enabled": true,
+    "group_ru": "Гражданские права"
+  },
+  {
+    "id": "lgbt_equal_civil_rights",
+    "text_ru": "Следует ли обеспечить однополым парам те же гражданские права и признание союза, что и разнополым парам?",
+    "importance_default": 0.8,
+    "axis_weights": {
+      "civil_social_rights": 1.0,
+      "religion_state": -0.45
+    },
+    "enabled": true,
+    "group_ru": "Гражданские права"
+  },
+  {
+    "id": "aliyah_incentives",
+    "text_ru": "Следует ли государству активно стимулировать массовую алию и существенно расширять программы абсорбции?",
+    "importance_default": 0.55,
+    "axis_weights": {},
+    "enabled": true,
+    "group_ru": "Гражданство и идентичность"
+  }
+]
