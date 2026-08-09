@@ -2,31 +2,61 @@
   {
     "id": "economy_redistribution",
     "name_ru": "Экономика и перераспределение",
+    "name_en": "Economy and redistribution",
+    "name_he": "כלכלה וחלוקה מחדש",
     "negative_ru": "больше перераспределения и роли государства",
-    "positive_ru": "больше рынка и конкуренции, меньше вмешательства"
+    "negative_en": "more redistribution and state involvement",
+    "negative_he": "יותר חלוקה מחדש ומעורבות המדינה",
+    "positive_ru": "больше рынка и конкуренции, меньше вмешательства",
+    "positive_en": "more market competition and less intervention",
+    "positive_he": "יותר שוק ותחרות, פחות התערבות"
   },
   {
     "id": "security_territories",
     "name_ru": "Безопасность и территории",
+    "name_en": "Security and territories",
+    "name_he": "ביטחון ושטחים",
     "negative_ru": "территориальный компромисс и дипломатическое решение",
-    "positive_ru": "территориальный контроль и более жёсткий силовой подход"
+    "negative_en": "territorial compromise and a diplomatic solution",
+    "negative_he": "פשרה טריטוריאלית ופתרון דיפלומטי",
+    "positive_ru": "территориальный контроль и более жёсткий силовой подход",
+    "positive_en": "territorial control and a tougher security approach",
+    "positive_he": "שליטה טריטוריאלית וגישה ביטחונית תקיפה יותר"
   },
   {
     "id": "religion_state",
     "name_ru": "Религия и государство",
+    "name_en": "Religion and state",
+    "name_he": "דת ומדינה",
     "negative_ru": "более светская и плюралистическая модель",
-    "positive_ru": "более сильная институциональная роль религии"
+    "negative_en": "a more secular and pluralistic model",
+    "negative_he": "מודל חילוני ופלורליסטי יותר",
+    "positive_ru": "более сильная институциональная роль религии",
+    "positive_en": "a stronger institutional role for religion",
+    "positive_he": "תפקיד מוסדי חזק יותר לדת"
   },
   {
     "id": "civil_social_rights",
     "name_ru": "Гражданские и социальные права",
+    "name_en": "Civil and social rights",
+    "name_he": "זכויות אזרחיות וחברתיות",
     "negative_ru": "более ограничительная / коммунитарная модель",
-    "positive_ru": "более широкое индивидуальное равенство и гражданские права"
+    "negative_en": "a more restrictive or communitarian model",
+    "negative_he": "מודל מגביל או קהילתני יותר",
+    "positive_ru": "более широкое индивидуальное равенство и гражданские права",
+    "positive_en": "broader individual equality and civil rights",
+    "positive_he": "שוויון אישי וזכויות אזרח רחבים יותר"
   },
   {
     "id": "institutions_rule_of_law",
     "name_ru": "Институты и верховенство права",
+    "name_en": "Institutions and the rule of law",
+    "name_he": "מוסדות ושלטון החוק",
     "negative_ru": "больше власти у избранного политического большинства",
-    "positive_ru": "более сильные независимые институты, суд и сдержки-противовесы"
+    "negative_en": "more power for the elected political majority",
+    "negative_he": "יותר כוח לרוב הפוליטי הנבחר",
+    "positive_ru": "более сильные независимые институты, суд и сдержки-противовесы",
+    "positive_en": "stronger independent institutions, courts and checks and balances",
+    "positive_he": "מוסדות עצמאיים, בתי משפט ואיזונים ובלמים חזקים יותר"
   }
 ]

@@ -6,11 +6,14 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 function read(name) { return fs.readFileSync(path.join(root, name), 'utf8'); }
 
-test('index exposes questionnaire, results, inspection and data-update sections', () => {
+test('questionnaire precedes initially hidden analysis', () => {
   const html = read('index.html');
-  for (const id of ['questionnaire','results','data-inspection','data-update']) {
+  for (const id of ['questionnaire', 'results', 'data-inspection', 'data-quality']) {
     assert.match(html, new RegExp(`id=["']${id}["']`));
   }
+  assert.ok(html.indexOf('id="questionnaire"') < html.indexOf('id="results"'));
+  assert.ok(html.indexOf('id="results"') < html.indexOf('id="data-quality"'));
+  assert.match(html, /id="data-quality"[^>]*class="[^"]*hidden/);
 });
 
 test('scripts load core, bundled data and app in that order', () => {
@@ -35,10 +38,13 @@ test('results include selectable two-dimensional map and five-axis profile', () 
   }
 });
 
-test('data update section supports importing, restoring and exporting research data', () => {
+test('page offers three locales and no browser data controls', () => {
   const html = read('index.html');
-  for (const id of ['data-files','apply-data','restore-data','export-data','data-update-status']) {
+  for (const id of ['locale-en', 'locale-ru', 'locale-he']) {
     assert.match(html, new RegExp(`id=["']${id}["']`));
+  }
+  for (const id of ['data-update', 'data-files', 'apply-data', 'restore-data', 'export-data', 'data-update-status']) {
+    assert.doesNotMatch(html, new RegExp(`id=["']${id}["']`));
   }
 });
 
@@ -60,12 +66,11 @@ test('baseline bundle loads after active bundled data and before app', () => {
   assert.ok(data >= 0 && baseline > data && app > baseline);
 });
 
-test('app renders data quality on initial load and after dataset changes', () => {
+test('app renders data quality only with an explicitly calculated result', () => {
   const app = read('app.js');
   assert.match(app, /function renderDataQuality\s*\(/);
   assert.match(app, /Core\.computeDatasetAnalytics/);
-  const calls = app.match(/renderDataQuality\s*\(\s*\)/g) || [];
-  assert.ok(calls.length >= 2, `expected at least 2 renderDataQuality() calls, got ${calls.length}`);
+  assert.doesNotMatch(app, /\$\('apply-data'\)|\$\('restore-data'\)|\$\('export-data'\)/);
 });
 
 test('page exposes active dataset source and loads browser data loader before app', () => {
@@ -74,6 +79,14 @@ test('page exposes active dataset source and loads browser data loader before ap
   const loader = html.indexOf('data-loader.js');
   const app = html.indexOf('app.js');
   assert.ok(loader >= 0 && app > loader);
+});
+
+test('stylesheet defines editorial and RTL treatment', () => {
+  const css = read('styles.css');
+  assert.match(css, /html\[dir=["']rtl["']\]/);
+  assert.match(css, /\.locale-switcher/);
+  assert.match(css, /font-family:[^;]*serif/);
+  assert.match(css, /overflow-wrap:\s*anywhere/);
 });
 
 test('app attempts direct data-json loading outside file protocol and warns in file mode', () => {

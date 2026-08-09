@@ -1,161 +1,87 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kalpi — сравнение политических позиций</title>
+  <title>Kalpi — политический опросник</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="shell">
-      <p class="eyebrow">Kalpi · экспериментальный прототип</p>
-      <h1>Какая партия ближе к вашим позициям?</h1>
-      <p class="lede">Ответьте на конкретные вопросы. Неизвестная позиция партии не считается нейтральной: она уменьшает покрытие данных и приближает итоговый рейтинг к 50%.</p>
+    <div class="shell header-layout">
+      <div>
+        <p class="eyebrow" data-i18n="prototype"></p>
+        <h1 data-i18n="headline"></h1>
+        <p class="lede" data-i18n="lede"></p>
+      </div>
+      <div class="locale-switcher" role="group" data-i18n-aria-label="languageLabel">
+        <button id="locale-en" data-locale="en" type="button" aria-pressed="false">EN</button>
+        <button id="locale-ru" data-locale="ru" type="button" aria-pressed="true">RU</button>
+        <button id="locale-he" data-locale="he" type="button" aria-pressed="false">HE</button>
+      </div>
     </div>
   </header>
 
   <main class="shell">
-    <section id="developer-warnings" class="warning-panel hidden" aria-live="polite"></section>
-    <section id="data-source-status" class="data-source-status" aria-live="polite"></section>
-
-    <section id="data-quality" class="panel quality-panel">
+    <section id="questionnaire" class="panel questionnaire-panel">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Качество данных</p>
-          <h2>Насколько заполнена база партий</h2>
-          <p class="hint">Здесь считается именно доказательная база: известные позиции, confidence, происхождение evidence и покрытие пяти осей. <code>insufficient_data</code> не считается нейтральной позицией.</p>
-        </div>
-      </div>
-      <div id="quality-summary" class="quality-metrics"></div>
-      <div id="quality-comparison"></div>
-
-      <div class="quality-columns">
-        <div>
-          <h3>Покрытие по партиям</h3>
-          <div id="quality-parties" class="table-scroll"></div>
-        </div>
-        <div>
-          <h3>Надёжность пяти осей</h3>
-          <div id="quality-axes" class="table-scroll"></div>
-        </div>
-      </div>
-
-      <details class="quality-details" open>
-        <summary>Какие вопросы заполнены хуже всего</summary>
-        <div id="quality-questions" class="table-scroll"></div>
-      </details>
-
-      <details class="quality-details">
-        <summary>Heatmap: партия × вопрос</summary>
-        <p class="hint">Каждая клетка — одна позиция партии. Нажмите на клетку, чтобы увидеть статус, confidence и источники.</p>
-        <div id="quality-heatmap" class="table-scroll heatmap-scroll"></div>
-        <div id="quality-cell-detail" class="quality-cell-detail hint">Выберите клетку heatmap.</div>
-      </details>
-
-      <div class="quality-columns">
-        <details class="quality-details">
-          <summary>Provenance и типы источников</summary>
-          <div id="quality-provenance"></div>
-        </details>
-        <details class="quality-details">
-          <summary>Оставшиеся пробелы</summary>
-          <div id="quality-gaps"></div>
-        </details>
-      </div>
-    </section>
-
-    <section id="questionnaire" class="panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Опрос</p>
-          <h2>Политические вопросы</h2>
+          <p class="eyebrow" data-i18n="questionnaireEyebrow"></p>
+          <h2 data-i18n="questionnaireTitle"></h2>
         </div>
         <div id="progress" class="progress-text">0 / 0</div>
       </div>
       <div class="progress-track" aria-hidden="true"><div id="progress-bar"></div></div>
-      <p class="hint">«Нейтрально / не уверен» — это содержательный ответ 0. «Пропустить» полностью исключает вопрос из расчёта.</p>
+      <p class="hint" data-i18n="answerHint"></p>
       <div id="questions-container"></div>
       <div class="actions sticky-actions">
-        <button id="calculate-results" class="primary" type="button">Показать результат</button>
-        <button id="reset-answers" class="secondary" type="button">Сбросить ответы</button>
+        <button id="calculate-results" class="primary" type="button" data-i18n="calculate"></button>
+        <button id="reset-answers" class="secondary" type="button" data-i18n="reset"></button>
       </div>
     </section>
 
-    <section id="results" class="panel hidden" aria-live="polite">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Результат</p>
-          <h2 id="recommendation-title">Рекомендация</h2>
-        </div>
-      </div>
+    <section id="results" class="panel hidden" aria-live="polite" tabindex="-1">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="resultEyebrow"></p><h2 id="recommendation-title" data-i18n="recommendation"></h2></div></div>
       <div id="recommendation-card"></div>
       <div class="two-column results-grid">
-        <div>
-          <h3>Рейтинг партий</h3>
-          <div id="ranking"></div>
-        </div>
-        <div>
-          <h3>Почему эта партия</h3>
-          <div id="explanation"></div>
-        </div>
+        <div><h3 data-i18n="ranking"></h3><div id="ranking"></div></div>
+        <div><h3 data-i18n="whyThisParty"></h3><div id="explanation"></div></div>
       </div>
       <div class="axis-section">
         <div class="section-heading compact-heading">
-          <div><h3>Многомерная карта</h3><p class="hint">Выберите любые две из пяти осей. Партии без достаточных данных по одной из выбранных осей не помещаются искусственно в центр.</p></div>
-          <div class="axis-selectors">
-            <label>X <select id="map-x-axis"></select></label>
-            <label>Y <select id="map-y-axis"></select></label>
-          </div>
+          <div><h3 data-i18n="mapTitle"></h3><p class="hint" data-i18n="mapHint"></p></div>
+          <div class="axis-selectors"><label>X <select id="map-x-axis"></select></label><label>Y <select id="map-y-axis"></select></label></div>
         </div>
-        <div class="map-wrap"><canvas id="party-map" width="900" height="600" aria-label="Карта расположения партий и пользователя"></canvas></div>
+        <div class="map-wrap"><canvas id="party-map" width="900" height="600"></canvas></div>
         <p id="map-omitted" class="hint"></p>
-        <h3>Профиль по пяти осям</h3>
-        <div id="axis-profile" class="table-scroll"></div>
+        <h3 data-i18n="axisProfile"></h3><div id="axis-profile" class="table-scroll"></div>
       </div>
     </section>
 
     <section id="data-inspection" class="panel hidden">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Прозрачность</p>
-          <h2>Ответы и данные партий</h2>
-        </div>
-        <button id="toggle-inspection" class="secondary" type="button">Показать данные</button>
-      </div>
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="transparencyEyebrow"></p><h2 data-i18n="inspectionTitle"></h2></div><button id="toggle-inspection" class="secondary" type="button"></button></div>
       <div id="inspection-content" class="hidden"></div>
     </section>
 
-    <section id="data-update" class="panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Данные</p>
-          <h2>Дополнение после deep research</h2>
-        </div>
-      </div>
-      <p>Источником истины являются файлы в <code>data/*.json</code>. Интерфейс и расчёт не содержат вручную заданных координат партий.</p>
-      <div id="data-update-controls" class="data-controls">
-        <label class="file-picker">Выберите либо только <code>positions.json</code> + <code>sources.json</code>, либо все пять файлов <code>axes.json</code>, <code>parties.json</code>, <code>questions.json</code>, <code>positions.json</code>, <code>sources.json</code>
-          <input id="data-files" type="file" accept=".json,application/json" multiple>
-        </label>
-        <div class="actions">
-          <button id="apply-data" class="primary" type="button">Применить выбранные JSON</button>
-          <button id="restore-data" class="secondary" type="button">Вернуть встроенные данные</button>
-          <button id="export-data" class="secondary" type="button">Экспорт активных данных</button>
-        </div>
-        <p id="data-update-status" class="hint" aria-live="polite"></p>
-      </div>
+    <section id="data-quality" class="panel quality-panel hidden">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="qualityEyebrow"></p><h2 data-i18n="qualityTitle"></h2><p class="hint" data-i18n="qualityHint"></p></div></div>
+      <div id="quality-summary" class="quality-metrics"></div><div id="quality-comparison"></div>
+      <div class="quality-columns"><div><h3 data-i18n="partyCoverage"></h3><div id="quality-parties" class="table-scroll"></div></div><div><h3 data-i18n="axisReliability"></h3><div id="quality-axes" class="table-scroll"></div></div></div>
+      <details class="quality-details" open><summary data-i18n="weakQuestions"></summary><div id="quality-questions" class="table-scroll"></div></details>
+      <details class="quality-details"><summary data-i18n="heatmapTitle"></summary><p class="hint" data-i18n="heatmapHint"></p><div id="quality-heatmap" class="table-scroll heatmap-scroll"></div><div id="quality-cell-detail" class="quality-cell-detail hint"></div></details>
+      <div class="quality-columns"><details class="quality-details"><summary data-i18n="provenance"></summary><div id="quality-provenance"></div></details><details class="quality-details"><summary data-i18n="gaps"></summary><div id="quality-gaps"></div></details></div>
     </section>
-  </main>
 
-  <footer class="site-footer shell">
-    <p>Это исследовательский инструмент, а не прогноз поведения партии после выборов. Проверяйте evidence и даты источников.</p>
-  </footer>
+    <section id="developer-warnings" class="warning-panel hidden" aria-live="polite"></section>
+    <section id="data-source-status" class="data-source-status hidden" aria-live="polite"></section>
+  </main>
+  <footer class="site-footer shell"><p data-i18n="footer"></p></footer>
 
   <script src="core.js"></script>
   <script src="data/default-data.js"></script>
   <script src="data/baseline-data.js"></script>
   <script src="data-loader.js"></script>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -2,87 +2,123 @@
   {
     "id": "likud",
     "name_ru": "Ликуд",
+    "name_en": "Likud",
     "name_he": "הליכוד",
-    "leader": "Биньямин Нетаньяху",
+    "leader_ru": "Биньямин Нетаньяху",
+    "leader_en": "Benjamin Netanyahu",
+    "leader_he": "בנימין נתניהו",
     "active": true
   },
   {
     "id": "beyahad",
     "name_ru": "Беяхад",
+    "name_en": "Beyahad",
     "name_he": "ביחד",
-    "leader": "Нафтали Беннет / Яир Лапид",
+    "leader_ru": "Нафтали Беннет / Яир Лапид",
+    "leader_en": "Naftali Bennett / Yair Lapid",
+    "leader_he": "נפתלי בנט / יאיר לפיד",
     "active": true,
     "notes_ru": "Технический объединённый список; позиции компонентов не автоматически считаются позицией списка."
   },
   {
     "id": "shas",
     "name_ru": "ШАС",
+    "name_en": "Shas",
     "name_he": "ש״ס",
-    "leader": "Арье Дери",
+    "leader_ru": "Арье Дери",
+    "leader_en": "Aryeh Deri",
+    "leader_he": "אריה דרעי",
     "active": true
   },
   {
     "id": "utj",
     "name_ru": "Яхадут ха-Тора",
+    "name_en": "United Torah Judaism",
     "name_he": "יהדות התורה",
-    "leader": "Ицхак Гольдкнопф",
+    "leader_ru": "Ицхак Гольдкнопф",
+    "leader_en": "Yitzhak Goldknopf",
+    "leader_he": "יצחק גולדקנופף",
     "active": true
   },
   {
     "id": "raam",
     "name_ru": "РААМ",
+    "name_en": "Ra'am",
     "name_he": "רע״ם",
-    "leader": "Мансур Аббас",
+    "leader_ru": "Мансур Аббас",
+    "leader_en": "Mansour Abbas",
+    "leader_he": "מנסור עבאס",
     "active": true
   },
   {
     "id": "otzma",
     "name_ru": "Еврейская мощь (Оцма Йехудит)",
+    "name_en": "Jewish Power (Otzma Yehudit)",
     "name_he": "עוצמה יהודית",
-    "leader": "Итамар Бен-Гвир",
+    "leader_ru": "Итамар Бен-Гвир",
+    "leader_en": "Itamar Ben-Gvir",
+    "leader_he": "איתמר בן גביר",
     "active": true
   },
   {
     "id": "yisrael_beytenu",
     "name_ru": "Наш дом Израиль (НДИ)",
+    "name_en": "Yisrael Beytenu",
     "name_he": "ישראל ביתנו",
-    "leader": "Авигдор Либерман",
+    "leader_ru": "Авигдор Либерман",
+    "leader_en": "Avigdor Liberman",
+    "leader_he": "אביגדור ליברמן",
     "active": true
   },
   {
     "id": "democrats",
     "name_ru": "Демократы",
+    "name_en": "The Democrats",
     "name_he": "הדמוקרטים",
-    "leader": "Яир Голан",
+    "leader_ru": "Яир Голан",
+    "leader_en": "Yair Golan",
+    "leader_he": "יאיר גולן",
     "active": true
   },
   {
     "id": "yashar",
     "name_ru": "Яшар!",
+    "name_en": "Yashar!",
     "name_he": "ישר!",
-    "leader": "Гади Айзенкот",
+    "leader_ru": "Гади Айзенкот",
+    "leader_en": "Gadi Eisenkot",
+    "leader_he": "גדי איזנקוט",
     "active": true
   },
   {
     "id": "religious_zionism",
     "name_ru": "Религиозный сионизм",
+    "name_en": "Religious Zionism",
     "name_he": "הציונות הדתית",
-    "leader": "Бецалель Смотрич",
+    "leader_ru": "Бецалель Смотрич",
+    "leader_en": "Bezalel Smotrich",
+    "leader_he": "בצלאל סמוטריץ׳",
     "active": true
   },
   {
     "id": "bait_zioni",
     "name_ru": "Байт Циони / Милуимники",
+    "name_en": "Zionist Home / Reservists",
     "name_he": "בית ציוני / המילואימניקים",
-    "leader": "Хили Тропер / Йоаз Гендель",
+    "leader_ru": "Хили Тропер / Йоаз Гендель",
+    "leader_en": "Hili Tropper / Yoaz Hendel",
+    "leader_he": "חילי טרופר / יועז הנדל",
     "active": true,
     "notes_ru": "Новый объединённый список; часть evidence относится к партии-компоненту или лидеру."
   },
   {
     "id": "hadash_taal",
     "name_ru": "ХАДАШ–ТААЛ",
+    "name_en": "Hadash–Ta'al",
     "name_he": "חד״ש–תע״ל",
-    "leader": "Йосеф Джабарин / Ахмад Тиби",
+    "leader_ru": "Йосеф Джабарин / Ахмад Тиби",
+    "leader_en": "Yousef Jabareen / Ahmad Tibi",
+    "leader_he": "יוסף ג׳בארין / אחמד טיבי",
     "active": true
   }
 ]

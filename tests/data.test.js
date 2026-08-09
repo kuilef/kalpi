@@ -3,6 +3,15 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const Core = require('../core.js');
+const LOCALES = ['en', 'ru', 'he'];
+
+function assertLocalized(record, fields, kind) {
+  for (const field of fields) for (const locale of LOCALES) {
+    const value = record[`${field}_${locale}`];
+    assert.equal(typeof value, 'string', `${kind} ${record.id}: missing ${field}_${locale}`);
+    assert.ok(value.trim(), `${kind} ${record.id}: blank ${field}_${locale}`);
+  }
+}
 
 function load(name) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
@@ -15,6 +24,12 @@ test('canonical dataset has 12 parties, five axes and at least 25 questions', ()
   assert.equal(parties.filter((p) => p.active).length, 12);
   assert.equal(axes.length, 5);
   assert.ok(questions.filter((q) => q.enabled).length >= 25);
+});
+
+test('canonical user-facing data is complete in English, Russian and Hebrew', () => {
+  for (const axis of load('axes.json')) assertLocalized(axis, ['name', 'negative', 'positive'], 'axis');
+  for (const party of load('parties.json')) assertLocalized(party, ['name', 'leader'], 'party');
+  for (const question of load('questions.json')) assertLocalized(question, ['text', 'group'], 'question');
 });
 
 test('every active party has an explicit position record for every enabled question', () => {

@@ -324,6 +324,22 @@
     const questionIds = duplicateErrors(questions, 'questions');
     const sourceIds = duplicateErrors(sources, 'sources');
 
+    const requireLocalized = (records, label, fields) => {
+      for (const record of records) {
+        for (const field of fields) {
+          for (const locale of ['en', 'ru', 'he']) {
+            const key = `${field}_${locale}`;
+            if (typeof record?.[key] !== 'string' || !record[key].trim()) {
+              errors.push(`${label} ${record?.id || '(missing id)'}: missing ${key}`);
+            }
+          }
+        }
+      }
+    };
+    requireLocalized(axes, 'axis', ['name', 'negative', 'positive']);
+    requireLocalized(parties, 'party', ['name', 'leader']);
+    requireLocalized(questions, 'question', ['text', 'group']);
+
     for (const question of questions) {
       for (const axisId of Object.keys(question.axis_weights || {})) {
         if (!axisIds.has(axisId)) errors.push(`question ${question.id}: unknown axis ${axisId}`);

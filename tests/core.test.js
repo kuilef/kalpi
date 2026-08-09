@@ -2,6 +2,22 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Core = require('../core.js');
 
+function validDatasetFixture() {
+  return {
+    axes: [{ id: 'a', name_ru: 'Ось', name_en: 'Axis', name_he: 'ציר', negative_ru: 'минус', negative_en: 'negative', negative_he: 'שלילי', positive_ru: 'плюс', positive_en: 'positive', positive_he: 'חיובי' }],
+    parties: [{ id: 'p', name_ru: 'Партия', name_en: 'Party', name_he: 'מפלגה', leader_ru: 'Лидер', leader_en: 'Leader', leader_he: 'מנהיג' }],
+    questions: [{ id: 'q', text_ru: 'Вопрос', text_en: 'Question', text_he: 'שאלה', group_ru: 'Группа', group_en: 'Group', group_he: 'קבוצה', axis_weights: { a: 1 } }],
+    positions: [{ party: 'p', question: 'q', value: 1, status: 'known', confidence: 1, entity_scope: 'PARTY', evidence: ['s'] }],
+    sources: [{ id: 's', notes_ru: 'Заметка', notes_en: 'Note', notes_he: 'הערה' }],
+  };
+}
+
+test('validation reports a missing Hebrew question field', () => {
+  const data = validDatasetFixture();
+  delete data.questions[0].text_he;
+  assert.ok(Core.validateDataset(data).includes('question q: missing text_he'));
+});
+
 const questions = [
   { id: 'q1', importance_default: 1, axis_weights: { a: 1 }, enabled: true },
   { id: 'q2', importance_default: 1, axis_weights: { a: 1 }, enabled: true },
@@ -131,15 +147,7 @@ test('dataset validation reports invalid references and ranges', () => {
 });
 
 test('valid dataset has no validation errors', () => {
-  const errors = Core.validateDataset({
-    axes: [{ id: 'a' }],
-    parties: [{ id: 'p1' }],
-    questions: [{ id: 'q1', enabled: true, importance_default: 1, axis_weights: { a: 1 } }],
-    sources: [{ id: 's1' }],
-    positions: [
-      { party: 'p1', question: 'q1', value: 2, status: 'known', confidence: 1, entity_scope: 'PARTY', evidence: ['s1'] },
-    ],
-  });
+  const errors = Core.validateDataset(validDatasetFixture());
   assert.deepEqual(errors, []);
 });
 
