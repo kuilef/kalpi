@@ -45,6 +45,14 @@ test('app persists selected priorities and passes them to ranking only', () => {
   assert.doesNotMatch(app, /computeUserAxes\(\{[^}]*priorityQuestionIds/s);
 });
 
+test('evidence detail renders a position conclusion and source cards', () => {
+  const app = read('app.js');
+  assert.match(app, /function renderEvidenceCards\s*\(/);
+  assert.match(app, /evidence-conclusion/);
+  assert.match(app, /evidence-source-card/);
+  assert.match(app, /notes_ru/);
+});
+
 test('Russian question explanations are rendered before answer controls without hover-only UI', () => {
   const app = read('app.js');
   const questionText = app.indexOf('class="question-text"');

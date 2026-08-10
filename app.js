@@ -529,20 +529,32 @@
     $('quality-heatmap').querySelectorAll('.heat-cell').forEach((button) => button.addEventListener('click', () => renderQualityCellDetail(button.dataset.party, button.dataset.question)));
   }
 
+  function renderEvidenceCards(position) {
+    const sources = (position?.evidence || []).map((id) => sourceById(id)).filter(Boolean);
+    if (!sources.length) return `<p class="hint">${localizedLabel('Нет привязанного источника.', 'No linked source.', 'אין מקור מקושר.')}</p>`;
+    return sources.map((source) => {
+      const context = locale === 'ru' ? source.notes_ru : source.notes_en || source.notes_ru || '';
+      return `<article class="evidence-source-card">
+        <a href="${esc(source.url)}" target="_blank" rel="noopener"><strong>${esc(source.title || source.id)}</strong></a>
+        <p class="evidence-source-meta">${esc(source.source_type || '')}${source.date ? ` · ${esc(source.date)}` : ''}</p>
+        ${context ? `<p><span class="evidence-context-label">${localizedLabel('Контекст источника', 'Source context', 'הקשר המקור')}</span> ${esc(context)}</p>` : ''}
+      </article>`;
+    }).join('');
+  }
+
   function renderQualityCellDetail(partyId, questionId) {
     const party = partyById(partyId);
     const question = questionById(questionId);
     const position = data.positions.find((p) => p.party === partyId && p.question === questionId) || null;
     const baselinePosition = BASELINE_DATA?.positions?.find((p) => p.party === partyId && p.question === questionId) || null;
     const effective = Core.effectivePositionConfidence(position);
-    const evidence = (position?.evidence || []).map((id) => sourceById(id)).filter(Boolean);
-    const evidenceHtml = evidence.length ? `<ul>${evidence.map((src) => `<li><a href="${esc(src.url)}" target="_blank" rel="noopener"><strong>${esc(src.title || src.id)}</strong></a>${src.date ? ` · ${esc(src.date)}` : ''}<br><span class="hint">${esc(src.source_type || '')}${locale === 'ru' && src.notes_ru ? ` — ${esc(src.notes_ru)}` : ''}</span></li>`).join('')}</ul>` : `<p class="hint">${locale === 'he' ? 'אין ראיות.' : locale === 'en' ? 'No evidence.' : 'Нет evidence.'}</p>`;
     const baselineText = !baselinePosition || baselinePosition.status === 'insufficient_data'
       ? 'insufficient_data'
       : `${answerLabel(baselinePosition.value)}; conf ${Math.round((baselinePosition.confidence || 0) * 100)}%; ${baselinePosition.entity_scope}`;
     $('quality-cell-detail').innerHTML = `<h4>${esc(party ? text(party, 'name') : partyId)} · ${esc(question ? text(question, 'text') : questionId)}</h4>
       <div class="quality-detail-grid"><div><span class="hint">Сейчас</span><br>${positionDisplay(position)}${effective > 0 ? `<br><span class="hint">effective confidence: ${pct(effective)}</span>` : ''}</div><div><span class="hint">Baseline</span><br>${esc(baselineText)}</div></div>
-      <h4>Источники</h4>${evidenceHtml}`;
+      <div class="evidence-conclusion"><strong>${localizedLabel('Проверяемое утверждение для этой оценки', 'Verifiable statement for this score', 'טענה ניתנת לבדיקה לציון זה')}</strong><p>${position?.status === 'insufficient_data' ? localizedLabel('Для этой пары «партия × вопрос» недостаточно данных; значение не подставляется.', 'There is insufficient data for this party-question pair; no value is substituted.', 'אין מספיק נתונים לזוג מפלגה-שאלה זה; לא מוחלף ערך.') : `${esc(party ? text(party, 'name') : partyId)} — ${esc(answerLabel(position.value))}; ${esc(statusLabel(position.status))} · ${esc(scopeLabel(position.entity_scope))}.`}</p></div>
+      <h4>${localizedLabel('Источники', 'Sources', 'מקורות')}</h4>${renderEvidenceCards(position)}`;
   }
 
   function renderInspection() {
