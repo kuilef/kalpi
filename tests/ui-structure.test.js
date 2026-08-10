@@ -40,6 +40,13 @@ test('question cards include direct important-question controls without a priori
   assert.match(app, /aria-pressed/);
 });
 
+test('changing an important-question star refreshes results without moving focus to them', () => {
+  const app = read('app.js');
+  assert.match(app, /if \(latestResults\) renderResults\(true, false\);/);
+  assert.match(app, /function renderResults\(recalculate = true, focusResults = true\)/);
+  assert.match(app, /if \(focusResults\) \{\s*\$\('results'\)\.focus\(\{ preventScroll: true \}\);\s*window\.scrollTo/s);
+});
+
 test('app persists selected priorities and passes them to ranking only', () => {
   const app = read('app.js');
   assert.match(app, /priorityQuestionIds/);

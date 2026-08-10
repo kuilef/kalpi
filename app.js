@@ -185,7 +185,7 @@
         : [...priorityQuestionIds, questionId];
       saveAnswers();
       renderQuestions();
-      if (latestResults) renderResults();
+      if (latestResults) renderResults(true, false);
     }));
     updateProgress();
   }
@@ -209,7 +209,7 @@
     })).sort((a, b) => b.finalScore - a.finalScore || b.coverage - a.coverage || b.agreement - a.agreement);
   }
 
-  function renderResults(recalculate = true) {
+  function renderResults(recalculate = true, focusResults = true) {
     const substantiveCount = Object.values(answers).filter((v) => v !== 'skip').length;
     if (recalculate && !substantiveCount) {
       alert(locale === 'he' ? 'יש לענות לפחות על שאלה אחת או לבחור תשובה מהותית במקום דילוג.' : locale === 'en' ? 'Answer at least one question or choose a substantive response instead of skipping.' : 'Ответьте хотя бы на один вопрос или выберите содержательный вариант вместо «Пропустить».');
@@ -240,8 +240,10 @@
     renderInspection();
     renderDataQuality();
     renderDataSourceStatus();
-    $('results').focus({ preventScroll: true });
-    window.scrollTo({ top: $('results').offsetTop - 12, behavior: 'smooth' });
+    if (focusResults) {
+      $('results').focus({ preventScroll: true });
+      window.scrollTo({ top: $('results').offsetTop - 12, behavior: 'smooth' });
+    }
   }
 
   function renderExplanation(result) {
