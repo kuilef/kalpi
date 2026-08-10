@@ -31,11 +31,13 @@ test('questionnaire markup includes progress, question host and result action', 
   assert.match(html, /id=["']calculate-results["']/);
 });
 
-test('questionnaire includes a priority review before results', () => {
+test('question cards include direct important-question controls without a priority review', () => {
   const html = read('index.html');
-  assert.match(html, /id=["']priority-review["']/);
-  assert.match(html, /id=["']confirm-priorities["']/);
-  assert.ok(html.indexOf('id="priority-review"') < html.indexOf('id="results"'));
+  const app = read('app.js');
+  assert.doesNotMatch(html, /id=["']priority-review["']/);
+  assert.match(app, /class="priority-toggle/);
+  assert.match(app, /data-priority-id/);
+  assert.match(app, /aria-pressed/);
 });
 
 test('app persists selected priorities and passes them to ranking only', () => {

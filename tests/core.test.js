@@ -96,13 +96,12 @@ test('priority scoring counts a selected answered question twice', () => {
   assert.equal(result.agreement, 1 / 3);
 });
 
-test('priority normalization ignores skipped, unknown, duplicate and excess IDs', () => {
+test('priority normalization retains every answered unique priority without a cap', () => {
   assert.deepEqual(Core.normalizePriorityQuestionIds({
-    priorityQuestionIds: ['q1', 'q1', 'q2', 'missing', 'q3'],
-    answers: { q1: 1, q2: 'skip', q3: -1 },
-    questions: [...questions, { id: 'q3', enabled: true }],
-    maxPriorities: 1,
-  }), ['q1']);
+    priorityQuestionIds: ['q1', 'q1', 'q2', 'missing', 'q3', 'q4', 'q5'],
+    answers: { q1: 1, q2: 'skip', q3: -1, q4: 0, q5: 2 },
+    questions: [...questions, { id: 'q3', enabled: true }, { id: 'q4', enabled: true }, { id: 'q5', enabled: true }],
+  }), ['q1', 'q3', 'q4', 'q5']);
 });
 
 test('party axis is insufficient when effective coverage is below threshold', () => {

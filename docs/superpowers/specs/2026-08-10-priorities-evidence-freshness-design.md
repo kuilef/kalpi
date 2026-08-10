@@ -2,15 +2,15 @@
 
 ## Goal
 
-Make the party ranking reflect up to three explicitly chosen voter priorities, and make every displayed party position explainable without changing the five political axes or introducing adaptive questioning.
+Make the party ranking reflect any explicitly chosen voter priorities, and make every displayed party position explainable without changing the five political axes or introducing adaptive questioning.
 
 ## 1. Personal priorities
 
 - All enabled questions receive the same base scoring weight: `1`.
-- After the respondent answers the questionnaire, before results are calculated, show a compact review step: “Choose up to three questions that matter most to you.” It lists answered substantive questions only.
+- Each question card has its own compact star control, so the respondent can mark a question as important while answering it. There is no final review step and no limit on marked questions.
 - Each selected question receives a voter-priority multiplier of `2`; unselected questions remain `1`.
 - This multiplier affects party agreement and data coverage, so absent evidence on a chosen priority is visibly more consequential. It does **not** affect the five-axis user or party coordinates.
-- The selection is persisted with answers, is editable before calculating, and is stated in the result (“Your priorities: N”). Skipped questions cannot be selected.
+- The selection is persisted with answers and is stated in the result as a count (“Your priorities: N”), without a separate list. Marked skipped or unanswered questions remain editable but do not receive priority weight.
 
 ## 2. Evidence claims
 
@@ -27,6 +27,6 @@ The evidence detail card shows, for every claim: assertion, date, source type, a
 
 ## Verification
 
-- Tests cover priority cap, persistence, `×2` effect, skipped-question exclusion and unchanged axes.
+- Tests cover uncapped priority selection, persistence, `×2` effect, skipped-question exclusion and unchanged axes.
 - Dataset validation checks uniform base weights, claim/source references and required assertions.
-- UI tests cover the review step and complete evidence card; run the Node suite, bundle test, bundle-currentness check and `git diff --check`.
+- UI tests cover the in-question priority control and complete evidence card; run the Node suite, bundle test, bundle-currentness check and `git diff --check`.

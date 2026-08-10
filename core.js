@@ -18,13 +18,13 @@
     return value !== undefined && value !== null && value !== 'skip';
   }
 
-  function normalizePriorityQuestionIds({ priorityQuestionIds = [], answers, questions, maxPriorities = 3 }) {
+  function normalizePriorityQuestionIds({ priorityQuestionIds = [], answers, questions }) {
     const eligibleIds = new Set(
       (questions || [])
         .filter((question) => question.enabled !== false && isAnswered(answers?.[question.id]))
         .map((question) => question.id)
     );
-    return [...new Set(priorityQuestionIds)].filter((id) => eligibleIds.has(id)).slice(0, maxPriorities);
+    return [...new Set(priorityQuestionIds)].filter((id) => eligibleIds.has(id));
   }
 
   function effectivePositionConfidence(position) {

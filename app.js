@@ -40,19 +40,13 @@
     userNotShown: 'המיקום שלך לא מוצג: אין מספיק תשובות בציר הזה.',
   });
   Object.assign(COPY.en, {
-    priorityEyebrow: 'Your priorities', priorityTitle: 'Which questions matter most to you?',
-    priorityHint: 'Choose up to three answered questions. Each counts twice in the party ranking and data coverage, but does not change the five-axis map.',
-    confirmPriorities: 'Show result', editAnswers: 'Edit answers', priorityCount: 'selected', priorityResult: 'personal priorities applied',
+    markImportant: 'Important to me', unmarkImportant: 'Important', priorityResult: 'Important questions',
   });
   Object.assign(COPY.ru, {
-    priorityEyebrow: 'Ваши приоритеты', priorityTitle: 'Какие вопросы для вас особенно важны?',
-    priorityHint: 'Выберите до трёх вопросов, на которые вы уже дали содержательный ответ. Каждый будет иметь двойной вес в рейтинге партий и покрытии данных, но не изменит карту пяти осей.',
-    confirmPriorities: 'Показать результат', editAnswers: 'Вернуться к ответам', priorityCount: 'выбрано', priorityResult: 'учтены личные приоритеты',
+    markImportant: 'Важно для меня', unmarkImportant: 'Важно', priorityResult: 'Важные для вас вопросы',
   });
   Object.assign(COPY.he, {
-    priorityEyebrow: 'העדיפויות שלך', priorityTitle: 'אילו שאלות חשובות לך במיוחד?',
-    priorityHint: 'בחרו עד שלוש שאלות שכבר עניתם עליהן תשובה מהותית. כל שאלה תיספר פעמיים בדירוג המפלגות ובכיסוי הנתונים, אך לא תשנה את מפת חמשת הצירים.',
-    confirmPriorities: 'הצג תוצאה', editAnswers: 'חזרה לתשובות', priorityCount: 'נבחרו', priorityResult: 'עדיפויות אישיות הוחלו',
+    markImportant: 'חשוב לי', unmarkImportant: 'חשוב', priorityResult: 'שאלות חשובות לך',
   });
 
   let data = DEFAULT_DATA;
@@ -163,8 +157,13 @@
             const checked = String(current) === String(value) ? 'checked' : '';
             return `<span class="answer-option"><input type="radio" name="${esc(q.id)}" id="${id}" value="${value}" ${checked}><label for="${id}">${esc(answerLabel(value))}</label></span>`;
           }).join('');
+          const important = priorityQuestionIds.includes(q.id);
+          const priorityLabel = important ? t('unmarkImportant') : t('markImportant');
           return `<article class="question-card ${current !== undefined ? 'answered' : ''}" data-question="${esc(q.id)}">
-            <div class="question-number">${locale === 'he' ? 'שאלה' : locale === 'en' ? 'Question' : 'Вопрос'} ${index}</div>
+            <div class="question-meta">
+              <div class="question-number">${locale === 'he' ? 'שאלה' : locale === 'en' ? 'Question' : 'Вопрос'} ${index}</div>
+              <button class="priority-toggle ${important ? 'selected' : ''}" type="button" data-priority-id="${esc(q.id)}" aria-pressed="${important}" aria-label="${esc(priorityLabel)}"><span aria-hidden="true">${important ? '★' : '☆'}</span>${esc(priorityLabel)}</button>
+            </div>
             <div class="question-text">${esc(text(q, 'text'))}</div>
             ${locale === 'ru' ? `<p class="question-explanation">${esc(q.explanation_ru)}</p>` : ''}
             <div class="answer-options">${options}</div>
@@ -179,6 +178,15 @@
       ev.target.closest('.question-card').classList.add('answered');
       updateProgress();
     }));
+    host.querySelectorAll('[data-priority-id]').forEach((button) => button.addEventListener('click', () => {
+      const questionId = button.dataset.priorityId;
+      priorityQuestionIds = priorityQuestionIds.includes(questionId)
+        ? priorityQuestionIds.filter((id) => id !== questionId)
+        : [...priorityQuestionIds, questionId];
+      saveAnswers();
+      renderQuestions();
+      if (latestResults) renderResults();
+    }));
     updateProgress();
   }
 
@@ -189,38 +197,8 @@
     $('progress-bar').style.width = qs.length ? `${answered / qs.length * 100}%` : '0%';
   }
 
-  function normalizedPriorityQuestionIds() {
-    priorityQuestionIds = Core.normalizePriorityQuestionIds({ priorityQuestionIds, answers, questions: enabledQuestions() });
-    return priorityQuestionIds;
-  }
-
-  function renderPriorityReview() {
-    const questions = enabledQuestions().filter((question) => Core.isAnswered(answers[question.id]));
-    const selected = new Set(normalizedPriorityQuestionIds());
-    $('priority-list').innerHTML = questions.map((question) => {
-      const checked = selected.has(question.id);
-      const disabled = !checked && selected.size >= 3;
-      return `<label class="priority-option"><input type="checkbox" value="${esc(question.id)}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${esc(text(question, 'text'))}</span></label>`;
-    }).join('') || `<p class="hint">${localizedLabel('Нет содержательных ответов для выбора.', 'There are no substantive answers to select.', 'אין תשובות מהותיות לבחירה.')}</p>`;
-    $('priority-count').textContent = `${t('priorityCount')}: ${selected.size} / 3`;
-    $('priority-list').querySelectorAll('input[type=checkbox]').forEach((input) => input.addEventListener('change', () => {
-      priorityQuestionIds = [...$('priority-list').querySelectorAll('input[type=checkbox]:checked')].map((box) => box.value);
-      normalizedPriorityQuestionIds();
-      saveAnswers();
-      renderPriorityReview();
-    }));
-  }
-
-  function openPriorityReview() {
-    const substantiveCount = Object.values(answers).filter((value) => value !== 'skip').length;
-    if (!substantiveCount) {
-      alert(locale === 'he' ? 'יש לענות לפחות על שאלה אחת או לבחור תשובה מהותית במקום דילוג.' : locale === 'en' ? 'Answer at least one question or choose a substantive response instead of skipping.' : 'Ответьте хотя бы на один вопрос или выберите содержательный вариант вместо «Пропустить».');
-      return;
-    }
-    renderPriorityReview();
-    $('priority-review').classList.remove('hidden');
-    $('priority-review').focus({ preventScroll: true });
-    window.scrollTo({ top: $('priority-review').offsetTop - 12, behavior: 'smooth' });
+  function activePriorityQuestionIds() {
+    return Core.normalizePriorityQuestionIds({ priorityQuestionIds, answers, questions: enabledQuestions() });
   }
 
   function computeResults() {
@@ -252,7 +230,7 @@
         <div class="metric-card"><span class="value">${pct(top.coverage)}</span><span class="label">${locale === 'he' ? 'כיסוי נתונים' : locale === 'en' ? 'data coverage' : 'покрытие данных'}</span></div>
       </div>
       <p class="hint">${locale === 'he' ? `אין נתונים לגבי ${top.unknownCount} מהשאלות שעליהן ענית. כיסוי נמוך מקרב אוטומטית את הציון ל־50%.` : locale === 'en' ? `There is no data for ${top.unknownCount} of your answered questions. Low coverage automatically pulls the score toward 50%.` : `Неизвестно по ${top.unknownCount} из ваших отвеченных вопросов. При малом покрытии score автоматически сжимается к 50%.`}</p>
-      <p class="priority-result">${t('priorityResult')}: ${normalizedPriorityQuestionIds().length} / 3.</p>`;
+      <p class="priority-result">${t('priorityResult')}: ${activePriorityQuestionIds().length}.</p>`;
 
     $('ranking').innerHTML = latestResults.map((r, i) => `<div class="ranking-row">
       <span>${i + 1}</span><strong>${esc(text(r.party, 'name'))}</strong><span class="score">${pct(r.finalScore)}</span><span class="coverage-mini">${locale === 'he' ? 'נתונים' : locale === 'en' ? 'data' : 'данные'} ${pct(r.coverage)}</span>
@@ -568,24 +546,13 @@
     }).join('') || `<p class="hint">${locale === 'he' ? 'אין שאלות שנענו.' : locale === 'en' ? 'No answered questions.' : 'Нет отвеченных вопросов.'}</p>`;
   }
 
-  $('calculate-results').addEventListener('click', openPriorityReview);
-  $('confirm-priorities').addEventListener('click', () => {
-    normalizedPriorityQuestionIds();
-    saveAnswers();
-    $('priority-review').classList.add('hidden');
-    renderResults();
-  });
-  $('edit-answers').addEventListener('click', () => {
-    $('priority-review').classList.add('hidden');
-    $('questionnaire').focus({ preventScroll: true });
-    window.scrollTo({ top: $('questionnaire').offsetTop - 12, behavior: 'smooth' });
-  });
+  $('calculate-results').addEventListener('click', renderResults);
   $('reset-answers').addEventListener('click', () => {
     const confirmation = locale === 'he' ? 'לאפס את כל התשובות?' : locale === 'en' ? 'Reset all answers?' : 'Сбросить все ответы?';
     if (!confirm(confirmation)) return;
     answers = {}; priorityQuestionIds = []; saveAnswers(); renderQuestions();
     latestResults = null; latestAxisState = null;
-    $('priority-review').classList.add('hidden'); $('results').classList.add('hidden'); $('data-inspection').classList.add('hidden'); $('data-quality').classList.add('hidden'); $('data-source-status').classList.add('hidden');
+    $('results').classList.add('hidden'); $('data-inspection').classList.add('hidden'); $('data-quality').classList.add('hidden'); $('data-source-status').classList.add('hidden');
   });
   $('toggle-inspection').addEventListener('click', () => {
     const content = $('inspection-content');
@@ -609,7 +576,6 @@
     $('toggle-inspection').textContent = $('inspection-content').classList.contains('hidden') ? t('showData') : t('hideData');
     $('party-map').setAttribute('aria-label', locale === 'he' ? 'מפת מיקום המפלגות והמשתמש' : locale === 'en' ? 'Map of parties and the user' : 'Карта расположения партий и пользователя');
     renderQuestions();
-    if (!$('priority-review').classList.contains('hidden')) renderPriorityReview();
     if (latestResults) renderResults(false);
   }
 
