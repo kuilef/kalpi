@@ -1,8 +1,8 @@
-# Personal priorities, evidence claims, and evidence freshness
+# Personal priorities and evidence claims
 
 ## Goal
 
-Make the party ranking reflect up to three explicitly chosen voter priorities, and make every displayed party position explainable and time-bounded without changing the five political axes or introducing adaptive questioning.
+Make the party ranking reflect up to three explicitly chosen voter priorities, and make every displayed party position explainable without changing the five political axes or introducing adaptive questioning.
 
 ## 1. Personal priorities
 
@@ -18,28 +18,15 @@ Each usable `party × question` position receives one or more manually researche
 
 The evidence detail card shows, for every claim: assertion, date, source type, attribution scope, source title and link. `mixed` positions may show conflicting claims. Missing claims must remain visibly incomplete; no placeholder copy or inference is allowed.
 
-## 3. Historical confidence
-
-`confidence` continues to mean evidence quality and attribution only. Freshness is a separate deterministic multiplier based on `last_confirmed_at`, evaluated against an explicit dataset `as_of_date`, not the visitor’s device clock:
-
-| Age at `as_of_date` | Freshness multiplier |
-| --- | ---: |
-| up to 12 months | 1.0 |
-| 12–36 months | 0.8 |
-| 36–60 months | 0.6 |
-| over 60 months | 0.4 |
-
-For `historical`, effective freshness is capped at `0.6`. Thus effective confidence is `source confidence × scope multiplier × freshness multiplier`. A historical position without `last_confirmed_at` is not usable for ranking or axes. The UI displays the status, confirmation date and effective confidence.
-
-## 4. Boundaries and later work
+## 3. Boundaries and later work
 
 - Keep the existing 30-question, non-adaptive questionnaire and current axis thresholds.
+- Historical confidence and any time-decay calculation are explicitly out of scope. Existing `historical` positions retain their current status and confidence behaviour.
 - Do not add candidate political questions in this change. Any later addition must have distinct policy scope, direct current evidence across enough lists, explicit axis mapping, and no duplicate weighting of an existing question.
 - Release checklist: translate question explanations and all new priority/evidence copy into Hebrew and English; add Arabic; test RTL, long text and accessibility in all four locales.
 
 ## Verification
 
 - Tests cover priority cap, persistence, `×2` effect, skipped-question exclusion and unchanged axes.
-- Dataset validation checks uniform base weights, claim/source references, required assertions, dates and historical confirmation dates.
-- Core tests cover each freshness band, the historical cap and missing-date exclusion with an explicit `as_of_date`.
+- Dataset validation checks uniform base weights, claim/source references and required assertions.
 - UI tests cover the review step and complete evidence card; run the Node suite, bundle test, bundle-currentness check and `git diff --check`.
