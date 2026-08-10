@@ -31,6 +31,20 @@ test('questionnaire markup includes progress, question host and result action', 
   assert.match(html, /id=["']calculate-results["']/);
 });
 
+test('questionnaire includes a priority review before results', () => {
+  const html = read('index.html');
+  assert.match(html, /id=["']priority-review["']/);
+  assert.match(html, /id=["']confirm-priorities["']/);
+  assert.ok(html.indexOf('id="priority-review"') < html.indexOf('id="results"'));
+});
+
+test('app persists selected priorities and passes them to ranking only', () => {
+  const app = read('app.js');
+  assert.match(app, /priorityQuestionIds/);
+  assert.match(app, /Core\.scoreParty\(\{[^}]*priorityQuestionIds/s);
+  assert.doesNotMatch(app, /computeUserAxes\(\{[^}]*priorityQuestionIds/s);
+});
+
 test('Russian question explanations are rendered before answer controls without hover-only UI', () => {
   const app = read('app.js');
   const questionText = app.indexOf('class="question-text"');

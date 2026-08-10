@@ -224,6 +224,14 @@ h3 { font-size: 1.22rem; }
 .primary, .secondary { border-radius: 0; }
 .primary { border-color: var(--accent); background: var(--accent); }
 .secondary { border-color: var(--ink); background: transparent; }
+.priority-review { max-width: 920px; }
+.priority-list { display: grid; gap: 0; margin: 22px 0 14px; border-top: 1px solid var(--line); }
+.priority-option { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.priority-option input { width: 1.05rem; height: 1.05rem; margin: .18rem 0 0; accent-color: var(--accent); }
+.priority-option:has(input:checked) { color: var(--accent); font-weight: 700; }
+.priority-option:has(input:disabled) { color: var(--muted); cursor: not-allowed; }
+.priority-option input:focus-visible { outline: 3px solid #b97851; outline-offset: 3px; }
+.priority-result { margin: 13px 0 0; color: var(--accent); font-size: .85rem; font-weight: 700; }
 .recommendation-hero { gap: 0; border-block: 1px solid var(--ink); }
 .hero-party, .metric-card { padding: 20px; border: 0; border-inline-end: 1px solid var(--line); border-radius: 0; }
 .hero-party { background: var(--accent-soft); }

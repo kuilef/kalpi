@@ -39,11 +39,28 @@
     notShown: 'לא מוצגים בגלל מחסור בנתונים',
     userNotShown: 'המיקום שלך לא מוצג: אין מספיק תשובות בציר הזה.',
   });
+  Object.assign(COPY.en, {
+    priorityEyebrow: 'Your priorities', priorityTitle: 'Which questions matter most to you?',
+    priorityHint: 'Choose up to three answered questions. Each counts twice in the party ranking and data coverage, but does not change the five-axis map.',
+    confirmPriorities: 'Show result', editAnswers: 'Edit answers', priorityCount: 'selected', priorityResult: 'personal priorities applied',
+  });
+  Object.assign(COPY.ru, {
+    priorityEyebrow: 'Ваши приоритеты', priorityTitle: 'Какие вопросы для вас особенно важны?',
+    priorityHint: 'Выберите до трёх вопросов, на которые вы уже дали содержательный ответ. Каждый будет иметь двойной вес в рейтинге партий и покрытии данных, но не изменит карту пяти осей.',
+    confirmPriorities: 'Показать результат', editAnswers: 'Вернуться к ответам', priorityCount: 'выбрано', priorityResult: 'учтены личные приоритеты',
+  });
+  Object.assign(COPY.he, {
+    priorityEyebrow: 'העדיפויות שלך', priorityTitle: 'אילו שאלות חשובות לך במיוחד?',
+    priorityHint: 'בחרו עד שלוש שאלות שכבר עניתם עליהן תשובה מהותית. כל שאלה תיספר פעמיים בדירוג המפלגות ובכיסוי הנתונים, אך לא תשנה את מפת חמשת הצירים.',
+    confirmPriorities: 'הצג תוצאה', editAnswers: 'חזרה לתשובות', priorityCount: 'נבחרו', priorityResult: 'עדיפויות אישיות הוחלו',
+  });
 
   let data = DEFAULT_DATA;
   let dataSource = 'bundle';
   let dataSourceWarning = '';
-  let answers = loadAnswers();
+  const storedQuestionnaireState = loadQuestionnaireState();
+  let answers = storedQuestionnaireState.answers;
+  let priorityQuestionIds = storedQuestionnaireState.priorityQuestionIds;
   let latestResults = null;
   let latestAxisState = null;
   let locale = I18n.loadLocale(window.localStorage);
@@ -58,12 +75,17 @@
   const statusLabel = (value) => ({ known: localizedLabel('известно', 'known', 'ידוע'), mixed: localizedLabel('смешанная', 'mixed', 'מעורב'), historical: localizedLabel('историческая', 'historical', 'היסטורי'), insufficient_data: localizedLabel('недостаточно данных', 'insufficient data', 'אין די נתונים') }[value] || value);
   const scopeLabel = (value) => ({ CURRENT_LIST: localizedLabel('текущий список', 'current list', 'רשימה נוכחית'), PARTY: localizedLabel('партия', 'party', 'מפלגה'), FACTION: localizedLabel('фракция', 'faction', 'סיעה'), COMPONENT_PARTY: localizedLabel('партия-компонент', 'component party', 'מפלגת רכיב'), LEADER: localizedLabel('лидер', 'leader', 'מנהיג'), INDIVIDUAL_MK: localizedLabel('депутат', 'individual MK', 'חבר כנסת') }[value] || value);
 
-  function loadAnswers() {
-    try { return JSON.parse(localStorage.getItem(ANSWER_KEY) || '{}'); }
-    catch (_) { return {}; }
+  function loadQuestionnaireState() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(ANSWER_KEY) || '{}');
+      if (stored && typeof stored.answers === 'object' && !Array.isArray(stored.answers)) {
+        return { answers: stored.answers, priorityQuestionIds: Array.isArray(stored.priorityQuestionIds) ? stored.priorityQuestionIds : [] };
+      }
+      return { answers: stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {}, priorityQuestionIds: [] };
+    } catch (_) { return { answers: {}, priorityQuestionIds: [] }; }
   }
   function saveAnswers() {
-    try { localStorage.setItem(ANSWER_KEY, JSON.stringify(answers)); } catch (_) {}
+    try { localStorage.setItem(ANSWER_KEY, JSON.stringify({ answers, priorityQuestionIds })); } catch (_) {}
   }
 
   async function loadInitialDataset() {
@@ -167,11 +189,45 @@
     $('progress-bar').style.width = qs.length ? `${answered / qs.length * 100}%` : '0%';
   }
 
+  function normalizedPriorityQuestionIds() {
+    priorityQuestionIds = Core.normalizePriorityQuestionIds({ priorityQuestionIds, answers, questions: enabledQuestions() });
+    return priorityQuestionIds;
+  }
+
+  function renderPriorityReview() {
+    const questions = enabledQuestions().filter((question) => Core.isAnswered(answers[question.id]));
+    const selected = new Set(normalizedPriorityQuestionIds());
+    $('priority-list').innerHTML = questions.map((question) => {
+      const checked = selected.has(question.id);
+      const disabled = !checked && selected.size >= 3;
+      return `<label class="priority-option"><input type="checkbox" value="${esc(question.id)}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${esc(text(question, 'text'))}</span></label>`;
+    }).join('') || `<p class="hint">${localizedLabel('Нет содержательных ответов для выбора.', 'There are no substantive answers to select.', 'אין תשובות מהותיות לבחירה.')}</p>`;
+    $('priority-count').textContent = `${t('priorityCount')}: ${selected.size} / 3`;
+    $('priority-list').querySelectorAll('input[type=checkbox]').forEach((input) => input.addEventListener('change', () => {
+      priorityQuestionIds = [...$('priority-list').querySelectorAll('input[type=checkbox]:checked')].map((box) => box.value);
+      normalizedPriorityQuestionIds();
+      saveAnswers();
+      renderPriorityReview();
+    }));
+  }
+
+  function openPriorityReview() {
+    const substantiveCount = Object.values(answers).filter((value) => value !== 'skip').length;
+    if (!substantiveCount) {
+      alert(locale === 'he' ? 'יש לענות לפחות על שאלה אחת או לבחור תשובה מהותית במקום דילוג.' : locale === 'en' ? 'Answer at least one question or choose a substantive response instead of skipping.' : 'Ответьте хотя бы на один вопрос или выберите содержательный вариант вместо «Пропустить».');
+      return;
+    }
+    renderPriorityReview();
+    $('priority-review').classList.remove('hidden');
+    $('priority-review').focus({ preventScroll: true });
+    window.scrollTo({ top: $('priority-review').offsetTop - 12, behavior: 'smooth' });
+  }
+
   function computeResults() {
     const qs = enabledQuestions();
     return activeParties().map((party) => ({
       party,
-      ...Core.scoreParty({ partyId: party.id, answers, questions: qs, positions: data.positions })
+      ...Core.scoreParty({ partyId: party.id, answers, questions: qs, positions: data.positions, priorityQuestionIds })
     })).sort((a, b) => b.finalScore - a.finalScore || b.coverage - a.coverage || b.agreement - a.agreement);
   }
 
@@ -195,7 +251,8 @@
         <div class="metric-card"><span class="value">${pct(top.agreement)}</span><span class="label">${locale === 'he' ? 'התאמת עמדות ידועות' : locale === 'en' ? 'known-position agreement' : 'совпадение известных позиций'}</span></div>
         <div class="metric-card"><span class="value">${pct(top.coverage)}</span><span class="label">${locale === 'he' ? 'כיסוי נתונים' : locale === 'en' ? 'data coverage' : 'покрытие данных'}</span></div>
       </div>
-      <p class="hint">${locale === 'he' ? `אין נתונים לגבי ${top.unknownCount} מהשאלות שעליהן ענית. כיסוי נמוך מקרב אוטומטית את הציון ל־50%.` : locale === 'en' ? `There is no data for ${top.unknownCount} of your answered questions. Low coverage automatically pulls the score toward 50%.` : `Неизвестно по ${top.unknownCount} из ваших отвеченных вопросов. При малом покрытии score автоматически сжимается к 50%.`}</p>`;
+      <p class="hint">${locale === 'he' ? `אין נתונים לגבי ${top.unknownCount} מהשאלות שעליהן ענית. כיסוי נמוך מקרב אוטומטית את הציון ל־50%.` : locale === 'en' ? `There is no data for ${top.unknownCount} of your answered questions. Low coverage automatically pulls the score toward 50%.` : `Неизвестно по ${top.unknownCount} из ваших отвеченных вопросов. При малом покрытии score автоматически сжимается к 50%.`}</p>
+      <p class="priority-result">${t('priorityResult')}: ${normalizedPriorityQuestionIds().length} / 3.</p>`;
 
     $('ranking').innerHTML = latestResults.map((r, i) => `<div class="ranking-row">
       <span>${i + 1}</span><strong>${esc(text(r.party, 'name'))}</strong><span class="score">${pct(r.finalScore)}</span><span class="coverage-mini">${locale === 'he' ? 'נתונים' : locale === 'en' ? 'data' : 'данные'} ${pct(r.coverage)}</span>
@@ -499,13 +556,24 @@
     }).join('') || `<p class="hint">${locale === 'he' ? 'אין שאלות שנענו.' : locale === 'en' ? 'No answered questions.' : 'Нет отвеченных вопросов.'}</p>`;
   }
 
-  $('calculate-results').addEventListener('click', renderResults);
+  $('calculate-results').addEventListener('click', openPriorityReview);
+  $('confirm-priorities').addEventListener('click', () => {
+    normalizedPriorityQuestionIds();
+    saveAnswers();
+    $('priority-review').classList.add('hidden');
+    renderResults();
+  });
+  $('edit-answers').addEventListener('click', () => {
+    $('priority-review').classList.add('hidden');
+    $('questionnaire').focus({ preventScroll: true });
+    window.scrollTo({ top: $('questionnaire').offsetTop - 12, behavior: 'smooth' });
+  });
   $('reset-answers').addEventListener('click', () => {
     const confirmation = locale === 'he' ? 'לאפס את כל התשובות?' : locale === 'en' ? 'Reset all answers?' : 'Сбросить все ответы?';
     if (!confirm(confirmation)) return;
-    answers = {}; saveAnswers(); renderQuestions();
+    answers = {}; priorityQuestionIds = []; saveAnswers(); renderQuestions();
     latestResults = null; latestAxisState = null;
-    $('results').classList.add('hidden'); $('data-inspection').classList.add('hidden'); $('data-quality').classList.add('hidden'); $('data-source-status').classList.add('hidden');
+    $('priority-review').classList.add('hidden'); $('results').classList.add('hidden'); $('data-inspection').classList.add('hidden'); $('data-quality').classList.add('hidden'); $('data-source-status').classList.add('hidden');
   });
   $('toggle-inspection').addEventListener('click', () => {
     const content = $('inspection-content');
@@ -529,6 +597,7 @@
     $('toggle-inspection').textContent = $('inspection-content').classList.contains('hidden') ? t('showData') : t('hideData');
     $('party-map').setAttribute('aria-label', locale === 'he' ? 'מפת מיקום המפלגות והמשתמש' : locale === 'en' ? 'Map of parties and the user' : 'Карта расположения партий и пользователя');
     renderQuestions();
+    if (!$('priority-review').classList.contains('hidden')) renderPriorityReview();
     if (latestResults) renderResults(false);
   }
 
