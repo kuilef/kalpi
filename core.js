@@ -18,6 +18,15 @@
     return value !== undefined && value !== null && value !== 'skip';
   }
 
+  function normalizePriorityQuestionIds({ priorityQuestionIds = [], answers, questions, maxPriorities = 3 }) {
+    const eligibleIds = new Set(
+      (questions || [])
+        .filter((question) => question.enabled !== false && isAnswered(answers?.[question.id]))
+        .map((question) => question.id)
+    );
+    return [...new Set(priorityQuestionIds)].filter((id) => eligibleIds.has(id)).slice(0, maxPriorities);
+  }
+
   function effectivePositionConfidence(position) {
     if (!position || !USABLE_STATUSES.has(position.status) || position.value == null) return 0;
     const confidence = clamp(Number(position.confidence ?? 0), 0, 1);
@@ -27,10 +36,11 @@
     return confidence;
   }
 
-  function scoreParty({ partyId, answers, questions, positions }) {
+  function scoreParty({ partyId, answers, questions, positions, priorityQuestionIds = [] }) {
     const positionMap = new Map(
       (positions || []).filter((p) => p.party === partyId).map((p) => [p.question, p])
     );
+    const priorities = new Set(normalizePriorityQuestionIds({ priorityQuestionIds, answers, questions }));
 
     let totalAnsweredWeight = 0;
     let knownEffectiveWeight = 0;
@@ -44,8 +54,8 @@
       const userValue = answers ? answers[question.id] : undefined;
       if (!isAnswered(userValue)) continue;
 
-      const importance = Math.max(0, Number(question.importance_default ?? 1));
-      totalAnsweredWeight += importance;
+      const rankingWeight = priorities.has(question.id) ? 2 : 1;
+      totalAnsweredWeight += rankingWeight;
       const position = positionMap.get(question.id);
       const confidence = effectivePositionConfidence(position);
 
@@ -55,7 +65,7 @@
         continue;
       }
 
-      const effectiveWeight = importance * confidence;
+      const effectiveWeight = rankingWeight * confidence;
       const agreementQ = computeAgreement(userValue, position.value);
       knownEffectiveWeight += effectiveWeight;
       agreementWeightedSum += agreementQ * effectiveWeight;
@@ -383,6 +393,7 @@
 
   return {
     computeAgreement,
+    normalizePriorityQuestionIds,
     scoreParty,
     computeAxisCoordinate,
     computeUserAxes,
