@@ -4,11 +4,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
-FILES = ['axes.json','parties.json','questions.json','positions.json','sources.json']
+FILES = ['parties.json','questions.json','positions.json','sources.json','scoring-config.json']
 OUT = DATA / 'default-data.js'
 
 def build_text():
-    payload = {name[:-5]: json.loads((DATA/name).read_text(encoding='utf-8')) for name in FILES}
+    payload = {}
+    for name in FILES:
+        key = 'scoringConfig' if name == 'scoring-config.json' else name[:-5]
+        payload[key] = json.loads((DATA/name).read_text(encoding='utf-8'))
     return 'window.KALPI_DATA = ' + json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + ';\n'
 
 def main():

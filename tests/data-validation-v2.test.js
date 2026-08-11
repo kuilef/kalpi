@@ -1,0 +1,41 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const Validation = require('../data-validation.js');
+
+const load = (name) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
+const validData = () => ({
+  parties: load('parties.json'),
+  questions: load('questions.json'),
+  positions: load('positions.json'),
+  sources: load('sources.json'),
+  scoringConfig: load('scoring-config.json'),
+});
+
+test('canonical v2 data validates with explicit missing party positions', () => {
+  assert.deepEqual(Validation.validateDataset(validData()), []);
+});
+
+test('v2 validation rejects a question without one family assignment or a valid scale value', () => {
+  const data = validData();
+  data.scoringConfig.families[0].fundamental_questions = [];
+  data.positions[0] = { ...data.positions[0], value: 2, confidence: 1, status: 'known' };
+  const errors = Validation.validateDataset(data);
+  assert.ok(errors.some((error) => error.includes('missing family assignment')));
+  assert.ok(errors.some((error) => error.includes('value must be in [-1, 1]')));
+});
+
+test('v2 validation rejects a known position without evidence, explanation, and verification date', () => {
+  const data = validData();
+  data.positions[0] = {
+    ...data.positions[0],
+    value: -1,
+    confidence: 0.8,
+    status: 'known',
+  };
+  const errors = Validation.validateDataset(data);
+  assert.ok(errors.some((error) => error.includes('known position requires evidence')));
+  assert.ok(errors.some((error) => error.includes('known position requires explanation_ru')));
+  assert.ok(errors.some((error) => error.includes('known position requires last_verified')));
+});

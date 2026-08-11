@@ -12,8 +12,9 @@ class BundleTest(unittest.TestCase):
         self.assertTrue(text.endswith(';'))
         payload = json.loads(text[len('window.KALPI_DATA = '):-1])
         expected = {}
-        for name in ['axes','parties','questions','positions','sources']:
+        for name in ['parties','questions','positions','sources']:
             expected[name] = json.loads((DATA / f'{name}.json').read_text(encoding='utf-8'))
+        expected['scoringConfig'] = json.loads((DATA / 'scoring-config.json').read_text(encoding='utf-8'))
         self.assertEqual(payload, expected)
 
     def test_baseline_bundle_matches_frozen_baseline_json(self):

@@ -1,0 +1,25 @@
+{
+  "schema_version": "kalpi-questionnaire-schema-v2",
+  "questionnaire_version": "kalpi-ru-core-2026-08-11-v1",
+  "party_positions_version": "kalpi-positions-empty-v1",
+  "scoring_version": "kalpi-family-score-v1",
+  "data_version": "kalpi-data-v2",
+  "recommendation_mode": "data_not_ready",
+  "answer_values": [-1, -0.5, 0, 0.5, 1],
+  "unknown_value": null,
+  "user_importance_enabled": false,
+  "families": [
+    {"id":"security_settlement","label_ru":"Безопасность и урегулирование","family_type":"permanent","fundamental_questions":["security_settlement_tradeoff"],"policy_questions":["palestinian_state_option"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"territory_separation","label_ru":"Территория и разделение","family_type":"permanent","fundamental_questions":["territory_separation_tradeoff"],"policy_questions":["west_bank_sovereignty"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"religion_lifestyle","label_ru":"Религия и образ жизни","family_type":"permanent","fundamental_questions":["religion_lifestyle_tradeoff"],"policy_questions":["civil_marriage","shabbat_public_transport"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"service_obligations","label_ru":"Равенство обязанностей","family_type":"permanent","fundamental_questions":["service_obligation_tradeoff"],"policy_questions":["haredi_draft","service_benefits"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"education_standards","label_ru":"Образование","family_type":"permanent","fundamental_questions":["education_autonomy_standards_tradeoff"],"policy_questions":["core_curriculum_funding"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"majority_and_limits","label_ru":"Власть большинства и ограничения","family_type":"permanent","fundamental_questions":["majority_institutional_limits_tradeoff"],"policy_questions":["supreme_court_appointments","knesset_supreme_court_final_say"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"jewish_state_equality","label_ru":"Еврейское государство и равенство","family_type":"permanent","fundamental_questions":["jewish_state_civic_equality_tradeoff"],"policy_questions":["nation_state_law_equality"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"tradition_personal_freedom","label_ru":"Традиционные нормы и личная свобода","family_type":"permanent","fundamental_questions":["traditional_norms_personal_freedom_tradeoff"],"policy_questions":["same_sex_union_equality"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
+    {"id":"taxes_public_services","label_ru":"Налоги и государственные услуги","family_type":"permanent","fundamental_questions":["taxes_public_services_tradeoff"],"policy_questions":[],"fundamental_weight":1,"policy_weight":0,"family_weight":1},
+    {"id":"market_regulation","label_ru":"Рынок и регулирование","family_type":"permanent","fundamental_questions":["market_regulation_tradeoff"],"policy_questions":[],"fundamental_weight":1,"policy_weight":0,"family_weight":1},
+    {"id":"social_policy","label_ru":"Социальная политика","family_type":"permanent","fundamental_questions":["social_support_redistribution_tradeoff"],"policy_questions":[],"fundamental_weight":1,"policy_weight":0,"family_weight":1},
+    {"id":"october_7_accountability","label_ru":"Расследование 7 октября","family_type":"standalone_policy","fundamental_questions":[],"policy_questions":["october_7_state_inquiry"],"fundamental_weight":0,"policy_weight":1,"family_weight":1}
+  ]
+}

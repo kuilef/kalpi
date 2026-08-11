@@ -2,15 +2,16 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Loader = require('../data-loader.js');
 
-const filenames = ['axes.json','parties.json','questions.json','positions.json','sources.json'];
+const filenames = ['parties.json','questions.json','positions.json','sources.json','scoring-config.json'];
 
-test('loadDataset reads the five canonical JSON files into dataset keys', async () => {
+test('loadDataset reads the v2 runtime JSON files into dataset keys', async () => {
   const payloads = Object.fromEntries(filenames.map((name) => [name, [{ id: name }]]));
   const calls = [];
   const data = await Loader.loadDataset(async (name) => { calls.push(name); return payloads[name]; });
   assert.deepEqual(calls, filenames);
-  assert.deepEqual(Object.keys(data), ['axes','parties','questions','positions','sources']);
+  assert.deepEqual(Object.keys(data), ['parties','questions','positions','sources','scoringConfig']);
   assert.equal(data.positions[0].id, 'positions.json');
+  assert.equal(data.scoringConfig[0].id, 'scoring-config.json');
 });
 
 test('loadDataset propagates a descriptive filename when JSON loading fails', async () => {

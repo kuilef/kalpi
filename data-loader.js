@@ -3,13 +3,17 @@
   else root.KalpiDataLoader = factory();
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
-  const FILES = ['axes.json','parties.json','questions.json','positions.json','sources.json'];
+  const FILES = ['parties.json','questions.json','positions.json','sources.json','scoring-config.json'];
+
+  function dataKey(filename) {
+    return filename === 'scoring-config.json' ? 'scoringConfig' : filename.slice(0, -5);
+  }
 
   async function loadDataset(readJson) {
     const data = {};
     for (const filename of FILES) {
       try {
-        data[filename.slice(0, -5)] = await readJson(filename);
+        data[dataKey(filename)] = await readJson(filename);
       } catch (error) {
         throw new Error(`${filename}: ${error?.message || error}`);
       }

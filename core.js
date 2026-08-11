@@ -1,3 +1,4 @@
+// Legacy v1 axis helpers. The v2 runtime does not load this module and must use scoring.js instead.
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;

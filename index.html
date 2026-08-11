@@ -8,87 +8,55 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="shell header-layout">
-      <div>
-        <p class="eyebrow" data-i18n="prototype"></p>
-        <h1 data-i18n="headline"></h1>
-        <p class="lede" data-i18n="lede"></p>
-      </div>
-      <div class="locale-switcher" role="group" data-i18n-aria-label="languageLabel">
-        <button id="locale-en" data-locale="en" type="button" aria-pressed="false">EN</button>
-        <button id="locale-ru" data-locale="ru" type="button" aria-pressed="true">RU</button>
-        <button id="locale-he" data-locale="he" type="button" aria-pressed="false">HE</button>
-      </div>
+    <div class="shell">
+      <p class="eyebrow">Kalpi · русский опросник</p>
+      <h1>Какие политические решения вам ближе?</h1>
+      <p class="lede">Выберите сторону на шкале между двумя содержательными полюсами. «Не знаю» не считается промежуточной политической позицией.</p>
     </div>
   </header>
 
   <main class="shell">
-    <section id="questionnaire" class="panel questionnaire-panel">
+    <section id="questionnaire" class="panel" aria-labelledby="questionnaire-title">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow" data-i18n="questionnaireEyebrow"></p>
-          <h2 data-i18n="questionnaireTitle"></h2>
-        </div>
-        <div id="progress" class="progress-text">0 / 0</div>
+        <div><p class="eyebrow">Опрос</p><h2 id="questionnaire-title">Ваши взгляды</h2></div>
+        <p id="progress" class="progress-text" aria-live="polite">0 / 23</p>
       </div>
       <div class="progress-track" aria-hidden="true"><div id="progress-bar"></div></div>
-      <p class="hint" data-i18n="answerHint"></p>
-      <div id="questions-container"></div>
-      <div class="actions sticky-actions">
-        <button id="calculate-results" class="primary" type="button" data-i18n="calculate"></button>
-        <button id="reset-answers" class="secondary" type="button" data-i18n="reset"></button>
+      <p id="state-notice" class="notice hidden" role="status"></p>
+      <div id="question-content"></div>
+      <div class="wizard-actions">
+        <button id="previous-question" class="secondary" type="button">Назад</button>
+        <button id="next-question" class="primary" type="button">Далее</button>
       </div>
     </section>
 
-    <section id="results" class="panel hidden" aria-live="polite" tabindex="-1">
-      <div class="section-heading"><div><p class="eyebrow" data-i18n="resultEyebrow"></p><h2 id="recommendation-title" data-i18n="recommendation"></h2></div></div>
-      <div id="recommendation-card"></div>
-      <div class="two-column results-grid">
-        <div><h3 data-i18n="ranking"></h3><div id="ranking"></div></div>
-        <div><h3 data-i18n="whyThisParty"></h3><div id="explanation"></div></div>
+    <section id="review" class="panel hidden" aria-labelledby="review-title" tabindex="-1">
+      <p class="eyebrow">Проверка ответов</p>
+      <h2 id="review-title">Перед завершением</h2>
+      <p>Вы можете изменить любой ответ. Все пункты с «Не знаю» исключаются из будущего сравнения с партиями.</p>
+      <div id="review-content"></div>
+      <div class="wizard-actions">
+        <button id="review-back" class="secondary" type="button">Вернуться к вопросам</button>
+        <button id="complete-questionnaire" class="primary" type="button">Завершить опрос</button>
       </div>
-      <section class="axis-section" aria-labelledby="axis-strips-title">
-        <div class="section-heading compact-heading">
-          <div><h3 id="axis-strips-title" data-i18n="axisStripsTitle"></h3><p class="hint" data-i18n="axisStripsHint"></p></div>
-        </div>
-        <div id="axis-strips" class="axis-strips" aria-live="polite"></div>
-        <details id="multidimensional-map" class="multidimensional-map">
-          <summary data-i18n="mapDetailsTitle"></summary>
-          <div class="section-heading compact-heading">
-            <div><h3 data-i18n="mapTitle"></h3><p class="hint" data-i18n="mapHint"></p></div>
-            <div class="axis-selectors"><label>X <select id="map-x-axis"></select></label><label>Y <select id="map-y-axis"></select></label></div>
-          </div>
-          <div class="map-wrap"><canvas id="party-map" width="900" height="600"></canvas></div>
-          <p id="map-omitted" class="hint"></p>
-        </details>
-      </section>
     </section>
 
-    <section id="data-inspection" class="panel hidden">
-      <div class="section-heading"><div><p class="eyebrow" data-i18n="transparencyEyebrow"></p><h2 data-i18n="inspectionTitle"></h2></div><button id="toggle-inspection" class="secondary" type="button"></button></div>
-      <div id="inspection-content" class="hidden"></div>
-    </section>
-
-    <section id="data-quality" class="panel quality-panel hidden">
-      <div class="section-heading"><div><p class="eyebrow" data-i18n="qualityEyebrow"></p><h2 data-i18n="qualityTitle"></h2><p class="hint" data-i18n="qualityHint"></p></div></div>
-      <div id="quality-summary" class="quality-metrics"></div><div id="quality-comparison"></div>
-      <div class="quality-columns"><div><h3 data-i18n="partyCoverage"></h3><div id="quality-parties" class="table-scroll"></div></div><div><h3 data-i18n="axisReliability"></h3><div id="quality-axes" class="table-scroll"></div></div></div>
-      <details class="quality-details" open><summary data-i18n="weakQuestions"></summary><div id="quality-questions" class="table-scroll"></div></details>
-      <details class="quality-details"><summary data-i18n="heatmapTitle"></summary><p class="hint" data-i18n="heatmapHint"></p><div id="quality-heatmap" class="table-scroll heatmap-scroll"></div><div id="quality-cell-detail" class="quality-cell-detail hint"></div></details>
-      <div class="quality-columns"><details class="quality-details"><summary data-i18n="provenance"></summary><div id="quality-provenance"></div></details><details class="quality-details"><summary data-i18n="gaps"></summary><div id="quality-gaps"></div></details></div>
-    </section>
-
-    <section id="developer-warnings" class="warning-panel hidden" aria-live="polite"></section>
-    <section id="data-source-status" class="data-source-status hidden" aria-live="polite"></section>
+    <section id="results" class="panel hidden" aria-live="polite" tabindex="-1"></section>
+    <section id="debug" class="panel hidden" aria-labelledby="debug-title"></section>
+    <section id="developer-warnings" class="warning-panel hidden" aria-live="assertive"></section>
   </main>
-  <footer class="site-footer shell"><p data-i18n="footer"></p></footer>
 
-  <script src="core.js"></script>
-  <script src="data/default-data.js"></script>
-  <script src="data/baseline-data.js"></script>
+  <footer class="site-footer shell"><p>Kalpi показывает методологически ограниченное сравнение, а не прогноз поведения партий после выборов.</p></footer>
+
   <script src="data-loader.js"></script>
-  <script src="i18n.js"></script>
-  <script src="axis-strips.js"></script>
+  <script src="data-validation.js"></script>
+  <script src="scoring.js"></script>
+  <script src="analytics.js"></script>
+  <script src="questionnaire-state.js"></script>
+  <script src="questionnaire-ui.js"></script>
+  <script src="results-ui.js"></script>
+  <script src="debug-fixture.js"></script>
+  <script src="data/default-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
