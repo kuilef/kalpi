@@ -7,7 +7,7 @@
     "text_he": "האם ישראל צריכה לתמוך בהקמת מדינה פלסטינית עצמאית במסגרת הסדר מדיני?",
     "importance_default": 1.25,
     "axis_weights": {
-      "security_territories": -1.0
+      "security_territories": -1
     },
     "enabled": true,
     "group_ru": "Безопасность и территории",
@@ -22,7 +22,7 @@
     "text_he": "האם יש להחיל ריבונות ישראלית על חלקים נרחבים מיהודה ושומרון?",
     "importance_default": 1.2,
     "axis_weights": {
-      "security_territories": 1.0
+      "security_territories": 1
     },
     "enabled": true,
     "group_ru": "Безопасность и территории",
@@ -35,7 +35,7 @@
     "explanation_ru": "Речь о контроле после завершения основных боевых действий, а не о временном военном присутствии. Вопрос не касается аннексии территории.",
     "text_en": "Should Israel retain long-term territorial control over, or annex parts of, Gaza after the war?",
     "text_he": "האם ישראל צריכה לשמר שליטה טריטוריאלית ארוכת טווח בעזה או לספח חלקים ממנה לאחר המלחמה?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
       "security_territories": 0.9
     },
@@ -66,9 +66,9 @@
     "explanation_ru": "Вопрос предлагает выбрать общий приоритет между подходом, основанным на длительном контроле, и подходом, основанным на переговорах и территориальном компромиссе.",
     "text_en": "In the Israeli–Palestinian conflict, should long-term military control take priority over territorial compromise and a diplomatic solution?",
     "text_he": "בסכסוך הישראלי-פלסטיני, האם יש לתת עדיפות לשליטה צבאית ארוכת טווח על פני פשרה טריטוריאלית ופתרון דיפלומטי?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "security_territories": 1.0
+      "security_territories": 1
     },
     "enabled": true,
     "group_ru": "Безопасность и территории",
@@ -81,9 +81,9 @@
     "explanation_ru": "Речь о возможности заключить юридически признанный брак вне религиозных институтов.",
     "text_en": "Should civil marriage be allowed in Israel?",
     "text_he": "האם יש לאפשר נישואים אזרחיים בישראל?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "religion_state": -1.0,
+      "religion_state": -1,
       "civil_social_rights": 0.4
     },
     "enabled": true,
@@ -130,7 +130,7 @@
     "text_he": "האם יש לצמצם את המונופול של הרבנות הראשית על נישואים, גיור ושירותי דת?",
     "importance_default": 0.9,
     "axis_weights": {
-      "religion_state": -1.0,
+      "religion_state": -1,
       "civil_social_rights": 0.3
     },
     "enabled": true,
@@ -209,7 +209,7 @@
     "explanation_ru": "לימודי ליבה — установленный государством набор базовых общеобразовательных предметов, включая математику и английский язык.",
     "text_en": "Should public funding for schools depend on teaching compulsory core subjects?",
     "text_he": "האם מימון ממשלתי לבתי ספר צריך להיות מותנה בהוראת לימודי ליבה?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
       "religion_state": -0.65,
       "civil_social_rights": 0.2,
@@ -237,23 +237,6 @@
     "group_he": "חינוך"
   },
   {
-    "id": "civic_democratic_education",
-    "text_ru": "Следует ли расширить и укрепить обязательное преподавание демократии, граждановедения и Декларации независимости в школах?",
-    "explanation_ru": "Речь о содержании школьной программы и обязательном статусе этих тем, а не о поддержке конкретной партии или трактовки текущей политики.",
-    "text_en": "Should schools strengthen compulsory teaching of democracy, civics and the Declaration of Independence?",
-    "text_he": "האם יש לחזק בבתי הספר את לימודי החובה בדמוקרטיה, אזרחות ומגילת העצמאות?",
-    "importance_default": 0.75,
-    "axis_weights": {
-      "institutions_rule_of_law": 0.45,
-      "civil_social_rights": 0.35,
-      "religion_state": -0.2
-    },
-    "enabled": true,
-    "group_ru": "Образование",
-    "group_en": "Education",
-    "group_he": "חינוך"
-  },
-  {
     "id": "pm_term_limits",
     "text_ru": "Следует ли ограничить пребывание премьер-министра у власти двумя сроками или примерно восемью годами в общей сложности?",
     "explanation_ru": "Вопрос о самом принципе ограничения срока полномочий; точную модель ограничения можно определить отдельным законом.",
@@ -274,9 +257,9 @@
     "explanation_ru": "Имеется в виду официальная государственная комиссия расследования (ועדת חקירה ממלכתית), обладающая высокой степенью независимости от правительства.",
     "text_en": "Should a formal state commission of inquiry investigate the events of 7 October and the decisions leading to them?",
     "text_he": "האם יש להקים ועדת חקירה ממלכתית לחקר אירועי 7 באוקטובר וההחלטות שהובילו אליהם?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "institutions_rule_of_law": 1.0
+      "institutions_rule_of_law": 1
     },
     "enabled": true,
     "group_ru": "Институты",
@@ -289,9 +272,9 @@
     "explanation_ru": "Сейчас судей назначает специальная комиссия, в которой представлены политики, судьи и представители юридического сообщества. Вопрос в том, должны ли правительство и Кнессет получить в этой комиссии больше влияния.",
     "text_en": "Should elected politicians have substantially more influence over appointing Supreme Court justices?",
     "text_he": "האם יש להגדיל משמעותית את השפעת הפוליטיקאים הנבחרים על מינוי שופטי בית המשפט העליון?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "institutions_rule_of_law": -1.0
+      "institutions_rule_of_law": -1
     },
     "enabled": true,
     "group_ru": "Институты",
@@ -304,9 +287,9 @@
     "explanation_ru": "Речь о праве суда проверять решения правительства и государственных органов и отменять их, если они нарушают закон или основные правовые принципы.",
     "text_en": "Should the Supreme Court retain strong powers of judicial review over government decisions?",
     "text_he": "האם בית המשפט העליון צריך לשמור על סמכויות חזקות של ביקורת שיפוטית על החלטות השלטון?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "institutions_rule_of_law": 1.0
+      "institutions_rule_of_law": 1
     },
     "enabled": true,
     "group_ru": "Институты",
@@ -336,7 +319,7 @@
     "text_he": "האם יש לחזק את עצמאותם מהממשלה של יועצים משפטיים, מבקרים וגופי פיקוח ציבוריים אחרים?",
     "importance_default": 0.8,
     "axis_weights": {
-      "institutions_rule_of_law": 1.0
+      "institutions_rule_of_law": 1
     },
     "enabled": true,
     "group_ru": "Институты",
@@ -349,9 +332,9 @@
     "explanation_ru": "Вопрос объединяет снижение налогов, дерегулирование и меньшую роль государства в экономике. Он не определяет, какие именно налоги или правила следует менять.",
     "text_en": "Should lower taxes and regulation take priority even at the cost of a more limited public sector?",
     "text_he": "האם יש לתת עדיפות להפחתת מיסים ורגולציה גם במחיר של מגזר ציבורי מצומצם יותר?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "economy_redistribution": 1.0
+      "economy_redistribution": 1
     },
     "enabled": true,
     "group_ru": "Экономика",
@@ -364,9 +347,9 @@
     "explanation_ru": "Речь о готовности увеличить финансирование гражданских услуг, в том числе за счёт налогов, перераспределения бюджета или государственного долга.",
     "text_en": "Should public spending on health, education and social services be expanded even if this requires additional budget resources?",
     "text_he": "האם יש להרחיב את ההוצאה הציבורית על בריאות, חינוך ושירותים חברתיים גם אם נדרשים לכך משאבים תקציביים נוספים?",
-    "importance_default": 1.0,
+    "importance_default": 1,
     "axis_weights": {
-      "economy_redistribution": -1.0,
+      "economy_redistribution": -1,
       "civil_social_rights": 0.15
     },
     "enabled": true,
@@ -413,23 +396,8 @@
     "text_he": "האם יש לתקן את חוק יסוד: ישראל – מדינת הלאום של העם היהודי כדי לעגן באופן ברור יותר את עקרון השוויון האזרחי?",
     "importance_default": 0.9,
     "axis_weights": {
-      "civil_social_rights": 1.0,
+      "civil_social_rights": 1,
       "institutions_rule_of_law": 0.3
-    },
-    "enabled": true,
-    "group_ru": "Гражданские права",
-    "group_en": "Civil rights",
-    "group_he": "זכויות אזרח"
-  },
-  {
-    "id": "minority_equal_participation",
-    "text_ru": "Следует ли государству активнее обеспечивать равное участие арабских граждан и других меньшинств в государственных институтах и равный доступ к публичным ресурсам?",
-    "explanation_ru": "Речь, например, о представительстве на государственной службе и распределении государственных бюджетов и программ.",
-    "text_en": "Should the state actively ensure equal participation of Arab citizens and other minorities in public institutions and the distribution of public resources?",
-    "text_he": "האם המדינה צריכה לפעול באופן פעיל להבטחת השתתפות שווה של אזרחים ערבים ומיעוטים אחרים במוסדות הציבור ובחלוקת משאבים ציבוריים?",
-    "importance_default": 1.0,
-    "axis_weights": {
-      "civil_social_rights": 1.0
     },
     "enabled": true,
     "group_ru": "Гражданские права",
@@ -444,25 +412,12 @@
     "text_he": "האם לזוגות מאותו המין צריכות להיות אותן זכויות אזרחיות והכרה בזוגיות כמו לזוגות ממינים שונים?",
     "importance_default": 0.8,
     "axis_weights": {
-      "civil_social_rights": 1.0,
+      "civil_social_rights": 1,
       "religion_state": -0.45
     },
     "enabled": true,
     "group_ru": "Гражданские права",
     "group_en": "Civil rights",
     "group_he": "זכויות אזרח"
-  },
-  {
-    "id": "aliyah_incentives",
-    "text_ru": "Следует ли государству активнее поощрять алию и расширять программы помощи новым репатриантам?",
-    "explanation_ru": "Речь о мерах, которые поощряют алию и помогают новым репатриантам с языком, жильём, работой и адаптацией после приезда. Вопрос не устанавливает квоты или критерии для репатриантов.",
-    "text_en": "Should the state actively encourage large-scale aliyah and substantially expand absorption programmes?",
-    "text_he": "האם המדינה צריכה לעודד באופן פעיל עלייה רחבת היקף ולהרחיב משמעותית תוכניות קליטה?",
-    "importance_default": 0.55,
-    "axis_weights": {},
-    "enabled": true,
-    "group_ru": "Гражданство и идентичность",
-    "group_en": "Citizenship and identity",
-    "group_he": "אזרחות וזהות"
   }
 ]

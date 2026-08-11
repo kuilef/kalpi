@@ -152,6 +152,11 @@ test('stylesheet gives the strip markers, tooltip, and details block dedicated t
   assert.match(css, /\.axis-marker:focus-visible/);
 });
 
+test('RTL strip markers center on their logical inline position', () => {
+  const css = read('styles.css');
+  assert.match(css, /html\[dir=["']rtl["']\]\s+\.axis-marker\s*\{[^}]*transform:\s*translate\(50%\s*,\s*-50%\)/s);
+});
+
 test('app attempts direct data-json loading outside file protocol and warns in file mode', () => {
   const app = read('app.js');
   assert.match(app, /location\.protocol\s*!==\s*['"]file:['"]/);

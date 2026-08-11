@@ -175,18 +175,6 @@
   },
   {
     "party": "likud",
-    "question": "civic_democratic_education",
-    "value": -1,
-    "status": "mixed",
-    "confidence": 0.75,
-    "entity_scope": "FACTION",
-    "evidence": [
-      "src_civics_exam_report_2026",
-      "src_education_ministry_civics_2025"
-    ]
-  },
-  {
-    "party": "likud",
     "question": "pm_term_limits",
     "value": -2,
     "status": "known",
@@ -310,17 +298,6 @@
   },
   {
     "party": "likud",
-    "question": "minority_equal_participation",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.7,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_likud_idi"
-    ]
-  },
-  {
-    "party": "likud",
     "question": "lgbt_equal_civil_rights",
     "value": -1,
     "status": "mixed",
@@ -329,17 +306,6 @@
     "evidence": [
       "src_likud_lgbt_split_2023",
       "src_likud_civil_marriage_2025"
-    ]
-  },
-  {
-    "party": "likud",
-    "question": "aliyah_incentives",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.8,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_likud_idi"
     ]
   },
   {
@@ -509,17 +475,6 @@
   },
   {
     "party": "beyahad",
-    "question": "civic_democratic_education",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.85,
-    "entity_scope": "CURRENT_LIST",
-    "evidence": [
-      "src_beyahad_program"
-    ]
-  },
-  {
-    "party": "beyahad",
     "question": "pm_term_limits",
     "value": 2,
     "status": "known",
@@ -640,15 +595,6 @@
   },
   {
     "party": "beyahad",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "beyahad",
     "question": "lgbt_equal_civil_rights",
     "value": 1,
     "status": "known",
@@ -657,15 +603,6 @@
     "evidence": [
       "src_bennett_religion_2026"
     ]
-  },
-  {
-    "party": "beyahad",
-    "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
   },
   {
     "party": "shas",
@@ -835,15 +772,6 @@
   },
   {
     "party": "shas",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "shas",
     "question": "pm_term_limits",
     "value": -2,
     "status": "known",
@@ -962,32 +890,12 @@
   },
   {
     "party": "shas",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "shas",
     "question": "lgbt_equal_civil_rights",
     "value": null,
     "status": "insufficient_data",
     "confidence": 0,
     "entity_scope": "PARTY",
     "evidence": []
-  },
-  {
-    "party": "shas",
-    "question": "aliyah_incentives",
-    "value": 1,
-    "status": "historical",
-    "confidence": 0.7,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_shas_idi"
-    ]
   },
   {
     "party": "utj",
@@ -1151,15 +1059,6 @@
   },
   {
     "party": "utj",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "utj",
     "question": "pm_term_limits",
     "value": -2,
     "status": "known",
@@ -1280,25 +1179,7 @@
   },
   {
     "party": "utj",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "utj",
     "question": "lgbt_equal_civil_rights",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "utj",
-    "question": "aliyah_incentives",
     "value": null,
     "status": "insufficient_data",
     "confidence": 0,
@@ -1310,8 +1191,8 @@
     "question": "palestinian_state",
     "value": 2,
     "status": "known",
-    "confidence": 0.9,
-    "entity_scope": "PARTY",
+    "confidence": 0.97,
+    "entity_scope": "FACTION",
     "evidence": [
       "src_raam_idi",
       "src_knesset_pal_state_2024"
@@ -1322,7 +1203,7 @@
     "question": "westbank_sovereignty",
     "value": -2,
     "status": "known",
-    "confidence": 0.8,
+    "confidence": 0.85,
     "entity_scope": "PARTY",
     "evidence": [
       "src_raam_idi"
@@ -1333,11 +1214,12 @@
     "question": "gaza_annexation",
     "value": -2,
     "status": "known",
-    "confidence": 0.85,
-    "entity_scope": "PARTY",
+    "confidence": 0.92,
+    "entity_scope": "FACTION",
     "evidence": [
       "src_raam_idi",
-      "src_mako_compass_2026"
+      "src_mako_compass_2026",
+      "src_raam_no_annexation_2025"
     ]
   },
   {
@@ -1345,7 +1227,7 @@
     "question": "death_penalty_terror",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_death_penalty_vote_2026"
@@ -1356,11 +1238,12 @@
     "question": "military_control_priority",
     "value": -2,
     "status": "known",
-    "confidence": 0.9,
-    "entity_scope": "PARTY",
+    "confidence": 0.95,
+    "entity_scope": "FACTION",
     "evidence": [
       "src_raam_idi",
-      "src_mako_compass_2026"
+      "src_mako_compass_2026",
+      "src_raam_no_annexation_2025"
     ]
   },
   {
@@ -1368,10 +1251,11 @@
     "question": "civil_marriage",
     "value": -2,
     "status": "historical",
-    "confidence": 0.75,
+    "confidence": 0.65,
     "entity_scope": "LEADER",
     "evidence": [
-      "src_bchiromat_raam_2026"
+      "src_bchiromat_raam_2026",
+      "src_raam_civic_split_2025"
     ]
   },
   {
@@ -1404,24 +1288,23 @@
   {
     "party": "raam",
     "question": "haredi_draft",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.8,
-    "entity_scope": "LEADER",
-    "evidence": [
-      "src_raam_service_2026",
-      "src_bchiromat_raam_2026"
-    ]
+    "value": null,
+    "status": "insufficient_data",
+    "confidence": 0,
+    "entity_scope": "PARTY",
+    "evidence": []
   },
   {
     "party": "raam",
     "question": "arab_service",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.85,
-    "entity_scope": "PARTY",
+    "value": 0,
+    "status": "mixed",
+    "confidence": 0.97,
+    "entity_scope": "LEADER",
     "evidence": [
-      "src_raam_service_2026"
+      "src_raam_service_2026",
+      "src_raam_arab_service_clarification_2026",
+      "src_raam_arab_service_ynet_2026"
     ]
   },
   {
@@ -1462,19 +1345,10 @@
   },
   {
     "party": "raam",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "raam",
     "question": "pm_term_limits",
     "value": 2,
     "status": "known",
-    "confidence": 0.9,
+    "confidence": 0.92,
     "entity_scope": "FACTION",
     "evidence": [
       "src_pm_term_limits_vote_2026",
@@ -1486,7 +1360,7 @@
     "question": "oct7_state_commission",
     "value": 2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_oct7_state_commission_vote_2025"
@@ -1495,11 +1369,13 @@
   {
     "party": "raam",
     "question": "political_judicial_appointments",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": -2,
+    "status": "historical",
+    "confidence": 0.95,
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_raam_judicial_selection_2023"
+    ]
   },
   {
     "party": "raam",
@@ -1526,7 +1402,7 @@
     "question": "watchdog_independence",
     "value": 1,
     "status": "known",
-    "confidence": 0.85,
+    "confidence": 0.95,
     "entity_scope": "FACTION",
     "evidence": [
       "src_ag_reform_vote_2026"
@@ -1544,11 +1420,13 @@
   {
     "party": "raam",
     "question": "expand_public_services",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 1,
+    "status": "historical",
+    "confidence": 0.85,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_raam_public_services_plan_2021"
+    ]
   },
   {
     "party": "raam",
@@ -1564,10 +1442,11 @@
     "question": "social_housing",
     "value": 1,
     "status": "known",
-    "confidence": 0.65,
+    "confidence": 0.85,
     "entity_scope": "FACTION",
     "evidence": [
-      "src_public_housing_vote_2025"
+      "src_public_housing_vote_2025",
+      "src_raam_public_services_plan_2021"
     ]
   },
   {
@@ -1575,21 +1454,11 @@
     "question": "nation_state_equality",
     "value": 2,
     "status": "known",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "entity_scope": "PARTY",
     "evidence": [
-      "src_raam_idi"
-    ]
-  },
-  {
-    "party": "raam",
-    "question": "minority_equal_participation",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_raam_idi"
+      "src_raam_idi",
+      "src_raam_arab_service_ynet_2026"
     ]
   },
   {
@@ -1597,31 +1466,24 @@
     "question": "lgbt_equal_civil_rights",
     "value": -2,
     "status": "historical",
-    "confidence": 0.8,
+    "confidence": 0.62,
     "entity_scope": "PARTY",
     "evidence": [
-      "src_raam_lgbt_2020"
+      "src_raam_lgbt_2020",
+      "src_raam_civic_split_2025"
     ]
-  },
-  {
-    "party": "raam",
-    "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
   },
   {
     "party": "otzma",
     "question": "palestinian_state",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.99,
     "entity_scope": "PARTY",
     "evidence": [
       "src_knesset_pal_state_2024",
-      "src_otzma_idi"
+      "src_otzma_idi",
+      "src_otzma_official_profile_2026"
     ]
   },
   {
@@ -1629,10 +1491,12 @@
     "question": "westbank_sovereignty",
     "value": 2,
     "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
+    "confidence": 0.99,
+    "entity_scope": "FACTION",
     "evidence": [
-      "src_otzma_idi"
+      "src_otzma_idi",
+      "src_otzma_official_profile_2026",
+      "src_otzma_sovereignty_2025"
     ]
   },
   {
@@ -1640,10 +1504,11 @@
     "question": "gaza_annexation",
     "value": 2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.96,
     "entity_scope": "PARTY",
     "evidence": [
-      "src_otzma_gaza_2024"
+      "src_otzma_gaza_2024",
+      "src_otzma_official_profile_2026"
     ]
   },
   {
@@ -1651,7 +1516,7 @@
     "question": "death_penalty_terror",
     "value": 2,
     "status": "known",
-    "confidence": 0.98,
+    "confidence": 0.99,
     "entity_scope": "PARTY",
     "evidence": [
       "src_death_penalty_vote_2026",
@@ -1663,11 +1528,12 @@
     "question": "military_control_priority",
     "value": 2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.98,
     "entity_scope": "PARTY",
     "evidence": [
       "src_otzma_idi",
-      "src_otzma_gaza_2024"
+      "src_otzma_gaza_2024",
+      "src_otzma_official_profile_2026"
     ]
   },
   {
@@ -1675,7 +1541,7 @@
     "question": "civil_marriage",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_civil_marriage_vote_2025"
@@ -1686,7 +1552,7 @@
     "question": "shabbat_transport",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_shabbat_transport_vote_2025"
@@ -1706,12 +1572,13 @@
   {
     "party": "otzma",
     "question": "reduce_rabbinate_monopoly",
-    "value": -1,
-    "status": "historical",
-    "confidence": 0.65,
-    "entity_scope": "PARTY",
+    "value": -2,
+    "status": "known",
+    "confidence": 0.98,
+    "entity_scope": "FACTION",
     "evidence": [
-      "src_bchiromat_otzma_2026",
+      "src_otzma_kashrut_2026",
+      "src_otzma_kashrut_rollcall_2026",
       "src_civil_marriage_vote_2025"
     ]
   },
@@ -1720,29 +1587,35 @@
     "question": "haredi_draft",
     "value": 0,
     "status": "mixed",
-    "confidence": 0.8,
+    "confidence": 0.95,
     "entity_scope": "LEADER",
     "evidence": [
-      "src_bchiromat_otzma_2026"
+      "src_bchiromat_otzma_2026",
+      "src_bengvir_haredi_service_2026"
     ]
   },
   {
     "party": "otzma",
     "question": "arab_service",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
+    "value": 2,
+    "status": "historical",
+    "confidence": 0.85,
     "entity_scope": "PARTY",
-    "evidence": []
+    "evidence": [
+      "src_otzma_arab_service_2017"
+    ]
   },
   {
     "party": "otzma",
     "question": "service_benefits",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 2,
+    "status": "known",
+    "confidence": 0.96,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_otzma_reservist_benefits_2026",
+      "src_otzma_kreuzer_2025"
+    ]
   },
   {
     "party": "otzma",
@@ -1777,19 +1650,10 @@
   },
   {
     "party": "otzma",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "otzma",
     "question": "pm_term_limits",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_pm_term_limits_vote_2026"
@@ -1800,7 +1664,7 @@
     "question": "oct7_state_commission",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "entity_scope": "FACTION",
     "evidence": [
       "src_oct7_state_commission_vote_2025"
@@ -1811,9 +1675,11 @@
     "question": "political_judicial_appointments",
     "value": 2,
     "status": "known",
-    "confidence": 0.9,
-    "entity_scope": "PARTY",
+    "confidence": 0.99,
+    "entity_scope": "FACTION",
     "evidence": [
+      "src_judicial_selection_vote_2025",
+      "src_raam_judicial_selection_2023",
       "src_otzma_idi"
     ]
   },
@@ -1821,10 +1687,11 @@
     "party": "otzma",
     "question": "supreme_court_review",
     "value": -1,
-    "status": "known",
-    "confidence": 0.7,
-    "entity_scope": "PARTY",
+    "status": "historical",
+    "confidence": 0.85,
+    "entity_scope": "FACTION",
     "evidence": [
+      "src_reasonableness_vote_2023",
       "src_otzma_idi"
     ]
   },
@@ -1842,10 +1709,11 @@
     "question": "watchdog_independence",
     "value": -2,
     "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "FACTION",
+    "confidence": 0.99,
+    "entity_scope": "PARTY",
     "evidence": [
-      "src_ag_reform_vote_2026"
+      "src_ag_reform_vote_2026",
+      "src_otzma_ag_position_2026"
     ]
   },
   {
@@ -1878,11 +1746,13 @@
   {
     "party": "otzma",
     "question": "social_housing",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
+    "value": 1,
+    "status": "known",
+    "confidence": 0.82,
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_otzma_public_housing_2025"
+    ]
   },
   {
     "party": "otzma",
@@ -1897,15 +1767,6 @@
   },
   {
     "party": "otzma",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "otzma",
     "question": "lgbt_equal_civil_rights",
     "value": -2,
     "status": "historical",
@@ -1914,15 +1775,6 @@
     "evidence": [
       "src_bengvir_lgbt_2022"
     ]
-  },
-  {
-    "party": "otzma",
-    "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
   },
   {
     "party": "yisrael_beytenu",
@@ -2093,17 +1945,6 @@
   },
   {
     "party": "yisrael_beytenu",
-    "question": "civic_democratic_education",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.75,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_ndi_platform"
-    ]
-  },
-  {
-    "party": "yisrael_beytenu",
     "question": "pm_term_limits",
     "value": 2,
     "status": "known",
@@ -2226,17 +2067,6 @@
   },
   {
     "party": "yisrael_beytenu",
-    "question": "minority_equal_participation",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.75,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_ndi_government"
-    ]
-  },
-  {
-    "party": "yisrael_beytenu",
     "question": "lgbt_equal_civil_rights",
     "value": 2,
     "status": "historical",
@@ -2244,17 +2074,6 @@
     "entity_scope": "PARTY",
     "evidence": [
       "src_lgbt_mk_survey_2022"
-    ]
-  },
-  {
-    "party": "yisrael_beytenu",
-    "question": "aliyah_incentives",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_ndi_platform"
     ]
   },
   {
@@ -2432,18 +2251,6 @@
   },
   {
     "party": "democrats",
-    "question": "civic_democratic_education",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_democrats_platform",
-      "src_democrats_idi"
-    ]
-  },
-  {
-    "party": "democrats",
     "question": "pm_term_limits",
     "value": 1,
     "status": "known",
@@ -2573,18 +2380,6 @@
   },
   {
     "party": "democrats",
-    "question": "minority_equal_participation",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_democrats_platform",
-      "src_democrats_idi"
-    ]
-  },
-  {
-    "party": "democrats",
     "question": "lgbt_equal_civil_rights",
     "value": 2,
     "status": "known",
@@ -2592,17 +2387,6 @@
     "entity_scope": "PARTY",
     "evidence": [
       "src_democrats_agenda_2026"
-    ]
-  },
-  {
-    "party": "democrats",
-    "question": "aliyah_incentives",
-    "value": 1,
-    "status": "historical",
-    "confidence": 0.75,
-    "entity_scope": "COMPONENT_PARTY",
-    "evidence": [
-      "src_democrats_labor_constitution_2025"
     ]
   },
   {
@@ -2779,18 +2563,6 @@
   },
   {
     "party": "yashar",
-    "question": "civic_democratic_education",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.9,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_yashar_program",
-      "src_yashar_idi"
-    ]
-  },
-  {
-    "party": "yashar",
     "question": "pm_term_limits",
     "value": 2,
     "status": "known",
@@ -2920,18 +2692,6 @@
   },
   {
     "party": "yashar",
-    "question": "minority_equal_participation",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.9,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_yashar_program",
-      "src_yashar_idi"
-    ]
-  },
-  {
-    "party": "yashar",
     "question": "lgbt_equal_civil_rights",
     "value": 2,
     "status": "known",
@@ -2939,18 +2699,6 @@
     "entity_scope": "LEADER",
     "evidence": [
       "src_yashar_sagi_laws_2026"
-    ]
-  },
-  {
-    "party": "yashar",
-    "question": "aliyah_incentives",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_yashar_program",
-      "src_yashar_idi"
     ]
   },
   {
@@ -3118,15 +2866,6 @@
   },
   {
     "party": "religious_zionism",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "religious_zionism",
     "question": "pm_term_limits",
     "value": -2,
     "status": "known",
@@ -3244,15 +2983,6 @@
   },
   {
     "party": "religious_zionism",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "religious_zionism",
     "question": "lgbt_equal_civil_rights",
     "value": -2,
     "status": "historical",
@@ -3260,17 +2990,6 @@
     "entity_scope": "LEADER",
     "evidence": [
       "src_rz_lgbt_2018"
-    ]
-  },
-  {
-    "party": "religious_zionism",
-    "question": "aliyah_incentives",
-    "value": 1,
-    "status": "known",
-    "confidence": 0.75,
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_rz_platform"
     ]
   },
   {
@@ -3441,15 +3160,6 @@
   },
   {
     "party": "bait_zioni",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "bait_zioni",
     "question": "pm_term_limits",
     "value": 2,
     "status": "historical",
@@ -3564,32 +3274,12 @@
   },
   {
     "party": "bait_zioni",
-    "question": "minority_equal_participation",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "bait_zioni",
     "question": "lgbt_equal_civil_rights",
     "value": null,
     "status": "insufficient_data",
     "confidence": 0,
     "entity_scope": "PARTY",
     "evidence": []
-  },
-  {
-    "party": "bait_zioni",
-    "question": "aliyah_incentives",
-    "value": 1,
-    "status": "historical",
-    "confidence": 0.7,
-    "entity_scope": "COMPONENT_PARTY",
-    "evidence": [
-      "src_miluimniks_goals"
-    ]
   },
   {
     "party": "hadash_taal",
@@ -3754,15 +3444,6 @@
   },
   {
     "party": "hadash_taal",
-    "question": "civic_democratic_education",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
-  },
-  {
-    "party": "hadash_taal",
     "question": "pm_term_limits",
     "value": 2,
     "status": "historical",
@@ -3882,18 +3563,6 @@
   },
   {
     "party": "hadash_taal",
-    "question": "minority_equal_participation",
-    "value": 2,
-    "status": "known",
-    "confidence": 0.95,
-    "entity_scope": "CURRENT_LIST",
-    "evidence": [
-      "src_taal_idi",
-      "src_hadash_taal_knesset"
-    ]
-  },
-  {
-    "party": "hadash_taal",
     "question": "lgbt_equal_civil_rights",
     "value": 0,
     "status": "mixed",
@@ -3903,14 +3572,5 @@
       "src_taal_lgbt_2021",
       "src_hadash_lgbt_2020"
     ]
-  },
-  {
-    "party": "hadash_taal",
-    "question": "aliyah_incentives",
-    "value": null,
-    "status": "insufficient_data",
-    "confidence": 0,
-    "entity_scope": "PARTY",
-    "evidence": []
   }
 ]

@@ -26,6 +26,17 @@ test('canonical dataset has 12 parties, five axes and at least 25 questions', ()
   assert.ok(questions.filter((q) => q.enabled).length >= 25);
 });
 
+test('removed vague questions have no remaining questionnaire or party-position records', () => {
+  const removedQuestionIds = new Set([
+    'civic_democratic_education',
+    'minority_equal_participation',
+    'aliyah_incentives',
+  ]);
+  assert.ok(load('questions.json').every((q) => !removedQuestionIds.has(q.id)));
+  assert.ok(load('positions.json').every((p) => !removedQuestionIds.has(p.question)));
+  assert.ok(load('baseline-positions.json').every((p) => !removedQuestionIds.has(p.question)));
+});
+
 test('canonical user-facing data is complete in English, Russian and Hebrew', () => {
   for (const axis of load('axes.json')) assertLocalized(axis, ['name', 'negative', 'positive'], 'axis');
   for (const party of load('parties.json')) assertLocalized(party, ['name', 'leader'], 'party');

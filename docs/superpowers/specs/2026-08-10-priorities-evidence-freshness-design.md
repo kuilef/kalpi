@@ -20,9 +20,15 @@ The evidence detail card shows, for every claim: assertion, date, source type, a
 
 ## 3. Boundaries and later work
 
-- Keep the existing 30-question, non-adaptive questionnaire and current axis thresholds.
+- Keep the existing 27-question, non-adaptive questionnaire and current axis thresholds.
 - Historical confidence and any time-decay calculation are explicitly out of scope. Existing `historical` positions retain their current status and confidence behaviour.
 - Do not add candidate political questions in this change. Any later addition must have distinct policy scope, direct current evidence across enough lists, explicit axis mapping, and no duplicate weighting of an existing question.
+- Deferred questionnaire review checklist:
+  - [ ] Assess a public-safety question that makes a concrete choice between police/enforcement and prevention/social programmes; do not add a generic question about opposing crime.
+  - [ ] Assess a healthcare-access question that distinguishes stronger public healthcare from subsidising private care, rather than repeating the general spending question.
+  - [ ] Assess a housing-planning question that distinguishes faster, denser building near transport from municipal and resident control over projects.
+  - [ ] Before proposing climate, energy or weekday-transport questions, decide whether they fit one of the five existing axes or require a separate policy dimension. Do not merge these distinct topics into one question.
+  - [ ] For every retained candidate, collect current direct evidence and party positions before it can affect recommendation scoring.
 - Release checklist: translate question explanations and all new priority/evidence copy into Hebrew and English; add Arabic; test RTL, long text and accessibility in all four locales.
 
 ## Verification
