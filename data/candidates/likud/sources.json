@@ -1,0 +1,65 @@
+[
+  {
+    "id": "candidate_likud_official_home_2026",
+    "title": "הליכוד - תנועה לאומית ליברלית — אתר הבית",
+    "url": "https://www.likud.org.il/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Официальный сайт Ликуда в текущей версии представляет свободный рынок, социальное равенство и сохранение еврейской традиции как базовые ценности движения; это самоописание партии, но не отдельная программа выборов 2026.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_netanyahu_gaza_2026_08",
+    "title": "In rejecting Trump's Gaza plan, Netanyahu reprises a balancing act he has mastered",
+    "url": "https://apnews.com/article/777525433fd69e8d1decddccb3f3d701",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-11",
+    "notes_ru": "Актуальное заявление лидера: Нетаньяху отверг вывод Израиля с контролируемой части Газы до полного разоружения ХАМАС. Scope: LEADER; условие связано с безопасностью и само по себе не доказывает намерение постоянного контроля.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_court_defiance_2026",
+    "title": "Netanyahu government challenge to Supreme Court reignites judicial dispute",
+    "url": "https://www.reuters.com/world/middle-east/netanyahu-government-challenge-supreme-court-reignites-judicial-row-2026-07-06/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-06",
+    "notes_ru": "Ярив Левин и Шломо Кархи, министры от Ликуда, заявили, что решение Верховного суда по составу медиарегулятора не будет соблюдаться, назвав его судебным превышением полномочий. Это актуальное свидетельство отношения к независимым институциональным ограничениям, но не прямой ответ на вопрос об отмене закона как противоречащего Основным законам.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_budget_2026",
+    "title": "Israel cabinet set to approve 2026 budget but faces battle for final approval",
+    "url": "https://www.reuters.com/world/middle-east/israel-cabinet-set-approve-2026-budget-faces-battle-final-approval-2025-12-04/",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-04",
+    "notes_ru": "Проект бюджета 2026 предусматривал снижение подоходных налогов; Нетаньяху публично назвал бюджет ответственным и сбалансированным. Архитектор экономического пакета — министр финансов Бецалель Смотрич, поэтому источник используется только как позиция/одобрение лидера Ликуда и вместе с данными о фактически принятом бюджете.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_reservist_housing_2026",
+    "title": "Israel to offer 20,000 discounted homes to IDF reservists in coming years",
+    "url": "https://www.timesofisrael.com/israel-to-offer-20000-discounted-homes-to-idf-reservists-in-coming-years/",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-10",
+    "notes_ru": "Нетаньяху совместно с министрами объявил программу примерно на 20 000 квартир и участков для резервистов в 2026–2027 годах с существенными скидками и приоритетами. Scope: LEADER; прямое актуальное свидетельство поддержки заметных государственных преимуществ за службу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_oct7_inquiry_2026",
+    "title": "Government says no Oct. 7 inquiry before election, urges High Court not to intervene",
+    "url": "https://www.timesofisrael.com/government-says-no-oct-7-inquiry-before-election-urges-high-court-not-to-intervene/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-22",
+    "notes_ru": "Актуальная позиция лидера: Нетаньяху продолжает выступать против государственной комиссии расследования, члены которой назначаются председателем Верховного суда; правительство заявило, что такую комиссию до выборов создавать не будет. Scope: LEADER.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_override_2023",
+    "title": "Approved in preliminary reading: Supreme Court can only strike down or change a law by a full panel of judges that has decided unanimously",
+    "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press22223b.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2023-02-22",
+    "notes_ru": "Официальная публикация Кнессета о предварительном одобрении предложения об override-механизме, дававшем Кнессету возможность преодолевать решения Верховного суда при установленных условиях. Используется только как историческое свидетельство и сопоставляется с более поздним планом Левина–Саара 2025 года.",
+    "verification_status": "candidate_unverified"
+  }
+]

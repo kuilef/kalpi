@@ -1,0 +1,47 @@
+[
+  {
+    "id": "candidate_religious_zionism_idi_profile",
+    "title": "Religious Zionist Party - The Israel Democracy Institute",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/religious-zionist-party/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Профиль Israel Democracy Institute: фиксирует поддержку партией экономической либерализации и частной инициативы, ограничение полномочий Верховного суда, override clause и передачу большего влияния при назначении судей Кнессету. Используется как вторичный профиль устойчивых партийных позиций, а не как программа 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reuters_draft_2026",
+    "title": "Political struggle of far-right ally Smotrich shows faultline in Netanyahu coalition",
+    "url": "https://www.reuters.com/world/middle-east/political-struggle-far-right-ally-smotrich-shows-faultline-netanyahu-coalition-2026-08-07/",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-07",
+    "notes_ru": "Актуальный материал Reuters о противоречии вокруг призыва харедим: Смотрич заявляет, что харедим должны служить, но поддержал закон, защищающий уклоняющихся от ареста. Относится прежде всего к лидеру партии и используется вместе с прямым заявлением фракции от 25 июля 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reuters_settlements_2026",
+    "title": "Israel allocates $434 million for 34 new West Bank settlements",
+    "url": "https://www.reuters.com/world/middle-east/israel-allocates-434-million-34-new-west-bank-settlements-2026-07-14/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-14",
+    "notes_ru": "Актуальный материал Reuters: Смотрич, лидер Религиозного сионизма, продвигает создание новых поселений и описывает расширение поселений как стратегию укрепления израильского контроля и предотвращения палестинского государства. Используется как актуальное подтверждение территориальной линии вместе с официальной программой партии.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reservist_benefits_2025",
+    "title": "Knesset passes law expanding financial benefits for IDF reservists",
+    "url": "https://www.timesofisrael.com/knesset-passes-law-expanding-financial-benefits-for-idf-reservists/",
+    "source_type": "reputable_reporting",
+    "date": "2025-11-19",
+    "notes_ru": "Материал о принятии льгот резервистам после законодательного бойкота, инициированного Религиозным сионизмом; Смотрич прямо сформулировал принцип «кто больше вносит вклад, тот больше получает». Подтверждает позицию партии по существенным льготам за службу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_oct7_alternative_2026",
+    "title": "ועדת החוקה אישרה לקריאה ראשונה את הצ״ח להקמת ועדת חקירה ממלכתית-לאומית לטבח 7.10",
+    "url": "https://main.knesset.gov.il/News/PressReleases/pages/press02.06.26.aspx",
+    "source_type": "bill",
+    "date": "2026-06-02",
+    "notes_ru": "Официальное сообщение Кнессета: Комиссия по конституции под председательством депутата Религиозного сионизма Симхи Ротмана одобрила альтернативную «государственно-национальную» комиссию; Ротман голосовал за предложение. Это не обычная государственная комиссия расследования, состав которой определяется по стандартному механизму.",
+    "verification_status": "candidate_unverified"
+  }
+]

@@ -1,0 +1,304 @@
+[
+  {
+    "party": "otzma",
+    "question": "security_settlement_tradeoff",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_official_profile_2026",
+      "candidate_otzma_oslo_cancel_2026"
+    ],
+    "explanation_ru": "Текущая самоидентификация партии ставит во главу угла целостность Земли Израиля и суверенитет; в 2026 году партия продвигала отмену соглашений Осло и возврат полной ответственности Израилю. Это прямо тяготеет к сохранению более широкого контроля.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "territory_separation_tradeoff",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_official_profile_2026",
+      "src_otzma_sovereignty_2025",
+      "candidate_otzma_oslo_cancel_2026"
+    ],
+    "explanation_ru": "Партия прямо выступает за израильский суверенитет в Иудее и Самарии и против территориальной логики соглашений Осло, что соответствует сохранению израильского контроля.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "religion_lifestyle_tradeoff",
+    "value": -0.5,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_official_profile_2026",
+      "src_otzma_kashrut_rollcall_2026"
+    ],
+    "explanation_ru": "Официальная линия подчёркивает усиление еврейского характера государства; депутаты фракции поддержали возврат исключительных полномочий системе Главного раввината в кашруте. Это скорее соответствует единым религиозно-традиционным нормам.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "service_obligation_tradeoff",
+    "value": 0,
+    "confidence": 0.5,
+    "status": "mixed",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_bengvir_haredi_service_2026",
+      "src_otzma_arab_service_2017",
+      "src_bchiromat_otzma_2026"
+    ],
+    "explanation_ru": "По харедим текущая линия поддерживает расширение службы через адаптированные маршруты, но отвергает принуждение; исторически партия требовала обязательной военной или гражданской службы для арабских граждан. Общий принцип обязанностей применяется неодинаково.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "otzma",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_ag_position_2026",
+      "src_otzma_official_profile_2026"
+    ],
+    "explanation_ru": "Партия требует, чтобы юридический советник не препятствовал избранному правительству реализовывать его политику, и связывает участие в следующем правительстве с заменой действующего советника. Это соответствует приоритету полномочий избранного большинства.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_official_profile_2026",
+      "src_nation_state_equality_vote_2024"
+    ],
+    "explanation_ru": "Текущая официальная линия подчёркивает особый еврейский характер государства; депутаты Оцма Йехудит ранее голосовали против добавления принципа равенства в Основной закон о национальном государстве. В указанном конфликте это соответствует приоритету еврейского национального характера.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": -1,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bengvir_lgbt_2022"
+    ],
+    "explanation_ru": "В 2022 году Бен-Гвир прямо назвал законодательное признание однополых браков красной линией. Это соответствует традиционному полюсу, но прямое свидетельство старое и относится к лидеру.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "taxes_public_services_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "otzma",
+    "question": "market_regulation_tradeoff",
+    "value": -0.5,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_otzma_kreuzer_2025"
+    ],
+    "explanation_ru": "В отчёте партии за 2025 год деятельность депутата Ицхака Кройзера включает дерегулирование ради усиления конкуренции в финансовых услугах. Это узкое и не полностью текущее свидетельство в пользу меньшего регулирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "social_support_redistribution_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "otzma",
+    "question": "palestinian_state_option",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_otzma_pal_state_2025",
+      "src_otzma_official_profile_2026"
+    ],
+    "explanation_ru": "Бен-Гвир на заседании фракции прямо заявил, что палестинское государство не должно быть создано; текущая партийная линия также ориентирована на израильский суверенитет в Иудее и Самарии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "west_bank_sovereignty",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_otzma_official_profile_2026",
+      "src_otzma_sovereignty_2025"
+    ],
+    "explanation_ru": "Официальный сайт партии прямо поддерживает распространение израильского суверенитета в Иудее и Самарии; депутат партии была среди инициаторов парламентской декларации о таком суверенитете.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "civil_marriage",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "В поимённом голосовании 2025 года участвовавшие депутаты Оцма Йехудит голосовали против законопроекта о гражданском браке, что соответствует сохранению религиозной системы заключения брака.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "shabbat_public_transport",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_shabbat_transport_vote_2025"
+    ],
+    "explanation_ru": "В поимённом голосовании 2025 года участвовавшие депутаты Оцма Йехудит голосовали против законопроекта об общественном транспорте в шаббат, что соответствует сохранению общегосударственных ограничений.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "haredi_draft",
+    "value": 0,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bengvir_haredi_service_2026",
+      "src_bchiromat_otzma_2026"
+    ],
+    "explanation_ru": "Текущая позиция Бен-Гвира сочетает расширение участия харедим в службе через адаптированные полицейские и гражданско-безопасностные маршруты с отказом от принудительного призыва. Это прямо промежуточная позиция между полюсами.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "service_benefits",
+    "value": -1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_otzma_reservist_benefits_2026",
+      "src_otzma_kreuzer_2025"
+    ],
+    "explanation_ru": "Депутат фракции Ицхак Кройзер участвовал в продвижении льгот резервистам при поступлении и получении общежития; официальный отчёт партии также перечисляет дополнительные преимущества служившим и раненым военнослужащим.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "core_curriculum_funding",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "otzma",
+    "question": "supreme_court_appointments",
+    "value": -1,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_judicial_selection_2023"
+    ],
+    "explanation_ru": "В 2023 году депутат Оцма Йехудит Ицхак Кройзер голосовал за изменение состава Комиссии по выбору судей в сторону большего политического представительства. Прямое свидетельство соответствует политическому полюсу, но не подтверждает отдельно текущую позицию 2026 года.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "knesset_supreme_court_final_say",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "otzma",
+    "question": "nation_state_law_equality",
+    "value": 1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_nation_state_equality_vote_2024",
+      "src_otzma_official_profile_2026"
+    ],
+    "explanation_ru": "Депутаты Оцма Йехудит голосовали против поправки, добавляющей принцип равенства в Основной закон о национальном государстве; текущая официальная линия продолжает подчёркивать усиление еврейского характера государства.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "same_sex_union_equality",
+    "value": 1,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_bengvir_lgbt_2022"
+    ],
+    "explanation_ru": "В 2022 году Бен-Гвир прямо выступил против законодательного признания однополых браков. Это соответствует допущению различий в юридическом признании, но свидетельство историческое и относится к лидеру.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "otzma",
+    "question": "october_7_state_inquiry",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_oct7_state_commission_vote_2025"
+    ],
+    "explanation_ru": "В поимённом голосовании по созданию обычной государственной комиссии расследования событий 7 октября участвовавшие депутаты Оцма Йехудит голосовали против такого предложения.",
+    "last_verified": "2026-08-11"
+  }
+]

@@ -1,0 +1,294 @@
+[
+  {
+    "party": "raam",
+    "question": "security_settlement_tradeoff",
+    "value": 1,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_raam_no_annexation_2025",
+      "candidate_raam_pal_state_2025",
+      "candidate_raam_platform_2002"
+    ],
+    "explanation_ru": "В 2025 году РААМ участвовала в вотуме недоверия против политики «вечной войны и аннексии без политического горизонта», а Мансур Аббас прямо назвал палестинское государство также интересом безопасности Израиля. Это соответствует готовности отказаться от части постоянного контроля ради политического урегулирования; историческая программа показывает устойчивость этого направления.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "territory_separation_tradeoff",
+    "value": 1,
+    "confidence": 0.86,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_raam_no_annexation_2025",
+      "candidate_raam_pal_state_2025",
+      "candidate_raam_platform_2002"
+    ],
+    "explanation_ru": "Актуальная фракционная позиция выступает против аннексии без политического горизонта, а лидер партии поддерживает палестинское государство. Историческая программа дополнительно прямо требует прекращения оккупации и эвакуации поселений. Совокупность свидетельств соответствует территориальному разделению с палестинцами.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "religion_lifestyle_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "service_obligation_tradeoff",
+    "value": 0.5,
+    "confidence": 0.66,
+    "status": "mixed",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_raam_service_2026",
+      "src_raam_arab_service_clarification_2026",
+      "src_raam_arab_service_ynet_2026"
+    ],
+    "explanation_ru": "В мае 2026 года Аббас сначала говорил о модели «службы для всех», затем уточнил, что для арабской молодёжи имеет в виду добровольные независимые общественные инициативы; в июле он поддержал адаптированную модель гражданской службы, не сформулировав её как обязательную. Поэтому позиция смешанная и умеренно склоняется к допустимости группового отличия от общей обязанности.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": 0.5,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_judicial_selection_2023"
+    ],
+    "explanation_ru": "В 2023 году Мансур Аббас голосовал против изменения Комиссии по выбору судей, увеличивавшего политическое представительство. Это свидетельствует в пользу независимых институциональных ограничений, но материал старый и относится к одному конкретному механизму, поэтому не считается подтверждённой текущей общей линией.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": 0.5,
+    "confidence": 0.68,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_raam_arab_service_ynet_2026",
+      "candidate_raam_knesset_profile"
+    ],
+    "explanation_ru": "В июле 2026 года Мансур Аббас требовал равного гражданского статуса арабских граждан; текущий профиль партии также описывает продвижение прав арабского общества как одну из её задач. Это склоняет позицию к гражданскому равенству, но источники не формулируют прямой ответ на гипотетический конфликт этого принципа с еврейским национальным характером государства, поэтому значение умеренное.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": -0.5,
+    "confidence": 0.38,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_lgbt_2020",
+      "src_raam_civic_split_2025"
+    ],
+    "explanation_ru": "В 2020 году связанное с РААМ Исламское движение заявляло, что депутаты партии не будут поддерживать законы, расширяющие права ЛГБТ, что соответствует традиционному полюсу. Однако в конце 2025 года РААМ объявила об институциональном отделении от Совета шуры, поэтому старую позицию нельзя автоматически считать текущей.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "taxes_public_services_tradeoff",
+    "value": 0.5,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_public_services_plan_2021"
+    ],
+    "explanation_ru": "Коалиционное соглашение РААМ 2021 года предусматривало многолетние крупные государственные вложения в здравоохранение, образование, социальную сферу, жильё и инфраструктуру арабского общества. Это свидетельствует в пользу более широких государственных услуг, но не даёт текущей позиции 2026 года по общему компромиссу между налогами и услугами.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "market_regulation_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "social_support_redistribution_tradeoff",
+    "value": 0.5,
+    "confidence": 0.48,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_public_services_plan_2021",
+      "candidate_raam_platform_2002"
+    ],
+    "explanation_ru": "Исторические программные и коалиционные материалы РААМ предусматривают целевые государственные расходы для сокращения социально-экономических разрывов и устранения дискриминации в социальных услугах. Это ближе к активному сокращению неравенства через государственную поддержку, но свежая общая социально-экономическая доктрина 2026 года не установлена.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "palestinian_state_option",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_raam_pal_state_2025",
+      "src_raam_idi",
+      "candidate_raam_platform_2002"
+    ],
+    "explanation_ru": "Мансур Аббас в 2025 году прямо поддержал палестинское государство, назвав его также израильским национальным и оборонным интересом. Это однозначно соответствует сохранению варианта независимого палестинского государства в рамках политического урегулирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "west_bank_sovereignty",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_raam_no_annexation_2025",
+      "candidate_raam_pal_state_2025"
+    ],
+    "explanation_ru": "В 2025 году РААМ прямо участвовала в парламентской инициативе против аннексии территорий без политического горизонта, а лидер партии поддерживает создание палестинского государства. Это соответствует позиции не распространять израильский суверенитет на значительные части Иудеи и Самарии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "civil_marriage",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "shabbat_public_transport",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "haredi_draft",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "service_benefits",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "core_curriculum_funding",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "supreme_court_appointments",
+    "value": 1,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_judicial_selection_2023"
+    ],
+    "explanation_ru": "В 2023 году Мансур Аббас голосовал против проекта, увеличивавшего долю политиков в Комиссии по выбору судей. Это напрямую соответствует большему весу судей и профессиональных представителей, но без свежего подтверждения 2025–2026 годов позиция отмечена как историческая.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "knesset_supreme_court_final_say",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "nation_state_law_equality",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "raam",
+    "question": "same_sex_union_equality",
+    "value": 1,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_raam_lgbt_2020",
+      "src_raam_civic_split_2025"
+    ],
+    "explanation_ru": "В 2020 году связанное с РААМ Исламское движение заявляло об отказе поддерживать законы, расширяющие права ЛГБТ, что соответствует допустимости различий в юридическом статусе. После отделения РААМ от Совета шуры в 2025 году эта позиция не может автоматически считаться актуальной и потому используется только как historical evidence.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "raam",
+    "question": "october_7_state_inquiry",
+    "value": -1,
+    "confidence": 0.92,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_oct7_state_commission_vote_2025"
+    ],
+    "explanation_ru": "В поимённом голосовании декабря 2025 года участвовавшие депутаты РААМ поддержали создание обычной независимой государственной комиссии расследования событий 7 октября. Это прямо соответствует левому полюсу вопроса.",
+    "last_verified": "2026-08-11"
+  }
+]

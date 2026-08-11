@@ -1,0 +1,307 @@
+[
+  {
+    "party": "hadash_taal",
+    "question": "security_settlement_tradeoff",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_raam_no_annexation_2025",
+      "candidate_hadash_taal_jabareen_two_states_2026"
+    ],
+    "explanation_ru": "Фракция ХАДАШ–ТААЛ выступила против аннексии без политического горизонта, а нынешний председатель ХАДАШ Йосеф Джабарин в 2026 году прямо призвал завершить постоянный контроль над палестинцами и перейти к мирному соглашению двух государств. Это соответствует готовности отказаться от части постоянного контроля ради политического урегулирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "territory_separation_tradeoff",
+    "value": 1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_jabareen_two_states_2026",
+      "src_taal_idi"
+    ],
+    "explanation_ru": "Текущий лидер ХАДАШ выступает за окончание оккупации, демонтаж поселений и палестинское государство рядом с Израилем; профиль ТААЛ также фиксирует поддержку независимого палестинского государства. Оба компонента направлены к территориальному разделению, хотя прямой единой программы списка 2026 по границам не найдено.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "religion_lifestyle_tradeoff",
+    "value": 1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "candidate_hadash_taal_mako_profile_2026",
+      "src_taal_idi"
+    ],
+    "explanation_ru": "Актуальный профиль ХАДАШ–ТААЛ перед выборами 2026 прямо относит список к сторонникам отделения религии от государства; ТААЛ также характеризуется как светская партия. Это соответствует приоритету свободы граждан перед едиными религиозными нормами государства.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "service_obligation_tradeoff",
+    "value": 0.5,
+    "confidence": 0.35,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_joint_list_haredi_draft_2022"
+    ],
+    "explanation_ru": "В 2022 году прежний Объединённый список, включавший ХАДАШ и ТААЛ, выступил против закона о призыве харедим и отдельно выражал опасение, что он откроет путь обязательному призыву арабов. Это исторически скорее против принципа максимально общей обязанности для всех граждан, но мотив позиции отличался от защиты религиозного уклада и не подтверждает текущую линию 2026 года.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "hadash_taal",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": 1,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_hadash_judicial_selection_2025",
+      "candidate_hadash_taal_hadash_principles"
+    ],
+    "explanation_ru": "ХАДАШ публично выступает против политического захвата механизма назначения судей и декларирует защиту демократических свобод. Это соответствует сильным независимым институциональным ограничениям власти большинства; прямой отдельный документ ТААЛ по всему фундаментальному вопросу не найден.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "candidate_hadash_taal_mako_profile_2026",
+      "src_hadash_taal_knesset",
+      "candidate_hadash_taal_hadash_principles"
+    ],
+    "explanation_ru": "Актуальный профиль списка связывает ХАДАШ–ТААЛ с концепцией «государства всех граждан», а материалы списка и ХАДАШ подчёркивают полное гражданское равенство и борьбу с национальной дискриминацией. Это соответствует приоритету одинакового гражданского статуса независимо от национальности.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": 0,
+    "confidence": 0.35,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_hadash_lgbt_2020",
+      "src_taal_lgbt_2021"
+    ],
+    "explanation_ru": "Исторические прямые свидетельства показывают расхождение компонентов: депутаты ХАДАШ поддерживали законодательное расширение прав ЛГБТ, тогда как лидер ТААЛ Ахмад Тиби выступал против законодательства о полном равноправии. Поэтому историческая позиция совместного блока действительно смешанная; подтверждённой единой линии 2026 года по этому конфликту не найдено.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "taxes_public_services_tradeoff",
+    "value": 1,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_hadash_taal_joint_social_plan_2021"
+    ],
+    "explanation_ru": "В 2021 году Объединённый список, включавший ХАДАШ и ТААЛ, предлагал повышать прямые налоги на высокие доходы и богатство для финансирования социальных услуг и пособий. Это прямо соответствует полюсу более широких государственных услуг, но свидетельство относится к прежнему объединению и прошлому периоду.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "market_regulation_tradeoff",
+    "value": 1,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_hadash_workers"
+    ],
+    "explanation_ru": "Официальная экономическая страница ХАДАШ прямо продвигает социалистическую модель, усиление трудового регулирования и контроля, минимальную зарплату, прямой найм и публичные институты. Это соответствует более активному государственному регулированию рынка; источник относится к компоненту ХАДАШ.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "social_support_redistribution_tradeoff",
+    "value": 1,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_hadash_taal_joint_social_plan_2021"
+    ],
+    "explanation_ru": "Исторический план Объединённого списка прямо предлагал повышенные налоги на высокие доходы, богатство и наследство и направлять дополнительные доходы на жильё, социальные программы и поддержку безработных. Это соответствует активному перераспределению для уменьшения социальных разрывов, но не является подтверждённой программой ХАДАШ–ТААЛ 2026.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "palestinian_state_option",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_jabareen_two_states_2026",
+      "src_taal_idi"
+    ],
+    "explanation_ru": "Йосеф Джабарин в июне 2026 года прямо призвал к созданию независимого суверенного палестинского государства рядом с Израилем; ТААЛ также поддерживает независимое палестинское государство в рамках мирного процесса. Это прямо соответствует сохранению такого варианта в будущем соглашении.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "west_bank_sovereignty",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_raam_no_annexation_2025",
+      "candidate_hadash_taal_jabareen_two_states_2026"
+    ],
+    "explanation_ru": "ХАДАШ–ТААЛ участвовал в официальном парламентском предложении против аннексии территорий, а текущий лидер ХАДАШ выступает против аннексии и за окончание оккупации. Это соответствует отказу распространять израильский суверенитет на значительные части Иудеи и Самарии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "civil_marriage",
+    "value": -1,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civil_marriage_vote_2025",
+      "candidate_hadash_taal_mako_profile_2026"
+    ],
+    "explanation_ru": "В декабре 2025 года депутат ХАДАШ–ТААЛ Офер Касиф проголосовал за законопроект о гражданском браке; актуальный профиль списка 2026 также относит его к сторонникам отделения религии от государства. Это соответствует разрешению гражданского брака вне религиозной системы.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "shabbat_public_transport",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_shabbat_transport_vote_2025",
+      "candidate_hadash_taal_mako_profile_2026"
+    ],
+    "explanation_ru": "В ноябре 2025 года Ахмад Тиби, Офер Касиф и Аида Тума-Слиман от ХАДАШ–ТААЛ проголосовали за законопроект, допускающий общественный транспорт в шаббат; текущий профиль списка поддерживает отделение религии от государства. Это соответствует разрешительной позиции, близкой к муниципальной автономии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "haredi_draft",
+    "value": 0.5,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_joint_list_haredi_draft_2022"
+    ],
+    "explanation_ru": "В 2022 году прежний Объединённый список, в который входили ХАДАШ и ТААЛ, выступил против законопроекта о призыве харедим. Это скорее соответствует сохранению широкого исключения, однако мотивировалось прежде всего неприятием расширения армии и опасением призыва арабов, а не защитой изучения Торы; текущая позиция 2026 не установлена.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "service_benefits",
+    "value": 1,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_hadash_taal_hadash_service_benefits_2013"
+    ],
+    "explanation_ru": "Дов Ханин от ХАДАШ в 2013 году прямо выступал против использования военной службы как критерия систематических преимуществ в занятости, зарплате, земле и общежитиях, считая это дискриминацией неслужащих групп. Это соответствует полюсу, где льготы не должны существенно зависеть от службы, но источник старый и относится только к ХАДАШ.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "core_curriculum_funding",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "hadash_taal",
+    "question": "supreme_court_appointments",
+    "value": 1,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_hadash_judicial_selection_2025"
+    ],
+    "explanation_ru": "Официальный сайт ХАДАШ в 2025 году характеризовал реформу, увеличивающую политический контроль над Комиссией по выбору судей, как захват механизма коалицией и поддержал протест оппозиции. Это соответствует большему весу профессиональных и судебных представителей, а не избранных политиков; источник относится к компоненту ХАДАШ.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "knesset_supreme_court_final_say",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "hadash_taal",
+    "question": "nation_state_law_equality",
+    "value": -0.5,
+    "confidence": 0.35,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_hadash_taal_hadash_nation_state_2018"
+    ],
+    "explanation_ru": "ХАДАШ исторически требовал отменить Основной закон о национальном государстве и закрепить полное равенство. Это явно против сохранения закона без положения о равенстве и потому ближе к левому полюсу, но требование отмены закона не тождественно точному предложению лишь добавить в него статью о равенстве и не подтверждает текущую общую позицию списка 2026.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "same_sex_union_equality",
+    "value": 0,
+    "confidence": 0.35,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_hadash_lgbt_2020",
+      "src_taal_lgbt_2021"
+    ],
+    "explanation_ru": "Исторически компоненты занимали прямо расходящиеся позиции: ХАДАШ поддерживал законодательное расширение равных прав ЛГБТ, тогда как Ахмад Тиби от ТААЛ выступал против законодательства о полном равноправии. Это является реальной смешанной исторической позицией, а не отсутствием данных; актуальная единая позиция списка 2026 не подтверждена.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "october_7_state_inquiry",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_oct7_state_commission_vote_2025"
+    ],
+    "explanation_ru": "В декабре 2025 года депутаты ХАДАШ–ТААЛ, включая Ахмада Тиби и Аймана Оде, голосовали за законопроект о создании обычной государственной комиссии расследования событий 7 октября. Это прямо соответствует независимой государственной комиссии того типа, который описан в вопросе.",
+    "last_verified": "2026-08-11"
+  }
+]

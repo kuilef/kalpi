@@ -1,0 +1,289 @@
+[
+  {
+    "party": "bait_zioni",
+    "question": "security_settlement_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "territory_separation_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "religion_lifestyle_tradeoff",
+    "value": 0.5,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_hendel_religion_2021",
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "Исторические позиции нынешних лидеров указывают скорее на свободу выбора и местную автономию в вопросах религии и образа жизни: Гендель поддерживал муниципальное решение о транспорте в шаббат и альтернативу гражданского брака, а Троппер в 2025 году голосовал за законопроект о гражданском браке. Текущей формальной позиции объединённого списка по широкому tradeoff не найдено.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "service_obligation_tradeoff",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "candidate_bait_zioni_launch_principles_2026",
+      "candidate_bait_zioni_hendel_n12_2026",
+      "candidate_bait_zioni_idi_miluimniks"
+    ],
+    "explanation_ru": "На запуске объединённого списка Троппер сформулировал принцип «дом, в котором все служат», а Гендель после объединения назвал реальный закон о призыве одним из ключевых принципов. Это прямо соответствует максимально общей обязанности службы, а не широким групповым исключениям.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": 0.5,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ],
+    "explanation_ru": "Текущая программа объединённого списка связывает полное государственное финансирование с преподаванием לימודי ליבה и одновременно делает акцент на усилении государственного образования. Это указывает на приоритет общего минимального стандарта, хотя фундаментальный вопрос шире конкретного механизма финансирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": 0,
+    "confidence": 0.6,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_troper_kan_2026",
+      "candidate_bait_zioni_idi_miluimniks"
+    ],
+    "explanation_ru": "Троппер предлагает Основной закон о законодательстве, который должен определить границы судебного контроля, и одновременно консенсусную модель отбора судей с требованием 7 из 9 голосов. Компонент «Милуимники» декларирует баланс ветвей власти и конституцию. Это прямые основания для действительно промежуточной позиции между неограниченным большинством и широким независимым контролем.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": 0.5,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_hendel_religion_2021",
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "Гендель исторически выступал за гражданскую альтернативу религиозному браку и против монополии одной религиозной группы, а Троппер в 2025 году поддержал законопроект о гражданском браке. Это свидетельствует скорее в сторону личного выбора в вопросах личного статуса, но не устанавливает текущую позицию списка по всему спектру семейных норм.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "taxes_public_services_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "market_regulation_tradeoff",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ],
+    "explanation_ru": "В представленной в августе 2026 года программе объединённого списка указаны демонополизация, усиление конкуренции и снижение регуляторной нагрузки. Это прямо соответствует полюсу большей свободы бизнеса и меньшего регулирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "social_support_redistribution_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "palestinian_state_option",
+    "value": 1,
+    "confidence": 0.6,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_troper_kan_2026"
+    ],
+    "explanation_ru": "После создания объединённого списка Хили Троппер прямо заявил, что выступает против палестинского государства. Это соответствует правому полюсу вопроса, но evidence относится к лидеру и получено через вторичную перепечатку интервью, поэтому confidence ограничен.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "west_bank_sovereignty",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "civil_marriage",
+    "value": -1,
+    "confidence": 0.55,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_civil_marriage_vote_2025",
+      "candidate_bait_zioni_hendel_religion_2021"
+    ],
+    "explanation_ru": "Хили Троппер в декабре 2025 года поимённо голосовал за законопроект о гражданском браке; Йоаз Гендель ранее прямо поддерживал создание гражданской альтернативы для тех, кто не может заключить религиозный брак. Оба свидетельства относятся к нынешним лидерам, но предшествуют созданию текущего списка.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "shabbat_public_transport",
+    "value": -1,
+    "confidence": 0.4,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_hendel_religion_2021"
+    ],
+    "explanation_ru": "В 2021 году Йоаз Гендель прямо предлагал передать мэрам полномочия определять, как будет устроен транспорт в шаббат в их городах. Это точно соответствует полюсу муниципальной автономии, но является старой позицией лидера, не подтверждённой текущей программой объединения.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "haredi_draft",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "candidate_bait_zioni_launch_principles_2026",
+      "candidate_bait_zioni_hendel_n12_2026",
+      "candidate_bait_zioni_idi_miluimniks"
+    ],
+    "explanation_ru": "Объединённый список запущен с принципом всеобщей службы; Гендель после объединения требует реального закона о призыве и прямо отвергает сохранение массовой неслужбы харедим. Это соответствует применению обязанности службы к мужчинам-харедим без широкого группового освобождения.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "service_benefits",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "core_curriculum_funding",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "src_bait_zioni_program_aug2026"
+    ],
+    "explanation_ru": "Актуальная программа Байт Циони–Милуимники прямо предусматривает полное государственное финансирование только для школ, преподающих לימודי ליבה. Это непосредственно соответствует левому полюсу вопроса.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "supreme_court_appointments",
+    "value": 0,
+    "confidence": 0.55,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_bait_zioni_troper_kan_2026"
+    ],
+    "explanation_ru": "Троппер после объединения предложил вернуться к модели, в которой для назначения судьи Верховного суда требуется 7 из 9 голосов комиссии. Такая конструкция требует межблокового согласия и не отдаёт однозначно решающий вес ни политикам, ни профессиональной части комиссии, поэтому позиция по заданным полюсам действительно промежуточная.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "knesset_supreme_court_final_say",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "nation_state_law_equality",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "same_sex_union_equality",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "bait_zioni",
+    "question": "october_7_state_inquiry",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "candidate_bait_zioni_hendel_n12_2026"
+    ],
+    "explanation_ru": "Сразу после объединения Гендель, описывая общие политические принципы, прямо назвал создание государственной комиссии расследования одним из обязательных шагов будущего правительства и связал это с ответственностью за 7 октября. Это соответствует независимой государственной комиссии расследования.",
+    "last_verified": "2026-08-11"
+  }
+]

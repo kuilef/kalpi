@@ -1,0 +1,311 @@
+[
+  {
+    "party": "democrats",
+    "question": "security_settlement_tradeoff",
+    "value": 0.5,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа предлагает политическое размежевание и постоянные границы, включая будущую демилитаризованную палестинскую государственность, но одновременно сохраняет полный израильский контроль безопасности на восточной границе и в жизненно важных пространствах. Это скорее соответствует готовности отказаться от части постоянного контроля ради урегулирования, но не максимальному полюсу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "territory_separation_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия прямо предлагает гражданское/территориальное размежевание с палестинцами, определение постоянных границ и прекращение любых процессов аннексии. Это прямо соответствует территориальному разделению.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "religion_lifestyle_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Программа закрепляет свободу религии и свободу от религии, гражданский брак, религиозный плюрализм и передачу муниципалитетам решения об объёме транспорта в шаббат. Это прямо соответствует свободе граждан и местных сообществ выбирать образ жизни.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "service_obligation_tradeoff",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия требует службы для всех по действующему Закону о службе безопасности, отмены секторальных освобождений и вовлечения харедим, арабов и меньшинств. Это прямо соответствует максимально общим обязанностям для граждан.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Программа предусматривает единую государственную систему образования, единые стандарты и обязательную общую программу основных предметов для всех потоков. Дополнительные культурные и религиозные предметы разрешаются сверх общего ядра.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия предлагает закрепить разделение властей, независимость судебной власти и контрольных институтов, взаимные сдержки и ограничения полномочий исполнительной власти. Это прямо соответствует широким независимым ограничениям власти большинства.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": 0,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа прямо формулирует желаемый порядок как сочетание еврейского характера государства с полным гражданским равенством всех граждан и предлагает закрепить оба принципа конституционно. Это прямое основание считать позицию действительно сбалансированной между двумя полюсами, а не отсутствие данных.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа предусматривает гражданский брак, в том числе для однополых пар, с полными и равными правами, а также свободу религии и свободу от религии. Это прямо соответствует личной свободе и равному юридическому признанию.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "taxes_public_services_tradeoff",
+    "value": 0.5,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Экономическая программа прямо требует увеличивать инвестиции в социальные услуги, государственную медицину, общественный транспорт, образование и инфраструктуру. При этом она не формулирует общего обязательства повышать налоги, поэтому связь с полюсом широких государственных услуг оценивается как умеренная, а не максимальная.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "market_regulation_tradeoff",
+    "value": 0,
+    "confidence": 0.9,
+    "status": "mixed",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа одновременно предлагает рыночную либерализацию — открытие импорта, усиление конкуренции, снятие лишних стандартных барьеров и высвобождение земель — и более активное регулирование: усиление антимонопольного органа, новые ограничения концентрации, потребительское регулирование и законодательную защиту граждан. Это прямое основание для действительно смешанной позиции.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "social_support_redistribution_tradeoff",
+    "value": 0.5,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Партия говорит о государстве благосостояния, справедливом распределении ресурсов, сокращении социальных и экономических разрывов и повышенных инвестициях в уязвимые группы. Это скорее соответствует активной политике сокращения неравенства, хотя программа не задаёт конкретного масштаба налогового перераспределения.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "palestinian_state_option",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Апрельская программа прямо предусматривает будущую палестинскую государственность при полном разоружении и жёстких мерах безопасности. Это непосредственно соответствует сохранению возможности независимого палестинского государства в рамках соглашения.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "west_bank_sovereignty",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия прямо обещает остановить все формы аннексии — юридической, постепенной и фактической. Это непосредственно соответствует отказу от распространения израильского суверенитета на значительные части Иудеи и Самарии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "civil_marriage",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Программа прямо предусматривает параллельную раввинату систему гражданских браков в Израиле для еврейских, смешанных, однополых и нерелигиозных пар.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "shabbat_public_transport",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Программа прямо передаёт местным властям право определять объём общественного транспорта в шаббат с учётом характера местного населения. Это точно соответствует левому полюсу вопроса.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "haredi_draft",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия прямо требует отменить секторальные освобождения и применять обязанность службы по действующему закону, с военной службой как центральным элементом и дополнительными национально-гражданскими маршрутами.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "service_benefits",
+    "value": -1,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_service_benefit_sanctions_vote_2025"
+    ],
+    "explanation_ru": "В октябре 2025 года все четыре депутата фракции «Авода», из которой происходит парламентская фракция нынешних «Демократов», поддержали законопроект, связывающий жилищные льготы с выполнением обязанностей по Закону о военной службе. Это прямое, но компонентное и прошлое свидетельство; текущая программа 2026 не формулирует столь же конкретную общую норму о льготах.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "core_curriculum_funding",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа требует единой государственной системы с едиными стандартами и обязательной базовой программой для всех потоков, одновременно критикуя государственное финансирование автономных систем без общего ядра. Это соответствует условию полного государственного финансирования через соблюдение обязательного минимума.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "supreme_court_appointments",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "democrats",
+    "question": "knesset_supreme_court_final_say",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026"
+    ],
+    "explanation_ru": "Программа прямо обещает защищать конституционный судебный контроль БАГАЦ и предотвращать обходные законы и широкую override clause. В конфликте между обычным парламентским большинством и судебным контролем это соответствует большему окончательному весу Верховного суда.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "nation_state_law_equality",
+    "value": -0.5,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_platform"
+    ],
+    "explanation_ru": "Партия не предлагает оставить действующий Закон о национальном государстве без изменения: она намерена заменить его Основным законом в духе Декларации независимости, который сочетает еврейский характер государства с полным равенством граждан. Это скорее соответствует полюсу явного закрепления равенства, хотя формально предлагается замена закона, а не добавление статьи в нынешний текст.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "same_sex_union_equality",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_democrats_agenda_2026",
+      "src_democrats_lgbt"
+    ],
+    "explanation_ru": "Текущая программа прямо включает однополые пары в систему гражданского брака и требует предоставить таким бракам полные и равные права с религиозными браками. Это непосредственно соответствует равному юридическому признанию.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "democrats",
+    "question": "october_7_state_inquiry",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_oct7_state_commission_vote_2025",
+      "candidate_democrats_oct7_inquiry_2026"
+    ],
+    "explanation_ru": "Депутаты парламентской фракции поддержали создание обычной государственной комиссии расследования в декабре 2025 года, а в январе 2026 года председатель фракции Эфрат Райтен на официальном сайте партии вновь заявила, что такая комиссия будет создана. Это соответствует независимой государственной комиссии описанного в вопросе типа.",
+    "last_verified": "2026-08-11"
+  }
+]

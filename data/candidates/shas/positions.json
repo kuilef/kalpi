@@ -1,0 +1,305 @@
+[
+  {
+    "party": "shas",
+    "question": "security_settlement_tradeoff",
+    "value": -0.5,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_sovereignty_2025",
+      "src_bchiromat_shas_2026"
+    ],
+    "explanation_ru": "Фракция ШАС была среди авторов декларации за распространение суверенитета в Иудее и Самарии; декларация связывает сохранение контроля с безопасностью и отвергает палестинское государство. Это указывает на приоритет контроля, но вопрос шире конкретной декларации.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "territory_separation_tradeoff",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_sovereignty_2025"
+    ],
+    "explanation_ru": "ШАС была среди фракций, внесших декларацию о праве Израиля на территории Иудеи, Самарии и Иорданской долины и о скорейшем распространении суверенитета на районы еврейских поселений; это прямо противостоит территориальному разделению.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "religion_lifestyle_tradeoff",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_shas_religion_state_2026"
+    ],
+    "explanation_ru": "В апреле 2026 года ШАС публично противопоставила предложения о гражданском браке и муниципальном выборе транспорта в шаббат сохранению еврейской идентичности государства, святости шаббата и религиозного порядка брака.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "service_obligation_tradeoff",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_shas_draft_2026"
+    ],
+    "explanation_ru": "Актуальная линия ШАС по закону о призыве направлена на сохранение особого статуса очно изучающих Тору и защиту их от санкций, то есть на широкое групповое исключение из общей обязанности службы.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": -1,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_core_curriculum_vote_2023"
+    ],
+    "explanation_ru": "В 2023 году депутаты ШАС голосовали против законопроекта об обязательных базовых предметах и отмене статуса освобождённых школ. Это прямое, но не актуализированное в 2026 году свидетельство в пользу образовательной автономии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": -0.5,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_judicial_selection_vote_2025"
+    ],
+    "explanation_ru": "Депутаты ШАС поддержали изменение механизма отбора судей, увеличивающее политическое влияние на назначения. Это конкретно указывает в сторону большего веса избранной власти, хотя вопрос охватывает институциональные ограничения шире судебных назначений.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": -0.5,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_nation_state_equality_vote_2024"
+    ],
+    "explanation_ru": "Депутаты ШАС голосовали против поправки, добавлявшей явный принцип равенства в Основной закон о национальном государстве. Это указывает на сохранение приоритета действующей формулы еврейского национального государства, но не является прямым ответом на общий конфликт двух принципов.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_shas_religion_state_2026",
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "ШАС в текущем политическом цикле защищает религиозный порядок брака и выступает против гражданского брака, ставя традиционные нормы личного статуса выше расширения индивидуального выбора в этой сфере.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "taxes_public_services_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "shas",
+    "question": "market_regulation_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "shas",
+    "question": "social_support_redistribution_tradeoff",
+    "value": -0.5,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_shas_food_vouchers_2025",
+      "src_mako_compass_2026"
+    ],
+    "explanation_ru": "ШАС сделала финансирование продовольственных ваучеров для малообеспеченных семей условием поддержки бюджета-2026. Это конкретная модель адресной помощи базовым потребностям; она не доказывает общую позицию за широкое перераспределение доходов.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "palestinian_state_option",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_sovereignty_2025"
+    ],
+    "explanation_ru": "ШАС была среди фракций, внесших декларацию Кнессета, которая прямо характеризует палестинское государство как угрозу и заявляет, что идея его создания снята с повестки.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "west_bank_sovereignty",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_sovereignty_2025",
+      "src_bchiromat_shas_2026"
+    ],
+    "explanation_ru": "ШАС была среди фракций, официально внесших декларацию с призывом как можно скорее распространить израильские право, юрисдикцию и управление на районы еврейских поселений в Иудее, Самарии и Иорданской долине.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "civil_marriage",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_shas_religion_state_2026",
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "ШАС прямо выступила против гражданского брака и за сохранение брака «по закону Моисея и Израиля»; это соответствует сохранению признанных религиозных систем заключения брака.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "shabbat_public_transport",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_shas_religion_state_2026",
+      "src_shabbat_transport_vote_2025",
+      "src_bchiromat_shas_2026"
+    ],
+    "explanation_ru": "В ответ на предложение дать городам право самим решать вопрос транспорта в шаббат ШАС выступила за сохранение святости шаббата; депутаты партии также голосовали против соответствующего законопроекта о транспорте в шаббат.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "haredi_draft",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_shas_draft_2026"
+    ],
+    "explanation_ru": "Текущая позиция ШАС предусматривает сохранение особого режима для очно изучающих Тору и противодействие санкциям и преследованию этой группы, что соответствует широким освобождениям для учащихся ешив.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "service_benefits",
+    "value": 0.5,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_service_benefit_sanctions_vote_2025"
+    ],
+    "explanation_ru": "Депутаты ШАС голосовали против законопроекта, прямо увязывавшего жилищные льготы с выполнением обязанностей по Закону о военной службе. Это указывает против существенной зависимости общих льгот от факта службы, но относится к одному виду льгот.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "core_curriculum_funding",
+    "value": 0.5,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_core_curriculum_vote_2023"
+    ],
+    "explanation_ru": "В 2023 году депутаты ШАС голосовали против законопроекта об обязательных базовых предметах и отмене режима освобождённых школ. Поскольку законопроект шире именно условия полного финансирования, значение выставлено умеренно и как историческое.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "supreme_court_appointments",
+    "value": -1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_judicial_selection_vote_2025"
+    ],
+    "explanation_ru": "Депутаты ШАС поддержали окончательное принятие изменения состава Комиссии по выбору судей, которое увеличивает влияние избранных политических представителей на назначения.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "knesset_supreme_court_final_say",
+    "value": -1,
+    "confidence": 0.45,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_shas_override_2022"
+    ],
+    "explanation_ru": "Арье Дери прямо поддерживал «пункт преодоления», позволяющий Кнессету большинством 61 повторно принять закон после его отмены судом. Источник прямой, но относится к 2022 году и позиции лидера.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "nation_state_law_equality",
+    "value": 1,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_nation_state_equality_vote_2024"
+    ],
+    "explanation_ru": "Депутаты ШАС голосовали против поправки, прямо добавлявшей принцип равенства в Основной закон «Израиль — национальное государство еврейского народа». Более свежего прямого подтверждения этой конкретной позиции не найдено.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "same_sex_union_equality",
+    "value": 0.5,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_civil_marriage_same_sex_2025",
+      "src_civil_marriage_vote_2025"
+    ],
+    "explanation_ru": "ШАС выступила против законопроекта о гражданском браке, который позволял бы заключать брак в Израиле в том числе однополым парам. Поскольку возражение партии относилось ко всему институту гражданского брака, а не отдельно к однополым союзам, значение выставлено умеренно.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "shas",
+    "question": "october_7_state_inquiry",
+    "value": 0.5,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "candidate_shas_oct7_alt_commission_2026"
+    ],
+    "explanation_ru": "Депутат ШАС Эрез Малуль поддержал в июне 2026 года альтернативную «государственно-национальную» комиссию с политически согласуемым механизмом назначения членов, отличным от обычной государственной комиссии. Это указывает против именно стандартной комиссии, но свидетельство относится к представителю фракции в комитете.",
+    "last_verified": "2026-08-11"
+  }
+]

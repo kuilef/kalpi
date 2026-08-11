@@ -1,0 +1,325 @@
+[
+  {
+    "party": "likud",
+    "question": "security_settlement_tradeoff",
+    "value": -0.5,
+    "confidence": 0.76,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_netanyahu_gaza_withdrawal_2026",
+      "src_likud_gaza_control_2026",
+      "candidate_likud_netanyahu_gaza_2026_08"
+    ],
+    "explanation_ru": "В актуальной позиции по Газе Нетаньяху ставит сохранение военного контроля выше вывода войск, пока ХАМАС не разоружён. Это соответствует полюсу контроля ради безопасности, но позиция условная и не доказывает намерение сохранять контроль постоянно, поэтому значение не доведено до -1.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "territory_separation_tradeoff",
+    "value": -1,
+    "confidence": 0.74,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_westbank_annexation_2025",
+      "src_likud_westbank_sovereignty_2026"
+    ],
+    "explanation_ru": "Пятнадцать министров Ликуда и спикер Кнессета от Ликуда призвали распространить израильский суверенитет на Иудею и Самарию; в 2026 году министр Ликуда Эли Коэн также описывал правительственные шаги как фактический суверенитет и средство не допустить палестинского государства. На уровне этой широкой группы партийных должностных лиц это прямо соответствует сохранению израильского контроля, а не территориальному разделению.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "religion_lifestyle_tradeoff",
+    "value": -0.5,
+    "confidence": 0.72,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civil_marriage_vote_2025",
+      "src_likud_civil_marriage_2025",
+      "src_shabbat_transport_vote_2025",
+      "src_likud_local_transport_autonomy_2026",
+      "src_rabbinate_kashrut_monopoly_vote_2026"
+    ],
+    "explanation_ru": "Доминирующий паттерн фракции — против гражданского брака, против расширения общественного транспорта в шаббат и в пользу сохранения централизованных религиозных рамок. Однако Амир Охана из Ликуда голосовал за гражданский брак, поэтому внутри партии есть существенное исключение и позиция отмечена как mixed.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "service_obligation_tradeoff",
+    "value": 0.5,
+    "confidence": 0.78,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_haredi_draft_freeze_2026",
+      "src_netanyahu_haredi_draft_shift_2026"
+    ],
+    "explanation_ru": "В июле 2026 года коалиция Ликуда провела временную защиту харедим-уклонистов от ареста, а линия Нетаньяху сохраняет освобождение для очно изучающих Тору при требовании службы от тех, кто не учится. Одновременно часть депутатов Ликуда выступила против этих мер. Это смешанная, но в целом склоняющаяся к широкому групповому исключению позиция.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": 0,
+    "confidence": 0.68,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_kisch_core_standards_2026",
+      "src_haredi_core_non_enforcement_2026",
+      "src_core_curriculum_vote_2023"
+    ],
+    "explanation_ru": "Министр образования от Ликуда Йоав Киш в 2026 году выступал за расширение לימודי ליבה и государственно-харедимского образования, но государство одновременно почти не сокращало финансирование школ, не выполняющих требования по базовым предметам; ранее депутаты Ликуда голосовали против более жёсткого обязательного ядра. Это реальные разнонаправленные свидетельства, поэтому value=0 означает смешанную позицию, а не отсутствие данных.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": -1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_judicial_selection_vote_2025",
+      "src_ag_reform_vote_2026",
+      "candidate_likud_court_defiance_2026"
+    ],
+    "explanation_ru": "Ликуд продвигал увеличение политического влияния на назначение судей, изменение статуса и полномочий юридического советника правительства, а в 2026 году министры Ликуда публично оспорили обязательность решения Верховного суда. Совокупность актуальных конкретных действий соответствует приоритету избранной власти над независимыми институциональными ограничениями.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": -0.5,
+    "confidence": 0.52,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_nation_state_equality_vote_2024",
+      "src_likud_idi"
+    ],
+    "explanation_ru": "В 2024 году все 23 участвовавших в указанном голосовании депутата Ликуда выступили против добавления принципа равенства в Основной закон о национальном государстве, тогда как долгосрочное партийное самоописание также содержит защиту гражданских прав и недискриминации. Свидетельство указывает на приоритет особого еврейского национального статуса в конкретном конфликте принципов, но актуальная линия 2026 года по широкому trade-off отдельно не подтверждена.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": -0.5,
+    "confidence": 0.62,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civil_marriage_vote_2025",
+      "src_likud_civil_marriage_2025",
+      "src_likud_lgbt_split_2023"
+    ],
+    "explanation_ru": "Большинство участвовавших депутатов Ликуда голосовало против гражданского брака, что склоняет позицию к сохранению традиционных рамок личного статуса; Амир Охана голосовал за, а по правам однополых пар ранее также фиксировался внутрипартийный раскол. Поэтому широкая позиция по личной свободе оценивается как mixed и лишь умеренно смещённая к традиционному полюсу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "taxes_public_services_tradeoff",
+    "value": -0.5,
+    "confidence": 0.62,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_likud_budget_public_services_2026",
+      "candidate_likud_budget_2026"
+    ],
+    "explanation_ru": "Нетаньяху публично одобрил бюджетный пакет 2026 года, включавший снижение подоходных налогов; после принятия бюджета гражданские министерства, включая образование, здравоохранение и социальную сферу, одновременно столкнулись с сокращениями на фоне роста оборонных расходов. На уровне позиции лидера это склоняет выбор к более низким налогам, но контекст войны не позволяет уверенно ставить крайнее значение -1.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "market_regulation_tradeoff",
+    "value": -1,
+    "confidence": 0.86,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_likud_idi",
+      "candidate_likud_official_home_2026"
+    ],
+    "explanation_ru": "Текущий официальный сайт Ликуда прямо относит свободный рынок к базовым ценностям движения; профиль IDI на основе партийной идеологии также описывает конкурентный свободный рынок и ограниченное вмешательство государства. Это прямо соответствует полюсу большей свободы бизнеса и меньшего регулирования.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "social_support_redistribution_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "likud",
+    "question": "palestinian_state_option",
+    "value": 1,
+    "confidence": 0.76,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_knesset_pal_state_2024",
+      "src_likud_westbank_annexation_2025",
+      "src_likud_westbank_sovereignty_2026"
+    ],
+    "explanation_ru": "Парламентская линия 2024 года против создания палестинского государства дополняется призывом широкой группы министров Ликуда к суверенитету в Иудее и Самарии и заявлением министра Ликуда в 2026 году, связывающим такие меры с недопущением палестинского государства. На уровне фракционного evidence это соответствует полюсу отказа от палестинского государства.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "west_bank_sovereignty",
+    "value": -1,
+    "confidence": 0.76,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_westbank_annexation_2025",
+      "src_likud_westbank_sovereignty_2026"
+    ],
+    "explanation_ru": "Пятнадцать министров Ликуда и спикер Кнессета от Ликуда прямо потребовали распространить израильский суверенитет и право на Иудею и Самарию; в 2026 году министр Ликуда Эли Коэн характеризовал последующие меры как фактический суверенитет. Это прямо соответствует левому полюсу вопроса.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "civil_marriage",
+    "value": 0.5,
+    "confidence": 0.82,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_civil_marriage_vote_2025",
+      "src_likud_civil_marriage_2025"
+    ],
+    "explanation_ru": "В поимённом голосовании 24 декабря 2025 года почти все участвовавшие депутаты Ликуда голосовали против законопроекта о гражданском браке, тогда как спикер Амир Охана голосовал за. Доминирующая позиция соответствует сохранению религиозной системы брака, но явное внутрипартийное исключение требует статуса mixed и значения +0.5 вместо +1.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "shabbat_public_transport",
+    "value": 1,
+    "confidence": 0.87,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_shabbat_transport_vote_2025",
+      "src_likud_local_transport_autonomy_2026"
+    ],
+    "explanation_ru": "В голосовании 19 ноября 2025 года все 26 участвовавших депутатов Ликуда выступили против законопроекта об общественном транспорте в шаббат; в 2026 году председатель комиссии от Ликуда также снял реформу транспортной децентрализации после возражений, связанных с возможностью местного транспорта в шаббат. Это прямо соответствует сохранению общегосударственных ограничений.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "haredi_draft",
+    "value": 0.5,
+    "confidence": 0.82,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_likud_haredi_draft_freeze_2026",
+      "src_netanyahu_haredi_draft_shift_2026"
+    ],
+    "explanation_ru": "В июле 2026 года коалиция провела закон, временно блокирующий арест и преследование десятков тысяч харедим, не явившихся на призыв; одновременно внутри Ликуда были заметные противники этой линии, а Нетаньяху позднее заявил, что не учащиеся Торе должны служить, сохранив идею освобождения очных учащихся ешив. Это mixed-позиция, склонённая к сохранению широких освобождений для изучающих Тору.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "service_benefits",
+    "value": -1,
+    "confidence": 0.83,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_likud_reservist_housing_2026",
+      "src_reservist_housing_benefits_vote_2024"
+    ],
+    "explanation_ru": "В августе 2026 года Нетаньяху объявил крупную жилищную программу специально для резервистов с приоритетом и существенными скидками; ранее депутаты Ликуда также поддерживали продвижение жилищных льгот резервистам. Это прямое соответствие полюсу заметных преимуществ за службу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "core_curriculum_funding",
+    "value": 0.5,
+    "confidence": 0.68,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_haredi_core_non_enforcement_2026",
+      "src_kisch_core_standards_2026",
+      "src_core_curriculum_vote_2023"
+    ],
+    "explanation_ru": "Фактическая политика финансирования в 2026 году не обеспечивала систематического сокращения средств школам, не выполняющим требования по базовым предметам, что соответствует возможности финансирования без полного ядра. Одновременно министр Ликуда Киш публично выступал за расширение לימודי ליבה. Поэтому позиция mixed, но по точному вопросу о финансировании она склоняется к правому полюсу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "supreme_court_appointments",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_judicial_selection_vote_2025"
+    ],
+    "explanation_ru": "В марте 2025 года Кнессет окончательно принял продвигаемое министром юстиции Ликуда Яривом Левиным изменение механизма выбора судей, усиливающее политическое влияние на назначения. Это прямо соответствует большему весу избранных политических представителей.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "knesset_supreme_court_final_say",
+    "value": 0,
+    "confidence": 0.5,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_likud_override_2023",
+      "src_levin_basic_law_legislation_2025"
+    ],
+    "explanation_ru": "Прямые материалы разных периодов расходятся: проект 2023 года предусматривал механизм преодоления решений Верховного суда Кнессетом, тогда как план Левина–Саара 2025 года сохранял за Верховным судом исключительное право отменять обычные законы при повышенном пороге голосов судей и не содержал описанного override-механизма. Это исторически смешанная линия; отдельной подтверждённой позиции Ликуда 2026 года именно по окончательному слову при противоречии закона Основным законам не найдено, поэтому value=0 отражает реальное противоречие материалов.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "nation_state_law_equality",
+    "value": 1,
+    "confidence": 0.58,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "src_nation_state_equality_vote_2024"
+    ],
+    "explanation_ru": "3 июля 2024 года все 23 участвовавших в голосовании депутата Ликуда выступили против поправки, добавлявшей принцип равенства в Основной закон о национальном государстве. Это прямо соответствует полюсу оставить закон без отдельного положения о гражданском равенстве, но без свежего подтверждения 2026 года evidence помечено historical.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "likud",
+    "question": "same_sex_union_equality",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "likud",
+    "question": "october_7_state_inquiry",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "src_oct7_state_commission_vote_2025",
+      "candidate_likud_oct7_inquiry_2026"
+    ],
+    "explanation_ru": "В декабре 2025 года участвовавшие депутаты Ликуда голосовали против законопроекта о государственной комиссии расследования 7 октября; в июле 2026 года Нетаньяху по-прежнему прямо выступал против комиссии, состав которой определяется председателем Верховного суда. Это актуально и однозначно соответствует полюсу не создавать государственную комиссию такого типа.",
+    "last_verified": "2026-08-11"
+  }
+]

@@ -1,0 +1,300 @@
+[
+  {
+    "party": "yashar",
+    "question": "security_settlement_tradeoff",
+    "value": -0.5,
+    "confidence": 0.65,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_program",
+      "candidate_yashar_foundation_2026"
+    ],
+    "explanation_ru": "Текущая линия сочетает стремление к будущему миру с требованием сохранять единый израильский военный контур между морем и Иорданом и с отказом ставить палестинское государство на повестку сейчас. В заданном конфликте это скорее соответствует приоритету более широкого контроля ради безопасности, но не доказывает безусловный постоянный контроль.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "territory_separation_tradeoff",
+    "value": -0.5,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_yashar_westbank_interview_2026"
+    ],
+    "explanation_ru": "Айзенкот прямо отверг вывод, что демографическое разделение требует эвакуации изолированных поселений, назвал себя убеждённым сторонником поселенчества и отложил обсуждение постоянного статуса на годы, одновременно предупредив о риске двунациональной реальности. Это скорее тяготеет к сохранению израильского контроля, но не к максималистскому полюсу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "religion_lifestyle_tradeoff",
+    "value": 1,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_program",
+      "candidate_yashar_foundation_2026"
+    ],
+    "explanation_ru": "Партия выступает за расширение местной и общественной автономии в вопросах религии и государства и за возможность граждан сохранять собственный образ жизни при защите прав других. Это прямо соответствует полюсу свободы граждан и местных сообществ.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "service_obligation_tradeoff",
+    "value": -1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_service_2026"
+    ],
+    "explanation_ru": "Официальный план устанавливает обязанность службы для каждого гражданина и гражданки, с приоритетом ЦАХАЛа и обязательной гражданской или национальной службой для тех, кого армия не призывает. Это прямо соответствует максимально общей обязанности для всех.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "education_autonomy_standards_tradeoff",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_education_2026"
+    ],
+    "explanation_ru": "Официальная образовательная программа предусматривает обязательное общенациональное ядро и единые государственные стандарты для учащихся системы, при сохранении дополнительной локальной автономии. Приоритет явно отдан общему минимуму.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "majority_institutional_limits_tradeoff",
+    "value": 0,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_program",
+      "src_yashar_idi"
+    ],
+    "explanation_ru": "В программных целях одновременно закреплены суверенная роль Кнессета и способность правительства управлять, а также сильная и независимая судебная система, права меньшинства и институциональные сдержки. Это прямо заявленная сбалансированная модель, а не отсутствие данных.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "jewish_state_civic_equality_tradeoff",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "yashar",
+    "question": "traditional_norms_personal_freedom_tradeoff",
+    "value": 0.5,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_program",
+      "candidate_yashar_foundation_2026"
+    ],
+    "explanation_ru": "Партия подчёркивает право граждан сохранять выбранный образ жизни и расширение местной автономии, а её базовый документ обещает право человека реализовывать личные отношения по своему выбору. Это скорее соответствует личной свободе, хотя партийный документ не детализирует все формы равного юридического признания.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "taxes_public_services_tradeoff",
+    "value": 0,
+    "confidence": 0.85,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_yashar_economics_2026"
+    ],
+    "explanation_ru": "Экономическая программа одновременно предлагает снизить подоходный налог, частично заменив его налогами на товары с отрицательными внешними эффектами, и направлять дополнительные поступления и инвестиции в базовые государственные услуги. Это прямо сформулированное сочетание двух подходов.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "market_regulation_tradeoff",
+    "value": -0.5,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_yashar_economics_2026"
+    ],
+    "explanation_ru": "Партия предлагает отменять импортные барьеры и необоснованные уникальные стандарты, сокращать бюрократическую нагрузку, открывать рынок параллельному импорту и входу новых иностранных игроков. Одновременно она предусматривает антимонопольные и иные государственные меры, поэтому позиция скорее рыночная, но не крайняя.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "social_support_redistribution_tradeoff",
+    "value": 0,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_yashar_economics_2026",
+      "src_yashar_idi"
+    ],
+    "explanation_ru": "Партия сочетает адресные льготы по социально-экономическому положению и дифференцированные меры для сокращения разрывов с принципом, что помощь и льготы должны учитывать труд, службу и максимизацию способности зарабатывать. Это содержательно промежуточная социальная модель.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "palestinian_state_option",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "yashar",
+    "question": "west_bank_sovereignty",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "yashar",
+    "question": "civil_marriage",
+    "value": -1,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_yashar_sagi_laws_2026"
+    ],
+    "explanation_ru": "Гади Айзенкот публично присоединился к обязательствам продвигать пакет равноправия, включающий признание гражданского брака. Это прямо соответствует разрешению гражданского брака вне религиозной системы, но источник фиксирует прежде всего позицию лидера.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "shabbat_public_transport",
+    "value": -1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "candidate_yashar_foundation_2026",
+      "src_bchiromat_yashar_2026"
+    ],
+    "explanation_ru": "В базовом документе партии предусматривается расширение муниципальных полномочий в сфере религии и государства, прямо включая общественный транспорт в шаббат. Это соответствует полюсу решения на уровне муниципалитетов.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "haredi_draft",
+    "value": -0.5,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_service_2026"
+    ],
+    "explanation_ru": "Официальный план отменяет широкое освобождение и включает харедим во всеобщую обязанность службы, но сохраняет ежегодную квоту до 3% всего призывного набора для отсрочки ради изучения Торы по внешним критериям. Поэтому позиция скорее соответствует общей обязанности, но не полностью крайнему полюсу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "service_benefits",
+    "value": -1,
+    "confidence": 0.98,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_service_2026"
+    ],
+    "explanation_ru": "Официальный план прямо создаёт иерархию существенных жилищных, налоговых, образовательных и иных льгот для прошедших военную, гражданскую или национальную службу, с дополнительными преимуществами для резервистов. Это точно соответствует полюсу заметных преимуществ за службу.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "core_curriculum_funding",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_education_2026"
+    ],
+    "explanation_ru": "Программа прямо связывает полное государственное финансирование с соблюдением установленного государством ядра обучения и предусматривает существенное сокращение финансирования учреждений, не выполняющих стандарт. Это соответствует левому полюсу вопроса.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "supreme_court_appointments",
+    "value": 0.5,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_yashar_judicial_selection_2026"
+    ],
+    "explanation_ru": "Айзенкот назвал очень плохой ситуацию, в которой политики определяют выбор большого числа судей Верховного суда ради изменения системы. Это явно направлено против усиления политического контроля и потому скорее соответствует большему весу неполитических участников, хотя точный желаемый состав комиссии он здесь не определил.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "knesset_supreme_court_final_say",
+    "value": 0.5,
+    "confidence": 0.3,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "candidate_yashar_judicial_compromise_2023"
+    ],
+    "explanation_ru": "В 2023 году, до создания Яшар!, Айзенкот назвал хорошей основой для переговоров проект компромисса без парламентского override clause, при котором Верховный суд сохранял возможность отменять обычные законы квалифицированным составом. Это исторически скорее соответствует судебному полюсу, но не устанавливает текущую позицию партии.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "nation_state_law_equality",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "",
+    "last_verified": null
+  },
+  {
+    "party": "yashar",
+    "question": "same_sex_union_equality",
+    "value": -1,
+    "confidence": 0.75,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "src_yashar_sagi_laws_2026"
+    ],
+    "explanation_ru": "Айзенкот публично обязался продвигать пакет законов о равноправии ЛГБТ, включающий равенство семей и гражданских прав и признание гражданского брака. Это соответствует равному гражданскому статусу и юридическому признанию однополых пар.",
+    "last_verified": "2026-08-11"
+  },
+  {
+    "party": "yashar",
+    "question": "october_7_state_inquiry",
+    "value": -1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "src_yashar_program",
+      "candidate_yashar_foundation_2026"
+    ],
+    "explanation_ru": "Партия прямо требует создать государственную комиссию расследования событий 7 октября и предшествовавших им решений. Это точно соответствует полюсу независимой государственной комиссии.",
+    "last_verified": "2026-08-11"
+  }
+]

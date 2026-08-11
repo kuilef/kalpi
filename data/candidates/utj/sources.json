@@ -1,0 +1,92 @@
+[
+  {
+    "id": "candidate_utj_knesset_tv_profile",
+    "title": "יהדות התורה — ערוץ כנסת: על המפלגה",
+    "url": "https://www.knesset.tv/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA/36607/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Текущая справочная страница Канала Кнессета: описывает Яхадут ха-Тора как объединение «Агудат Исраэль» и «Дегель ха-Тора», указывает Ицхака Гольдкнопфа и фиксирует устойчивый приоритет сохранения харедимного образа жизни и институтов религиозного образования. Это обзор, а не подробная программа 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_platform_archive",
+    "title": "יהדות התורה — מצע",
+    "url": "https://www.knesset.tv/media/34730/%D7%9E%D7%A6%D7%A2-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94.pdf",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Прямой программный документ объединённого списка, на который ссылается текущая страница Канала Кнессета. Сам PDF явно архивный: в нижнем колонтитуле отображается «12/08/02». Используется только как historical evidence, без переноса старых позиций на 2026 год.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_torah_study_basic_law_2026",
+    "title": "חוק-יסוד: לימוד תורה",
+    "url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawbill.aspx?lawitemid=2198907&t=lawsuggestionssearch",
+    "source_type": "bill",
+    "date": "2026-07-15",
+    "notes_ru": "Официальная карточка закона Кнессета. Инициаторы — депутаты Яхадут ха-Тора Моше Гафни и Яаков Ашер; закон окончательно принят и закрепляет изучение Торы как основополагающую ценность наследия еврейского народа и Государства Израиль. Источник относится прежде всего к «Дегель ха-Тора» внутри списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_rabbinical_courts_2026",
+    "title": "Approved in final readings: Bill for expanding power of rabbinical courts to arbitration by consent on a civil matter",
+    "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press24326q.aspx",
+    "source_type": "bill",
+    "date": "2026-03-24",
+    "notes_ru": "Официальная публикация Кнессета: Моше Гафни, Яаков Ашер и Исраэль Айхлер из Яхадут ха-Тора были среди инициаторов принятого закона, расширяющего возможность религиозных судов выступать арбитрами в гражданских спорах по согласию сторон и применять религиозное право.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_sovereignty_2025",
+    "title": "Knesset approves declaratory measure to apply Israeli sovereignty to West Bank",
+    "url": "https://www.jpost.com/israel-news/article-862007",
+    "source_type": "reputable_reporting",
+    "date": "2025-07-23",
+    "notes_ru": "Jerusalem Post сообщает о поимённом результате декларативного голосования за распространение израильского суверенитета на Иудею, Самарию и Иорданскую долину: четыре депутата Яхадут ха-Тора проголосовали за. Это свидетельство части фракции, а не доказательство единогласной позиции всего списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_core_funding_2026",
+    "title": "בג״ץ למדינה: מדוע נמשך תקצוב בתי הספר שאינם מלמדים לימודי ליבה? • גפני: השופטים שונאים את הציבור החרדי",
+    "url": "https://ch10.co.il/news/1047117/",
+    "source_type": "other",
+    "date": "2026-02-17",
+    "notes_ru": "Актуальный материал о требовании Высшего суда объяснить продолжение финансирования харедимных школ без полного לימודי ליבה и о резкой реакции Моше Гафни. Свидетельство относится к лидеру «Дегель ха-Тора» и используется осторожно как компонентное.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_override_2025",
+    "title": "'We failed, made a mistake' on judicial reform, haredi draft bill deal, UTJ's Goldknopf says",
+    "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-861654",
+    "source_type": "reputable_reporting",
+    "date": "2025-07-20",
+    "notes_ru": "Прямое изложение заявления Ицхака Гольдкнопфа: по его словам, Яхадут ха-Тора поддерживала судебную реформу, поскольку ей обещали Основной закон об изучении Торы и механизм override, способный защитить договорённости по учащимся ешив. Атрибуция — лидер списка/«Агудат Исраэль».",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_civil_marriage_2025",
+    "title": "המתקפה החריפה של החרדים על אוחנה - בגלל הצבעה הצהרתית בלבד: \"אינו ראוי לתפקידו\"",
+    "url": "https://www.mako.co.il/news-politics/2025_q4/Article-b2acc3537f05b91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-24",
+    "notes_ru": "N12 сообщает о резкой реакции обеих составляющих Яхадут ха-Тора на голос Амира Оханы за гражданский брак: Гольдкнопф и «Дегель ха-Тора» осудили поддержку законопроекта как нарушение религиозного status quo. Дополняет поимённое голосование.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_draft_exemption_2026",
+    "title": "Haredi leaders assail ‘oppressive’ court’s order to sanction draft evaders",
+    "url": "https://www.timesofisrael.com/liveblog_entry/haredi-leaders-assail-oppressive-courts-order-to-sanction-draft-evaders/",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-26",
+    "notes_ru": "Times of Israel приводит актуальное заявление председателя Яхадут ха-Тора Ицхака Гольдкнопфа с требованием немедленно принять законодательство, освобождающее учащихся ешив от призыва; Моше Гафни также выступил против санкций. Прямое свидетельство текущей линии по широким освобождениям.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_service_benefits_2026",
+    "title": "החרדים במתקפה על החלטת בג״ץ לשלול הטבות ממשתמטים, באופוזיציה בירכו",
+    "url": "https://www.mako.co.il/news-politics/2026_q2/Article-1ee40212aa9cd91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-26",
+    "notes_ru": "N12 сообщает о решении суда лишать льгот уклоняющихся от службы и приводит отрицательную реакцию обоих ведущих представителей Яхадут ха-Тора — Ицхака Гольдкнопфа и Моше Гафни. Это прямое текущее свидетельство против существенной увязки государственных льгот со службой для этой группы.",
+    "verification_status": "candidate_unverified"
+  }
+]

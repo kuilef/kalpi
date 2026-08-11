@@ -1,0 +1,47 @@
+[
+  {
+    "id": "candidate_bait_zioni_idi_miluimniks",
+    "title": "המילואימניקים — המכון הישראלי לדמוקרטיה",
+    "url": "https://www.idi.org.il/policy/parties-and-elections/parties/miluimniks/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Профиль партии-компонента «Милуимники»: зарегистрированные цели включают военную или национальную службу для каждого гражданина, баланс ветвей власти и продвижение конституции. Относится к COMPONENT_PARTY и не является автоматически программой объединённого списка Байт Циони.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_launch_principles_2026",
+    "title": "\"חלאס עם הפילוג\": המצטרפים לטרופר-הנדל - ורשימת המייסדים המפתיעה",
+    "url": "https://www.israelhayom.co.il/news/politics/article/20931010",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-07",
+    "notes_ru": "Репортаж с презентации нового объединённого списка Троппера и Генделя. Троппер заявил о «доме, в котором все будут служить», а Гендель — что объединение добивается реального призыва, а не декларации. Относится к CURRENT_LIST.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_hendel_n12_2026",
+    "title": "הקאמבק של יועז הנדל: \"חייב להיות השהיד של המערכת הפוליטית\"",
+    "url": "https://www.mako.co.il/news-israel-elections/2026/Article-608e6db7f554f91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-10",
+    "notes_ru": "Интервью Йоаза Генделя сразу после объединения с Хили Троппером. Гендель называет среди принципов будущего правительства принятие закона о призыве и создание государственной комиссии расследования 7 октября; отдельно резко выступает против сохранения неслужбы харедим. Субъект — LEADER, но высказывание дано в контексте нового объединения.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_troper_kan_2026",
+    "title": "Хили Троппер — интервью Kan Reshet Bet о палестинском государстве и судебной системе (перепечатка)",
+    "url": "https://rotter.net/mobile/viewmobile.php?forum=scoops1&thread=956339",
+    "source_type": "other",
+    "date": "2026-07-12",
+    "notes_ru": "Перепечатка конкретных цитат из интервью Хили Троппера программе «Кальман–Либерман» на Kan Reshet Bet после объединения с Генделем. Троппер прямо выступил против палестинского государства и предложил Основной закон о законодательстве и возврат к модели назначения судей с требованием 7 из 9 голосов. Источник вторичный по отношению к эфиру Kan, поэтому confidence ограничен; scope LEADER.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_hendel_religion_2021",
+    "title": "השר יועז הנדל: \"אחרי התקציב נפעל למען נישואים אזרחיים\"",
+    "url": "https://www.inn.co.il/news/504642",
+    "source_type": "reputable_reporting",
+    "date": "2021-09-12",
+    "notes_ru": "Историческое прямое заявление Йоаза Генделя: поддержка альтернативы гражданского брака, передача мэрам полномочий определять транспорт в шаббат и неприятие монополии одной религиозной группы. Используется только как historical evidence лидера нынешнего объединения.",
+    "verification_status": "candidate_unverified"
+  }
+]
