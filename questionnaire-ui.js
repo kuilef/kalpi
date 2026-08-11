@@ -25,10 +25,10 @@
   }
 
   function renderQuestion({ question, index, total, answer }) {
-    const choice = (value, label, className = 'scale-choice') => {
+    const choice = (value, label, number) => {
       const id = `${question.id}-${String(value).replace('-', 'minus').replace('.', '_')}`;
-      const checked = (value === 'unknown' && answer === null) || (value !== 'unknown' && answer === value) ? ' checked' : '';
-      return `<span class="${className}"><input type="radio" name="${escapeHtml(question.id)}" id="${id}" value="${value}"${checked} aria-label="${escapeHtml(label)}"><label for="${id}"><span aria-hidden="true"></span><span class="sr-only">${escapeHtml(label)}</span></label></span>`;
+      const checked = answer === value ? ' checked' : '';
+      return `<span class="scale-choice"><input type="radio" name="${escapeHtml(question.id)}" id="${id}" value="${value}" data-shortcut="${number}"${checked} aria-label="${escapeHtml(label)}"><label for="${id}"><span aria-hidden="true"></span><span class="choice-number" aria-hidden="true">${number}</span><span class="sr-only">${escapeHtml(label)}</span></label></span>`;
     };
     return `<article class="wizard-question" data-question-id="${escapeHtml(question.id)}">
       <p class="question-code">${escapeHtml(question.code)} · Вопрос ${index + 1} из ${total}</p>
@@ -36,8 +36,8 @@
         <legend><span class="question-title">${escapeHtml(question.short_title_ru)}</span><span class="question-prompt">${escapeHtml(question.prompt_ru)}</span></legend>
         ${question.explanation_ru ? `<p class="question-explanation">${escapeHtml(question.explanation_ru)}</p>` : ''}
         <div class="poles"><p>${escapeHtml(question.left_pole_ru)}</p><p>${escapeHtml(question.right_pole_ru)}</p></div>
-        <div class="scale" role="radiogroup" aria-label="Шкала ответа">${SCALE.map((item) => choice(item.value, item.label)).join('')}</div>
-        <div class="unknown-choice"><span class="unknown-radio"><input type="radio" name="${escapeHtml(question.id)}" id="${question.id}-unknown" value="unknown"${answer === null ? ' checked' : ''}><label class="unknown-label" for="${question.id}-unknown">Не знаю / недостаточно информации</label></span></div>
+        <div class="scale" role="radiogroup" aria-label="Шкала ответа">${SCALE.map((item, index) => choice(item.value, item.label, index + 1)).join('')}</div>
+        <div class="unknown-choice"><span class="unknown-radio"><input type="radio" name="${escapeHtml(question.id)}" id="${question.id}-unknown" value="unknown" data-shortcut="0"${answer === null ? ' checked' : ''}><label class="unknown-label" for="${question.id}-unknown"><span class="unknown-number" aria-hidden="true">0</span><span>Не знаю / недостаточно информации</span></label></span></div>
       </fieldset>
     </article>`;
   }

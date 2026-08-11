@@ -29,10 +29,21 @@ test('app uses data-not-ready mode as a hard production gate and only exposes an
   assert.match(app, /State\.load\(window\.localStorage, data\.scoringConfig\)/);
 });
 
+test('app advances on a response selection and maps keyboard digits 0 through 5 to the radio controls', () => {
+  const app = read('app.js');
+  assert.match(app, /function advanceAfterAnswer\(\)/);
+  assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*renderReview\(\)/);
+  assert.match(app, /document\.addEventListener\('keydown'/);
+  assert.match(app, /event\.key < '0' \|\| event\.key > '5'/);
+  assert.match(app, /input\.dispatchEvent\(new Event\('change', \{ bubbles: true \}\)\)/);
+});
+
 test('stylesheet provides responsive pole layout, touch targets, and visible focus treatment', () => {
   const css = read('styles.css');
   assert.match(css, /button:focus-visible/);
-  assert.match(css, /min-height:44px/);
+  assert.match(css, /min-height:52px/);
   assert.match(css, /@media \(max-width:620px\)/);
   assert.match(css, /\.poles \{ grid-template-columns:1fr; /);
+  assert.doesNotMatch(css, /max-width:520px/);
+  assert.match(css, /\.unknown-radio \{[^}]*width:100%/);
 });

@@ -67,6 +67,17 @@
     $('progress-bar').style.width = progress.total ? `${progress.answered / progress.total * 100}%` : '0%';
   }
 
+  function advanceAfterAnswer() {
+    const index = currentIndex();
+    if (index === questions().length - 1) {
+      renderReview();
+      return;
+    }
+    State.setCurrentQuestion(state, questions()[index + 1].id);
+    saveState();
+    renderQuestion();
+  }
+
   function renderQuestion() {
     const allQuestions = questions();
     const index = currentIndex();
@@ -86,7 +97,7 @@
     document.querySelectorAll('#question-content input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
       State.setAnswer(state, question.id, input.value === 'unknown' ? null : Number(input.value));
       saveState();
-      renderQuestion();
+      advanceAfterAnswer();
     }));
   }
 
@@ -177,12 +188,15 @@
       const index = currentIndex();
       const question = questions()[index];
       if (!hasAnswer(question.id)) return;
-      if (index === questions().length - 1) renderReview();
-      else {
-        State.setCurrentQuestion(state, questions()[index + 1].id);
-        saveState();
-        renderQuestion();
-      }
+      advanceAfterAnswer();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.key < '0' || event.key > '5' || $('questionnaire').classList.contains('hidden')) return;
+      const input = document.querySelector(`#question-content input[data-shortcut="${event.key}"]`);
+      if (!input) return;
+      event.preventDefault();
+      input.checked = true;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
     });
     $('review-back').addEventListener('click', () => {
       $('review').classList.add('hidden');
