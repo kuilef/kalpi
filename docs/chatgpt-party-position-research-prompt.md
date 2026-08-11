@@ -2,19 +2,22 @@
 
 Этот текст нужно целиком вставить в новый чат ChatGPT. Затем загрузите перечисленные JSON-файлы и замените две переменные в начале: `TARGET_PARTY_ID` и `RESEARCH_DATE`.
 
+На выходе будут два отдельных JSON-файла. Их можно скопировать в `data/candidates/<party_id>/` без ручной сборки общего пакета.
+
 ## Что загрузить
 
 1. `data/parties.json`
 2. `data/questions.json`
 3. `data/scoring-config.json`
 4. `data/sources.json` — если хотите переиспользовать уже проверенные источники.
-5. При необходимости — архивированные официальные программы, стенограммы или выгрузки голосований. Не загружайте старый `baseline-data.js` как доказательство.
+5. При повторном исследовании той же партии — её текущие строки из `data/positions.json`.
+6. При необходимости — архивированные официальные программы, стенограммы или выгрузки голосований. Не загружайте старый `baseline-data.js` как доказательство.
 
 Для первого запуска можно выбрать `TARGET_PARTY_ID: "likud"`. Новую партию исследуйте только в новом чате или после явной смены этой переменной.
 
 ## Текст для ChatGPT
 
-```text
+````text
 Ты готовишь исследовательский JSON-пакет для Kalpi. Это не готовые canonical data и не партийная рекомендация. Твоя задача — по одной указанной партии последовательно оценить все 23 вопроса только по проверяемым источникам.
 
 TARGET_PARTY_ID: "<замените на id из parties.json>"
@@ -51,48 +54,60 @@ RESEARCH_DATE: "<YYYY-MM-DD>"
 12. Если source ID уже есть в загруженном sources.json, используй его без изменений. Для нового источника добавь объект в массив sources с уникальным ID вида candidate_<party>_<короткое_имя>. Эти источники остаются candidate_unverified и не считаются проверенными автоматически.
 13. Для insufficient_data верни строго:
     {"value": null, "confidence": 0, "status": "insufficient_data", "entity_scope": "PARTY", "evidence": [], "explanation_ru": "", "last_verified": null}
-14. Не включай Markdown, пояснения вне JSON, scoring, ranking, family mapping или предложения изменить файлы проекта.
+14. Создай ровно два файла. Если интерфейс умеет создавать вложения, приложи два JSON-файла с указанными ниже путями. Если вложения недоступны, выведи ровно два подписанных блока ```json: в каждом блоке должен быть только JSON, без комментариев и текста внутри.
+15. Не создавай и не перезаписывай data/sources.json, data/positions.json, scoring, ranking, family mapping или файлы проекта.
 
-Верни только валидный JSON следующей формы:
+Первый файл: data/candidates/<TARGET_PARTY_ID>/sources.json
 
-{
-  "packet_version": "kalpi-party-position-candidates-v1",
-  "party": "<TARGET_PARTY_ID>",
-  "researched_at": "<RESEARCH_DATE>",
-  "sources": [
-    {
-      "id": "candidate_<party>_<короткое_имя>",
-      "title": "Название источника в оригинале или точном переводе",
-      "url": "https://...",
-      "source_type": "party_platform | official_statement | parliamentary_vote | bill | transcript | reputable_reporting | other",
-      "date": "YYYY-MM-DD или null",
-      "notes_ru": "Что именно источник подтверждает и к какому субъекту относится.",
-      "verification_status": "candidate_unverified"
-    }
-  ],
-  "positions": [
-    {
-      "party": "<TARGET_PARTY_ID>",
-      "question": "<ровно один id из questions.json>",
-      "value": -1,
-      "confidence": 0.9,
-      "status": "known",
-      "entity_scope": "PARTY",
-      "evidence": ["существующий_или_candidate_source_id"],
-      "explanation_ru": "Короткое нейтральное объяснение: что именно делает или заявляет партия и почему это соответствует этому полюсу вопроса.",
-      "last_verified": "<RESEARCH_DATE>"
-    }
-  ]
-}
-
-Перед выводом проверь: party совпадает с TARGET_PARTY_ID; positions содержит ровно 23 записи без повторов; каждый question существует и относится к core; все evidence IDs существуют либо в загруженном sources.json, либо в массиве sources этого пакета; insufficient_data не имеет источников и не превращается в value 0.
+```json
+[
+  {
+    "id": "candidate_<party>_<короткое_имя>",
+    "title": "Название источника в оригинале или точном переводе",
+    "url": "https://...",
+    "source_type": "party_platform | official_statement | parliamentary_vote | bill | transcript | reputable_reporting | other",
+    "date": "YYYY-MM-DD или null",
+    "notes_ru": "Что именно источник подтверждает и к какому субъекту относится.",
+    "verification_status": "candidate_unverified"
+  }
+]
 ```
+
+Этот массив содержит только новые candidate sources. Если новых источников нет, верни `[]`. Уже существующие IDs из загруженного `sources.json` сюда не копируй.
+
+Второй файл: data/candidates/<TARGET_PARTY_ID>/positions.json
+
+```json
+[
+  {
+    "party": "<TARGET_PARTY_ID>",
+    "question": "<ровно один id из questions.json>",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": ["существующий_или_candidate_source_id"],
+    "explanation_ru": "Короткое нейтральное объяснение: что именно делает или заявляет партия и почему это соответствует этому полюсу вопроса.",
+    "last_verified": "<RESEARCH_DATE>"
+  }
+]
+```
+
+В `positions.json` должно быть ровно 23 записи без повторов: по одной для каждого core-вопроса в display_order. Перед выводом проверь: party совпадает с TARGET_PARTY_ID; каждый question существует; все evidence IDs существуют либо в загруженном `sources.json`, либо в первом output-файле; insufficient_data не имеет источников и не превращается в value 0.
+````
 
 ## Что делать с ответом
 
-Не вставляйте результат ChatGPT напрямую в `data/sources.json` или `data/positions.json`.
+Создайте папку `data/candidates/<party_id>/` и скопируйте туда оба файла из ответа. Например, для Ликуда:
 
-Сначала вручную проверьте URL, дату, цитату или голосование, субъект позиции и направление относительно полюсов вопроса. Затем добавьте подтверждённые источники в `sources.json` и замените только соответствующие пустые строки целевой партии в `positions.json`. Не подтверждённые строки остаются `insufficient_data`.
+```text
+data/candidates/likud/sources.json
+data/candidates/likud/positions.json
+```
+
+Эта папка намеренно не загружается приложением. Она хранит результат исследования до проверки и не может случайно включить ranking.
+
+Сначала вручную проверьте URL, дату, цитату или голосование, субъект позиции и направление относительно полюсов вопроса. Затем отдельным шагом добавьте подтверждённые источники в `data/sources.json` и замените только соответствующие пустые строки целевой партии в `data/positions.json`. Не подтверждённые строки остаются `insufficient_data`.
 
 После каждой партии запускайте:
 
