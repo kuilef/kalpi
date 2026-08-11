@@ -11,6 +11,8 @@ test('v2 page exposes the single-question flow, review, results, and opt-in debu
     assert.match(html, new RegExp(`id="${id}"`));
   }
   assert.doesNotMatch(html, /locale-en|priority-toggle|axis-strips|party-map/);
+  assert.doesNotMatch(html, />Перед завершением</);
+  assert.match(html, /id="review" class="panel hidden" aria-label="Проверка ответов"/);
 });
 
 test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
