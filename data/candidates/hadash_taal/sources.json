@@ -70,5 +70,104 @@
     "date": "2018-08-12",
     "notes_ru": "Исторический материал ХАДАШ с прямыми заявлениями о необходимости отмены Основного закона о национальном государстве и закрепления полного равенства. Это не равнозначно точному предложению лишь добавить положение о равенстве и не подтверждает текущую линию всего списка 2026.",
     "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_raam_no_annexation_2025",
+    "title": "Кнессет — вотум недоверия РААМ и ХАДАШ–ТААЛ против «вечной войны и аннексии без политического горизонта»",
+    "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press1662025r.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2025-06-16",
+    "notes_ru": "Официальная публикация Кнессета: фракции РААМ и ХАДАШ–ТААЛ внесли вотум недоверия с формулировкой против политики «вечной войны и аннексии территорий без политического горизонта». Сильное доказательство общего приоритета политического урегулирования; не задаёт точные границы.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_taal_idi",
+    "title": "Ta'al — IDI party profile",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/taal/",
+    "source_type": "party_ideology",
+    "date": null,
+    "notes_ru": "Позиции ТААЛ; для совместного списка уверенность снижена.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_joint_list_haredi_draft_2022",
+    "title": "Объединённый список против закона о призыве харедим",
+    "url": "https://zoha.org.il/110032/",
+    "source_type": "secondary_research",
+    "date": "2022-01-18",
+    "notes_ru": "Архивное свидетельство: тогдашний Объединённый список, включавший ХАДАШ и ТААЛ, выступил против законопроекта о призыве харедим. Используется только как historical evidence, не как автоматическая текущая позиция списка 2026.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_hadash_taal_knesset",
+    "title": "ХАДАШ–ТААЛ — обзор Кнессет 99",
+    "url": "https://www.knesset.tv/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA/47334/",
+    "source_type": "secondary_research",
+    "date": null,
+    "notes_ru": "Общие позиции списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_hadash_lgbt_2020",
+    "title": "Haaretz — раскол арабских фракций по правам ЛГБТ; ХАДАШ голосует за",
+    "url": "https://www.haaretz.co.il/news/politi/2020-07-28/ty-article/.premium/0000017f-e3ee-d804-ad7f-f3fed9eb0000",
+    "source_type": "secondary_research",
+    "date": "2020-07-28",
+    "notes_ru": "Исторический отчёт о расколе внутри Объединённого списка: депутаты ХАДАШ поддерживали соответствующие законопроекты; используется вместе с позицией ТААЛ только для фиксации mixed.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_taal_lgbt_2021",
+    "title": "Ахмад Тиби — против законодательства о полных правах ЛГБТ",
+    "url": "https://www.ynet.co.il/articles/0%2C7340%2CL-5893692%2C00.html",
+    "source_type": "secondary_research",
+    "date": "2021-03-03",
+    "notes_ru": "Историческая позиция лидера ТААЛ: прямое возражение против законов, предоставляющих полные права ЛГБТ; используется вместе с отдельным evidence по ХАДАШ для статуса mixed.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_civil_marriage_vote_2025",
+    "title": "Поимённое голосование по законопроекту о гражданском браке",
+    "url": "https://zmanknesset.co.il/vote/87145",
+    "source_type": "parliamentary_vote",
+    "date": "2025-12-24",
+    "notes_ru": "Поимённое голосование 25-го Кнессета; используется как конкретная позиция по гражданскому браку.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_shabbat_transport_vote_2025",
+    "title": "Голосование по законопроекту об общественном транспорте в шаббат",
+    "url": "https://citizens-voice.co.il/bill.php?id=471",
+    "source_type": "parliamentary_vote",
+    "date": "2025-11-19",
+    "notes_ru": "Поимённые данные голосования Кнессета по законопроекту об общественном транспорте в шаббат. Используется как прямое evidence по соответствующему вопросу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_oct7_state_commission_vote_2025",
+    "title": "Поимённое голосование по законопроекту о государственной комиссии расследования событий 7 октября",
+    "url": "https://zmanknesset.co.il/vote/83928",
+    "source_type": "parliamentary_vote",
+    "date": "2025-12-11",
+    "notes_ru": "Поимённое голосование 25-го Кнессета по предложению создать обычную государственную комиссию расследования; используется только для этого вопроса.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_forced_draft_2025",
+    "title": "חד״ש — המחאה למען גיוס בכפייה: במקום להיאבק בממשלה אגודת הסטודנטים נאבקת בציבור",
+    "url": "https://hadash.org.il/%D7%94%D7%9E%D7%97%D7%90%D7%94-%D7%9C%D7%9E%D7%A2%D7%9F-%D7%92%D7%99%D7%95%D7%A1-%D7%91%D7%9B%D7%A4%D7%99%D7%99%D7%94-%D7%91%D7%9E%D7%A7%D7%95%D7%9D-%D7%9C%D7%94%D7%99%D7%90%D7%91%D7%A7-%D7%91%D7%9E/",
+    "source_type": "other",
+    "date": "2025-10-29",
+    "notes_ru": "Материал на официальном сайте ХАДАШ прямо критикует требование принудительно призывать харедим и отменить их освобождение от службы, а также саму логику «равенства бремени», ограниченную еврейским населением. Используется только как текущий evidence по компоненту ХАДАШ; не переносится автоматически на ТААЛ или весь список.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_odeh_reasonableness_2024",
+    "title": "ח״כ עודה על פסילת צמצום עילת הסבירות: להמשיך במאבק למען דמוקרטיה אמיתית",
+    "url": "https://zoha.org.il/126479/",
+    "source_type": "transcript",
+    "date": "2024-01-02",
+    "notes_ru": "Материал с прямым заявлением тогдашнего председателя фракции ХАДАШ–ТААЛ Аймана Оде: он приветствовал решение БАГАЦ отменить сокращение критерия разумности и заявил, что фракция выступала против судебной реформы с первого дня. В материале также указано, что большинство судей признало полномочие БАГАЦ отменять Основные законы. Используется как historical/faction evidence по судебному контролю и институциональным ограничениям.",
+    "verification_status": "candidate_unverified"
   }
 ]

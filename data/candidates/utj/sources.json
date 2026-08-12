@@ -88,5 +88,95 @@
     "date": "2026-04-26",
     "notes_ru": "N12 сообщает о решении суда лишать льгот уклоняющихся от службы и приводит отрицательную реакцию обоих ведущих представителей Яхадут ха-Тора — Ицхака Гольдкнопфа и Моше Гафни. Это прямое текущее свидетельство против существенной увязки государственных льгот со службой для этой группы.",
     "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_knesset_pal_state_2024",
+    "title": "Knesset resolution opposing establishment of a Palestinian state",
+    "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press18724w.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2024-07-18",
+    "notes_ru": "Конкретная парламентская позиция; не используется как автоматическое доказательство по другим территориальным вопросам.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_utj_sanctions_2025",
+    "title": "Яхадут ха-Тора о санкциях в законе о призыве",
+    "url": "https://www.bhol.co.il/news/1711677",
+    "source_type": "official_statement",
+    "date": "2025-12",
+    "notes_ru": "Позиция против санкций для изучающих Тору.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_oct7_state_commission_vote_2025",
+    "title": "Поимённое голосование по законопроекту о государственной комиссии расследования событий 7 октября",
+    "url": "https://zmanknesset.co.il/vote/83928",
+    "source_type": "parliamentary_vote",
+    "date": "2025-12-11",
+    "notes_ru": "Поимённое голосование 25-го Кнессета по предложению создать обычную государственную комиссию расследования; используется только для этого вопроса.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_civil_marriage_vote_2025",
+    "title": "Поимённое голосование по законопроекту о гражданском браке",
+    "url": "https://zmanknesset.co.il/vote/87145",
+    "source_type": "parliamentary_vote",
+    "date": "2025-12-24",
+    "notes_ru": "Поимённое голосование 25-го Кнессета; используется как конкретная позиция по гражданскому браку.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_ag_reform_vote_2026",
+    "title": "Поимённое голосование по законопроекту о юридическом советнике правительства и генеральном прокуроре",
+    "url": "https://zmanknesset.co.il/vote/96609",
+    "source_type": "parliamentary_vote",
+    "date": "2026-06-02",
+    "notes_ru": "Голосование о продвижении законопроекта, меняющего назначение, срок, функции и полномочия היועמ״ש; используется как прямой текущий индикатор отношения к независимости юридического надзора.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_judicial_selection_vote_2025",
+    "title": "Кнессет — окончательное голосование по изменению состава Комиссии по выбору судей",
+    "url": "https://main.knesset.gov.il/Activity/plenum/Votes/pages/vote.aspx?voteid=43884",
+    "source_type": "parliamentary_vote",
+    "date": "2025-03-27",
+    "notes_ru": "Официальное поимённое голосование по третьему чтению поправки к Основному закону о судебной власти; 67 за, 1 против. Закон увеличивает политическое влияние на механизм назначения судей.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_shabbat_transport_vote_2025",
+    "title": "Голосование по законопроекту об общественном транспорте в шаббат",
+    "url": "https://citizens-voice.co.il/bill.php?id=471",
+    "source_type": "parliamentary_vote",
+    "date": "2025-11-19",
+    "notes_ru": "Поимённые данные голосования Кнессета по законопроекту об общественном транспорте в шаббат. Используется как прямое evidence по соответствующему вопросу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_nation_state_equality_vote_2024",
+    "title": "Голосование по добавлению принципа равенства в Основной закон о национальном государстве",
+    "url": "https://citizens-voice.co.il/bill.php?id=3067",
+    "source_type": "parliamentary_vote",
+    "date": "2024-07-03",
+    "notes_ru": "Поимённое голосование по поправке, прямо добавляющей ценность равенства в духе Декларации независимости. Используется только для nation_state_equality.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "src_knesset_sovereignty_declaration_2025",
+    "title": "By majority of 71 MKs, Knesset Plenum votes in favor of declaration calling to apply sovereignty to Judea and Samaria and the Jordan Valley",
+    "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press23725r.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2025-07-23",
+    "notes_ru": "Официальная публикация Кнессета: декларация призывает распространить израильский суверенитет на районы еврейских поселений в Иудее, Самарии и Иорданской долине и прямо связывает этот шаг с укреплением безопасности Израиля. Публикация не перечисляет поимённо депутатов Яхадут ха-Тора, поэтому используется вместе с источником о четырёх голосах списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_override_interview_2025",
+    "title": "גולדקנופף מבהיר: \"לא ייתכן שבני תורה יקבלו מכות; אנחנו לא נסכים שיהיו בחוק הגיוס סנקציות ויעדים\"",
+    "url": "https://www.kikar.co.il/interviews/szp4za",
+    "source_type": "other",
+    "date": "2025-07-20",
+    "notes_ru": "Прямое эксклюзивное интервью председателя Яхадут ха-Тора Ицхака Гольдкнопфа. Он объяснил, что харедимные фракции поддержали судебную реформу после обещаний Основного закона об изучении Торы и механизма override (פסקת ההתגברות). Это прямое лидерское свидетельство; не переносится автоматически на весь список.",
+    "verification_status": "candidate_unverified"
   }
 ]
