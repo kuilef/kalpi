@@ -67,4 +67,9 @@ test('stylesheet provides responsive pole layout, touch targets, and visible foc
   assert.match(css, /\.table-scroll/);
   assert.match(css, /\.family-bar/);
   assert.match(css, /\.analytics-matrix-table/);
+  assert.match(css, /\.analytics-matrix-desktop/);
+  assert.match(css, /\.analytics-matrix-mobile/);
+  assert.match(css, /\.matrix-cell \{[^}]*width:22px/);
+  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-desktop[^}]*display:none/);
+  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-mobile[^}]*display:block/);
 });

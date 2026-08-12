@@ -29,12 +29,14 @@
 
   function renderMatrix(cells, parties, questions) {
     const byKey = new Map(cells.map((cell) => [`${cell.party.id}/${cell.question.id}`, cell]));
-    return `<table class="analytics-matrix-table"><thead><tr><th scope="col">Партия</th>${questions.map((question) => `<th scope="col" title="${escapeHtml(question.short_title_ru || question.id)}">${escapeHtml(question.code || question.id)}</th>`).join('')}</tr></thead><tbody>${parties.map((party) => `<tr><th scope="row">${escapeHtml(party.name_ru || party.id)}</th>${questions.map((question) => {
-      const cell = byKey.get(`${party.id}/${question.id}`);
+    const button = (cell, party, question) => {
       if (!cell) return '<td>—</td>';
       const value = cell.position.value == null ? '—' : cell.position.value;
       return `<td><button class="matrix-cell ${cellClass(cell)}" type="button" data-cell-key="${escapeHtml(party.id)}/${escapeHtml(question.id)}" aria-label="${escapeHtml(party.name_ru || party.id)}, ${escapeHtml(question.short_title_ru || question.id)}: ${escapeHtml(cell.position.status)}">${escapeHtml(value)}</button></td>`;
-    }).join('')}</tr>`).join('')}</tbody></table>`;
+    };
+    const desktop = `<table class="analytics-matrix-table"><thead><tr><th scope="col">Партия</th>${questions.map((question) => `<th scope="col" title="${escapeHtml(question.short_title_ru || question.id)}">${escapeHtml(question.code || question.id)}</th>`).join('')}</tr></thead><tbody>${parties.map((party) => `<tr><th scope="row">${escapeHtml(party.name_ru || party.id)}</th>${questions.map((question) => button(byKey.get(`${party.id}/${question.id}`), party, question)).join('')}</tr>`).join('')}</tbody></table>`;
+    const mobile = `<table class="analytics-matrix-table"><thead><tr><th scope="col">Вопрос</th>${parties.map((party) => `<th scope="col" title="${escapeHtml(party.name_ru || party.id)}">${escapeHtml(party.name_ru || party.id)}</th>`).join('')}</tr></thead><tbody>${questions.map((question) => `<tr><th scope="row" title="${escapeHtml(question.short_title_ru || question.id)}">${escapeHtml(question.short_title_ru || question.id)}</th>${parties.map((party) => button(byKey.get(`${party.id}/${question.id}`), party, question)).join('')}</tr>`).join('')}</tbody></table>`;
+    return `<div class="analytics-matrix-desktop">${desktop}</div><div class="analytics-matrix-mobile">${mobile}</div>`;
   }
 
   function renderDetail(cell) {

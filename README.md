@@ -257,7 +257,7 @@ Kalpi вынужден агрегировать это разнообразие 
 - `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице;
 - `data/questions.json` — 23 вопроса, их типы, порядок и русские формулировки;
 - `data/scoring-config.json` — версии, шкала ответов, families, веса и release gate;
-- `data/positions.json` — полная матрица `party × question`: 229 из 276 ячеек содержат позицию, 47 остаются `insufficient_data`;
+- `data/positions.json` — полная матрица `party × question`: 251 из 276 ячеек содержат позицию, 25 остаются `insufficient_data`;
 - `data/sources.json` — архив источников, доступных для ручной проверки;
 - `data/candidates/<party_id>/` — входные пакеты исследования одной партии: `sources.json` и `positions.json`; они импортируются детерминированно через `tools/sync_position_matrix.py`;
 - `data/default-data.js` — сгенерированная копия runtime JSON для открытия через `file://`.

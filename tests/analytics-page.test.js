@@ -23,6 +23,9 @@ test('analytics page renderers expose gate, matrix, provenance and review queue'
   ].join('');
   assert.match(html, /Release gate пройден/);
   assert.match(html, /analytics-matrix-table/);
+  assert.match(html, /analytics-matrix-desktop/);
+  assert.match(html, /analytics-matrix-mobile/);
+  assert.strictEqual((html.match(/data-cell-key="p\/q"/g) || []).length, 2);
   assert.match(html, /Партия/);
   assert.match(html, /candidate_unverified/);
   assert.match(html, /Очередь перепроверки/);

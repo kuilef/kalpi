@@ -32,7 +32,7 @@ def empty_position(party_id, question_id):
     }
 
 
-def build_candidate_import(*, parties, questions, existing_sources, packages):
+def build_candidate_import(*, parties, questions, existing_sources, packages, namespace_conflicts=False):
     """Return a deterministic complete matrix and source union from candidate packages."""
     active_parties = [party for party in parties if party.get('active', True)]
     party_ids = {party['id'] for party in active_parties}
@@ -42,12 +42,14 @@ def build_candidate_import(*, parties, questions, existing_sources, packages):
     sources = list(existing_sources)
     source_by_id = {source['id']: source for source in sources}
     sources_added = 0
+    sources_namespaced = 0
     position_by_key = {}
 
     for package in packages:
         package_party = package['party_id']
         if package_party not in party_ids:
             raise ValueError(f'unknown candidate party {package_party}')
+        evidence_id_map = {}
         for source in package['sources']:
             source_id = source.get('id')
             if not source_id:
@@ -55,11 +57,26 @@ def build_candidate_import(*, parties, questions, existing_sources, packages):
             previous = source_by_id.get(source_id)
             if previous is not None:
                 if stable_json(previous) != stable_json(source):
-                    raise ValueError(f'conflicting source id {source_id}')
+                    if not namespace_conflicts:
+                        raise ValueError(f'conflicting source id {source_id}')
+                    namespaced_id = f'candidate_{package_party}_{source_id}'
+                    namespaced_source = {**source, 'id': namespaced_id}
+                    namespaced_previous = source_by_id.get(namespaced_id)
+                    if namespaced_previous is not None and stable_json(namespaced_previous) != stable_json(namespaced_source):
+                        raise ValueError(f'conflicting namespaced source id {namespaced_id}')
+                    if namespaced_previous is None:
+                        source_by_id[namespaced_id] = namespaced_source
+                        sources.append(namespaced_source)
+                        sources_added += 1
+                        sources_namespaced += 1
+                    evidence_id_map[source_id] = namespaced_id
+                    continue
+                evidence_id_map[source_id] = source_id
                 continue
             source_by_id[source_id] = source
             sources.append(source)
             sources_added += 1
+            evidence_id_map[source_id] = source_id
 
         for position in package['positions']:
             key = (position.get('party'), position.get('question'))
@@ -69,7 +86,10 @@ def build_candidate_import(*, parties, questions, existing_sources, packages):
                 raise ValueError(f'unknown candidate matrix key {key[0]}/{key[1]}')
             if key in position_by_key:
                 raise ValueError(f'duplicate candidate matrix key {key[0]}/{key[1]}')
-            position_by_key[key] = position
+            position_by_key[key] = {
+                **position,
+                'evidence': [evidence_id_map.get(evidence_id, evidence_id) for evidence_id in position.get('evidence', [])],
+            }
 
     missing = expected_keys - set(position_by_key)
     extra = set(position_by_key) - expected_keys
@@ -95,6 +115,7 @@ def build_candidate_import(*, parties, questions, existing_sources, packages):
             'positions': len(ordered_positions),
             'sources_total': len(sources),
             'sources_added': sources_added,
+            'sources_namespaced': sources_namespaced,
         },
     }
 
@@ -136,6 +157,7 @@ def main():
             questions=questions,
             existing_sources=load('sources.json'),
             packages=load_candidate_packages(),
+            namespace_conflicts=True,
         )
         print(json.dumps(result['summary'], ensure_ascii=False, sort_keys=True))
         if not args.check:

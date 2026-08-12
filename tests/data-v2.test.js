@@ -53,8 +53,8 @@ test('v2 positions are a complete prototype candidate matrix with retained origi
   assert.deepEqual(Object.fromEntries(['known', 'mixed', 'historical', 'insufficient_data'].map((status) => [
     status,
     positions.filter((position) => position.status === status).length,
-  ])), { known: 167, mixed: 18, historical: 44, insufficient_data: 47 });
-  assert.equal(positions.filter((position) => position.value != null).length, 229);
-  assert.equal(load('sources.json').length, 164);
+  ])), { known: 179, mixed: 19, historical: 53, insufficient_data: 25 });
+  assert.equal(positions.filter((position) => position.value != null).length, 251);
+  assert.equal(load('sources.json').length, 298);
   assert.ok(positions.some((position) => position.status === 'mixed' && position.entity_scope === 'LEADER'));
 });

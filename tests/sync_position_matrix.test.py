@@ -52,6 +52,27 @@ class CandidateImportTests(unittest.TestCase):
                 }],
             )
 
+    def test_build_candidate_import_namespaces_conflicts_and_rewrites_evidence(self):
+        result = sync_position_matrix.build_candidate_import(
+            parties=[{'id': 'p1', 'active': True}],
+            questions=[{'id': 'q1', 'display_order': 1}],
+            existing_sources=[{'id': 's1', 'title': 'Canonical'}],
+            packages=[{
+                'party_id': 'p1',
+                'positions': [{
+                    'party': 'p1', 'question': 'q1', 'value': 1, 'confidence': 0.5,
+                    'status': 'known', 'entity_scope': 'PARTY', 'evidence': ['s1'],
+                    'explanation_ru': 'x', 'last_verified': '2026-08-11',
+                }],
+                'sources': [{'id': 's1', 'title': 'Candidate'}],
+            }],
+            namespace_conflicts=True,
+        )
+
+        self.assertEqual(result['summary']['sources_namespaced'], 1)
+        self.assertEqual(result['positions'][0]['evidence'], ['candidate_p1_s1'])
+        self.assertEqual(result['sources'][-1]['id'], 'candidate_p1_s1')
+
 
 if __name__ == '__main__':
     unittest.main()
