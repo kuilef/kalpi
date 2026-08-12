@@ -27,12 +27,11 @@ test('question UI renders two poles and no preselected response', () => {
   assert.doesNotMatch(html, /Нейтрально/);
 });
 
-test('question UI exposes labelled response keys and the keyboard instruction', () => {
+test('question UI exposes plain response digits and the keyboard instruction', () => {
   const html = UI.renderQuestion({ question, index: 0, total: 23, answer: undefined });
   assert.match(html, /class="choice-key" aria-hidden="true">1<\/span>/);
-  assert.match(html, /class="choice-intensity">Полностью<\/span>/);
-  assert.match(html, /class="choice-intensity">Посередине<\/span>/);
   assert.match(html, /Можно отвечать клавишами 1–5; 0 — «Не знаю»\./);
+  assert.doesNotMatch(html, /choice-intensity/);
   assert.doesNotMatch(html, /choice-number/);
 });
 

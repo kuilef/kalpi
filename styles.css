@@ -56,11 +56,9 @@ main { padding:32px 0 56px; }
 .scale { display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; width:100%; }
 .scale-choice, .unknown-radio { position:relative; min-height:52px; }
 .scale-choice input, .unknown-radio input { position:absolute; opacity:0; inset:0; }
-.scale-choice label { display:grid; grid-template-rows:auto auto; place-content:center; gap:5px; width:100%; min-height:70px; padding:7px 4px; border:1px solid var(--ink); background:var(--surface); text-align:center; }
-.choice-key { display:grid; place-items:center; width:24px; height:24px; margin-inline:auto; border:1px solid currentColor; font:700 .78rem/1 system-ui,sans-serif; }
-.choice-intensity { font:600 clamp(.67rem, 1.7vw, .78rem)/1.15 system-ui,sans-serif; }
+.scale-choice label { display:grid; place-items:center; width:100%; min-height:52px; border:1px solid var(--ink); background:var(--surface); }
+.choice-key { font:700 1rem/1 system-ui,sans-serif; }
 .scale-choice input:checked + label { color:var(--surface); background:var(--ink); }
-.scale-choice input:checked + label .choice-key { color:var(--ink); background:var(--surface); }
 .keyboard-hint { margin:10px 0 0; color:var(--muted); font:.78rem/1.45 system-ui,sans-serif; }
 .unknown-choice { margin-top:20px; }
 .unknown-radio { display:block; width:100%; min-height:52px; }
