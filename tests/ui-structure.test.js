@@ -69,7 +69,31 @@ test('stylesheet provides responsive pole layout, touch targets, and visible foc
   assert.match(css, /\.analytics-matrix-table/);
   assert.match(css, /\.analytics-matrix-desktop/);
   assert.match(css, /\.analytics-matrix-mobile/);
-  assert.match(css, /\.matrix-cell \{[^}]*width:22px/);
+  assert.match(css, /\.matrix-cell \{[^}]*min-width:30px/);
+  assert.match(css, /\.matrix-cell \{[^}]*min-height:30px/);
+  assert.match(css, /\.analytics-matrix-mobile \.matrix-cell \{[^}]*width:30px/);
+  assert.match(css, /\.analytics-matrix-mobile \.matrix-cell \{[^}]*height:30px/);
   assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-desktop[^}]*display:none/);
   assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-mobile[^}]*display:block/);
+});
+
+test('stylesheet normalizes semantic colors, focus states, and reduced motion', () => {
+  const css = read('styles.css');
+  assert.match(css, /--track:/);
+  assert.match(css, /--notice-bg:/);
+  assert.match(css, /--link:/);
+  assert.match(css, /select:focus-visible/);
+  assert.match(css, /a:focus-visible/);
+  assert.match(css, /summary:focus-visible/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /transition:transform/);
+  assert.doesNotMatch(css, /transition:width/);
+});
+
+test('progress rendering uses a composite transform instead of layout width', () => {
+  const app = read('app.js');
+  const css = read('styles.css');
+  assert.match(app, /progress-bar'\)\.style\.setProperty\('--progress'/);
+  assert.doesNotMatch(app, /progress-bar'\)\.style\.width/);
+  assert.match(css, /\.progress-track > div \{[^}]*transform:scaleX/);
 });

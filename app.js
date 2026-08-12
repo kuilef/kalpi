@@ -64,7 +64,7 @@
   function updateProgress() {
     const progress = QuestionnaireUi.questionnaireProgress(questions(), state.answers);
     $('progress').textContent = `${progress.answered} / ${progress.total}`;
-    $('progress-bar').style.width = progress.total ? `${progress.answered / progress.total * 100}%` : '0%';
+    $('progress-bar').style.setProperty('--progress', progress.total ? progress.answered / progress.total : 0);
   }
 
   function advanceAfterAnswer() {

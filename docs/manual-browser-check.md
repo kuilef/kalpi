@@ -1,8 +1,10 @@
 # Ручная проверка prototype-live
 
-Дата: 11 августа 2026. Проверка проводилась в локальном HTTP-сервере `tools/serve.py`; ответы вводились через обычный интерфейс опроса. Это sanity check интерфейса и trace, а не политическая верификация источников и не настройка алгоритма под желаемый ответ.
+## Проверка от 11 августа 2026
 
-## Профили
+Проверка проводилась в локальном HTTP-сервере `tools/serve.py`; ответы вводились через обычный интерфейс опроса. Это sanity check интерфейса и trace, а не политическая верификация источников и не настройка алгоритма под желаемый ответ.
+
+### Профили
 
 | Профиль | Лидер | Match | Near tie |
 | --- | --- | ---: | --- |
@@ -13,15 +15,41 @@
 
 Для либерального профиля отдельно открыта family-трассировка: раскрытие показывает ответ пользователя, позицию партии, совпадение, исходные status/confidence/entity scope и evidence. Для всех сценариев показаны лидер, coverage, полный ranking и группы близких результатов; не было ручной правки score или весов после результата.
 
-## Аналитика и малый экран
+### Аналитика и малый экран
 
 - `analytics.html` показывает passed release gate, 229 из 276 usable cells и 74% original average confidence.
 - Фильтр `mixed` возвращает 18 ячеек; открытие ячейки показывает связанный evidence.
 - На ширине 390 px ширина документа была 375 px при viewport 390 px. Фильтры переходят в один столбец; широкая таблица остаётся в собственном горизонтальном контейнере и не создаёт горизонтальный scroll всей страницы.
 - Таблицы, фильтры и раскрытия управляются с клавиатуры; статус и coverage дублируются текстом, а не только цветом.
 
-## Ограничение проверки
+### Ограничение проверки
 
 HTTP smoke test прошёл. Открытие `file://` через встроенный browser было заблокировано политикой самого browser-инструмента, поэтому там не сделана визуальная ручная проверка. Bundle проверяется автоматически через `python tests/bundle.test.py` и `python tools/build_data_bundle.py --check`; файл `data/default-data.js` пересобран из того же canonical JSON.
 
 Неожиданный будущий результат должен расследоваться через question/family trace и provenance в `analytics.html`, а не исправляться подбором партии или скрытой сменой весов.
+
+## Проверка от 12 августа 2026
+
+Проверено на локальном HTTP-сервере в Codex In-app Browser.
+
+### Desktop, 1280px
+
+- `index.html` загружается с заголовком и вопросом без console errors.
+- `analytics.html` показывает release-gate, матрицу и фильтры.
+- Desktop matrix cells имеют фактический размер `30 × 30px`.
+- Матрица прокручивается внутри `.table-scroll`; page-level overflow не появляется.
+- Нажатие на matrix cell заполняет detail panel и переводит фокус на `#analytics-detail`.
+
+### Narrow screen, 390px
+
+- Questionnaire сохраняет одноколоночную структуру; page-level horizontal overflow отсутствует.
+- Scale choices остаются удобными для touch input; unknown choice занимает доступную ширину.
+- В analytics показывается mobile matrix; ячейки имеют фактический размер `30 × 30px`.
+- Широкая матрица прокручивается внутри таблицы, не расширяя страницу.
+- Фильтры перестраиваются в одну колонку.
+
+### Runtime signals
+
+- Console errors: none on questionnaire and analytics pages.
+- Local data loads successfully through the project HTTP server.
+- This is a browser viewport check, not a substitute for testing on physical iOS/Android devices.

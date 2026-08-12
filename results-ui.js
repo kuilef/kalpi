@@ -47,7 +47,7 @@
       const partyValue = question.partyValue == null ? 'нет позиции' : String(question.partyValue);
       return `<details class="question-evidence"><summary>${escapeHtml(question.questionId)} · совпадение ${pct(question.evidenceSimilarity)} · coverage ${pct(question.coverage)}</summary><dl class="evidence-facts"><div><dt>Ваш ответ</dt><dd>${escapeHtml(question.userValue)}</dd></div><div><dt>Позиция партии</dt><dd>${escapeHtml(partyValue)}</dd></div><div><dt>Исходный status</dt><dd>${escapeHtml(originalStatus)}</dd></div><div><dt>Исходный confidence</dt><dd>${pct(originalConfidence)}</dd></div><div><dt>Entity scope</dt><dd>${escapeHtml(scope)}</dd></div></dl><p>${escapeHtml(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.')}</p>${sourceHtml ? `<p class="evidence-sources">Источники: ${sourceHtml}</p>` : ''}</details>`;
     }).join('');
-    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${pct(family.score)}</strong></div><div class="family-bar" aria-label="Совпадение ${pct(family.score)}"><span style="width:${Math.round(Number(family.score || 0) * 100)}%"></span></div><p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
+    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${pct(family.score)}</strong></div><div class="family-bar" aria-label="Совпадение ${pct(family.score)}"><span style="--family-score:${Math.round(Number(family.score || 0) * 100) / 100}"></span></div><p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
   }
 
   function renderRankingRow(result, index) {
