@@ -1,6 +1,6 @@
 # Kalpi
 
-Kalpi — русскоязычный политический опросник о приоритетах, компромиссах и конкретных решениях в Израиле. Текущая ветка содержит новый опросник, семейную модель расчёта и проверяемую структуру данных. Публичные рекомендации партий пока намеренно не включены: матрица позиций ещё не прошла evidence review.
+Kalpi — русскоязычный политический опросник о приоритетах, компромиссах и конкретных решениях в Израиле. Текущая ветка содержит рабочий прототип с семейной моделью расчёта, публичным ranking и отдельной страницей аудита данных: [analytics.html](analytics.html).
 
 ## Что работает сейчас
 
@@ -8,12 +8,14 @@ Kalpi — русскоязычный политический опросник �
 - два типа вопросов: фундаментальные trade-off-вопросы и конкретные policy-вопросы;
 - шкала из пяти содержательных ответов: `-1`, `-0.5`, `0`, `+0.5`, `+1`;
 - отдельный ответ «Не знаю / недостаточно информации», который хранится как `null` и не равен промежуточной позиции;
-- автоматический переход к следующему вопросу после ответа, обзор ответов перед завершением, возврат к любому вопросу и сохранение состояния в браузере;
+- автоматический переход к следующему вопросу после ответа, немедленный результат после последнего ответа, возврат к предыдущим вопросам и сохранение состояния в браузере;
 - семейная структура из 12 families: обычно фундаментальные вопросы имеют вес `0.6`, policy-вопросы — `0.4`;
-- честный экран `data_not_ready`: в текущей матрице 276 ячеек `party × question`, и все они имеют статус `insufficient_data`, поэтому сайт не показывает партийный ranking;
-- debug-страница по адресу `/?debug=1` с покрытием по партиям, вопросам и families. Трассировка score там использует отдельный синтетический fixture и не смешивается с canonical data.
+- ranking по 12 партиям: ближайшая партия, почти равные альтернативы в пределах 3 п.п., match, coverage и отставание от лидера;
+- подробная трассировка по families и вопросам с исходным status, confidence, entity scope и ссылками на evidence;
+- публичная [страница аналитики](analytics.html) с release gate, heatmap матрицы, фильтрами, карточкой ячейки и очередью перепроверки;
+- runtime fallback: если release gate не проходит, ranking не показывается, даже когда в конфиге записан `live`.
 
-Это прототип методологии и интерфейса, а не готовая система рекомендации за партию.
+Это прототип методологии и интерфейса. Его результат описывает близость заявленных позиций, а не совет голосовать за партию.
 
 ## Методология
 
@@ -102,9 +104,9 @@ raw_similarity = 1 - abs(user_value - party_value) / 2
 adjusted_similarity = 0.5 + confidence × (raw_similarity - 0.5)
 ```
 
-`confidence` ограничивается диапазоном от `0` до `1`. Если позиция партии неизвестна, вопрос не превращается в центральную партийную позицию: engine использует нейтральный вклад `0.5` и нулевое покрытие по этой ячейке. Это позволяет отдельно показывать качество данных.
+`confidence` ограничивается диапазоном от `0` до `1`. В этой prototype-ветке действует явно опубликованная временная политика `all_value_positions_full_confidence`: любая содержательная позиция (`value` не `null`) получает для ranking effective confidence `1`, независимо от исходного status и confidence. Исходные поля не переписываются и видны в аналитике. `insufficient_data` остаётся отсутствующей позицией: engine использует нейтральный вклад `0.5` и нулевое покрытие по этой ячейке.
 
-Для ответа пользователя `null` вопрос не участвует в компоненте и не увеличивает объём использованной информации. В текущем релизе публичный ranking отключён через `recommendation_mode: "data_not_ready"`, поэтому эти правила пока доступны прежде всего через тесты и debug fixture.
+Для ответа пользователя `null` вопрос не участвует в компоненте и не увеличивает объём использованной информации. Ranking строится только после минимум восьми содержательных ответов в шести families; партия становится eligible при user-specific coverage не ниже 50%.
 
 ### Важность вопросов
 
@@ -127,7 +129,7 @@ adjusted_similarity = 0.5 + confidence × (raw_similarity - 0.5)
 
 ### Что означает результат
 
-Если публичный ranking будет включён, результат следует интерпретировать так:
+Текущий результат следует интерпретировать так:
 
 > **«При выбранных вопросах, указанных вами позициях и их важности эта партия наиболее близка к вашим заявленным политическим предпочтениям».**
 
@@ -255,16 +257,16 @@ Kalpi вынужден агрегировать это разнообразие 
 - `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице;
 - `data/questions.json` — 23 вопроса, их типы, порядок и русские формулировки;
 - `data/scoring-config.json` — версии, шкала ответов, families, веса и release gate;
-- `data/positions.json` — полная матрица `party × question`; в текущем релизе все записи имеют `status: "insufficient_data"`;
+- `data/positions.json` — полная матрица `party × question`: 229 из 276 ячеек содержат позицию, 47 остаются `insufficient_data`;
 - `data/sources.json` — архив источников, доступных для ручной проверки;
-- `data/candidates/<party_id>/` — staging-папка для результатов исследования одной партии: `sources.json` и `positions.json`; эти файлы не загружаются приложением и не являются canonical data;
+- `data/candidates/<party_id>/` — входные пакеты исследования одной партии: `sources.json` и `positions.json`; они импортируются детерминированно через `tools/sync_position_matrix.py`;
 - `data/default-data.js` — сгенерированная копия runtime JSON для открытия через `file://`.
 
-Новые партийные позиции нельзя переносить в canonical data только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для known, mixed и historical нужны проверяемый источник, дата, evidence, объяснение и confidence. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие evidence; это не центральная позиция.
+Новые партийные позиции нельзя переносить в canonical data только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для known, mixed и historical нужны источник, дата, evidence, объяснение и confidence. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие evidence; это не центральная позиция.
 
 Для исследования одной партии есть отдельный [prompt для ChatGPT](docs/chatgpt-party-position-research-prompt.md). Он выдаёт два candidate-файла — `sources.json` и `positions.json` — которые можно сначала положить в `data/candidates/<party_id>/`. Это staging-результат, а не готовые данные: приложение его не загружает и не меняет `recommendation_mode`. Полный порядок ручной проверки и импорта описан в [docs/party-position-json-workflow.md](docs/party-position-json-workflow.md).
 
-После проверки изменяйте только канонические JSON-файлы и пересобирайте bundle. Не редактируйте `data/default-data.js` вручную. Публичный ranking включается только отдельным решением после evidence review и согласования coverage gate.
+В этой prototype-ветке кандидатские пакеты были импортированы в canonical JSON по явному решению. Это не означает, что они стали политически верифицированными: `candidate_unverified`, исходный status, confidence и scope остаются в данных и на странице аналитики. Не редактируйте `data/default-data.js` вручную.
 
 ## Текущие версии и release gate
 
@@ -273,14 +275,15 @@ Kalpi вынужден агрегировать это разнообразие 
 ```text
 schema_version:             kalpi-questionnaire-schema-v2
 questionnaire_version:      kalpi-ru-core-2026-08-11-v1
-party_positions_version:    kalpi-positions-empty-v1
+party_positions_version:    kalpi-positions-prototype-v1
 scoring_version:            kalpi-family-score-v1
-data_version:                kalpi-data-v2
-recommendation_mode:        data_not_ready
+data_version:                kalpi-data-prototype-v1
+recommendation_mode:        live
+prototype_trust_policy:     all_value_positions_full_confidence
 user_importance_enabled:    false
 ```
 
-Пока `recommendation_mode` равен `data_not_ready`, после завершения опроса пользователь видит сохранённые ответы и состояние партийной матрицы, но не партийную рекомендацию.
+`recommendation_mode: live` не отменяет release gate: приложение рассчитывает gate при открытии результата и возвращается к `data_not_ready`, если данные деградировали.
 
 ## Запуск
 
@@ -297,7 +300,10 @@ python tools/serve.py --no-browser
 ```powershell
 node --test tests/*.test.js
 python tests/bundle.test.py
+python tests/sync_position_matrix.test.py
+python tools/sync_position_matrix.py --import-candidates --check
 python tools/build_data_bundle.py --check
+node tools/release-gate-report.js --check
 ```
 
 После изменения `data/*.json` пересоберите bundle:
@@ -306,4 +312,4 @@ python tools/build_data_bundle.py --check
 python tools/build_data_bundle.py
 ```
 
-Проверка `--check` должна проходить после пересборки. В текущей ветке тесты покрывают валидацию v2-данных, family scoring, unknown/insufficient-data, UI-структуру, состояние опросника и debug fixture.
+Проверка `--check` должна проходить после пересборки. Полный отчёт gate и synthetic fixtures можно записать командой `node tools/release-gate-report.js --write docs/release-gate-report.md`.

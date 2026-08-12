@@ -1,10 +1,23 @@
 {
   "schema_version": "kalpi-questionnaire-schema-v2",
   "questionnaire_version": "kalpi-ru-core-2026-08-11-v1",
-  "party_positions_version": "kalpi-positions-empty-v1",
+  "party_positions_version": "kalpi-positions-prototype-v1",
   "scoring_version": "kalpi-family-score-v1",
-  "data_version": "kalpi-data-v2",
-  "recommendation_mode": "data_not_ready",
+  "data_version": "kalpi-data-prototype-v1",
+  "recommendation_mode": "live",
+  "prototype_trust_policy": "all_value_positions_full_confidence",
+  "result_policy": {
+    "min_substantive_answers": 8,
+    "min_answered_families": 6,
+    "min_party_result_coverage": 0.5,
+    "near_tie_points": 0.03
+  },
+  "release_gate": {
+    "global_coverage_min": 0.8,
+    "slice_coverage_min": 0.5,
+    "global_original_confidence_min": 0.7,
+    "slice_original_confidence_min": 0.55
+  },
   "answer_values": [-1, -0.5, 0, 0.5, 1],
   "unknown_value": null,
   "user_importance_enabled": false,

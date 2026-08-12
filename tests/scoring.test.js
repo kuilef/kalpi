@@ -36,6 +36,50 @@ test('confidence shrinks similarity toward uncertainty instead of the political 
   assert.equal(Scoring.confidenceAdjustedSimilarity(1, 0), 0.5);
 });
 
+test('prototype full trust makes every value-bearing position a known full-confidence match', () => {
+  const result = Scoring.scoreParty({
+    partyId: 'party',
+    answers: { a1: -1 },
+    positions: [{ party: 'party', question: 'a1', value: -1, confidence: 0.12, status: 'mixed', entity_scope: 'LEADER' }],
+    scoringConfig: { ...config, prototype_trust_policy: 'all_value_positions_full_confidence' },
+  });
+
+  assert.equal(result.score, 1);
+  assert.equal(result.coverage, 1);
+  assert.equal(result.families[0].questions[0].effectiveStatus, 'known');
+  assert.equal(result.families[0].questions[0].effectiveConfidence, 1);
+});
+
+test('recommendation requires broad substantive answers and marks a near tie', () => {
+  const policy = {
+    ...config,
+    result_policy: {
+      min_substantive_answers: 2,
+      min_answered_families: 2,
+      min_party_result_coverage: 0.5,
+      near_tie_points: 0.03,
+    },
+  };
+  const recommendation = Scoring.buildRecommendation({
+    parties: [{ id: 'first' }, { id: 'second' }, { id: 'thin' }],
+    answers: { a1: -1, a2: -1 },
+    positions: [
+      { party: 'first', question: 'a1', value: -1, confidence: 1, status: 'known' },
+      { party: 'first', question: 'a2', value: -1, confidence: 1, status: 'known' },
+      { party: 'second', question: 'a1', value: -1, confidence: 1, status: 'known' },
+      { party: 'second', question: 'a2', value: -0.95, confidence: 1, status: 'known' },
+      { party: 'thin', question: 'a1', value: -1, confidence: 1, status: 'known' },
+      { party: 'thin', question: 'a2', value: null, confidence: 0, status: 'insufficient_data' },
+    ],
+    scoringConfig: policy,
+  });
+
+  assert.equal(recommendation.ready, true);
+  assert.equal(recommendation.leader.partyId, 'first');
+  assert.deepEqual(recommendation.nearTies.map((item) => item.partyId), ['second']);
+  assert.equal(recommendation.ranked.find((item) => item.partyId === 'thin').eligible, true);
+});
+
 test('a known zero-confidence position remains visible in the debug raw score', () => {
   const result = Scoring.scoreParty({
     partyId: 'party',

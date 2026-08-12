@@ -916,5 +916,563 @@
     "date": "2026-07-20",
     "notes_ru": "Бен-Гвир назвал немедленное увольнение действующего היועמ״ש условием входа партии в следующее правительство и потребовал назначить советника, который помогает избранному правительству реализовывать политику, а не препятствует ей.",
     "verification_status": "researched_2026-08-10"
+  },
+  {
+    "id": "candidate_bait_zioni_idi_miluimniks",
+    "title": "המילואימניקים — המכון הישראלי לדמוקרטיה",
+    "url": "https://www.idi.org.il/policy/parties-and-elections/parties/miluimniks/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Профиль партии-компонента «Милуимники»: зарегистрированные цели включают военную или национальную службу для каждого гражданина, баланс ветвей власти и продвижение конституции. Относится к COMPONENT_PARTY и не является автоматически программой объединённого списка Байт Циони.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_launch_principles_2026",
+    "title": "\"חלאס עם הפילוג\": המצטרפים לטרופר-הנדל - ורשימת המייסדים המפתיעה",
+    "url": "https://www.israelhayom.co.il/news/politics/article/20931010",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-07",
+    "notes_ru": "Репортаж с презентации нового объединённого списка Троппера и Генделя. Троппер заявил о «доме, в котором все будут служить», а Гендель — что объединение добивается реального призыва, а не декларации. Относится к CURRENT_LIST.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_hendel_n12_2026",
+    "title": "הקאמבק של יועז הנדל: \"חייב להיות השהיד של המערכת הפוליטית\"",
+    "url": "https://www.mako.co.il/news-israel-elections/2026/Article-608e6db7f554f91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-10",
+    "notes_ru": "Интервью Йоаза Генделя сразу после объединения с Хили Троппером. Гендель называет среди принципов будущего правительства принятие закона о призыве и создание государственной комиссии расследования 7 октября; отдельно резко выступает против сохранения неслужбы харедим. Субъект — LEADER, но высказывание дано в контексте нового объединения.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_troper_kan_2026",
+    "title": "Хили Троппер — интервью Kan Reshet Bet о палестинском государстве и судебной системе (перепечатка)",
+    "url": "https://rotter.net/mobile/viewmobile.php?forum=scoops1&thread=956339",
+    "source_type": "other",
+    "date": "2026-07-12",
+    "notes_ru": "Перепечатка конкретных цитат из интервью Хили Троппера программе «Кальман–Либерман» на Kan Reshet Bet после объединения с Генделем. Троппер прямо выступил против палестинского государства и предложил Основной закон о законодательстве и возврат к модели назначения судей с требованием 7 из 9 голосов. Источник вторичный по отношению к эфиру Kan, поэтому confidence ограничен; scope LEADER.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_bait_zioni_hendel_religion_2021",
+    "title": "השר יועז הנדל: \"אחרי התקציב נפעל למען נישואים אזרחיים\"",
+    "url": "https://www.inn.co.il/news/504642",
+    "source_type": "reputable_reporting",
+    "date": "2021-09-12",
+    "notes_ru": "Историческое прямое заявление Йоаза Генделя: поддержка альтернативы гражданского брака, передача мэрам полномочий определять транспорт в шаббат и неприятие монополии одной религиозной группы. Используется только как historical evidence лидера нынешнего объединения.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_service_law",
+    "title": "ביחד נתקן את מעמד הציבור המשרת והעובד",
+    "url": "https://be-yahad.org.il/plans/servant-law-new/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальная текущая страница Беяхад: льготы для прошедших военную или национальную службу, отмена выплат и льгот, поощряющих уклонение, и применение программы ко всем гражданам. Относится к CURRENT_LIST.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_education_plan",
+    "title": "ביחד נתקן את מערכת החינוך",
+    "url": "https://be-yahad.org.il/plans/education/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальная текущая программа Беяхад: обязательное общегосударственное ядро, прекращение государственного финансирования негосударственных и не соответствующих модели учреждений, при одновременной передаче значительной части управленческих полномочий муниципалитетам и школам. Относится к CURRENT_LIST.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_cost_of_living",
+    "title": "ביחד נתקן את יוקר המחיה",
+    "url": "https://be-yahad.org.il/plans/yoker/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальная текущая программа Беяхад: снижение избыточного регулирования и импортных барьеров, расширение конкуренции и одновременно активная антимонопольная политика. Относится к CURRENT_LIST.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_yeshatid_current_2026",
+    "title": "נחזור, נתקן — יש עתיד",
+    "url": "https://yeshatid.org.il/%D7%A0%D7%97%D7%96%D7%95%D7%A8-%D7%A0%D7%AA%D7%A7%D7%9F",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Текущая программа партии-компонента Еш Атид; та же страница прямо указывает, что её кандидаты идут на выборы 26-го Кнессета в списке «Беяхад во главе с Нафтали Беннетом». Подтверждает позиции компонента по всеобщей службе, обязательному ядру образования, гражданскому браку, местному транспорту в шаббат, конституционным ограничениям и государственной комиссии по 7 октября. Не считается автоматически позицией всего списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_bennett_ynet_2026",
+    "title": "בנט: \"אני עם לפיד עד הסוף, לא אשב עם נתניהו. לשבת תחת איזנקוט? מה שצריך להצלת המדינה\"",
+    "url": "https://www.ynet.co.il/news/120andone/article/s100tqclqmg",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-03",
+    "notes_ru": "Интервью председателя Беяхад Нафтали Беннета после объединения с Лапидом: он отвергает палестинское государство, описывает автономию A/B при постоянном израильском контроле безопасности, допускает длительное присутствие ЦАХАЛа в Газе и подтверждает курс на конституцию, ограничение срока премьера и государственную комиссию. Субъект — LEADER, не автоматически весь список.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_beyahad_bennett_civil_shabbat_2026",
+    "title": "בנט תמך בתחבורה ציבורית בשבת ונישואים גאים, גולן: \"הפתיע לטובה\"; ש\"ס במתקפה",
+    "url": "https://www.ynet.co.il/news/article/bjqnmuxpwx",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-20",
+    "notes_ru": "Прямые заявления Нафтали Беннета о праве муниципалитетов самим решать вопрос транспорта в шаббат и о поддержке брака для любого желающего, включая однополые пары. Материал относится к LEADER и предшествует формированию нынешнего объединённого списка; используется только вместе с более поздним подтверждением совпадения позиций компонентов.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_democrats_oct7_inquiry_2026",
+    "title": "חברת הכנסת - עו\"ד אפרת רייטן - הדמוקרטים בראשות יאיר גולן",
+    "url": "https://democrats.org.il/efrat-rayten/",
+    "source_type": "official_statement",
+    "date": "2026-01-19",
+    "notes_ru": "Официальная страница партии о председателе фракции Эфрат Райтен содержит её актуальное обязательство создать государственную комиссию расследования событий 7 октября. Относится к действующей фракции/её председателю, а не автоматически к безличной позиции партии.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_principles",
+    "title": "חד״ש — עקרונות: דמוקרטיה, שלום ושוויון",
+    "url": "https://hadash.org.il/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Текущая официальная страница ХАДАШ, партии-компонента списка: мирное израильско-палестинское урегулирование, равенство арабских граждан, устранение этнической дискриминации, защита демократических свобод, прав работников и равноправия женщин. Не переносится автоматически на ТААЛ или весь совместный список.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_jabareen_two_states_2026",
+    "title": "יוסף ג'בארין: קולות המחאה — הטרנספר הוא תוכנית העבודה של הממשלה",
+    "url": "https://zoha.org.il/146034/",
+    "source_type": "transcript",
+    "date": "2026-06-13",
+    "notes_ru": "Текст выступления Йосефа Джабарина, председателя списка ХАДАШ: призыв завершить оккупацию и постоянный контроль над палестинцами, демонтировать поселения и создать независимое суверенное палестинское государство рядом с Израилем. Scope — лидер ХАДАШ, не автоматически весь ХАДАШ–ТААЛ.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_mako_profile_2026",
+    "title": "מתלבטים למי להצביע? כך עובד מצפן הבחירות 2026 — חד״ש-תע״ל",
+    "url": "https://www.mako.co.il/finances-news/Article-70e2bd529a88f91026.htm",
+    "source_type": "reputable_reporting",
+    "date": null,
+    "notes_ru": "Актуальный профиль списка перед выборами 2026: руководители Йосеф Джабарин и Ахмад Тиби; список характеризуется поддержкой отделения религии от государства и модели «государства всех граждан». Используется как текущий вторичный источник именно о ХАДАШ–ТААЛ.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_workers",
+    "title": "חד״ש — זכויות עובדים",
+    "url": "https://hadash.org.il/bashetach/%D7%96%D7%9B%D7%95%D7%99%D7%95%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальная программная страница ХАДАШ: социалистическая экономическая повестка, минимальная зарплата, прямой найм вместо подрядчиков, усиление инспекций и санкций за нарушение трудового права, публичный некоммерческий пенсионный фонд. Scope — партия-компонент ХАДАШ.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_joint_social_plan_2021",
+    "title": "הרשימה המשותפת — תוכנית חירום חברתית-כלכלית",
+    "url": "https://hadash.org.il/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA-%D7%94%D7%99%D7%9E%D7%99%D7%9F-%D7%9E%D7%AA%D7%A2%D7%9C%D7%9E%D7%AA-%D7%9E%D7%94%D7%9E%D7%A6%D7%95%D7%A7%D7%94-%D7%A9%D7%91%D7%99%D7%AA%D7%AA-%D7%90%D7%96%D7%94%D7%A8/",
+    "source_type": "official_statement",
+    "date": "2021-03-19",
+    "notes_ru": "Исторический материал на официальном сайте ХАДАШ о плане тогдашнего Объединённого списка, включавшего ХАДАШ и ТААЛ: повышение прямых налогов на высокие доходы, «налог на богатых», налог на наследство, рост социальных расходов, отказ от приватизации и расширение контроля цен. Не считается автоматически текущей позицией списка 2026.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_judicial_selection_2025",
+    "title": "חד״ש — אושר החוק להשתלטות הקואליציה על בחירת השופטים",
+    "url": "https://hadash.org.il/%D7%90%D7%95%D7%A9%D7%A8-%D7%94%D7%97%D7%95%D7%A7-%D7%9C%D7%94%D7%A9%D7%AA%D7%9C%D7%98%D7%95%D7%AA-%D7%94%D7%A7%D7%95%D7%90%D7%9C%D7%99%D7%A6%D7%99%D7%94-%D7%94%D7%99%D7%9E%D7%A0%D7%99%D7%AA-%D7%9E/",
+    "source_type": "other",
+    "date": "2025-03-27",
+    "notes_ru": "Материал на официальном сайте ХАДАШ характеризует реформу выбора судей, увеличивающую политическое влияние, как захват механизма коалицией; отмечено, что оппозиция покинула финальное голосование в знак протеста. Используется только для отношения компонента ХАДАШ к политизации назначения судей и институциональным ограничениям.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_service_benefits_2013",
+    "title": "דב חנין: חוק העדפת יוצאי צבא — מנגנון לאפליית ערבים וחרדים",
+    "url": "https://hadash.org.il/%D7%97%D7%9B-%D7%93%D7%91-%D7%97%D7%A0%D7%99%D7%9F-%D7%97%D7%95%D7%A7-%D7%94%D7%A2%D7%93%D7%A4%D7%AA-%D7%99%D7%95%D7%A6%D7%90%D7%99-%D7%A6%D7%91%D7%90-%D7%9E%D7%A0%D7%92%D7%A0%D7%95%D7%9F-%D7%9C/",
+    "source_type": "official_statement",
+    "date": "2013-06-18",
+    "notes_ru": "Историческое заявление депутата ХАДАШ Дова Ханина против систематической увязки занятости, зарплат, земли и общежитий с прохождением военной службы; он отдельно допускал справедливое вознаграждение самим военнослужащим. Используется только как historical evidence.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_hadash_taal_hadash_nation_state_2018",
+    "title": "חד״ש — המאבק יימשך עד לביטול חוק הלאום",
+    "url": "https://hadash.org.il/%D7%A8%D7%91%D7%91%D7%95%D7%AA-%D7%A2%D7%A8%D7%91%D7%99%D7%9D-%D7%95%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%94%D7%A4%D7%92%D7%99%D7%A0%D7%95-%D7%91%D7%9B%D7%99%D7%9B%D7%A8-%D7%A8%D7%91%D7%99%D7%9F/",
+    "source_type": "official_statement",
+    "date": "2018-08-12",
+    "notes_ru": "Исторический материал ХАДАШ с прямыми заявлениями о необходимости отмены Основного закона о национальном государстве и закрепления полного равенства. Это не равнозначно точному предложению лишь добавить положение о равенстве и не подтверждает текущую линию всего списка 2026.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_official_home_2026",
+    "title": "הליכוד - תנועה לאומית ליברלית — אתר הבית",
+    "url": "https://www.likud.org.il/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Официальный сайт Ликуда в текущей версии представляет свободный рынок, социальное равенство и сохранение еврейской традиции как базовые ценности движения; это самоописание партии, но не отдельная программа выборов 2026.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_netanyahu_gaza_2026_08",
+    "title": "In rejecting Trump's Gaza plan, Netanyahu reprises a balancing act he has mastered",
+    "url": "https://apnews.com/article/777525433fd69e8d1decddccb3f3d701",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-11",
+    "notes_ru": "Актуальное заявление лидера: Нетаньяху отверг вывод Израиля с контролируемой части Газы до полного разоружения ХАМАС. Scope: LEADER; условие связано с безопасностью и само по себе не доказывает намерение постоянного контроля.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_court_defiance_2026",
+    "title": "Netanyahu government challenge to Supreme Court reignites judicial dispute",
+    "url": "https://www.reuters.com/world/middle-east/netanyahu-government-challenge-supreme-court-reignites-judicial-row-2026-07-06/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-06",
+    "notes_ru": "Ярив Левин и Шломо Кархи, министры от Ликуда, заявили, что решение Верховного суда по составу медиарегулятора не будет соблюдаться, назвав его судебным превышением полномочий. Это актуальное свидетельство отношения к независимым институциональным ограничениям, но не прямой ответ на вопрос об отмене закона как противоречащего Основным законам.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_budget_2026",
+    "title": "Israel cabinet set to approve 2026 budget but faces battle for final approval",
+    "url": "https://www.reuters.com/world/middle-east/israel-cabinet-set-approve-2026-budget-faces-battle-final-approval-2025-12-04/",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-04",
+    "notes_ru": "Проект бюджета 2026 предусматривал снижение подоходных налогов; Нетаньяху публично назвал бюджет ответственным и сбалансированным. Архитектор экономического пакета — министр финансов Бецалель Смотрич, поэтому источник используется только как позиция/одобрение лидера Ликуда и вместе с данными о фактически принятом бюджете.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_reservist_housing_2026",
+    "title": "Israel to offer 20,000 discounted homes to IDF reservists in coming years",
+    "url": "https://www.timesofisrael.com/israel-to-offer-20000-discounted-homes-to-idf-reservists-in-coming-years/",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-10",
+    "notes_ru": "Нетаньяху совместно с министрами объявил программу примерно на 20 000 квартир и участков для резервистов в 2026–2027 годах с существенными скидками и приоритетами. Scope: LEADER; прямое актуальное свидетельство поддержки заметных государственных преимуществ за службу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_oct7_inquiry_2026",
+    "title": "Government says no Oct. 7 inquiry before election, urges High Court not to intervene",
+    "url": "https://www.timesofisrael.com/government-says-no-oct-7-inquiry-before-election-urges-high-court-not-to-intervene/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-22",
+    "notes_ru": "Актуальная позиция лидера: Нетаньяху продолжает выступать против государственной комиссии расследования, члены которой назначаются председателем Верховного суда; правительство заявило, что такую комиссию до выборов создавать не будет. Scope: LEADER.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_likud_override_2023",
+    "title": "Approved in preliminary reading: Supreme Court can only strike down or change a law by a full panel of judges that has decided unanimously",
+    "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press22223b.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2023-02-22",
+    "notes_ru": "Официальная публикация Кнессета о предварительном одобрении предложения об override-механизме, дававшем Кнессету возможность преодолевать решения Верховного суда при установленных условиях. Используется только как историческое свидетельство и сопоставляется с более поздним планом Левина–Саара 2025 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_otzma_oslo_cancel_2026",
+    "title": "מחר: ועדת השרים לענייני חקיקה תדון בהצעת החוק של ח״כ לימור סון הר מלך לביטול הסכמי אוסלו",
+    "url": "https://ozma-yeudit.co.il/%D7%9E%D7%97%D7%A8-%D7%95%D7%A2%D7%93%D7%AA-%D7%94%D7%A9%D7%A8%D7%99%D7%9D-%D7%9C%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%99-%D7%97%D7%A7%D7%99%D7%A7%D7%94-%D7%AA%D7%93%D7%95%D7%9F-%D7%91%D7%94%D7%A6%D7%A2/",
+    "source_type": "official_statement",
+    "date": "2026-05-09",
+    "notes_ru": "Официальный сайт партии: законопроект Лимор Сон Хар-Мелех, поданный вместе с депутатами Оцма Йехудит, предлагает полностью отменить соглашения Осло, Хевронское и Уай; Бен-Гвир описывает это как возвращение суверенитета, ответственности и безопасности Израилю. Относится к партии/фракции.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_otzma_pal_state_2025",
+    "title": "בן גביר: \"לעצור את אבו מאזן\", סמוטריץ': \"תוכנית הנתיב למדינה - מסוכנת\"",
+    "url": "https://www.ynet.co.il/news/article/hka37quewl",
+    "source_type": "reputable_reporting",
+    "date": "2025-11-17",
+    "notes_ru": "Ynet приводит заявление Итамара Бен-Гвира в начале заседания фракции Оцма Йехудит: он прямо отверг создание палестинского государства. Относится к лидеру партии.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_raam_knesset_profile",
+    "title": "רע״ם: כל המידע וחברי הכנסת של המפלגה - ערוץ כנסת",
+    "url": "https://www.knesset.tv/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA/36614/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Текущий профиль РААМ на канале Кнессета: партия описана как действующая ради продвижения прав арабского общества и улучшения условий его жизни. Используется только как общий текущий контекст PARTY, а не как доказательство точных позиций по вопросам, которых страница прямо не касается.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_raam_platform_2002",
+    "title": "מצע רע״ם — הרשימה הערבית המאוחדת",
+    "url": "https://www.knesset.tv/media/34726/%D7%9E%D7%A6%D7%A2-%D7%A8%D7%A2%D7%9E.pdf",
+    "source_type": "party_platform",
+    "date": "2002-08-12",
+    "notes_ru": "Историческая программа РААМ, размещённая каналом Кнессета; файл датирован 12.08.2002. В ней заявлены прекращение израильской оккупации, создание палестинского государства со столицей в Восточном Иерусалиме, эвакуация поселений, равные национальные и гражданские права арабского меньшинства, отказ от призыва арабских граждан в ЦАХАЛ и расширение государственных вложений в арабское общество. Используется только как HISTORICAL evidence.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_raam_pal_state_2025",
+    "title": "מנסור עבאס: מדינה פלסטינית היא אינטרס לאומי-מדיני-ביטחוני של ישראל",
+    "url": "https://www.instagram.com/reel/DMfCjqjR5PP/",
+    "source_type": "official_statement",
+    "date": "2025-07-24",
+    "notes_ru": "Публикация канала Кнессета с прямым заявлением лидера РААМ Мансура Аббаса: палестинское государство является не только палестинским правом, но и национальным, политическим и оборонным интересом Израиля. Scope: LEADER.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_idi_profile",
+    "title": "Religious Zionist Party - The Israel Democracy Institute",
+    "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/religious-zionist-party/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Профиль Israel Democracy Institute: фиксирует поддержку партией экономической либерализации и частной инициативы, ограничение полномочий Верховного суда, override clause и передачу большего влияния при назначении судей Кнессету. Используется как вторичный профиль устойчивых партийных позиций, а не как программа 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reuters_draft_2026",
+    "title": "Political struggle of far-right ally Smotrich shows faultline in Netanyahu coalition",
+    "url": "https://www.reuters.com/world/middle-east/political-struggle-far-right-ally-smotrich-shows-faultline-netanyahu-coalition-2026-08-07/",
+    "source_type": "reputable_reporting",
+    "date": "2026-08-07",
+    "notes_ru": "Актуальный материал Reuters о противоречии вокруг призыва харедим: Смотрич заявляет, что харедим должны служить, но поддержал закон, защищающий уклоняющихся от ареста. Относится прежде всего к лидеру партии и используется вместе с прямым заявлением фракции от 25 июля 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reuters_settlements_2026",
+    "title": "Israel allocates $434 million for 34 new West Bank settlements",
+    "url": "https://www.reuters.com/world/middle-east/israel-allocates-434-million-34-new-west-bank-settlements-2026-07-14/",
+    "source_type": "reputable_reporting",
+    "date": "2026-07-14",
+    "notes_ru": "Актуальный материал Reuters: Смотрич, лидер Религиозного сионизма, продвигает создание новых поселений и описывает расширение поселений как стратегию укрепления израильского контроля и предотвращения палестинского государства. Используется как актуальное подтверждение территориальной линии вместе с официальной программой партии.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_reservist_benefits_2025",
+    "title": "Knesset passes law expanding financial benefits for IDF reservists",
+    "url": "https://www.timesofisrael.com/knesset-passes-law-expanding-financial-benefits-for-idf-reservists/",
+    "source_type": "reputable_reporting",
+    "date": "2025-11-19",
+    "notes_ru": "Материал о принятии льгот резервистам после законодательного бойкота, инициированного Религиозным сионизмом; Смотрич прямо сформулировал принцип «кто больше вносит вклад, тот больше получает». Подтверждает позицию партии по существенным льготам за службу.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_religious_zionism_oct7_alternative_2026",
+    "title": "ועדת החוקה אישרה לקריאה ראשונה את הצ״ח להקמת ועדת חקירה ממלכתית-לאומית לטבח 7.10",
+    "url": "https://main.knesset.gov.il/News/PressReleases/pages/press02.06.26.aspx",
+    "source_type": "bill",
+    "date": "2026-06-02",
+    "notes_ru": "Официальное сообщение Кнессета: Комиссия по конституции под председательством депутата Религиозного сионизма Симхи Ротмана одобрила альтернативную «государственно-национальную» комиссию; Ротман голосовал за предложение. Это не обычная государственная комиссия расследования, состав которой определяется по стандартному механизму.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_sovereignty_2025",
+    "title": "By majority of 71 MKs, Knesset Plenum votes in favor of declaration calling to apply sovereignty to Judea and Samaria and the Jordan Valley",
+    "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press23725r.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2025-07-23",
+    "notes_ru": "Официальное сообщение Кнессета: итоговая декларация была внесена, среди прочих, от фракции ШАС; она призывает распространить израильский суверенитет на районы еврейских поселений в Иудее, Самарии и Иорданской долине, связывает это с безопасностью и прямо заявляет, что идея палестинского государства снята с повестки.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_religion_state_2026",
+    "title": "Former PM Bennett backs civil marriage, public transport on Shabbat",
+    "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-893632",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-20",
+    "notes_ru": "Материал приводит прямую реакцию ШАС на предложения разрешить муниципалитетам выбирать режим транспорта в шаббат и ввести гражданский брак: партия противопоставила им еврейскую идентичность государства, святость шаббата и брак по закону Моисея и Израиля.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_food_vouchers_2025",
+    "title": "Deri: Shas won't support 2026 budget until Haredi kids get food-stamp funds",
+    "url": "https://www.timesofisrael.com/deri-shas-wont-support-2026-budget-until-haredi-kids-get-food-stamp-funds/",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-09",
+    "notes_ru": "Арье Дери от имени ШАС заявил, что партия не поддержит бюджет-2026 без финансирования продовольственных ваучеров для малообеспеченных семей; программа описана как помощь сотням тысяч семей разных групп.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_oct7_alt_commission_2026",
+    "title": "ועדת החוקה אישרה מחדש לקריאה ראשונה את הצ\"ח להקמת ועדת חקירה ממלכתית-לאומית לטבח 7.10",
+    "url": "https://main.knesset.gov.il/News/PressReleases/Pages/press09062026a.aspx",
+    "source_type": "parliamentary_vote",
+    "date": "2026-06-09",
+    "notes_ru": "Официальное сообщение Кнессета: депутат ШАС Эрез Малуль поддержал в комиссии альтернативную «государственно-национальную» комиссию по 7 октября с механизмом назначения, отличным от обычной государственной комиссии, состав которой назначает председатель Верховного суда.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_override_2022",
+    "title": "האם פסקת ההתגברות קיימת במדינות רבות ברחבי העולם?",
+    "url": "https://www.globes.co.il/news/article.aspx?did=1001418620",
+    "source_type": "reputable_reporting",
+    "date": "2022-07-14",
+    "notes_ru": "Историческое прямое высказывание лидера ШАС Арье Дери: он поддержал механизм, позволяющий Кнессету повторно принять большинством 61 голос закон, отменённый Верховным судом, и сохранить его действие на соответствующий период.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_shas_civil_marriage_same_sex_2025",
+    "title": "המתקפה החריפה של החרדים על אוחנה - בגלל הצבעה הצהרתית בלבד: \"אינו ראוי לתפקידו\"",
+    "url": "https://www.mako.co.il/news-politics/2025_q4/Article-b2acc3537f05b91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-24",
+    "notes_ru": "N12 сообщает, что ШАС резко выступила против поддержки законопроекта о гражданском браке; материал отдельно указывает, что законопроект позволял бы заключать брак в Израиле в том числе однополым парам.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_knesset_tv_profile",
+    "title": "יהדות התורה — ערוץ כנסת: על המפלגה",
+    "url": "https://www.knesset.tv/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA/36607/",
+    "source_type": "other",
+    "date": null,
+    "notes_ru": "Текущая справочная страница Канала Кнессета: описывает Яхадут ха-Тора как объединение «Агудат Исраэль» и «Дегель ха-Тора», указывает Ицхака Гольдкнопфа и фиксирует устойчивый приоритет сохранения харедимного образа жизни и институтов религиозного образования. Это обзор, а не подробная программа 2026 года.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_platform_archive",
+    "title": "יהדות התורה — מצע",
+    "url": "https://www.knesset.tv/media/34730/%D7%9E%D7%A6%D7%A2-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94.pdf",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Прямой программный документ объединённого списка, на который ссылается текущая страница Канала Кнессета. Сам PDF явно архивный: в нижнем колонтитуле отображается «12/08/02». Используется только как historical evidence, без переноса старых позиций на 2026 год.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_torah_study_basic_law_2026",
+    "title": "חוק-יסוד: לימוד תורה",
+    "url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawbill.aspx?lawitemid=2198907&t=lawsuggestionssearch",
+    "source_type": "bill",
+    "date": "2026-07-15",
+    "notes_ru": "Официальная карточка закона Кнессета. Инициаторы — депутаты Яхадут ха-Тора Моше Гафни и Яаков Ашер; закон окончательно принят и закрепляет изучение Торы как основополагающую ценность наследия еврейского народа и Государства Израиль. Источник относится прежде всего к «Дегель ха-Тора» внутри списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_rabbinical_courts_2026",
+    "title": "Approved in final readings: Bill for expanding power of rabbinical courts to arbitration by consent on a civil matter",
+    "url": "https://m.knesset.gov.il/EN/News/PressReleases/Pages/press24326q.aspx",
+    "source_type": "bill",
+    "date": "2026-03-24",
+    "notes_ru": "Официальная публикация Кнессета: Моше Гафни, Яаков Ашер и Исраэль Айхлер из Яхадут ха-Тора были среди инициаторов принятого закона, расширяющего возможность религиозных судов выступать арбитрами в гражданских спорах по согласию сторон и применять религиозное право.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_sovereignty_2025",
+    "title": "Knesset approves declaratory measure to apply Israeli sovereignty to West Bank",
+    "url": "https://www.jpost.com/israel-news/article-862007",
+    "source_type": "reputable_reporting",
+    "date": "2025-07-23",
+    "notes_ru": "Jerusalem Post сообщает о поимённом результате декларативного голосования за распространение израильского суверенитета на Иудею, Самарию и Иорданскую долину: четыре депутата Яхадут ха-Тора проголосовали за. Это свидетельство части фракции, а не доказательство единогласной позиции всего списка.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_core_funding_2026",
+    "title": "בג״ץ למדינה: מדוע נמשך תקצוב בתי הספר שאינם מלמדים לימודי ליבה? • גפני: השופטים שונאים את הציבור החרדי",
+    "url": "https://ch10.co.il/news/1047117/",
+    "source_type": "other",
+    "date": "2026-02-17",
+    "notes_ru": "Актуальный материал о требовании Высшего суда объяснить продолжение финансирования харедимных школ без полного לימודי ליבה и о резкой реакции Моше Гафни. Свидетельство относится к лидеру «Дегель ха-Тора» и используется осторожно как компонентное.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_override_2025",
+    "title": "'We failed, made a mistake' on judicial reform, haredi draft bill deal, UTJ's Goldknopf says",
+    "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-861654",
+    "source_type": "reputable_reporting",
+    "date": "2025-07-20",
+    "notes_ru": "Прямое изложение заявления Ицхака Гольдкнопфа: по его словам, Яхадут ха-Тора поддерживала судебную реформу, поскольку ей обещали Основной закон об изучении Торы и механизм override, способный защитить договорённости по учащимся ешив. Атрибуция — лидер списка/«Агудат Исраэль».",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_civil_marriage_2025",
+    "title": "המתקפה החריפה של החרדים על אוחנה - בגלל הצבעה הצהרתית בלבד: \"אינו ראוי לתפקידו\"",
+    "url": "https://www.mako.co.il/news-politics/2025_q4/Article-b2acc3537f05b91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2025-12-24",
+    "notes_ru": "N12 сообщает о резкой реакции обеих составляющих Яхадут ха-Тора на голос Амира Оханы за гражданский брак: Гольдкнопф и «Дегель ха-Тора» осудили поддержку законопроекта как нарушение религиозного status quo. Дополняет поимённое голосование.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_draft_exemption_2026",
+    "title": "Haredi leaders assail ‘oppressive’ court’s order to sanction draft evaders",
+    "url": "https://www.timesofisrael.com/liveblog_entry/haredi-leaders-assail-oppressive-courts-order-to-sanction-draft-evaders/",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-26",
+    "notes_ru": "Times of Israel приводит актуальное заявление председателя Яхадут ха-Тора Ицхака Гольдкнопфа с требованием немедленно принять законодательство, освобождающее учащихся ешив от призыва; Моше Гафни также выступил против санкций. Прямое свидетельство текущей линии по широким освобождениям.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_utj_service_benefits_2026",
+    "title": "החרדים במתקפה על החלטת בג״ץ לשלול הטבות ממשתמטים, באופוזיציה בירכו",
+    "url": "https://www.mako.co.il/news-politics/2026_q2/Article-1ee40212aa9cd91027.htm",
+    "source_type": "reputable_reporting",
+    "date": "2026-04-26",
+    "notes_ru": "N12 сообщает о решении суда лишать льгот уклоняющихся от службы и приводит отрицательную реакцию обоих ведущих представителей Яхадут ха-Тора — Ицхака Гольдкнопфа и Моше Гафни. Это прямое текущее свидетельство против существенной увязки государственных льгот со службой для этой группы.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yashar_economics_2026",
+    "title": "ישר! להזנקת הכלכלה הישראלית והורדת יוקר המחיה",
+    "url": "https://yasharwitheisenkot.com/principles/economics/",
+    "source_type": "party_platform",
+    "date": null,
+    "notes_ru": "Официальная экономическая программа партии: снижение подоходного налога при переносе части налоговой нагрузки, адресные льготы по социально-экономическим критериям и в зависимости от труда/службы, снятие импортных и бюрократических барьеров, усиление конкуренции и инвестиции в базовые государственные услуги.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yashar_foundation_2026",
+    "title": "בלי מדינה פלסטינית, עם רפורמה משפטית - בהסכמה: זו תוכנית איזנקוט",
+    "url": "https://www.israelhayom.co.il/news/politics/article/20691817",
+    "source_type": "reputable_reporting",
+    "date": "2026-06-04",
+    "notes_ru": "Israel Hayom сообщает содержание полученного редакцией базового документа «10 пунктов» партии Яшар!: текущий подход к палестинскому вопросу и военному контролю, ограничение освобождений от службы, муниципальные полномочия в вопросах религии и шаббата, государственная комиссия по 7 октября и другие позиции.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yashar_westbank_interview_2026",
+    "title": "\"אעדיף ללכת לבחירות נוספות ולא להתפשר על גיוס\": איזנקוט בריאיון",
+    "url": "https://www.mako.co.il/news-politics/2026_q2/Article-4e94b109a799e91027.htm",
+    "source_type": "transcript",
+    "date": "2026-06-06",
+    "notes_ru": "Прямое интервью Гади Айзенкота как председателя Яшар!: он отвергает вывод о необходимости эвакуации изолированных поселений, называет себя сторонником поселенчества при соблюдении закона и национальных интересов, предупреждает о риске смешения населения и двунационального государства и откладывает обсуждение постоянного статуса.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yashar_judicial_selection_2026",
+    "title": "איזנקוט: \"נכריז על צעדים אופרטיביים לעצירת המהפכה המשטרית\"",
+    "url": "https://www.israelhayom.co.il/news/politics/article/20635254",
+    "source_type": "reputable_reporting",
+    "date": "2026-05-27",
+    "notes_ru": "Текущее прямое заявление лидера Яшар!: Айзенкот называет очень плохой ситуацию, при которой судей Верховного суда фактически выбирают политики с целью изменить систему, и обещает представить партийные меры против соответствующей части судебной реформы.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yashar_judicial_compromise_2023",
+    "title": "איזנקוט על טיוטת הפשרה: \"בסיס טוב להתחלת מו\"מ\", אלקין: \"הקואליציה מיהרה לדחות\"",
+    "url": "https://www.ynet.co.il/news/article/h1rxhd4jn",
+    "source_type": "transcript",
+    "date": "2023-03-07",
+    "notes_ru": "Историческое заявление Айзенкота до создания Яшар!, когда он был депутатом «Государственного лагеря»: он назвал хорошей основой для переговоров проект компромисса без override clause, с возможностью Верховного суда отменять обычные законы квалифицированным составом, и провёл красную линию против политического контроля над судебной системой.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yisrael_beytenu_sovereignty_2025",
+    "title": "ליברמן מתחזק ביהודה ושומרון: \"יו\"ש היא חגורת הביטחון של מדינת ישראל\"",
+    "url": "https://beytenu.org.il/%D7%9C%D7%99%D7%91%D7%A8%D7%9E%D7%9F-%D7%9E%D7%AA%D7%97%D7%96%D7%A7-%D7%91%D7%99%D7%94%D7%95%D7%93%D7%94-%D7%95%D7%A9%D7%95%D7%9E%D7%A8%D7%95%D7%9F-%D7%99%D7%95%D7%A9-%D7%94%D7%99%D7%90-%D7%97/",
+    "source_type": "official_statement",
+    "date": "2025-05-22",
+    "notes_ru": "Официальный сайт НДИ: Либерман заявляет о необходимости суверенитета в Иорданской долине и Маале-Адумим и территориальной непрерывности в зоне C; материал также описывает партийную кампанию по укреплению присутствия в Иудее и Самарии.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yisrael_beytenu_day_after_2024",
+    "title": "התוכנית של ליברמן ליום שאחרי",
+    "url": "https://beytenu.org.il/%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A9%D7%9C-%D7%9C%D7%99%D7%91%D7%A8%D7%9E%D7%9F-%D7%9C%D7%99%D7%95%D7%9D-%D7%A9%D7%90%D7%97%D7%A8%D7%99-%D7%A8%D7%90%D7%99%D7%95%D7%9F-%D7%9C%D7%95%D7%95/",
+    "source_type": "official_statement",
+    "date": "2024-09-15",
+    "notes_ru": "Официальный сайт партии пересказывает интервью Либермана: он объявляет модель «двух государств для двух народов» провалившейся, предлагает отвергнуть двухгосударственную линию и передать долгосрочную ответственность за Газу и зоны A соответственно Египту и Иордании. Используется как историческая позиция лидера.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yisrael_beytenu_economic_plan_2026",
+    "title": "התכנית הכלכלית של אביגדור ליברמן",
+    "url": "https://beytenu.org.il/%D7%94%D7%AA%D7%9B%D7%A0%D7%99%D7%AA-%D7%94%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA-%D7%A9%D7%9C-%D7%90%D7%91%D7%99%D7%92%D7%93%D7%95%D7%A8-%D7%9C%D7%99%D7%91%D7%A8%D7%9E%D7%9F/",
+    "source_type": "official_statement",
+    "date": "2026-03-04",
+    "notes_ru": "Актуальный экономический план Либермана на официальном сайте НДИ: перераспределять поддержку в пользу служащих, работающих и платящих налоги; отдельная жилищная льгота предназначена парам, где как минимум один партнёр полностью отслужил и является активным резервистом.",
+    "verification_status": "candidate_unverified"
+  },
+  {
+    "id": "candidate_yisrael_beytenu_constitution_2025",
+    "title": "העם יחליט – חוקה עכשיו",
+    "url": "https://beytenu.org.il/%D7%94%D7%A2%D7%9D-%D7%99%D7%97%D7%9C%D7%99%D7%98-%D7%97%D7%95%D7%A7%D7%94-%D7%A2%D7%9B%D7%A9%D7%99%D7%95/",
+    "source_type": "official_statement",
+    "date": "2025-12-19",
+    "notes_ru": "Официальное заявление Либермана о конституции: закрепление устойчивых правил, баланса властей и прав граждан, критика одностороннего политического захвата судебной системы и поддержка отдельного конституционного суда для окончательных конституционных вопросов.",
+    "verification_status": "candidate_unverified"
   }
 ]

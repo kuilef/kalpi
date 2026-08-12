@@ -123,7 +123,28 @@
     }
 
     if (!['data_not_ready', 'live'].includes(config?.recommendation_mode)) errors.push('invalid recommendation_mode');
-    if (config?.recommendation_mode === 'live' && !positions.some((position) => position.status !== 'insufficient_data')) errors.push('live recommendation_mode requires known positions');
+    if (config?.prototype_trust_policy != null && config.prototype_trust_policy !== 'all_value_positions_full_confidence') errors.push('invalid prototype_trust_policy');
+    const resultPolicy = config?.result_policy;
+    if (resultPolicy != null) {
+      for (const field of ['min_substantive_answers', 'min_answered_families']) {
+        if (!Number.isInteger(Number(resultPolicy[field])) || Number(resultPolicy[field]) < 1) errors.push(`invalid result_policy.${field}`);
+      }
+      for (const field of ['min_party_result_coverage', 'near_tie_points']) {
+        if (!Number.isFinite(Number(resultPolicy[field])) || Number(resultPolicy[field]) < 0 || Number(resultPolicy[field]) > 1) errors.push(`invalid result_policy.${field}`);
+      }
+    }
+    const releaseGate = config?.release_gate;
+    if (releaseGate != null) {
+      for (const field of ['global_coverage_min', 'slice_coverage_min', 'global_original_confidence_min', 'slice_original_confidence_min']) {
+        if (!Number.isFinite(Number(releaseGate[field])) || Number(releaseGate[field]) < 0 || Number(releaseGate[field]) > 1) errors.push(`invalid release_gate.${field}`);
+      }
+    }
+    if (config?.recommendation_mode === 'live') {
+      if (!positions.some((position) => position.status !== 'insufficient_data')) errors.push('live recommendation_mode requires known positions');
+      if (config.prototype_trust_policy !== 'all_value_positions_full_confidence') errors.push('live recommendation_mode requires prototype_trust_policy');
+      if (!resultPolicy) errors.push('live recommendation_mode requires result_policy');
+      if (!releaseGate) errors.push('live recommendation_mode requires release_gate');
+    }
     return errors;
   }
 

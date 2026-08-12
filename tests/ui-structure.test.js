@@ -5,14 +5,16 @@ const path = require('node:path');
 
 const read = (name) => fs.readFileSync(path.join(__dirname, '..', name), 'utf8');
 
-test('v2 page exposes the single-question flow, review, results, and opt-in debug host', () => {
+test('v2 page exposes the single-question flow, direct results, and opt-in debug host', () => {
   const html = read('index.html');
-  for (const id of ['questionnaire', 'question-content', 'previous-question', 'next-question', 'review', 'complete-questionnaire', 'results', 'debug']) {
+  for (const id of ['questionnaire', 'question-content', 'previous-question', 'next-question', 'results', 'debug']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.doesNotMatch(html, /id="review"/);
+  assert.doesNotMatch(html, /complete-questionnaire|review-back|review-content/);
   assert.doesNotMatch(html, /locale-en|priority-toggle|axis-strips|party-map/);
   assert.doesNotMatch(html, />Перед завершением</);
-  assert.match(html, /id="review" class="panel hidden" aria-label="Проверка ответов"/);
+  assert.match(html, /href="analytics\.html"/);
 });
 
 test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
@@ -23,18 +25,31 @@ test('v2 page loads only the family-score runtime modules and generated v2 bundl
   assert.doesNotMatch(html, /axis-strips\.js|i18n\.js|baseline-data\.js/);
 });
 
-test('app uses data-not-ready mode as a hard production gate and only exposes analytics after ?debug=1', () => {
+test('public analytics page has accessible filter and detail hosts', () => {
+  const html = read('analytics.html');
+  for (const id of ['analytics-party-filter', 'analytics-family-filter', 'analytics-status-filter', 'analytics-scope-filter', 'analytics-verification-filter', 'analytics-summary', 'analytics-matrix', 'analytics-detail', 'analytics-provenance', 'analytics-review-queue']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(html, /analytics-page\.js/);
+});
+
+test('app uses a runtime release gate before it exposes the live recommendation', () => {
   const app = read('app.js');
   assert.match(app, /get\('debug'\) === '1'/);
-  assert.match(app, /recommendation_mode === 'data_not_ready'/);
+  assert.match(app, /Analytics\.computeReleaseGate\(data\)/);
+  assert.match(app, /gate\.passed/);
+  assert.match(app, /Scoring\.buildRecommendation/);
+  assert.match(app, /ResultsUi\.renderLiveResult\(\{ recommendation/);
   assert.match(app, /ResultsUi\.renderDataNotReady/);
   assert.match(app, /State\.load\(window\.localStorage, data\.scoringConfig\)/);
 });
 
-test('app advances on a response selection and maps keyboard digits 0 through 5 to the radio controls', () => {
+test('app advances on a response selection, renders results after the final answer, and maps keyboard digits 0 through 5 to the radio controls', () => {
   const app = read('app.js');
   assert.match(app, /function advanceAfterAnswer\(\)/);
-  assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*renderReview\(\)/);
+  assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*State\.markCompleted\(state\);\s*saveState\(\);\s*renderResults\(\);/);
+  assert.doesNotMatch(app, /function renderReview\(/);
+  assert.doesNotMatch(app, /review-back|complete-questionnaire|review-content/);
   assert.match(app, /document\.addEventListener\('keydown'/);
   assert.match(app, /event\.key < '0' \|\| event\.key > '5'/);
   assert.match(app, /input\.dispatchEvent\(new Event\('change', \{ bubbles: true \}\)\)/);
@@ -48,4 +63,8 @@ test('stylesheet provides responsive pole layout, touch targets, and visible foc
   assert.match(css, /\.poles \{ grid-template-columns:1fr; /);
   assert.doesNotMatch(css, /max-width:520px/);
   assert.match(css, /\.unknown-radio \{[^}]*width:100%/);
+  assert.match(css, /\.analytics-filters/);
+  assert.match(css, /\.table-scroll/);
+  assert.match(css, /\.family-bar/);
+  assert.match(css, /\.analytics-matrix-table/);
 });

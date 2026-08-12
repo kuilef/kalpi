@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalpi — аналитика данных</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="analytics-page">
+  <header class="site-header">
+    <div class="shell">
+      <p class="eyebrow">Kalpi · прозрачность данных</p>
+      <h1>Как устроена партийная матрица</h1>
+      <p class="lede">Здесь видны coverage, исходные статусы, confidence и provenance. Для prototype-ranking все позиции с содержательным значением считаются доступными, но их исследовательское качество не скрывается.</p>
+      <p class="header-link"><a href="index.html">Вернуться к опроснику</a></p>
+    </div>
+  </header>
+  <main class="shell">
+    <section id="analytics-summary" class="panel" aria-live="polite"></section>
+    <section class="panel" aria-labelledby="analytics-filter-title">
+      <p class="eyebrow">Фильтры</p><h2 id="analytics-filter-title">Исследовать матрицу</h2>
+      <div class="analytics-filters">
+        <label>Партия <select id="analytics-party-filter"><option value="">Все партии</option></select></label>
+        <label>Family <select id="analytics-family-filter"><option value="">Все темы</option></select></label>
+        <label>Status <select id="analytics-status-filter"><option value="">Все статусы</option></select></label>
+        <label>Entity scope <select id="analytics-scope-filter"><option value="">Все scopes</option></select></label>
+        <label>Проверка источника <select id="analytics-verification-filter"><option value="">Все источники</option></select></label>
+      </div>
+    </section>
+    <section class="panel analytics-matrix-panel" aria-labelledby="analytics-matrix-title">
+      <p class="eyebrow">Матрица</p><h2 id="analytics-matrix-title">Тепловая карта: партия × вопрос</h2>
+      <p class="lede">Выберите ячейку, чтобы прочитать её объяснение и увидеть первичные метаданные.</p>
+      <div id="analytics-matrix" class="table-scroll"></div>
+    </section>
+    <section id="analytics-detail" class="panel" aria-live="polite" tabindex="-1"></section>
+    <section id="analytics-provenance" class="panel"></section>
+    <section id="analytics-review-queue" class="panel"></section>
+  </main>
+  <footer class="site-footer shell"><p>Kalpi показывает исследовательскую матрицу, а не прогноз поведения партий или совет, за кого голосовать.</p></footer>
+  <script src="data-loader.js"></script>
+  <script src="data-validation.js"></script>
+  <script src="analytics.js"></script>
+  <script src="data/default-data.js"></script>
+  <script src="analytics-page.js"></script>
+</body>
+</html>

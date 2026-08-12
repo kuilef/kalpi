@@ -28,7 +28,14 @@ test('scoring config assigns every core question to exactly one approved family'
     ...(family.fundamental_questions || []),
     ...(family.policy_questions || []),
   ]);
-  assert.equal(config.recommendation_mode, 'data_not_ready');
+  assert.equal(config.recommendation_mode, 'live');
+  assert.equal(config.prototype_trust_policy, 'all_value_positions_full_confidence');
+  assert.deepEqual(config.result_policy, {
+    min_substantive_answers: 8,
+    min_answered_families: 6,
+    min_party_result_coverage: 0.5,
+    near_tie_points: 0.03,
+  });
   assert.deepEqual(config.answer_values, [-1, -0.5, 0, 0.5, 1]);
   assert.equal(config.user_importance_enabled, false);
   assert.equal(config.families.length, 12);
@@ -38,17 +45,16 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.equal(config.families.find((family) => family.id === 'october_7_accountability').family_type, 'standalone_policy');
 });
 
-test('v2 positions are an explicit empty party-question matrix', () => {
+test('v2 positions are a complete prototype candidate matrix with retained original statuses', () => {
   const parties = load('parties.json').filter((party) => party.active !== false);
   const questions = load('questions.json');
   const positions = load('positions.json');
   assert.equal(positions.length, parties.length * questions.length);
-  for (const position of positions) {
-    assert.equal(position.value, null);
-    assert.equal(position.confidence, 0);
-    assert.equal(position.status, 'insufficient_data');
-    assert.equal(position.entity_scope, 'PARTY');
-    assert.deepEqual(position.evidence, []);
-    assert.equal(position.last_verified, null);
-  }
+  assert.deepEqual(Object.fromEntries(['known', 'mixed', 'historical', 'insufficient_data'].map((status) => [
+    status,
+    positions.filter((position) => position.status === status).length,
+  ])), { known: 167, mixed: 18, historical: 44, insufficient_data: 47 });
+  assert.equal(positions.filter((position) => position.value != null).length, 229);
+  assert.equal(load('sources.json').length, 164);
+  assert.ok(positions.some((position) => position.status === 'mixed' && position.entity_scope === 'LEADER'));
 });

@@ -33,9 +33,23 @@ test('v2 validation rejects a known position without evidence, explanation, and 
     value: -1,
     confidence: 0.8,
     status: 'known',
+    evidence: [],
+    explanation_ru: '',
+    last_verified: null,
   };
   const errors = Validation.validateDataset(data);
   assert.ok(errors.some((error) => error.includes('known position requires evidence')));
   assert.ok(errors.some((error) => error.includes('known position requires explanation_ru')));
   assert.ok(errors.some((error) => error.includes('known position requires last_verified')));
+});
+
+test('v2 validation rejects an incomplete prototype live policy', () => {
+  const data = validData();
+  data.scoringConfig.prototype_trust_policy = 'guess';
+  data.scoringConfig.result_policy.min_substantive_answers = 0;
+  data.scoringConfig.release_gate.global_coverage_min = 1.1;
+  const errors = Validation.validateDataset(data);
+  assert.ok(errors.some((error) => error.includes('invalid prototype_trust_policy')));
+  assert.ok(errors.some((error) => error.includes('invalid result_policy.min_substantive_answers')));
+  assert.ok(errors.some((error) => error.includes('invalid release_gate.global_coverage_min')));
 });

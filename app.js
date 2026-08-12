@@ -70,7 +70,9 @@
   function advanceAfterAnswer() {
     const index = currentIndex();
     if (index === questions().length - 1) {
-      renderReview();
+      State.markCompleted(state);
+      saveState();
+      renderResults();
       return;
     }
     State.setCurrentQuestion(state, questions()[index + 1].id);
@@ -93,50 +95,11 @@
     });
     $('previous-question').disabled = index === 0;
     $('next-question').disabled = !hasAnswer(question.id);
-    $('next-question').textContent = index === allQuestions.length - 1 ? 'Проверить ответы' : 'Далее';
+    $('next-question').textContent = index === allQuestions.length - 1 ? 'Показать результат' : 'Далее';
     document.querySelectorAll('#question-content input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
       State.setAnswer(state, question.id, input.value === 'unknown' ? null : Number(input.value));
       saveState();
       advanceAfterAnswer();
-    }));
-  }
-
-  function familyByQuestion() {
-    const mapping = new Map();
-    for (const family of data.scoringConfig.families || []) {
-      for (const questionId of [...family.fundamental_questions, ...family.policy_questions]) mapping.set(questionId, family);
-    }
-    return mapping;
-  }
-
-  function answerSummary(question) {
-    const value = state.answers[question.id];
-    if (value === null) return 'Не знаю / недостаточно информации';
-    const item = QuestionnaireUi.SCALE.find((scale) => scale.value === value);
-    return item ? item.label : 'Нет ответа';
-  }
-
-  function renderReview() {
-    const mapping = familyByQuestion();
-    const grouped = new Map();
-    for (const question of questions()) {
-      const family = mapping.get(question.id);
-      const label = family?.label_ru || 'Без family';
-      if (!grouped.has(label)) grouped.set(label, []);
-      grouped.get(label).push(question);
-    }
-    $('review-content').innerHTML = [...grouped.entries()].map(([label, entries]) => `<section class="review-family"><h3>${escapeHtml(label)}</h3><ul>${entries.map((question) => `<li><strong>${escapeHtml(question.code)}</strong><span>${escapeHtml(answerSummary(question))}</span><button type="button" data-edit-question="${escapeHtml(question.id)}">Изменить</button></li>`).join('')}</ul></section>`).join('');
-    $('questionnaire').classList.add('hidden');
-    $('review').classList.remove('hidden');
-    $('review').focus({ preventScroll: true });
-    window.scrollTo({ top: $('review').offsetTop - 12, behavior: 'smooth' });
-    document.querySelectorAll('[data-edit-question]').forEach((button) => button.addEventListener('click', () => {
-      State.setCurrentQuestion(state, button.dataset.editQuestion);
-      saveState();
-      $('review').classList.add('hidden');
-      $('questionnaire').classList.remove('hidden');
-      renderQuestion();
-      $('questionnaire').focus?.({ preventScroll: true });
     }));
   }
 
@@ -159,17 +122,17 @@
 
   function renderResults() {
     const analytics = Analytics.computeDatasetAnalytics(data);
+    const gate = Analytics.computeReleaseGate(data);
     const host = $('results');
     host.classList.remove('hidden');
-    if (data.scoringConfig.recommendation_mode === 'data_not_ready') {
+    if (data.scoringConfig.recommendation_mode === 'data_not_ready' || !gate.passed) {
       host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
     } else {
       const sourcesById = new Map((data.sources || []).map((source) => [source.id, source]));
-      const ranked = Scoring.rankParties({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, scoringConfig: data.scoringConfig });
-      const top = ranked[0];
+      const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, scoringConfig: data.scoringConfig });
       const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
-      top.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
-      host.innerHTML = ResultsUi.renderLiveResult({ result: top, sourcesById });
+      recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
+      host.innerHTML = ResultsUi.renderLiveResult({ recommendation, sourcesById });
     }
     renderDebug(analytics);
     host.focus({ preventScroll: true });
@@ -197,17 +160,6 @@
       event.preventDefault();
       input.checked = true;
       input.dispatchEvent(new Event('change', { bubbles: true }));
-    });
-    $('review-back').addEventListener('click', () => {
-      $('review').classList.add('hidden');
-      $('questionnaire').classList.remove('hidden');
-      renderQuestion();
-    });
-    $('complete-questionnaire').addEventListener('click', () => {
-      State.markCompleted(state);
-      saveState();
-      $('review').classList.add('hidden');
-      renderResults();
     });
   }
 
