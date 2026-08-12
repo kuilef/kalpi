@@ -108,6 +108,12 @@ def build_candidate_import(*, parties, questions, existing_sources, packages, na
         for party in active_parties
         for question in sorted(questions, key=lambda item: item['display_order'])
     ]
+    used_evidence_ids = {
+        evidence_id
+        for position in ordered_positions
+        for evidence_id in position.get('evidence', [])
+    }
+    sources = [source for source in sources if source['id'] in used_evidence_ids]
     return {
         'positions': ordered_positions,
         'sources': sources,

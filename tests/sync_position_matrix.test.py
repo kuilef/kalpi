@@ -73,6 +73,27 @@ class CandidateImportTests(unittest.TestCase):
         self.assertEqual(result['positions'][0]['evidence'], ['candidate_p1_s1'])
         self.assertEqual(result['sources'][-1]['id'], 'candidate_p1_s1')
 
+    def test_build_candidate_import_prunes_unreferenced_canonical_sources(self):
+        result = sync_position_matrix.build_candidate_import(
+            parties=[{'id': 'p1', 'active': True}],
+            questions=[{'id': 'q1', 'display_order': 1}],
+            existing_sources=[
+                {'id': 'used', 'title': 'Used'},
+                {'id': 'orphan', 'title': 'Orphan'},
+            ],
+            packages=[{
+                'party_id': 'p1',
+                'positions': [{
+                    'party': 'p1', 'question': 'q1', 'value': 1, 'confidence': 0.5,
+                    'status': 'known', 'entity_scope': 'PARTY', 'evidence': ['used'],
+                    'explanation_ru': 'x', 'last_verified': '2026-08-11',
+                }],
+                'sources': [{'id': 'used', 'title': 'Used'}],
+            }],
+        )
+
+        self.assertEqual([source['id'] for source in result['sources']], ['used'])
+
 
 if __name__ == '__main__':
     unittest.main()
