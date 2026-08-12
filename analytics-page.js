@@ -11,20 +11,31 @@
 
   function pct(value) { return `${Math.round(Number(value || 0) * 100)}%`; }
 
+  const LABELS = {
+    known: 'подтверждённая позиция', mixed: 'противоречивые данные', historical: 'исторические данные', insufficient_data: 'недостаточно данных',
+    PARTY: 'партия', COMPONENT_PARTY: 'составная партия', CURRENT_LIST: 'текущий список', FACTION: 'фракция', HISTORICAL: 'историческая позиция', LEADER: 'лидер', INDIVIDUAL_MK: 'депутат',
+    candidate_unverified: 'кандидат без проверки', 'previously_researched_2026-08-08': 'исследовано ранее (08.08.2026)', 'researched_2026-08-09': 'исследовано (09.08.2026)', 'researched_2026-08-10': 'исследовано (10.08.2026)', 'researched_2026-08-12': 'исследовано (12.08.2026)', 'reverified_2026-08-10': 'перепроверено (10.08.2026)', verified: 'проверен', not_recorded: 'не указано',
+    official_document: 'официальный документ', reputable_reporting: 'надёжное СМИ', plenary_protocol: 'протокол заседания',
+  };
+
+  function label(value) { return LABELS[value] || String(value || 'не указано'); }
+
   function statList(values) {
     return Object.entries(values || {}).map(([label, count]) => `<li><span>${escapeHtml(label)}</span><strong>${escapeHtml(count)}</strong></li>`).join('');
   }
 
   function renderAnalytics({ gate, research }) {
     const summary = gate.metrics.summary;
-    const gateHtml = gate.passed
-      ? '<p class="gate-pass"><strong>Release gate пройден.</strong> Runtime может показывать prototype-ranking.</p>'
-      : `<p class="gate-fail"><strong>Release gate не пройден.</strong> ${escapeHtml(gate.failures.join(' · '))}</p>`;
-    return `<p class="eyebrow">Сводка</p><h2>Качество и границы prototype</h2>${gateHtml}<p>В матрице ${summary.knownCells} из ${summary.totalCells} usable ячеек; средний исходный confidence — ${pct(summary.averageConfidence)}. Для ranking позиция с value получает effective confidence 100%, но исходный status и evidence сохраняются ниже.</p><dl class="completion-metrics"><div><dt>Покрытие</dt><dd>${summary.knownCells} / ${summary.totalCells}</dd></div><div><dt>Исходный confidence</dt><dd>${pct(summary.averageConfidence)}</dd></div><div><dt>Очередь перепроверки</dt><dd>${research.reviewQueue.length}</dd></div></dl>`;
+    const gateHtml = gate.passed ? '' : `<p class="gate-fail"><strong>Порог готовности не пройден.</strong> ${escapeHtml(gate.failures.join(' · '))}</p>`;
+    return `<h2>Качество и границы прототипа</h2>${gateHtml}<p>В матрице ${summary.knownCells} из ${summary.totalCells} заполненных ячеек; средняя исходная достоверность — ${pct(summary.averageConfidence)}. Для расчёта рейтинга позиция со значением получает расчётную достоверность 100%, но исходный статус и источники сохраняются ниже.</p><dl class="completion-metrics"><div><dt>Покрытие</dt><dd>${summary.knownCells} / ${summary.totalCells}</dd></div><div><dt>Исходная достоверность</dt><dd>${pct(summary.averageConfidence)}</dd></div><div><dt>Очередь перепроверки</dt><dd>${research.reviewQueue.length}</dd></div></dl>`;
   }
 
-  function cellClass(cell) {
-    return `matrix-${String(cell.position.status || 'insufficient_data').replace(/[^a-z_]/g, '')}`;
+  function matrixCellClass(cell) {
+    const value = cell?.position?.value;
+    if (value == null) return 'matrix-value-missing';
+    if (value < 0) return 'matrix-value-negative';
+    if (value > 0) return 'matrix-value-positive';
+    return 'matrix-value-neutral';
   }
 
   function renderMatrix(cells, parties, questions) {
@@ -32,7 +43,7 @@
     const button = (cell, party, question) => {
       if (!cell) return '<td>—</td>';
       const value = cell.position.value == null ? '—' : cell.position.value;
-      return `<td><button class="matrix-cell ${cellClass(cell)}" type="button" data-cell-key="${escapeHtml(party.id)}/${escapeHtml(question.id)}" aria-label="${escapeHtml(party.name_ru || party.id)}, ${escapeHtml(question.short_title_ru || question.id)}: ${escapeHtml(cell.position.status)}">${escapeHtml(value)}</button></td>`;
+      return `<td><button class="matrix-cell ${matrixCellClass(cell)}" type="button" data-cell-key="${escapeHtml(party.id)}/${escapeHtml(question.id)}" aria-label="${escapeHtml(party.name_ru || party.id)}, ${escapeHtml(question.short_title_ru || question.id)}: ${escapeHtml(label(cell.position.status))}">${escapeHtml(value)}</button></td>`;
     };
     const desktop = `<table class="analytics-matrix-table"><thead><tr><th scope="col">Партия</th>${questions.map((question) => `<th scope="col" title="${escapeHtml(question.short_title_ru || question.id)}">${escapeHtml(question.code || question.id)}</th>`).join('')}</tr></thead><tbody>${parties.map((party) => `<tr><th scope="row">${escapeHtml(party.name_ru || party.id)}</th>${questions.map((question) => button(byKey.get(`${party.id}/${question.id}`), party, question)).join('')}</tr>`).join('')}</tbody></table>`;
     const mobile = `<table class="analytics-matrix-table"><thead><tr><th scope="col">Вопрос</th>${parties.map((party) => `<th scope="col" title="${escapeHtml(party.name_ru || party.id)}">${escapeHtml(party.name_ru || party.id)}</th>`).join('')}</tr></thead><tbody>${questions.map((question) => `<tr><th scope="row" title="${escapeHtml(question.short_title_ru || question.id)}">${escapeHtml(question.short_title_ru || question.id)}</th>${parties.map((party) => button(byKey.get(`${party.id}/${question.id}`), party, question)).join('')}</tr>`).join('')}</tbody></table>`;
@@ -40,24 +51,25 @@
   }
 
   function renderDetail(cell) {
-    if (!cell) return '<p class="eyebrow">Ячейка матрицы</p><h2>Выберите позицию</h2><p>Нажмите на ячейку в таблице, чтобы увидеть explanation, статус, confidence, scope и связанные источники.</p>';
+    if (!cell) return '<h2>Выберите позицию</h2><p>Нажмите на ячейку в таблице, чтобы увидеть объяснение, статус, достоверность, принадлежность позиции и связанные источники.</p>';
     const position = cell.position;
     const evidence = (cell.evidence || []).map((source) => source.url
-      ? `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.title || source.id)}</a> <span>${escapeHtml(source.verification_status || 'not_recorded')}</span></li>`
-      : `<li>${escapeHtml(source.title || source.id)} <span>${escapeHtml(source.verification_status || 'not_recorded')}</span></li>`).join('');
-    return `<p class="eyebrow">Ячейка матрицы</p><h2>${escapeHtml(cell.party.name_ru || cell.party.id)} · ${escapeHtml(cell.question.short_title_ru || cell.question.id)}</h2><dl class="evidence-facts"><div><dt>Value</dt><dd>${escapeHtml(position.value == null ? 'нет позиции' : position.value)}</dd></div><div><dt>Status</dt><dd>${escapeHtml(position.status)}</dd></div><div><dt>Confidence</dt><dd>${pct(position.confidence)}</dd></div><div><dt>Entity scope</dt><dd>${escapeHtml(position.entity_scope || 'not_recorded')}</dd></div><div><dt>Последняя проверка</dt><dd>${escapeHtml(position.last_verified || 'не указана')}</dd></div></dl><p>${escapeHtml(position.explanation_ru || 'Для этой пары пока нет достаточной позиции.')}</p><h3>Источники</h3>${evidence ? `<ul class="source-list">${evidence}</ul>` : '<p>Источники не указаны.</p>'}`;
+      ? `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.title || source.id)}</a> <span>${escapeHtml(label(source.verification_status))}</span></li>`
+      : `<li>${escapeHtml(source.title || source.id)} <span>${escapeHtml(label(source.verification_status))}</span></li>`).join('');
+    return `<h2>${escapeHtml(cell.party.name_ru || cell.party.id)} · ${escapeHtml(cell.question.short_title_ru || cell.question.id)}</h2><dl class="evidence-facts"><div><dt>Значение</dt><dd>${escapeHtml(position.value == null ? 'нет позиции' : position.value)}</dd></div><div><dt>Статус</dt><dd>${escapeHtml(label(position.status))}</dd></div><div><dt>Достоверность</dt><dd>${pct(position.confidence)}</dd></div><div><dt>Принадлежность позиции</dt><dd>${escapeHtml(label(position.entity_scope))}</dd></div><div><dt>Последняя проверка</dt><dd>${escapeHtml(position.last_verified || 'не указана')}</dd></div></dl><p>${escapeHtml(position.explanation_ru || 'Для этой пары пока нет достаточной позиции.')}</p><h3>Источники</h3>${evidence ? `<ul class="source-list">${evidence}</ul>` : '<p>Источники не указаны.</p>'}`;
   }
 
   function renderProvenance(research) {
     const unused = research.unusedSources.length
       ? `<details><summary>Неиспользуемые источники (${research.unusedSources.length})</summary><ul class="source-list">${research.unusedSources.map((source) => `<li>${escapeHtml(source.title || source.id)}</li>`).join('')}</ul></details>`
       : '<p>Все источники связаны хотя бы с одной позицией.</p>';
-    return `<p class="eyebrow">Provenance</p><h2>Откуда берутся позиции</h2><div class="provenance-grid"><section><h3>Исходные статусы</h3><ul>${statList(research.statusCounts)}</ul></section><section><h3>Entity scopes</h3><ul>${statList(research.scopeCounts)}</ul></section><section><h3>Проверка источников</h3><ul>${statList(research.sourceVerificationCounts)}</ul></section><section><h3>Типы источников</h3><ul>${statList(research.sourceTypeCounts)}</ul></section></div>${unused}`;
+    const labelled = (values) => Object.fromEntries(Object.entries(values).map(([key, count]) => [label(key), count]));
+    return `<h2>Происхождение данных</h2><div class="provenance-grid"><section><h3>Исходные статусы</h3><ul>${statList(labelled(research.statusCounts))}</ul></section><section><h3>Принадлежность позиции</h3><ul>${statList(labelled(research.scopeCounts))}</ul></section><section><h3>Проверка источников</h3><ul>${statList(labelled(research.sourceVerificationCounts))}</ul></section><section><h3>Типы источников</h3><ul>${statList(labelled(research.sourceTypeCounts))}</ul></section></div>${unused}`;
   }
 
   function renderReviewQueue(queue) {
-    const rows = queue.slice(0, 40).map((cell) => `<tr><td>${escapeHtml(cell.party.name_ru || cell.party.id)}</td><td>${escapeHtml(cell.question.short_title_ru || cell.question.id)}</td><td>${escapeHtml(cell.position.status)}</td><td>${pct(cell.position.confidence)}</td><td>${escapeHtml(cell.position.entity_scope || 'not_recorded')}</td></tr>`).join('');
-    return `<p class="eyebrow">Следующая проверка</p><h2>Очередь перепроверки</h2><p>Сначала показаны пробелы, затем записи с confidence ниже 70%. Показаны первые ${Math.min(queue.length, 40)} из ${queue.length}.</p><div class="table-scroll"><table class="audit-table"><thead><tr><th>Партия</th><th>Вопрос</th><th>Status</th><th>Confidence</th><th>Scope</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const rows = queue.slice(0, 40).map((cell) => `<tr><td>${escapeHtml(cell.party.name_ru || cell.party.id)}</td><td>${escapeHtml(cell.question.short_title_ru || cell.question.id)}</td><td>${escapeHtml(label(cell.position.status))}</td><td>${pct(cell.position.confidence)}</td><td>${escapeHtml(label(cell.position.entity_scope))}</td></tr>`).join('');
+    return `<h2>Очередь перепроверки</h2><p>Сначала показаны пробелы, затем записи с достоверностью ниже 70%. Показаны первые ${Math.min(queue.length, 40)} из ${queue.length}.</p><div class="table-scroll"><table class="audit-table"><thead><tr><th>Партия</th><th>Вопрос</th><th>Статус</th><th>Достоверность</th><th>Принадлежность позиции</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
   function initBrowserPage() {
@@ -114,9 +126,9 @@
       const research = window.KalpiAnalytics.computeResearchAnalytics(data);
       fillSelect('analytics-party-filter', data.parties.filter((party) => party.active !== false).map((party) => party.id), (id) => data.parties.find((party) => party.id === id).name_ru || id);
       fillSelect('analytics-family-filter', [...new Set(research.cells.map((cell) => cell.familyId).filter(Boolean))], (id) => data.scoringConfig.families.find((family) => family.id === id)?.label_ru || id);
-      fillSelect('analytics-status-filter', Object.keys(research.statusCounts), (id) => id);
-      fillSelect('analytics-scope-filter', Object.keys(research.scopeCounts), (id) => id);
-      fillSelect('analytics-verification-filter', Object.keys(research.sourceVerificationCounts), (id) => id);
+      fillSelect('analytics-status-filter', Object.keys(research.statusCounts), label);
+      fillSelect('analytics-scope-filter', Object.keys(research.scopeCounts), label);
+      fillSelect('analytics-verification-filter', Object.keys(research.sourceVerificationCounts), label);
       for (const id of ['analytics-party-filter', 'analytics-family-filter', 'analytics-status-filter', 'analytics-scope-filter', 'analytics-verification-filter']) $(id).addEventListener('change', render);
       $('analytics-detail').innerHTML = renderDetail(null);
       render();
@@ -124,5 +136,5 @@
   }
 
   if (typeof window !== 'undefined' && window.document) initBrowserPage();
-  return { renderAnalytics, renderMatrix, renderDetail, renderProvenance, renderReviewQueue };
+  return { renderAnalytics, renderMatrix, matrixCellClass, renderDetail, renderProvenance, renderReviewQueue };
 });

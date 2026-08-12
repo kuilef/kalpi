@@ -39,7 +39,12 @@ test('question UI renders unknown as a separate selected response', () => {
   const html = UI.renderQuestion({ question, index: 4, total: 23, answer: null });
   assert.match(html, /Не знаю \/ недостаточно информации/);
   assert.match(html, /value="unknown" data-shortcut="0" checked/);
-  assert.match(html, /Вопрос 5 из 23/);
+  assert.doesNotMatch(html, /Вопрос 5 из 23/);
+  assert.doesNotMatch(html, /A01/);
+});
+
+test('question ordinal identifies the currently open question rather than answered questions', () => {
+  assert.equal(UI.questionOrdinal(4, 23), '5 / 23');
 });
 
 test('progress counts explicit unknown as answered', () => {

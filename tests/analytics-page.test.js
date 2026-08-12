@@ -21,12 +21,25 @@ test('analytics page renderers expose gate, matrix, provenance and review queue'
     Page.renderProvenance(payload.research),
     Page.renderReviewQueue(payload.research.reviewQueue),
   ].join('');
-  assert.match(html, /Release gate пройден/);
+  assert.doesNotMatch(html, /Release gate пройден/);
+  assert.match(html, /Качество и границы прототипа/);
   assert.match(html, /analytics-matrix-table/);
   assert.match(html, /analytics-matrix-desktop/);
   assert.match(html, /analytics-matrix-mobile/);
   assert.strictEqual((html.match(/data-cell-key="p\/q"/g) || []).length, 2);
   assert.match(html, /Партия/);
-  assert.match(html, /candidate_unverified/);
+  assert.match(html, /кандидат без проверки/);
   assert.match(html, /Очередь перепроверки/);
+  assert.match(html, /matrix-value-positive/);
+  assert.match(html, /Достоверность/);
+  assert.match(html, /Происхождение данных/);
+  const visibleText = html.replace(/<[^>]+>/g, ' ');
+  assert.doesNotMatch(visibleText, /prototype-ranking|usable|confidence|ranking|effective confidence|provenance|candidate_unverified/i);
+});
+
+test('matrix cell colors communicate the numeric direction of a position', () => {
+  assert.equal(Page.matrixCellClass({ position: { value: -1, status: 'known' } }), 'matrix-value-negative');
+  assert.equal(Page.matrixCellClass({ position: { value: 0, status: 'mixed' } }), 'matrix-value-neutral');
+  assert.equal(Page.matrixCellClass({ position: { value: 0.5, status: 'historical' } }), 'matrix-value-positive');
+  assert.equal(Page.matrixCellClass({ position: { value: null, status: 'insufficient_data' } }), 'matrix-value-missing');
 });

@@ -24,6 +24,10 @@
     };
   }
 
+  function questionOrdinal(index, total) {
+    return `${index + 1} / ${total}`;
+  }
+
   function renderQuestion({ question, index, total, answer }) {
     const choice = (value, label, number) => {
       const id = `${question.id}-${String(value).replace('-', 'minus').replace('.', '_')}`;
@@ -31,7 +35,6 @@
       return `<span class="scale-choice"><input type="radio" name="${escapeHtml(question.id)}" id="${id}" value="${value}" data-shortcut="${number}"${checked} aria-label="${escapeHtml(label)}"><label for="${id}"><span class="choice-key" aria-hidden="true">${number}</span><span class="sr-only">${escapeHtml(label)}</span></label></span>`;
     };
     return `<article class="wizard-question" data-question-id="${escapeHtml(question.id)}">
-      <p class="question-code">${escapeHtml(question.code)} · Вопрос ${index + 1} из ${total}</p>
       <fieldset>
         <legend><span class="question-title">${escapeHtml(question.short_title_ru)}</span><span class="question-prompt">${escapeHtml(question.prompt_ru)}</span></legend>
         ${question.explanation_ru ? `<p class="question-explanation">${escapeHtml(question.explanation_ru)}</p>` : ''}
@@ -43,5 +46,5 @@
     </article>`;
   }
 
-  return { SCALE, questionnaireProgress, renderQuestion };
+  return { SCALE, questionnaireProgress, questionOrdinal, renderQuestion };
 });

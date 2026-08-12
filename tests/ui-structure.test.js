@@ -14,6 +14,8 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, /complete-questionnaire|review-back|review-content/);
   assert.doesNotMatch(html, /locale-en|priority-toggle|axis-strips|party-map/);
   assert.doesNotMatch(html, />Перед завершением</);
+  assert.doesNotMatch(html, /Kalpi · русский опросник/);
+  assert.doesNotMatch(html, /<p class="eyebrow">Опрос<\/p>/);
   assert.match(html, /href="analytics\.html"/);
 });
 

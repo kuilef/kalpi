@@ -62,9 +62,10 @@
   }
 
   function updateProgress() {
-    const progress = QuestionnaireUi.questionnaireProgress(questions(), state.answers);
-    $('progress').textContent = `${progress.answered} / ${progress.total}`;
-    $('progress-bar').style.setProperty('--progress', progress.total ? progress.answered / progress.total : 0);
+    const total = questions().length;
+    const ordinal = currentIndex() + 1;
+    $('progress').textContent = QuestionnaireUi.questionOrdinal(currentIndex(), total);
+    $('progress-bar').style.setProperty('--progress', total ? ordinal / total : 0);
   }
 
   function advanceAfterAnswer() {

@@ -18,9 +18,9 @@
   --gate-pass-border:#2e6a4d;
   --gate-pass-bg:#e7f0e9;
   --matrix-header:#efe8da;
-  --matrix-known:#dce9dc;
-  --matrix-mixed:#f5dfab;
-  --matrix-historical:#ded9ea;
+  --matrix-negative:#dbe8f2;
+  --matrix-neutral:#f1e5b8;
+  --matrix-positive:#dce9dc;
   --matrix-missing:#f0ece4;
 }
 * { box-sizing:border-box; }
@@ -136,10 +136,10 @@ a:hover { color:var(--ink); }
 .analytics-matrix-mobile .analytics-matrix-table tbody th { min-width:150px; max-width:180px; }
 .analytics-matrix-mobile .analytics-matrix-table thead th { min-width:44px; max-width:56px; padding:5px 2px; font-size:.68rem; line-height:1.1; writing-mode:vertical-rl; transform:rotate(180deg); }
 .analytics-matrix-mobile .matrix-cell { width:30px; min-width:30px; height:30px; min-height:30px; font-size:.72rem; }
-.matrix-known { background:var(--matrix-known); }
-.matrix-mixed { background:var(--matrix-mixed); }
-.matrix-historical { background:var(--matrix-historical); }
-.matrix-insufficient_data { color:var(--muted); background:var(--matrix-missing); }
+.matrix-value-negative { background:var(--matrix-negative); }
+.matrix-value-neutral { background:var(--matrix-neutral); }
+.matrix-value-positive { background:var(--matrix-positive); }
+.matrix-value-missing { color:var(--muted); background:var(--matrix-missing); }
 .provenance-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; margin-top:26px; }
 .provenance-grid ul,.source-list { margin:12px 0 0; padding:0; list-style:none; font:.86rem/1.4 system-ui,sans-serif; }
 .provenance-grid li { display:flex; justify-content:space-between; gap:16px; padding:7px 0; border-top:1px solid var(--rule); }
