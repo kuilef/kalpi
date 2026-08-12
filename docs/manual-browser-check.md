@@ -53,3 +53,9 @@ HTTP smoke test прошёл. Открытие `file://` через встрое
 - Console errors: none on questionnaire and analytics pages.
 - Local data loads successfully through the project HTTP server.
 - This is a browser viewport check, not a substitute for testing on physical iOS/Android devices.
+
+## Проверка контролов ответа от 12 августа 2026
+
+- На desktop-ширине пять сегментов показывают клавиши `1–5` и подписи «Полностью», «Скорее», «Посередине», а отдельная строка объясняет: `1–5` — содержательные ответы, `0` — «Не знаю».
+- На ширине 390 px ширина документа составила 375 px при viewport 390 px: горизонтального scroll страницы нет, все пять сегментов и отдельный ответ «Не знаю» видимы.
+- Нажатие `4` на первом вопросе перешло к следующему вопросу, а нажатие `0` на втором сделало то же для отдельного ответа «Не знаю».

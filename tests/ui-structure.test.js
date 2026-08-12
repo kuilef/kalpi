@@ -77,6 +77,14 @@ test('stylesheet provides responsive pole layout, touch targets, and visible foc
   assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-mobile[^}]*display:block/);
 });
 
+test('stylesheet presents response choices as labelled keyboard segments', () => {
+  const css = read('styles.css');
+  assert.match(css, /\.choice-key \{[^}]*font:/);
+  assert.match(css, /\.choice-intensity \{[^}]*font:/);
+  assert.match(css, /\.keyboard-hint \{[^}]*font:/);
+  assert.doesNotMatch(css, /\.scale-choice label span\[aria-hidden\] \{[^}]*border-radius:50%/);
+});
+
 test('stylesheet normalizes semantic colors, focus states, and reduced motion', () => {
   const css = read('styles.css');
   assert.match(css, /--track:/);
