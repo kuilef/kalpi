@@ -25,6 +25,11 @@
     return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
   }
 
+  function weightedMean(items, selector) {
+    const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+    return totalWeight ? items.reduce((sum, item) => sum + selector(item) * item.weight, 0) / totalWeight : null;
+  }
+
   function positionConfidence(position, scoringConfig) {
     if (!position || position.value == null || position.status === 'insufficient_data') return 0;
     if (scoringConfig?.prototype_trust_policy === 'all_value_positions_full_confidence') return 1;
@@ -35,7 +40,8 @@
     return Boolean(position && position.value != null && position.status !== 'insufficient_data');
   }
 
-  function calculateComponent({ questionIds, answers, positionMap, scoringConfig }) {
+  function calculateComponent({ questionIds, answers, positionMap, scoringConfig, priorityQuestionIds = [] }) {
+    const priorities = new Set(priorityQuestionIds);
     const questions = [];
     for (const questionId of questionIds || []) {
       if (!Object.prototype.hasOwnProperty.call(answers || {}, questionId)) continue;
@@ -53,6 +59,7 @@
 
       questions.push({
         questionId,
+        weight: priorities.has(questionId) ? 2 : 1,
         userValue,
         partyValue,
         confidence,
@@ -69,25 +76,27 @@
 
     if (!questions.length) return null;
     return {
-      score: mean(questions.map((question) => question.evidenceSimilarity)),
-      coverage: mean(questions.map((question) => question.coverage)),
-      rawScore: mean(questions.filter((question) => question.rawSimilarity != null).map((question) => question.rawSimilarity)),
+      score: weightedMean(questions, (question) => question.evidenceSimilarity),
+      coverage: weightedMean(questions, (question) => question.coverage),
+      rawScore: weightedMean(questions.filter((question) => question.rawSimilarity != null), (question) => question.rawSimilarity),
       questions,
     };
   }
 
-  function calculateFamily({ family, answers, positionMap, scoringConfig }) {
+  function calculateFamily({ family, answers, positionMap, scoringConfig, priorityQuestionIds = [] }) {
     const fundamental = calculateComponent({
       questionIds: family.fundamental_questions,
       answers,
       positionMap,
       scoringConfig,
+      priorityQuestionIds,
     });
     const policy = calculateComponent({
       questionIds: family.policy_questions,
       answers,
       positionMap,
       scoringConfig,
+      priorityQuestionIds,
     });
     const components = [
       fundamental && { component: fundamental, weight: Number(family.fundamental_weight) || 0 },
@@ -123,12 +132,15 @@
     return family ? family.coverage : null;
   }
 
-  function scoreParty({ partyId, answers, positions, scoringConfig }) {
+  function scoreParty({ partyId, answers, positions, scoringConfig, priorityQuestionIds = [] }) {
     const positionMap = new Map(
       (positions || []).filter((position) => position.party === partyId).map((position) => [position.question, position])
     );
+    const enabledPriorities = scoringConfig?.user_importance_enabled
+      ? priorityQuestionIds.filter((questionId) => isSubstantiveAnswer(answers?.[questionId]))
+      : [];
     const familyResults = (scoringConfig?.families || [])
-      .map((family) => ({ family, result: calculateFamily({ family, answers, positionMap, scoringConfig }) }))
+      .map((family) => ({ family, result: calculateFamily({ family, answers, positionMap, scoringConfig, priorityQuestionIds: enabledPriorities }) }))
       .filter((item) => item.result);
     const totalWeight = familyResults.reduce((sum, item) => sum + (Number(item.family.family_weight) || 0), 0);
     const aggregate = (key) => {
@@ -153,9 +165,9 @@
     };
   }
 
-  function rankParties({ parties, answers, positions, scoringConfig }) {
+  function rankParties({ parties, answers, positions, scoringConfig, priorityQuestionIds = [] }) {
     return (parties || []).map((party, index) => ({
-      ...scoreParty({ partyId: party.id, answers, positions, scoringConfig }),
+      ...scoreParty({ partyId: party.id, answers, positions, scoringConfig, priorityQuestionIds }),
       party,
       _index: index,
     })).sort((left, right) => {
@@ -177,7 +189,7 @@
       .map((family) => family.id);
   }
 
-  function buildRecommendation({ parties, answers, positions, scoringConfig }) {
+  function buildRecommendation({ parties, answers, positions, scoringConfig, priorityQuestionIds = [] }) {
     const policy = scoringConfig?.result_policy || {};
     const substantiveAnswerCount = Object.values(answers || {}).filter(isSubstantiveAnswer).length;
     const answeredFamilies = answeredFamilyIds({ answers, scoringConfig });
@@ -186,7 +198,7 @@
     const minPartyCoverage = Number(policy.min_party_result_coverage ?? 0);
     const nearTiePoints = Number(policy.near_tie_points ?? 0);
     const ready = substantiveAnswerCount >= minAnswers && answeredFamilies.length >= minFamilies;
-    const ranked = rankParties({ parties, answers, positions, scoringConfig }).map((result) => ({
+    const ranked = rankParties({ parties, answers, positions, scoringConfig, priorityQuestionIds }).map((result) => ({
       ...result,
       eligible: ready && Number(result.coverage || 0) >= minPartyCoverage,
     }));

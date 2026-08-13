@@ -28,15 +28,19 @@
     return `${index + 1} / ${total}`;
   }
 
-  function renderQuestion({ question, index, total, answer }) {
+  function renderQuestion({ question, index, total, answer, important = false, importanceEnabled = false }) {
     const choice = (value, label, number) => {
       const id = `${question.id}-${String(value).replace('-', 'minus').replace('.', '_')}`;
       const checked = answer === value ? ' checked' : '';
       return `<span class="scale-choice"><input type="radio" name="${escapeHtml(question.id)}" id="${id}" value="${value}" data-shortcut="${number}"${checked} aria-label="${escapeHtml(label)}"><label for="${id}"><span class="choice-key" aria-hidden="true">${number}</span><span class="sr-only">${escapeHtml(label)}</span></label></span>`;
     };
+    const canPrioritize = importanceEnabled && typeof answer === 'number' && Number.isFinite(answer);
+    const importanceControl = importanceEnabled
+      ? `<button class="importance-toggle" type="button" aria-pressed="${important}" aria-label="${important ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}"${canPrioritize ? '' : ' disabled'}>${important ? '★ Важно' : '☆ Важно'}</button>`
+      : '';
     return `<article class="wizard-question" data-question-id="${escapeHtml(question.id)}">
       <fieldset>
-        <legend><span class="question-title">${escapeHtml(question.short_title_ru)}</span><span class="question-prompt">${escapeHtml(question.prompt_ru)}</span></legend>
+        <legend><span class="question-heading"><span><span class="question-title">${escapeHtml(question.short_title_ru)}</span><span class="question-prompt">${escapeHtml(question.prompt_ru)}</span></span>${importanceControl}</span></legend>
         ${question.explanation_ru ? `<p class="question-explanation">${escapeHtml(question.explanation_ru)}</p>` : ''}
         <div class="poles"><p>${escapeHtml(question.left_pole_ru)}</p><p>${escapeHtml(question.right_pole_ru)}</p></div>
         <div class="scale" role="radiogroup" aria-label="Шкала ответа">${SCALE.map((item, index) => choice(item.value, item.label, index + 1)).join('')}</div>

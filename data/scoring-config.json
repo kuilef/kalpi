@@ -20,7 +20,7 @@
   },
   "answer_values": [-1, -0.5, 0, 0.5, 1],
   "unknown_value": null,
-  "user_importance_enabled": false,
+  "user_importance_enabled": true,
   "families": [
     {"id":"security_settlement","label_ru":"Безопасность и урегулирование","family_type":"permanent","fundamental_questions":["security_settlement_tradeoff"],"policy_questions":["palestinian_state_option"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},
     {"id":"territory_separation","label_ru":"Территория и разделение","family_type":"permanent","fundamental_questions":["territory_separation_tradeoff"],"policy_questions":["west_bank_sovereignty"],"fundamental_weight":0.6,"policy_weight":0.4,"family_weight":1},

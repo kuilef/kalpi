@@ -111,6 +111,25 @@ test('family scoring averages policy questions before applying the A/B weights',
   assert.equal(result.score, 0.8);
 });
 
+test('an important answered question counts twice within its family but does not change family structure', () => {
+  const result = Scoring.scoreParty({
+    partyId: 'party',
+    answers: { a1: -1, b1: -1, b2: -1 },
+    priorityQuestionIds: ['b2'],
+    positions: [
+      { party: 'party', question: 'a1', value: -1, confidence: 1, status: 'known' },
+      { party: 'party', question: 'b1', value: -1, confidence: 1, status: 'known' },
+      { party: 'party', question: 'b2', value: 1, confidence: 1, status: 'known' },
+    ],
+    scoringConfig: { ...config, user_importance_enabled: true },
+  });
+
+  const family = result.families.find((item) => item.familyId === 'family_a');
+  assert.equal(family.policy.score, 1 / 3);
+  assert.equal(family.score, 11 / 15);
+  assert.equal(result.score, 11 / 15);
+});
+
 test('adding policy questions does not increase a family structural weight', () => {
   const onePolicy = Scoring.scoreParty({
     partyId: 'party',

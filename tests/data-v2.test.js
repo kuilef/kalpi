@@ -37,7 +37,7 @@ test('scoring config assigns every core question to exactly one approved family'
     near_tie_points: 0.03,
   });
   assert.deepEqual(config.answer_values, [-1, -0.5, 0, 0.5, 1]);
-  assert.equal(config.user_importance_enabled, false);
+  assert.equal(config.user_importance_enabled, true);
   assert.equal(config.families.length, 12);
   assert.equal(new Set(assigned).size, 23);
   assert.deepEqual(new Set(assigned), questionIds);

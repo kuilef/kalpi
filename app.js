@@ -69,16 +69,18 @@
   }
 
   function advanceAfterAnswer() {
+    const keepResultsInPlace = Boolean(state.completedAt);
     const index = currentIndex();
     if (index === questions().length - 1) {
       State.markCompleted(state);
       saveState();
-      renderResults();
+      renderResults(!keepResultsInPlace);
       return;
     }
     State.setCurrentQuestion(state, questions()[index + 1].id);
     saveState();
     renderQuestion();
+    if (keepResultsInPlace) renderResults(false);
   }
 
   function renderQuestion() {
@@ -93,6 +95,8 @@
       index,
       total: allQuestions.length,
       answer: hasAnswer(question.id) ? state.answers[question.id] : undefined,
+      important: state.priorityQuestionIds.includes(question.id),
+      importanceEnabled: data.scoringConfig.user_importance_enabled,
     });
     $('previous-question').disabled = index === 0;
     $('next-question').disabled = !hasAnswer(question.id);
@@ -102,6 +106,12 @@
       saveState();
       advanceAfterAnswer();
     }));
+    document.querySelector('.importance-toggle')?.addEventListener('click', () => {
+      State.togglePriorityQuestion(state, question.id);
+      saveState();
+      renderQuestion();
+      renderResults(false);
+    });
   }
 
   function renderDebug(analytics) {
@@ -113,6 +123,7 @@
     const fixtureResult = Scoring.scoreParty({
       partyId: fixture.party.id,
       answers: state.answers,
+      priorityQuestionIds: state.priorityQuestionIds,
       positions: fixture.positions,
       scoringConfig: data.scoringConfig,
     });
@@ -121,7 +132,7 @@
     host.innerHTML = `<p class="eyebrow">Debug</p><h2 id="debug-title">Покрытие данных v2</h2><p>Canonical matrix: ${analytics.summary.knownCells}/${analytics.summary.totalCells}; средний confidence ${Math.round(analytics.summary.averageConfidence * 100)}%.</p><details open><summary>По parties</summary><table><tbody>${Object.entries(analytics.byParty).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>По families</summary><table><tbody>${Object.entries(analytics.byFamily).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>Пробелы (${analytics.gaps.length})</summary><ul>${analytics.gaps.map((gap) => `<li>${escapeHtml(gap.partyId)} × ${escapeHtml(gap.questionId)}</li>`).join('')}</ul></details><section class="debug-fixture"><h3>Синтетический fixture: трассировка score</h3><p>Только для проверки UI. Он не является canonical data и не смешивается с партийной матрицей.</p><p>${escapeHtml(fixture.party.name_ru)}: score ${Math.round((fixtureResult.score || 0) * 100)}%, coverage ${Math.round((fixtureResult.coverage || 0) * 100)}%.</p>${trace}</section>`;
   }
 
-  function renderResults() {
+  function renderResults(focusResults = true) {
     const analytics = Analytics.computeDatasetAnalytics(data);
     const gate = Analytics.computeReleaseGate(data);
     const host = $('results');
@@ -130,14 +141,16 @@
       host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
     } else {
       const sourcesById = new Map((data.sources || []).map((source) => [source.id, source]));
-      const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, scoringConfig: data.scoringConfig });
+      const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, priorityQuestionIds: state.priorityQuestionIds, scoringConfig: data.scoringConfig });
       const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
       recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
       host.innerHTML = ResultsUi.renderLiveResult({ recommendation, sourcesById });
     }
     renderDebug(analytics);
-    host.focus({ preventScroll: true });
-    window.scrollTo({ top: host.offsetTop - 12, behavior: 'smooth' });
+    if (focusResults) {
+      host.focus({ preventScroll: true });
+      window.scrollTo({ top: host.offsetTop - 12, behavior: 'smooth' });
+    }
   }
 
   function bindEvents() {

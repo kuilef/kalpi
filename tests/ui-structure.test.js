@@ -49,12 +49,26 @@ test('app uses a runtime release gate before it exposes the live recommendation'
 test('app advances on a response selection, renders results after the final answer, and maps keyboard digits 0 through 5 to the radio controls', () => {
   const app = read('app.js');
   assert.match(app, /function advanceAfterAnswer\(\)/);
-  assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*State\.markCompleted\(state\);\s*saveState\(\);\s*renderResults\(\);/);
+  assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*State\.markCompleted\(state\);\s*saveState\(\);\s*renderResults\(!keepResultsInPlace\);/);
   assert.doesNotMatch(app, /function renderReview\(/);
   assert.doesNotMatch(app, /review-back|complete-questionnaire|review-content/);
   assert.match(app, /document\.addEventListener\('keydown'/);
   assert.match(app, /event\.key < '0' \|\| event\.key > '5'/);
   assert.match(app, /input\.dispatchEvent\(new Event\('change', \{ bubbles: true \}\)\)/);
+});
+
+test('changing an answer after results are visible refreshes them without moving focus or scrolling', () => {
+  const app = read('app.js');
+  assert.match(app, /const keepResultsInPlace = Boolean\(state\.completedAt\);/);
+  assert.match(app, /if \(keepResultsInPlace\) renderResults\(false\);/);
+  assert.match(app, /renderResults\(!keepResultsInPlace\);/);
+});
+
+test('app persists importance toggles and recalculates without moving focus to results', () => {
+  const app = read('app.js');
+  assert.match(app, /State\.togglePriorityQuestion\(state, question\.id\)/);
+  assert.match(app, /renderResults\(false\)/);
+  assert.match(app, /priorityQuestionIds: state\.priorityQuestionIds/);
 });
 
 test('stylesheet provides responsive pole layout, touch targets, and visible focus treatment', () => {
