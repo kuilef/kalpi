@@ -19,6 +19,17 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.match(html, /href="analytics\.html"/);
 });
 
+test('home footer links to a concise methodology page that explains coalition limits', () => {
+  const html = read('index.html');
+  const methodology = read('methodology.html');
+  assert.match(html, /href="methodology\.html"/);
+  assert.match(html, /Коалиции и голосования после выборов могут измениться/);
+  assert.match(methodology, /не прогнозирует будущую коалицию/);
+  assert.match(methodology, /Полное описание методики — в <a/);
+  assert.match(methodology, />README на GitHub</);
+  assert.match(methodology, /href="https:\/\/github\.com\/kuilef\/kalpi#readme"/);
+});
+
 test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
   const html = read('index.html');
   for (const script of ['data-loader.js', 'data-validation.js', 'scoring.js', 'analytics.js', 'questionnaire-state.js', 'questionnaire-ui.js', 'results-ui.js', 'data/default-data.js', 'app.js']) {

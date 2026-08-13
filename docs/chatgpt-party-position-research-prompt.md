@@ -27,7 +27,7 @@ RESEARCH_DATE: "<YYYY-MM-DD>"
 
 Границы работы:
 
-1. Исследуй только партию TARGET_PARTY_ID. Не меняй ни один вопрос, ID, полюс, family, вес, версию или формулу scoring.
+1. Исследуй только партию TARGET_PARTY_ID. Не меняй ни один вопрос, ID, полюс, тематическую группу (`family`), вес, версию или формулу scoring.
 2. Верни ровно одну позицию для каждого из 23 core-вопросов из questions.json, в display_order. Никаких дополнительных вопросов.
 3. Значение value относится только к полюсам конкретного вопроса:
    - -1: позиция прямо соответствует левому полюсу;
@@ -55,7 +55,7 @@ RESEARCH_DATE: "<YYYY-MM-DD>"
 13. Для insufficient_data верни строго:
     {"value": null, "confidence": 0, "status": "insufficient_data", "entity_scope": "PARTY", "evidence": [], "explanation_ru": "", "last_verified": null}
 14. Создай ровно два файла. Если интерфейс умеет создавать вложения, приложи два JSON-файла с указанными ниже путями. Если вложения недоступны, выведи ровно два подписанных блока ```json: в каждом блоке должен быть только JSON, без комментариев и текста внутри.
-15. Не создавай и не перезаписывай data/sources.json, data/positions.json, scoring, ranking, family mapping или файлы проекта.
+15. Не создавай и не перезаписывай data/sources.json, data/positions.json, scoring, ranking, mapping тематических групп (`family`) или файлы проекта.
 
 Первый файл: data/candidates/<TARGET_PARTY_ID>/sources.json
 
