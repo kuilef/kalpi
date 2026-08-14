@@ -254,17 +254,15 @@ Kalpi вынужден агрегировать это разнообразие 
 
 Канонические данные для работы приложения находятся в JSON-файлах:
 
-- `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице;
+- `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице; уточнялся в несколько итераций после импорта из data/candidates/
 - `data/questions.json` — 23 вопроса, их типы, порядок и русские формулировки;
 - `data/scoring-config.json` — версии, шкала ответов, тематические группы, веса и проверка готовности релиза;
-- `data/positions.json` — полная матрица `party × question`: 251 из 276 ячеек содержат позицию, 25 остаются `insufficient_data`;
+- `data/positions.json` — полная матрица `party × question`: 253 из 276 ячеек содержат позицию, 19 остаются `insufficient_data`;
 - `data/sources.json` — архив источников, доступных для ручной проверки;
 - `data/candidates/<party_id>/` — входные пакеты исследования одной партии: `sources.json` и `positions.json`; они импортируются детерминированно через `tools/sync_position_matrix.py`;
 - `data/default-data.js` — сгенерированная копия JSON для работы приложения при открытии через `file://`.
 
 Новые партийные позиции нельзя переносить в канонические данные только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для `known`, `mixed` и `historical` нужны источник, дата, подтверждающие материалы, объяснение и уверенность. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие подтверждающих материалов; это не центральная позиция.
-
-Для исследования одной партии есть отдельный [запрос для ChatGPT](docs/chatgpt-party-position-research-prompt.md). Он выдаёт два файла-кандидата — `sources.json` и `positions.json` — которые можно сначала положить в `data/candidates/<party_id>/`. Это промежуточный результат, а не готовые данные: приложение его не загружает и не меняет `recommendation_mode`. Полный порядок ручной проверки и импорта описан в [docs/party-position-json-workflow.md](docs/party-position-json-workflow.md).
 
 В этой ветке прототипа кандидатские пакеты были импортированы в канонические JSON-файлы по явному решению. Это не означает, что они стали политически проверенными: `candidate_unverified`, исходные статус, уверенность и охват остаются в данных и на странице аналитики. Не редактируйте `data/default-data.js` вручную.
 
@@ -277,7 +275,7 @@ schema_version:             kalpi-questionnaire-schema-v2
 questionnaire_version:      kalpi-ru-core-2026-08-11-v1
 party_positions_version:    kalpi-positions-prototype-v1
 scoring_version:            kalpi-family-score-v1
-data_version:                kalpi-data-prototype-v1
+data_version:               kalpi-data-prototype-v1
 recommendation_mode:        live
 prototype_trust_policy:     all_value_positions_full_confidence
 user_importance_enabled:    false
