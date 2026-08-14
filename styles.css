@@ -30,7 +30,7 @@ button, input, select { font:inherit; }
 button { cursor:pointer; }
 button:focus-visible, input:focus-visible + label, select:focus-visible, a:focus-visible, summary:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
 .shell { width:min(900px, calc(100% - 32px)); margin-inline:auto; }
-.analytics-page main.shell { width:min(1000px, calc(100% - 32px)); }
+.analytics-page main.shell { width:min(1050px, calc(100% - 32px)); }
 .site-header { padding:44px 0 34px; border-bottom:1px solid var(--ink); }
 .eyebrow, .question-code { margin:0 0 9px; color:var(--accent); font:700 .78rem/1.3 system-ui, sans-serif; letter-spacing:.12em; text-transform:uppercase; }
 h1,h2,h3,p { overflow-wrap:anywhere; }
