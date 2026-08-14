@@ -19,6 +19,10 @@ test('v2 core questionnaire contains the approved 23 Russian questions in displa
     assert.ok(question.left_pole_ru.trim());
     assert.ok(question.right_pole_ru.trim());
   }
+  assert.equal(
+    questions.find((question) => question.id === 'security_settlement_tradeoff').prompt_ru,
+    'Что вам ближе: сохранять широкий военный контроль ради безопасности или ограничить его ради политического урегулирования?',
+  );
 });
 
 test('scoring config assigns every core question to exactly one approved family', () => {

@@ -24,3 +24,5 @@ build/
 # Local logs and temporary data
 *.log
 data/temp/
+
+.superpowers/

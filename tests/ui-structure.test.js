@@ -28,6 +28,9 @@ test('home footer links to a concise methodology page that explains coalition li
   assert.match(methodology, /Полное описание методики — в <a/);
   assert.match(methodology, />README на GitHub</);
   assert.match(methodology, /href="https:\/\/github\.com\/kuilef\/kalpi#readme"/);
+  assert.match(methodology, /данные по какой-то партии некорректны/);
+  assert.match(methodology, /href="mailto:shaigian1@gmail\.com"/);
+  assert.match(methodology, /вопрос, позицию партии и источники/);
 });
 
 test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
@@ -91,6 +94,7 @@ test('stylesheet provides responsive pole layout, touch targets, and visible foc
   assert.doesNotMatch(css, /max-width:520px/);
   assert.match(css, /\.unknown-radio \{[^}]*width:100%/);
   assert.match(css, /\.analytics-filters/);
+  assert.match(css, /\.analytics-page main\.shell \{ width:min\(1000px, calc\(100% - 32px\)\); \}/);
   assert.match(css, /\.table-scroll/);
   assert.match(css, /\.family-bar/);
   assert.match(css, /\.analytics-matrix-table/);
