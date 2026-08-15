@@ -9,10 +9,9 @@
   const QuestionnaireUi = window.KalpiQuestionnaireUi;
   const ResultsUi = window.KalpiResultsUi;
   const DebugFixture = window.KalpiDebugFixture;
-  const DEFAULT_DATA = window.KALPI_DATA;
   const $ = (id) => document.getElementById(id);
   const debugEnabled = new URLSearchParams(location.search).get('debug') === '1';
-  let data = DEFAULT_DATA;
+  let data;
   let state;
 
   function escapeHtml(value) {
@@ -37,16 +36,11 @@
   }
 
   async function loadDataset() {
-    if (location.protocol === 'file:') return;
-    try {
-      data = await Loader.loadDataset(async (filename) => {
-        const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
-      });
-    } catch (_) {
-      data = DEFAULT_DATA;
-    }
+    data = await Loader.loadDataset(async (filename) => {
+      const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    });
   }
 
   function showWarnings() {
@@ -190,5 +184,9 @@
     renderQuestion();
   }
 
-  init();
+  init().catch((error) => {
+    const host = $('developer-warnings');
+    host.classList.remove('hidden');
+    host.innerHTML = `<strong>Не удалось загрузить данные.</strong><p>${escapeHtml(error?.message || error)}. Запустите Kalpi через локальный HTTP-сервер.</p>`;
+  });
 })();

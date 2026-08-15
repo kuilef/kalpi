@@ -111,7 +111,6 @@ RESEARCH_DATE: "<YYYY-MM-DD>"
 
 ```powershell
 & "C:\Users\User\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" --test tests/*.test.js
-python tools/build_data_bundle.py --check
 ```
 
 `recommendation_mode` остаётся `data_not_ready`, пока отдельно не согласованы evidence review и coverage gate.

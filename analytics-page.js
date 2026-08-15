@@ -77,16 +77,13 @@
     const $ = (id) => document.getElementById(id);
     const Loader = window.KalpiDataLoader;
     const Validation = window.KalpiDataValidation;
-    let data = window.KALPI_DATA;
+    let data;
     const fetchData = async () => {
-      if (location.protocol === 'file:') return;
-      try {
-        data = await Loader.loadDataset(async (filename) => {
-          const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.json();
-        });
-      } catch (_) { data = window.KALPI_DATA; }
+      data = await Loader.loadDataset(async (filename) => {
+        const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      });
     };
     const option = (value, label) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`;
     const fillSelect = (id, values, label) => { $(id).insertAdjacentHTML('beforeend', values.map((value) => option(value, label(value))).join('')); };
@@ -120,7 +117,12 @@
       }));
     };
     (async () => {
-      await fetchData();
+      try {
+        await fetchData();
+      } catch (error) {
+        $('analytics-summary').innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить данные.</strong> ${escapeHtml(error?.message || error)}. Запустите Kalpi через локальный HTTP-сервер.</p>`;
+        return;
+      }
       const errors = Validation.validateDataset(data);
       if (errors.length) $('analytics-summary').innerHTML = `<p class="gate-fail"><strong>Ошибка данных.</strong> ${escapeHtml(errors.join(' · '))}</p>`;
       const research = window.KalpiAnalytics.computeResearchAnalytics(data);

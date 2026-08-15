@@ -19,11 +19,15 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.match(html, /href="analytics\.html"/);
 });
 
-test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
+test('public pages load canonical JSON at runtime without a generated data bundle', () => {
   const html = read('index.html');
-  for (const script of ['data-loader.js', 'data-validation.js', 'scoring.js', 'analytics.js', 'questionnaire-state.js', 'questionnaire-ui.js', 'results-ui.js', 'data/default-data.js', 'app.js']) {
+  const analyticsHtml = read('analytics.html');
+  for (const script of ['data-loader.js', 'data-validation.js', 'scoring.js', 'analytics.js', 'questionnaire-state.js', 'questionnaire-ui.js', 'results-ui.js', 'app.js']) {
     assert.match(html, new RegExp(`<script src="${script.replace('.', '\\.')}"`));
   }
+  for (const page of [html, analyticsHtml]) assert.doesNotMatch(page, /data\/default-data\.js/);
+  assert.equal(fs.existsSync(path.join(__dirname, '..', 'data', 'default-data.js')), false);
+  assert.equal(fs.existsSync(path.join(__dirname, '..', 'tools', 'build_data_bundle.py')), false);
   assert.doesNotMatch(html, /axis-strips\.js|i18n\.js|baseline-data\.js/);
 });
 

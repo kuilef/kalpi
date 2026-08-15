@@ -17,11 +17,7 @@ function selectExplanations(questions) {
   }));
 }
 
-test('questions 20 and 21 use the approved Russian explanations in source data and fallback bundle', () => {
+test('questions 20 and 21 use the approved Russian explanations in canonical data', () => {
   const questions = JSON.parse(fs.readFileSync(path.join(root, 'data', 'questions.json'), 'utf8'));
   assert.deepEqual(selectExplanations(questions), expectedExplanations);
-
-  const bundleText = fs.readFileSync(path.join(root, 'data', 'default-data.js'), 'utf8');
-  const bundle = JSON.parse(bundleText.replace(/^window\.KALPI_DATA = /, '').replace(/;\s*$/, ''));
-  assert.deepEqual(selectExplanations(bundle.questions), expectedExplanations);
 });

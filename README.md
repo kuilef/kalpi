@@ -252,12 +252,11 @@ Kalpi вынужден агрегировать это разнообразие 
 - `data/questions.json` — 23 вопроса, их типы, порядок и русские формулировки;
 - `data/scoring-config.json` — версии, шкала ответов, тематические группы, веса и проверка готовности релиза;
 - `data/positions.json` — полная матрица `party × question`: 253 из 276 ячеек содержат позицию, 19 остаются `insufficient_data`;
-- `data/sources.json` — архив источников, доступных для ручной проверки;
-- `data/default-data.js` — сгенерированная копия JSON для работы приложения при открытии через `file://`.
+- `data/sources.json` — архив источников, доступных для ручной проверки.
 
 Новые партийные позиции нельзя переносить в канонические данные только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для `known`, `mixed` и `historical` нужны источник, дата, подтверждающие материалы, объяснение и уверенность. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие подтверждающих материалов; это не центральная позиция.
 
-Текущие JSON-файлы являются единственным источником production-данных. После ручной проверки обновляйте `data/sources.json` и `data/positions.json`, затем пересобирайте `data/default-data.js`. Не редактируйте `data/default-data.js` вручную.
+Текущие JSON-файлы являются единственным источником production-данных. После ручной проверки обновляйте `data/sources.json` и `data/positions.json` напрямую.
 
 ## Текущие версии и проверка готовности релиза
 
@@ -284,7 +283,7 @@ user_importance_enabled:    true
 python tools/serve.py --no-browser
 ```
 
-Затем откройте адрес, который напечатает сервер. Локальный HTTP-сервер нужен, чтобы приложение могло загружать `data/*.json`; при открытии через `file://` используется `data/default-data.js`.
+Затем откройте адрес, который напечатает сервер. Локальный HTTP-сервер нужен, чтобы приложение могло загружать `data/*.json`; прямое открытие `index.html` через `file://` не поддерживается.
 
 ## Проверка
 
@@ -292,14 +291,7 @@ python tools/serve.py --no-browser
 node --test tests/*.test.js
 python tests/bundle.test.py
 python tests/sync_position_matrix.test.py
-python tools/build_data_bundle.py --check
 node tools/release-gate-report.js --check
 ```
 
-После изменения `data/*.json` пересоберите bundle:
-
-```powershell
-python tools/build_data_bundle.py
-```
-
-Проверка `--check` должна проходить после пересборки. Полный отчёт gate и synthetic fixtures можно записать командой `node tools/release-gate-report.js --write docs/release-gate-report.md`.
+Полный отчёт gate и synthetic fixtures можно записать командой `node tools/release-gate-report.js --write docs/release-gate-report.md`.
