@@ -16,7 +16,13 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, />Перед завершением</);
   assert.doesNotMatch(html, /Kalpi · русский опросник/);
   assert.doesNotMatch(html, /<p class="eyebrow">Опрос<\/p>/);
-  assert.match(html, /href="analytics\.html"/);
+  assert.doesNotMatch(html, />Ваши взгляды</);
+  assert.match(html, /<section id="questionnaire"[^>]*aria-label="Опросник"/);
+  assert.match(html, /<h1 class="questionnaire-hero-title">Какая партия вам ближе\?<\/h1>/);
+  assert.match(html, /<p class="lede">Ответьте на вопросы и сравните свои взгляды с партиями на выборах в Кнессет 2026<\/p>/);
+  assert.doesNotMatch(html, /Выберите сторону на шкале между двумя содержательными полюсами/);
+  assert.doesNotMatch(html, /<header[\s\S]*href="analytics\.html"[\s\S]*<\/header>/);
+  assert.match(html, /href="methodology\.html"[^>]*>Как считается результат и чего он не показывает<\/a>[\s\S]*href="analytics\.html"[^>]*>Открыть аналитику данных<\/a>/);
 });
 
 test('public pages load canonical JSON at runtime without a generated data bundle', () => {
@@ -50,6 +56,20 @@ test('app uses a runtime release gate before it exposes the live recommendation'
   assert.match(app, /State\.load\(window\.localStorage, data\.scoringConfig\)/);
 });
 
+test('main and analytics pages use normal cache semantics and defer sources on the questionnaire page', () => {
+  const app = read('app.js');
+  const analytics = read('analytics-page.js');
+  const server = read('tools/serve.py');
+  assert.match(app, /includeSources: false/);
+  assert.doesNotMatch(app, /Date\.now\(\)/);
+  assert.doesNotMatch(app, /cache:\s*['"]no-store['"]/);
+  assert.doesNotMatch(analytics, /Date\.now\(\)/);
+  assert.doesNotMatch(analytics, /cache:\s*['"]no-store['"]/);
+  assert.match(server, /gzip/i);
+  assert.match(server, /Content-Encoding/);
+  assert.match(server, /Cache-Control.*max-age=300/);
+});
+
 test('app advances on a response selection, renders results after the final answer, and maps keyboard digits 0 through 5 to the radio controls', () => {
   const app = read('app.js');
   assert.match(app, /function advanceAfterAnswer\(\)/);
@@ -81,6 +101,17 @@ test('stylesheet presents response choices as plain numeric segments', () => {
   assert.match(css, /\.keyboard-hint \{[^}]*font:/);
   assert.doesNotMatch(css, /\.choice-key \{[^}]*border:/);
   assert.doesNotMatch(css, /\.choice-intensity/);
+});
+
+test('questionnaire hero title stays on one line with a narrow-screen fluid size', () => {
+  const css = read('styles.css');
+  assert.match(css, /\.questionnaire-hero-title \{[^}]*font-size:clamp\(1\.45rem, 6\.5vw, 3\.2rem\)/);
+  assert.match(css, /\.questionnaire-hero-title \{[^}]*white-space:nowrap/);
+});
+
+test('question progress stays right-aligned without a visible section heading', () => {
+  const css = read('styles.css');
+  assert.match(css, /\.progress-text \{[^}]*margin-inline-start:auto/);
 });
 
 test('stylesheet normalizes semantic colors, focus states, and reduced motion', () => {

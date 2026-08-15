@@ -80,7 +80,7 @@
     let data;
     const fetchData = async () => {
       data = await Loader.loadDataset(async (filename) => {
-        const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
+        const response = await fetch(`data/${filename}`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
       });

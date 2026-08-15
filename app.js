@@ -13,6 +13,7 @@
   const debugEnabled = new URLSearchParams(location.search).get('debug') === '1';
   let data;
   let state;
+  let sourcesPromise;
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
@@ -37,14 +38,28 @@
 
   async function loadDataset() {
     data = await Loader.loadDataset(async (filename) => {
-      const response = await fetch(`data/${filename}?v=${Date.now()}`, { cache: 'no-store' });
+      const response = await fetch(`data/${filename}`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
-    });
+    }, { includeSources: false });
+  }
+
+  async function loadSources() {
+    const response = await fetch('data/sources.json');
+    if (!response.ok) throw new Error(`sources.json: HTTP ${response.status}`);
+    data.sources = await response.json();
+    showWarnings();
+    return data.sources;
+  }
+
+  function ensureSourcesLoaded() {
+    if (Array.isArray(data.sources)) return Promise.resolve(data.sources);
+    if (!sourcesPromise) sourcesPromise = loadSources();
+    return sourcesPromise;
   }
 
   function showWarnings() {
-    const errors = Validation.validateDataset(data);
+    const errors = Validation.validateDataset(data, { requireSources: Array.isArray(data.sources) });
     const host = $('developer-warnings');
     if (!errors.length) {
       host.classList.add('hidden');
@@ -126,19 +141,28 @@
     host.innerHTML = `<p class="eyebrow">Debug</p><h2 id="debug-title">Покрытие данных v2</h2><p>Canonical matrix: ${analytics.summary.knownCells}/${analytics.summary.totalCells}; средний confidence ${Math.round(analytics.summary.averageConfidence * 100)}%.</p><details open><summary>По parties</summary><table><tbody>${Object.entries(analytics.byParty).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>По тематическим группам</summary><table><tbody>${Object.entries(analytics.byFamily).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>Пробелы (${analytics.gaps.length})</summary><ul>${analytics.gaps.map((gap) => `<li>${escapeHtml(gap.partyId)} × ${escapeHtml(gap.questionId)}</li>`).join('')}</ul></details><section class="debug-fixture"><h3>Синтетический fixture: трассировка score</h3><p>Только для проверки UI. Он не является canonical data и не смешивается с партийной матрицей.</p><p>${escapeHtml(fixture.party.name_ru)}: score ${Math.round((fixtureResult.score || 0) * 100)}%, coverage ${Math.round((fixtureResult.coverage || 0) * 100)}%.</p>${trace}</section>`;
   }
 
-  function renderResults(focusResults = true) {
+  async function renderResults(focusResults = true) {
     const analytics = Analytics.computeDatasetAnalytics(data);
-    const gate = Analytics.computeReleaseGate(data);
     const host = $('results');
     host.classList.remove('hidden');
-    if (data.scoringConfig.recommendation_mode === 'data_not_ready' || !gate.passed) {
-      host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
-    } else {
-      const sourcesById = new Map((data.sources || []).map((source) => [source.id, source]));
-      const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, priorityQuestionIds: state.priorityQuestionIds, scoringConfig: data.scoringConfig });
-      const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
-      recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
-      host.innerHTML = ResultsUi.renderLiveResult({ recommendation, sourcesById });
+    try {
+      if (data.scoringConfig.recommendation_mode === 'data_not_ready') {
+        host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
+      } else {
+        await ensureSourcesLoaded();
+        const gate = Analytics.computeReleaseGate(data);
+        if (!gate.passed) {
+          host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
+        } else {
+          const sourcesById = new Map((data.sources || []).map((source) => [source.id, source]));
+          const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, priorityQuestionIds: state.priorityQuestionIds, scoringConfig: data.scoringConfig });
+          const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
+          recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
+          host.innerHTML = ResultsUi.renderLiveResult({ recommendation, sourcesById });
+        }
+      }
+    } catch (error) {
+      host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить источники.</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
     renderDebug(analytics);
     if (focusResults) {

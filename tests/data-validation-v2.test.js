@@ -17,6 +17,12 @@ test('canonical v2 data validates with explicit missing party positions', () => 
   assert.deepEqual(Validation.validateDataset(validData()), []);
 });
 
+test('core runtime dataset can be validated before deferred sources arrive', () => {
+  const data = validData();
+  delete data.sources;
+  assert.deepEqual(Validation.validateDataset(data, { requireSources: false }), []);
+});
+
 test('v2 validation rejects a question without one family assignment or a valid scale value', () => {
   const data = validData();
   data.scoringConfig.families[0].fundamental_questions = [];

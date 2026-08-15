@@ -32,12 +32,13 @@
     return result;
   }
 
-  function validateDataset(data) {
+  function validateDataset(data, options = {}) {
+    const requireSources = options.requireSources !== false;
     const errors = [];
     const parties = arrayOrError(data, 'parties', errors);
     const questions = arrayOrError(data, 'questions', errors);
     const positions = arrayOrError(data, 'positions', errors);
-    const sources = arrayOrError(data, 'sources', errors);
+    const sources = requireSources ? arrayOrError(data, 'sources', errors) : (Array.isArray(data?.sources) ? data.sources : []);
     const config = data?.scoringConfig;
     if (!config || typeof config !== 'object' || Array.isArray(config)) errors.push('scoringConfig must be an object');
     if (!Array.isArray(config?.families)) errors.push('scoringConfig.families must be an array');
@@ -113,7 +114,7 @@
         if (typeof position.explanation_ru !== 'string' || !position.explanation_ru.trim()) errors.push(`position ${key}: known position requires explanation_ru`);
         if (typeof position.last_verified !== 'string' || !position.last_verified.trim()) errors.push(`position ${key}: known position requires last_verified`);
       }
-      for (const sourceId of position.evidence || []) if (!sourceIds.has(sourceId)) errors.push(`position ${key}: unknown evidence ${sourceId}`);
+      if (requireSources) for (const sourceId of position.evidence || []) if (!sourceIds.has(sourceId)) errors.push(`position ${key}: unknown evidence ${sourceId}`);
     }
     for (const partyId of activePartyIds) {
       for (const question of questions.filter((item) => item.status === 'core')) {
