@@ -41,6 +41,9 @@ h3 { margin:0; font-size:1.15rem; }
 .lede { max-width:680px; margin:20px 0 0; color:var(--muted); font-size:1.06rem; line-height:1.55; }
 main { padding:32px 0 56px; }
 .panel { margin:0 0 24px; padding:clamp(20px, 5vw, 46px); border:1px solid var(--ink); background:var(--surface); box-shadow:5px 5px 0 var(--shadow); }
+.questionnaire-panel { margin:0 0 24px; background:transparent; box-shadow:none; }
+.questionnaire-progress .progress-track { margin:12px 0 28px; }
+.questionnaire-card { padding:clamp(20px, 5vw, 46px); border:1px solid var(--ink); background:var(--surface); box-shadow:5px 5px 0 var(--shadow); }
 .hidden { display:none !important; }
 .section-heading { display:flex; gap:20px; align-items:start; justify-content:space-between; }
 .progress-text { flex:none; margin:0; margin-inline-start:auto; font:700 .95rem system-ui,sans-serif; }
@@ -153,6 +156,7 @@ a:hover { color:var(--ink); }
 @media (max-width:620px) {
   .site-header { padding-top:30px; }
   .panel { padding:20px; }
+  .questionnaire-card { padding:20px; }
   .section-heading { gap:12px; }
   .question-heading { gap:10px; }
   .importance-toggle { width:36px; min-height:36px; padding:0; font-size:0; }

@@ -18,6 +18,9 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, /<p class="eyebrow">Опрос<\/p>/);
   assert.doesNotMatch(html, />Ваши взгляды</);
   assert.match(html, /<section id="questionnaire"[^>]*aria-label="Опросник"/);
+  assert.match(html, /<section id="questionnaire" class="questionnaire-panel" aria-label="Опросник">/);
+  assert.match(html, /<div class="questionnaire-progress">[\s\S]*id="progress"[\s\S]*id="progress-bar"[\s\S]*<\/div>/);
+  assert.match(html, /<div class="questionnaire-card">[\s\S]*id="question-content"[\s\S]*id="previous-question"[\s\S]*id="next-question"[\s\S]*<\/div>/);
   assert.match(html, /<h1 class="questionnaire-hero-title">Какая партия вам ближе\?<\/h1>/);
   assert.match(html, /<p class="lede">Ответьте на вопросы и сравните свои взгляды с партиями на выборах в Кнессет 2026<\/p>/);
   assert.doesNotMatch(html, /Выберите сторону на шкале между двумя содержательными полюсами/);
@@ -56,7 +59,7 @@ test('app uses a runtime release gate before it exposes the live recommendation'
   assert.match(app, /State\.load\(window\.localStorage, data\.scoringConfig\)/);
 });
 
-test('main and analytics pages use normal cache semantics and defer sources on the questionnaire page', () => {
+test('local server uses normal asset caching and defers sources on the questionnaire page', () => {
   const app = read('app.js');
   const analytics = read('analytics-page.js');
   const server = read('tools/serve.py');
@@ -68,6 +71,7 @@ test('main and analytics pages use normal cache semantics and defer sources on t
   assert.match(server, /gzip/i);
   assert.match(server, /Content-Encoding/);
   assert.match(server, /Cache-Control.*max-age=300/);
+  assert.doesNotMatch(server, /Cache-Control.*no-cache/);
 });
 
 test('app advances on a response selection, renders results after the final answer, and maps keyboard digits 0 through 5 to the radio controls', () => {
@@ -112,6 +116,12 @@ test('questionnaire hero title stays on one line with a narrow-screen fluid size
 test('question progress stays right-aligned without a visible section heading', () => {
   const css = read('styles.css');
   assert.match(css, /\.progress-text \{[^}]*margin-inline-start:auto/);
+});
+
+test('questionnaire uses a separate progress region and an editorial question card', () => {
+  const css = read('styles.css');
+  assert.match(css, /\.questionnaire-panel \{[^}]*background:transparent[^}]*box-shadow:none/);
+  assert.match(css, /\.questionnaire-card \{[^}]*border:1px solid var\(--ink\)[^}]*background:var\(--surface\)/);
 });
 
 test('stylesheet normalizes semantic colors, focus states, and reduced motion', () => {

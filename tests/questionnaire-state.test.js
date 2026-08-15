@@ -55,15 +55,14 @@ test('incompatible saved version starts a clean v2 state without deleting the st
   assert.ok(storage.snapshot().has(State.STORAGE_KEY));
 });
 
-test('state persists unique priorities only for substantive answers', () => {
+test('state persists unique priorities selected before an answer', () => {
   const storage = memoryStorage();
   const state = State.createState(config);
-  State.setAnswer(state, 'a01', -0.5);
-  State.setAnswer(state, 'a02', null);
   State.togglePriorityQuestion(state, 'a01');
+  State.setAnswer(state, 'a02', null);
   State.togglePriorityQuestion(state, 'a02');
   State.save(storage, state);
 
   const restored = State.load(storage, config);
-  assert.deepEqual(restored.priorityQuestionIds, ['a01']);
+  assert.deepEqual(restored.priorityQuestionIds, ['a01', 'a02']);
 });

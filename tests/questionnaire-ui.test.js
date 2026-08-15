@@ -43,12 +43,13 @@ test('question UI renders unknown as a separate selected response', () => {
   assert.doesNotMatch(html, /A01/);
 });
 
-test('question UI renders the selected importance control in its heading only for substantive answers', () => {
+test('question UI renders an enabled importance control before and after an answer', () => {
   const selected = UI.renderQuestion({ question, index: 0, total: 23, answer: -1, important: true, importanceEnabled: true });
-  const unknown = UI.renderQuestion({ question, index: 0, total: 23, answer: null, important: false, importanceEnabled: true });
+  const unanswered = UI.renderQuestion({ question, index: 0, total: 23, answer: undefined, important: false, importanceEnabled: true });
   assert.match(selected, /class="importance-toggle"[^>]*aria-pressed="true"[^>]*>★ Важно<\/button>/);
   assert.match(selected, /aria-label="Убрать отметку «Важно»"/);
-  assert.match(unknown, /class="importance-toggle"[^>]*aria-pressed="false"[^>]*disabled/);
+  assert.match(unanswered, /class="importance-toggle"[^>]*aria-pressed="false"[^>]*>☆ Важно<\/button>/);
+  assert.doesNotMatch(unanswered, /class="importance-toggle"[^>]*disabled/);
 });
 
 test('question ordinal identifies the currently open question rather than answered questions', () => {

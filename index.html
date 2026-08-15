@@ -15,16 +15,20 @@
   </header>
 
   <main class="shell">
-    <section id="questionnaire" class="panel" aria-label="Опросник">
-      <div class="section-heading">
-        <p id="progress" class="progress-text" aria-live="polite">1 / 23</p>
+    <section id="questionnaire" class="questionnaire-panel" aria-label="Опросник">
+      <div class="questionnaire-progress">
+        <div class="section-heading">
+          <p id="progress" class="progress-text" aria-live="polite">1 / 23</p>
+        </div>
+        <div class="progress-track" aria-hidden="true"><div id="progress-bar"></div></div>
       </div>
-      <div class="progress-track" aria-hidden="true"><div id="progress-bar"></div></div>
       <p id="state-notice" class="notice hidden" role="status"></p>
-      <div id="question-content"></div>
-      <div class="wizard-actions">
-        <button id="previous-question" class="secondary" type="button">Назад</button>
-        <button id="next-question" class="primary" type="button">Далее</button>
+      <div class="questionnaire-card">
+        <div id="question-content"></div>
+        <div class="wizard-actions">
+          <button id="previous-question" class="secondary" type="button">Назад</button>
+          <button id="next-question" class="primary" type="button">Далее</button>
+        </div>
       </div>
     </section>
 

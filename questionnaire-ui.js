@@ -34,9 +34,8 @@
       const checked = answer === value ? ' checked' : '';
       return `<span class="scale-choice"><input type="radio" name="${escapeHtml(question.id)}" id="${id}" value="${value}" data-shortcut="${number}"${checked} aria-label="${escapeHtml(label)}"><label for="${id}"><span class="choice-key" aria-hidden="true">${number}</span><span class="sr-only">${escapeHtml(label)}</span></label></span>`;
     };
-    const canPrioritize = importanceEnabled && typeof answer === 'number' && Number.isFinite(answer);
     const importanceControl = importanceEnabled
-      ? `<button class="importance-toggle" type="button" aria-pressed="${important}" aria-label="${important ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}"${canPrioritize ? '' : ' disabled'}>${important ? '★ Важно' : '☆ Важно'}</button>`
+      ? `<button class="importance-toggle" type="button" aria-pressed="${important}" aria-label="${important ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}">${important ? '★ Важно' : '☆ Важно'}</button>`
       : '';
     return `<article class="wizard-question" data-question-id="${escapeHtml(question.id)}">
       <fieldset>
