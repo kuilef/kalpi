@@ -2,8 +2,8 @@
 
 Release gate: PASS
 
-- Matrix: 229/276 usable (83%)
-- Original average confidence: 74%
+- Matrix: 257/276 usable (93%)
+- Original average confidence: 77%
 - Gate checks: PASS
 
 ## Synthetic fixtures
