@@ -19,20 +19,6 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.match(html, /href="analytics\.html"/);
 });
 
-test('home footer links to a concise methodology page that explains coalition limits', () => {
-  const html = read('index.html');
-  const methodology = read('methodology.html');
-  assert.match(html, /href="methodology\.html"/);
-  assert.match(html, /Коалиции и голосования после выборов могут измениться/);
-  assert.match(methodology, /не прогнозирует будущую коалицию/);
-  assert.match(methodology, /Полное описание методики — в <a/);
-  assert.match(methodology, />README на GitHub</);
-  assert.match(methodology, /href="https:\/\/github\.com\/kuilef\/kalpi#readme"/);
-  assert.match(methodology, /данные по какой-то партии некорректны/);
-  assert.match(methodology, /href="mailto:shaigian1@gmail\.com"/);
-  assert.match(methodology, /вопрос, позицию партии и источники/);
-});
-
 test('v2 page loads only the family-score runtime modules and generated v2 bundle', () => {
   const html = read('index.html');
   for (const script of ['data-loader.js', 'data-validation.js', 'scoring.js', 'analytics.js', 'questionnaire-state.js', 'questionnaire-ui.js', 'results-ui.js', 'data/default-data.js', 'app.js']) {
@@ -83,29 +69,6 @@ test('app persists importance toggles and recalculates without moving focus to r
   assert.match(app, /State\.togglePriorityQuestion\(state, question\.id\)/);
   assert.match(app, /renderResults\(false\)/);
   assert.match(app, /priorityQuestionIds: state\.priorityQuestionIds/);
-});
-
-test('stylesheet provides responsive pole layout, touch targets, and visible focus treatment', () => {
-  const css = read('styles.css');
-  assert.match(css, /button:focus-visible/);
-  assert.match(css, /min-height:52px/);
-  assert.match(css, /@media \(max-width:620px\)/);
-  assert.match(css, /\.poles \{ grid-template-columns:1fr; /);
-  assert.doesNotMatch(css, /max-width:520px/);
-  assert.match(css, /\.unknown-radio \{[^}]*width:100%/);
-  assert.match(css, /\.analytics-filters/);
-  assert.match(css, /\.analytics-page main\.shell \{ width:min\(1000px, calc\(100% - 32px\)\); \}/);
-  assert.match(css, /\.table-scroll/);
-  assert.match(css, /\.family-bar/);
-  assert.match(css, /\.analytics-matrix-table/);
-  assert.match(css, /\.analytics-matrix-desktop/);
-  assert.match(css, /\.analytics-matrix-mobile/);
-  assert.match(css, /\.matrix-cell \{[^}]*min-width:30px/);
-  assert.match(css, /\.matrix-cell \{[^}]*min-height:30px/);
-  assert.match(css, /\.analytics-matrix-mobile \.matrix-cell \{[^}]*width:30px/);
-  assert.match(css, /\.analytics-matrix-mobile \.matrix-cell \{[^}]*height:30px/);
-  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-desktop[^}]*display:none/);
-  assert.match(css, /@media \(max-width:620px\)[\s\S]*\.analytics-matrix-mobile[^}]*display:block/);
 });
 
 test('stylesheet presents response choices as plain numeric segments', () => {

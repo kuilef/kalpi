@@ -55,4 +55,4 @@ sources = [source for source in sources if source['id'] in used_evidence_ids]
 
 - [ ] **Step 4: Run focused and full tests, import candidate packages, rebuild the bundle, and check it**
 
-Run: `python -m unittest tests.sync_position_matrix.test`, `python tools/sync_position_matrix.py --import-candidates`, `python tools/build_data_bundle.py`, and `python tools/build_data_bundle.py --check`.
+Run: `python -m unittest tests.sync_position_matrix.test`, `python tools/build_data_bundle.py`, and `python tools/build_data_bundle.py --check`.

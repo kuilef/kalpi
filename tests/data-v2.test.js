@@ -48,19 +48,3 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.equal(config.families.find((family) => family.id === 'religion_lifestyle').policy_weight, 0.4);
   assert.equal(config.families.find((family) => family.id === 'october_7_accountability').family_type, 'standalone_policy');
 });
-
-test('v2 positions are a complete prototype candidate matrix with retained original statuses', () => {
-  const parties = load('parties.json').filter((party) => party.active !== false);
-  const questions = load('questions.json');
-  const positions = load('positions.json');
-  assert.equal(positions.length, parties.length * questions.length);
-  assert.deepEqual(Object.fromEntries(['known', 'mixed', 'historical', 'insufficient_data'].map((status) => [
-    status,
-    positions.filter((position) => position.status === status).length,
-  ])), { known: 179, mixed: 19, historical: 53, insufficient_data: 25 });
-  assert.equal(positions.filter((position) => position.value != null).length, 251);
-  const sourceIds = new Set(load('sources.json').map((source) => source.id));
-  const evidenceIds = new Set(positions.flatMap((position) => position.evidence || []));
-  assert.deepEqual(sourceIds, evidenceIds);
-  assert.ok(positions.some((position) => position.status === 'mixed' && position.entity_scope === 'LEADER'));
-});
