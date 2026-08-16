@@ -161,9 +161,9 @@ a:hover { color:var(--ink); }
   .question-heading { gap:10px; }
   .importance-toggle { width:36px; min-height:36px; padding:0; font-size:0; }
   .importance-toggle::first-letter { font-size:1.1rem; }
-  .poles { grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin-top:30px; }
-  .poles p:first-child { grid-column:1 / span 2; }
-  .poles p:last-child { grid-column:4 / -1; text-align:end; }
+  .poles { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:30px; }
+  .poles p:first-child,.poles p:last-child { grid-column:auto; overflow-wrap:normal; }
+  .poles p:last-child { text-align:end; }
   .scale { gap:6px; }
   .scale-choice, .scale-choice label { min-height:48px; }
   .completion-metrics { grid-template-columns:1fr; }
