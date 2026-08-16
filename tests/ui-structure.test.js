@@ -107,6 +107,14 @@ test('stylesheet presents response choices as plain numeric segments', () => {
   assert.doesNotMatch(css, /\.choice-intensity/);
 });
 
+test('mobile answer poles stay aligned with the outer scale choices', () => {
+  const css = read('styles.css');
+  const mobile = css.match(/@media \(max-width:620px\) \{([\s\S]*?)\n\}/)?.[1] || '';
+  assert.match(mobile, /\.poles \{[^}]*grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/);
+  assert.match(mobile, /\.poles p:first-child \{[^}]*grid-column:1 \/ span 2/);
+  assert.match(mobile, /\.poles p:last-child \{[^}]*grid-column:4 \/ -1[^}]*text-align:end/);
+});
+
 test('questionnaire hero title stays on one line with a narrow-screen fluid size', () => {
   const css = read('styles.css');
   assert.match(css, /\.questionnaire-hero-title \{[^}]*font-size:clamp\(1\.45rem, 6\.5vw, 3\.2rem\)/);
