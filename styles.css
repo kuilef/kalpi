@@ -48,7 +48,11 @@ main { padding:32px 0 56px; }
 .section-heading { display:flex; gap:20px; align-items:start; justify-content:space-between; }
 .progress-text { flex:none; margin:0; margin-inline-start:auto; font:700 .95rem system-ui,sans-serif; }
 .progress-track { height:5px; margin:22px 0 34px; background:var(--track); }
-.progress-track > div { width:100%; height:100%; background:var(--accent); transform:scaleX(var(--progress,0)); transform-origin:left center; transition:transform .18s ease-out; }
+.progress-track > progress,
+.family-progress { display:block; width:100%; height:100%; border:0; background:transparent; appearance:none; }
+.progress-track > progress::-webkit-progress-bar { background:var(--track); }
+.progress-track > progress::-webkit-progress-value { background:var(--accent); transition:width .18s ease-out; }
+.progress-track > progress::-moz-progress-bar { background:var(--accent); transition:width .18s ease-out; }
 .notice { padding:12px; border-inline-start:4px solid var(--accent); background:var(--notice-bg); line-height:1.45; }
 .wizard-question fieldset { min-width:0; margin:0; padding:0; border:0; }
 .wizard-question legend { width:100%; padding:0; }
@@ -116,7 +120,9 @@ a:hover { color:var(--ink); }
 .family-result-heading strong { color:var(--accent); font:700 1.15rem system-ui,sans-serif; }
 .family-result > p { margin:8px 0 0; color:var(--muted); font:.84rem/1.4 system-ui,sans-serif; }
 .family-bar { height:9px; margin-top:14px; background:var(--family-track); }
-.family-bar span { display:block; width:100%; height:100%; background:var(--accent); transform:scaleX(var(--family-score,0)); transform-origin:left center; transition:transform .18s ease-out; }
+.family-progress::-webkit-progress-bar { background:var(--family-track); }
+.family-progress::-webkit-progress-value { background:var(--accent); transition:width .18s ease-out; }
+.family-progress::-moz-progress-bar { background:var(--accent); transition:width .18s ease-out; }
 .question-evidence { margin-top:12px; padding:12px 0 0; border-top:1px dotted var(--rule); }
 .question-evidence summary { cursor:pointer; font:600 .86rem/1.4 system-ui,sans-serif; }
 .question-evidence p { max-width:720px; margin:12px 0 0; color:var(--muted); line-height:1.5; }

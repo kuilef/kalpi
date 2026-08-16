@@ -74,7 +74,8 @@
     const total = questions().length;
     const ordinal = currentIndex() + 1;
     $('progress').textContent = QuestionnaireUi.questionOrdinal(currentIndex(), total);
-    $('progress-bar').style.setProperty('--progress', total ? ordinal / total : 0);
+    const progressBar = $('progress-bar');
+    progressBar.value = total ? ordinal / total : 0;
   }
 
   function advanceAfterAnswer() {

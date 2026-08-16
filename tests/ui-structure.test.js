@@ -19,7 +19,7 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, />Ваши взгляды</);
   assert.match(html, /<section id="questionnaire"[^>]*aria-label="Опросник"/);
   assert.match(html, /<section id="questionnaire" class="questionnaire-panel" aria-label="Опросник">/);
-  assert.match(html, /<div class="questionnaire-progress">[\s\S]*id="progress"[\s\S]*id="progress-bar"[\s\S]*<\/div>/);
+  assert.match(html, /<div class="questionnaire-progress">[\s\S]*id="progress"[\s\S]*<progress id="progress-bar" max="1" value="0"><\/progress>[\s\S]*<\/div>/);
   assert.match(html, /<div class="questionnaire-card">[\s\S]*id="question-content"[\s\S]*id="previous-question"[\s\S]*id="next-question"[\s\S]*<\/div>/);
   assert.match(html, /<h1 class="questionnaire-hero-title">Какая партия вам ближе\?<\/h1>/);
   assert.match(html, /<p class="lede">Ответьте на вопросы и сравните свои взгляды с партиями на выборах в Кнессет 2026<\/p>/);
@@ -141,14 +141,17 @@ test('stylesheet normalizes semantic colors, focus states, and reduced motion', 
   assert.match(css, /a:focus-visible/);
   assert.match(css, /summary:focus-visible/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.match(css, /transition:transform/);
-  assert.doesNotMatch(css, /transition:width/);
+  assert.match(css, /transition:width/);
+  assert.doesNotMatch(css, /transition:transform/);
 });
 
-test('progress rendering uses a composite transform instead of layout width', () => {
+test('progress rendering uses a native progress value without inline styles', () => {
   const app = read('app.js');
   const css = read('styles.css');
-  assert.match(app, /progress-bar'\)\.style\.setProperty\('--progress'/);
-  assert.doesNotMatch(app, /progress-bar'\)\.style\.width/);
-  assert.match(css, /\.progress-track > div \{[^}]*transform:scaleX/);
+  assert.match(app, /const progressBar = \$\('progress-bar'\);/);
+  assert.match(app, /progressBar\.value = total \? ordinal \/ total : 0;/);
+  assert.doesNotMatch(app, /progress-bar'\)\.style\.setProperty/);
+  assert.doesNotMatch(app, /progress-bar'\)\.style\./);
+  assert.match(css, /\.progress-track > progress/);
+  assert.match(css, /\.family-progress/);
 });

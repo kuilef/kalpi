@@ -56,8 +56,9 @@ test('live result exposes leader, near ties, full ranking, family profile, and e
   assert.match(html, /mixed/);
   assert.match(html, /LEADER/);
   assert.match(html, /Источник/);
-  assert.match(html, /--family-score:0\.8/);
-  assert.doesNotMatch(html, /style="width:80%/);
+  assert.match(html, /<progress class="family-progress" max="1" value="0\.8">/);
+  assert.doesNotMatch(html, /\sstyle=/);
+  assert.doesNotMatch(html, /--family-score/);
 });
 
 test('live result explains when the user has not covered enough families', () => {
