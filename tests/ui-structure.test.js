@@ -99,6 +99,15 @@ test('app persists importance toggles and recalculates without moving focus to r
   assert.match(app, /priorityQuestionIds: state\.priorityQuestionIds/);
 });
 
+test('importance recalculation stays hidden before completion but final answer still reveals results', () => {
+  const app = read('app.js');
+  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true\)/);
+  assert.match(app, /if \(revealResults\) host\.classList\.remove\('hidden'\);/);
+  assert.match(app, /else host\.classList\.add\('hidden'\);/);
+  assert.match(app, /renderResults\(false, state\.completedAt\)/);
+  assert.match(app, /renderResults\(!keepResultsInPlace\);/);
+});
+
 test('stylesheet presents response choices as plain numeric segments', () => {
   const css = read('styles.css');
   assert.match(css, /\.choice-key \{[^}]*font:/);

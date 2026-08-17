@@ -105,4 +105,7 @@ test('live result explains when the user has not covered enough families', () =>
   assert.match(html, /Недостаточно содержательных ответов/);
   assert.match(html, /8/);
   assert.match(html, /6/);
+  assert.match(html, /нужно минимум 8 содержательных ответов/);
+  assert.match(html, /нужно ответить минимум в 6 тематических группах/);
+  assert.doesNotMatch(html, /need 8 substantive answers|need 6 answered families/);
 });

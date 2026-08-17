@@ -92,9 +92,18 @@
     return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${escapeHtml(result.party?.name_ru || result.partyId)}</strong><span>${pct(result.score)}</span><span>данные ${pct(result.coverage)}</span><span>${gap}</span></li>`;
   }
 
+  function formatRecommendationReason(reason) {
+    const substantiveMatch = /^need (\d+) substantive answers$/.exec(String(reason));
+    if (substantiveMatch) return `нужно минимум ${substantiveMatch[1]} содержательных ответов`;
+    const familiesMatch = /^need (\d+) answered families$/.exec(String(reason));
+    if (familiesMatch) return `нужно ответить минимум в ${familiesMatch[1]} тематических группах`;
+    if (reason === 'no party meets minimum result coverage') return 'ни одна партия не достигла минимального покрытия данных';
+    return reason;
+  }
+
   function renderLiveResult({ recommendation, questions = [], sourcesById }) {
     if (!recommendation?.ready || !recommendation.leader) {
-      const reasons = (recommendation?.reasons || []).join('; ');
+      const reasons = (recommendation?.reasons || []).map(formatRecommendationReason).join('; ');
       return `<section class="live-result insufficient-user-result"><p class="eyebrow">Недостаточно данных о ваших взглядах</p><h2>Недостаточно содержательных ответов для рекомендации</h2><p>Для устойчивого сравнения нужны минимум 8 содержательных ответов в 6 тематических группах. Сейчас: ${escapeHtml(reasons || 'уточните ответы по нескольким темам')}.</p></section>`;
     }
     const leader = recommendation.leader;

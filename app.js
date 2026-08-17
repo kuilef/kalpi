@@ -120,7 +120,7 @@
       State.togglePriorityQuestion(state, question.id);
       saveState();
       renderQuestion();
-      renderResults(false);
+      renderResults(false, state.completedAt);
     });
   }
 
@@ -142,10 +142,11 @@
     host.innerHTML = `<p class="eyebrow">Debug</p><h2 id="debug-title">Покрытие данных v2</h2><p>Canonical matrix: ${analytics.summary.knownCells}/${analytics.summary.totalCells}; средний confidence ${Math.round(analytics.summary.averageConfidence * 100)}%.</p><details open><summary>По parties</summary><table><tbody>${Object.entries(analytics.byParty).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>По тематическим группам</summary><table><tbody>${Object.entries(analytics.byFamily).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>Пробелы (${analytics.gaps.length})</summary><ul>${analytics.gaps.map((gap) => `<li>${escapeHtml(gap.partyId)} × ${escapeHtml(gap.questionId)}</li>`).join('')}</ul></details><section class="debug-fixture"><h3>Синтетический fixture: трассировка score</h3><p>Только для проверки UI. Он не является canonical data и не смешивается с партийной матрицей.</p><p>${escapeHtml(fixture.party.name_ru)}: score ${Math.round((fixtureResult.score || 0) * 100)}%, coverage ${Math.round((fixtureResult.coverage || 0) * 100)}%.</p>${trace}</section>`;
   }
 
-  async function renderResults(focusResults = true) {
+  async function renderResults(focusResults = true, revealResults = true) {
     const analytics = Analytics.computeDatasetAnalytics(data);
     const host = $('results');
-    host.classList.remove('hidden');
+    if (revealResults) host.classList.remove('hidden');
+    else host.classList.add('hidden');
     try {
       if (data.scoringConfig.recommendation_mode === 'data_not_ready') {
         host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
@@ -166,7 +167,7 @@
       host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить источники.</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
     renderDebug(analytics);
-    if (focusResults) {
+    if (focusResults && revealResults) {
       host.focus({ preventScroll: true });
       window.scrollTo({ top: host.offsetTop - 12, behavior: 'smooth' });
     }
