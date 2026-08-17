@@ -61,6 +61,42 @@ test('live result exposes leader, near ties, full ranking, family profile, and e
   assert.doesNotMatch(html, /--family-score/);
 });
 
+test('thematic profile shows the readable question, poles, answer labels, and position markers', () => {
+  const html = Results.renderLiveResult({
+    questions: [{
+      id: 'security_settlement_tradeoff',
+      short_title_ru: 'Безопасность и политическое урегулирование',
+      prompt_ru: 'Что вам ближе: сохранять широкий военный контроль ради безопасности или ограничить его ради политического урегулирования?',
+      left_pole_ru: 'Сохранение более широкого израильского контроля',
+      right_pole_ru: 'Готовность отказаться от части постоянного контроля ради политического урегулирования',
+    }],
+    recommendation: {
+      ready: true,
+      leader: {
+        party: { name_ru: 'Партия' }, score: 0.8, coverage: 0.9,
+        families: [{ familyId: 'f', label_ru: 'Семья', score: 0.8, coverage: 0.9, questions: [{
+          questionId: 'security_settlement_tradeoff', userValue: -1, partyValue: 0,
+          evidenceSimilarity: 0.5, coverage: 1, originalStatus: 'mixed', originalConfidence: 0.64,
+          position: { explanation_ru: 'Объяснение', entity_scope: 'PARTY', evidence: [] },
+        }]}],
+      },
+      nearTies: [],
+      ranked: [{ partyId: 'winner', party: { name_ru: 'Партия' }, score: 0.8, coverage: 0.9, gapFromLeader: 0, eligible: true }],
+    },
+    sourcesById: new Map(),
+  });
+
+  assert.match(html, /Безопасность и политическое урегулирование/);
+  assert.match(html, /Что вам ближе: сохранять широкий военный контроль/);
+  assert.match(html, /Сохранение более широкого израильского контроля/);
+  assert.match(html, /Готовность отказаться от части постоянного контроля/);
+  assert.match(html, /Полностью ближе к левому полюсу/);
+  assert.match(html, /Промежуточная позиция/);
+  assert.match(html, /data-position-marker="user"/);
+  assert.match(html, /data-position-marker="party"/);
+  assert.doesNotMatch(html, /<summary>security_settlement_tradeoff/);
+});
+
 test('live result explains when the user has not covered enough families', () => {
   const html = Results.renderLiveResult({
     recommendation: { ready: false, reasons: ['need 8 substantive answers', 'need 6 answered families'], ranked: [], nearTies: [], leader: null },

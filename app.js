@@ -159,7 +159,7 @@
           const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, priorityQuestionIds: state.priorityQuestionIds, scoringConfig: data.scoringConfig });
           const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
           recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
-          host.innerHTML = ResultsUi.renderLiveResult({ recommendation, sourcesById });
+          host.innerHTML = ResultsUi.renderLiveResult({ recommendation, questions: questions(), sourcesById });
         }
       }
     } catch (error) {
