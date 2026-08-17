@@ -145,7 +145,7 @@ a:hover { color:var(--ink); }
 .position-axis-legend { display:flex; flex-wrap:wrap; gap:8px 20px; color:var(--muted); font:.78rem/1.45 system-ui,sans-serif; }
 .position-axis-legend .position-marker { width:20px; height:20px; margin-inline-end:4px; vertical-align:middle; }
 .evidence-provenance { margin-top:16px; padding-top:12px; border-top:1px solid var(--rule); }
-.evidence-provenance summary { display:block; color:var(--muted); font-size:.78rem; }
+.evidence-scope { color:var(--ink) !important; font:700 .78rem/1.4 system-ui,sans-serif; }
 .question-evidence p { max-width:720px; margin:12px 0 0; color:var(--muted); line-height:1.5; }
 .evidence-facts { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin:14px 0 0; }
 .evidence-facts div { padding:8px; background:var(--metric-bg); }

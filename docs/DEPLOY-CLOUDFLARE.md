@@ -8,6 +8,8 @@ node tools/build_cloudflare_site.js
 
 В `dist/` находятся три HTML-страницы, runtime JavaScript, `styles.css`, пять канонических JSON-файлов, `_headers` и `_redirects`. Тесты, документация, `.git`, исследовательские архивы и инструменты туда не попадают.
 
+Cloudflare Pages сам обслуживает HTML-файлы по коротким путям: `analytics.html` доступен как `/analytics`, а `methodology.html` — как `/methodology`. Не добавляйте для них rewrite в `_redirects`: Pages сначала канонизирует `*.html` в короткий путь, и такой rewrite создаёт бесконечный цикл редиректов.
+
 Официальные инструкции: [Cloudflare Pages Git integration](https://developers.cloudflare.com/pages/configuration/git-integration/), [custom headers](https://developers.cloudflare.com/pages/configuration/headers/), [redirects](https://developers.cloudflare.com/pages/configuration/redirects/) и [кэширование Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
 
 ## 1. Подготовить репозиторий
@@ -130,7 +132,7 @@ git push origin master
 - на ширине 390 px нет горизонтального scroll страницы;
 - analytics показывает актуальный release gate и матрицу.
 
-Короткие пути `/questionnaire`, `/analytics` и `/methodology` задаются в `_redirects`. Security-заголовки задаются в `_headers`.
+Короткий путь `/questionnaire` задаётся в `_redirects`, а `/analytics` и `/methodology` предоставляются встроенным маршрутизатором Cloudflare Pages. Security-заголовки задаются в `_headers`.
 
 ## 6. Если build не проходит
 

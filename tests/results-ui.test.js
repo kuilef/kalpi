@@ -53,7 +53,6 @@ test('live result exposes leader, near ties, full ranking, family profile, and e
   assert.match(html, /Мало данных для рекомендации/);
   assert.match(html, /Семья/);
   assert.match(html, /Объяснение/);
-  assert.match(html, /mixed/);
   assert.match(html, /LEADER/);
   assert.match(html, /Источник/);
   assert.match(html, /<progress class="family-progress" max="1" value="0\.8">/);
@@ -77,13 +76,13 @@ test('thematic profile shows the readable question, poles, answer labels, and po
         families: [{ familyId: 'f', label_ru: 'Семья', score: 0.8, coverage: 0.9, questions: [{
           questionId: 'security_settlement_tradeoff', userValue: -1, partyValue: 0,
           evidenceSimilarity: 0.5, coverage: 1, originalStatus: 'mixed', originalConfidence: 0.64,
-          position: { explanation_ru: 'Объяснение', entity_scope: 'PARTY', evidence: [] },
+          position: { explanation_ru: 'Объяснение', entity_scope: 'PARTY', evidence: ['source'] },
         }]}],
       },
       nearTies: [],
       ranked: [{ partyId: 'winner', party: { name_ru: 'Партия' }, score: 0.8, coverage: 0.9, gapFromLeader: 0, eligible: true }],
     },
-    sourcesById: new Map(),
+    sourcesById: new Map([['source', { title: 'Источник', url: 'https://example.test' }]]),
   });
 
   assert.match(html, /Безопасность и политическое урегулирование/);
@@ -94,6 +93,13 @@ test('thematic profile shows the readable question, poles, answer labels, and po
   assert.match(html, /Промежуточная позиция/);
   assert.match(html, /data-position-marker="user"/);
   assert.match(html, /data-position-marker="party"/);
+  assert.match(html, /<div class="evidence-provenance">/);
+  assert.match(html, /Entity scope/);
+  assert.match(html, /Источник/);
+  assert.doesNotMatch(html, /Подробности источников/);
+  assert.doesNotMatch(html, /Исходные значения/);
+  assert.doesNotMatch(html, /Исходный status/);
+  assert.doesNotMatch(html, /Исходный confidence/);
   assert.doesNotMatch(html, /<summary>security_settlement_tradeoff/);
 });
 

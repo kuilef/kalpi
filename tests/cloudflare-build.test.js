@@ -47,7 +47,9 @@ test('buildCloudflareSite copies only the public runtime allowlist', () => {
     assert.equal(fs.existsSync(path.join(outputDir, 'README.md')), false);
     assert.equal(fs.existsSync(path.join(outputDir, 'tools')), false);
     assert.match(fs.readFileSync(path.join(outputDir, '_headers'), 'utf8'), /X-Content-Type-Options: nosniff/);
-    assert.match(fs.readFileSync(path.join(outputDir, '_redirects'), 'utf8'), /^\/analytics \/analytics\.html 200$/m);
+    const redirects = fs.readFileSync(path.join(outputDir, '_redirects'), 'utf8');
+    assert.match(redirects, /^\/questionnaire \/index\.html 200$/m);
+    assert.doesNotMatch(redirects, /^\/(?:analytics|methodology) /m);
   } finally {
     fs.rmSync(temporaryRoot, { recursive: true, force: true });
   }
