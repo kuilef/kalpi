@@ -59,11 +59,15 @@ test('app uses a runtime release gate before it exposes the live recommendation'
   assert.match(app, /State\.load\(window\.localStorage, data\.scoringConfig\)/);
 });
 
-test('local server uses normal asset caching and defers sources on the questionnaire page', () => {
+test('questionnaire starts from bootstrap data and defers party matrix and sources', () => {
   const app = read('app.js');
   const analytics = read('analytics-page.js');
   const server = read('tools/serve.py');
-  assert.match(app, /includeSources: false/);
+  assert.match(app, /Loader\.loadQuestionnaireBootstrap\(readJson\)/);
+  assert.match(app, /Loader\.loadQuestionnaireBackground\(readJson\)/);
+  assert.match(app, /Object\.assign\(data, backgroundData\)/);
+  assert.match(app, /await ensureQuestionnaireBackgroundLoaded\(\)/);
+  assert.match(app, /ensureSourcesLoaded\(\)/);
   assert.doesNotMatch(app, /Date\.now\(\)/);
   assert.doesNotMatch(app, /cache:\s*['"]no-store['"]/);
   assert.doesNotMatch(analytics, /Date\.now\(\)/);

@@ -14,6 +14,8 @@
   let data;
   let state;
   let sourcesPromise;
+  let backgroundDataPromise;
+  let backgroundDataError;
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
@@ -36,12 +38,29 @@
     try { State.save(window.localStorage, state); } catch (_) {}
   }
 
+  async function readJson(filename) {
+    const response = await fetch(`data/${filename}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.json();
+  }
+
   async function loadDataset() {
-    data = await Loader.loadDataset(async (filename) => {
-      const response = await fetch(`data/${filename}`);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    }, { includeSources: false });
+    data = await Loader.loadQuestionnaireBootstrap(readJson);
+    backgroundDataPromise = Loader.loadQuestionnaireBackground(readJson)
+      .then((backgroundData) => {
+        Object.assign(data, backgroundData);
+        showWarnings();
+        return backgroundData;
+      })
+      .catch((error) => {
+        backgroundDataError = error;
+        return null;
+      });
+  }
+
+  async function ensureQuestionnaireBackgroundLoaded() {
+    await backgroundDataPromise;
+    if (backgroundDataError) throw backgroundDataError;
   }
 
   async function loadSources() {
@@ -143,11 +162,13 @@
   }
 
   async function renderResults(focusResults = true, revealResults = true) {
-    const analytics = Analytics.computeDatasetAnalytics(data);
     const host = $('results');
+    let analytics;
     if (revealResults) host.classList.remove('hidden');
     else host.classList.add('hidden');
     try {
+      await ensureQuestionnaireBackgroundLoaded();
+      analytics = Analytics.computeDatasetAnalytics(data);
       if (data.scoringConfig.recommendation_mode === 'data_not_ready') {
         host.innerHTML = ResultsUi.renderDataNotReady({ questions: questions(), answers: state.answers, coverage: analytics.summary });
       } else {
@@ -164,9 +185,9 @@
         }
       }
     } catch (error) {
-      host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить источники.</strong> ${escapeHtml(error?.message || error)}</p>`;
+      host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить данные.</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
-    renderDebug(analytics);
+    if (analytics) renderDebug(analytics);
     if (focusResults && revealResults) {
       host.focus({ preventScroll: true });
       window.scrollTo({ top: host.offsetTop - 12, behavior: 'smooth' });
@@ -199,7 +220,6 @@
 
   async function init() {
     await loadDataset();
-    showWarnings();
     state = State.load(window.localStorage, data.scoringConfig);
     if (!state.currentQuestionId || !questions().some((question) => question.id === state.currentQuestionId)) State.setCurrentQuestion(state, questions()[0].id);
     if (state.versionMismatch) {
