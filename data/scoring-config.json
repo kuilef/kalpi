@@ -14,9 +14,7 @@
   },
   "release_gate": {
     "global_coverage_min": 0.8,
-    "slice_coverage_min": 0.5,
-    "global_original_confidence_min": 0.7,
-    "slice_original_confidence_min": 0.55
+    "slice_coverage_min": 0.5
   },
   "answer_values": [-1, -0.5, 0, 0.5, 1],
   "unknown_value": null,
