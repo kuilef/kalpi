@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Analytics = require('../analytics.js');
 
-test('analytics reports party, question, and family coverage from the explicit matrix', () => {
+test('analytics reports coverage from known positions regardless of stored confidence', () => {
   const result = Analytics.computeDatasetAnalytics({
     parties: [{ id: 'p1' }, { id: 'p2' }],
     questions: [{ id: 'a1', status: 'core' }, { id: 'b1', status: 'core' }],
@@ -14,22 +14,22 @@ test('analytics reports party, question, and family coverage from the explicit m
     ],
     scoringConfig: { families: [{ id: 'family', fundamental_questions: ['a1'], policy_questions: ['b1'] }] },
   });
-  assert.deepEqual(result.summary, { knownCells: 2, totalCells: 4, averageConfidence: 0.75 });
+  assert.deepEqual(result.summary, { knownCells: 2, totalCells: 4 });
   assert.equal(result.byParty.p1.knownCells, 1);
   assert.equal(result.byQuestion.b1.knownCells, 0);
   assert.equal(result.byFamily.family.knownCells, 2);
   assert.equal(result.gaps.length, 2);
 });
 
-test('release gate requires global and every-slice coverage and original confidence', () => {
+test('release gate requires global and every-slice coverage but ignores stored confidence', () => {
   const data = {
     parties: [{ id: 'p1' }, { id: 'p2' }],
     questions: [{ id: 'a1', status: 'core' }, { id: 'b1', status: 'core' }],
     positions: [
-      { party: 'p1', question: 'a1', value: -1, confidence: 0.8, status: 'known', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
-      { party: 'p1', question: 'b1', value: 1, confidence: 0.8, status: 'mixed', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
-      { party: 'p2', question: 'a1', value: -1, confidence: 0.8, status: 'historical', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
-      { party: 'p2', question: 'b1', value: null, confidence: 0, status: 'insufficient_data', evidence: [], explanation_ru: '', last_verified: null },
+      { party: 'p1', question: 'a1', value: -1, confidence: 0.1, status: 'known', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
+      { party: 'p1', question: 'b1', value: 1, confidence: 0.1, status: 'mixed', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
+      { party: 'p2', question: 'a1', value: -1, confidence: 0, status: 'historical', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
+      { party: 'p2', question: 'b1', value: 1, confidence: 0.1, status: 'known', evidence: ['s1'], explanation_ru: 'x', last_verified: '2026-08-11' },
     ],
     sources: [{ id: 's1' }],
     scoringConfig: {
@@ -37,16 +37,14 @@ test('release gate requires global and every-slice coverage and original confide
       release_gate: {
         global_coverage_min: 0.7,
         slice_coverage_min: 0.6,
-        global_original_confidence_min: 0.7,
-        slice_original_confidence_min: 0.7,
       },
     },
   };
 
   const result = Analytics.computeReleaseGate(data);
-  assert.equal(result.passed, false);
-  assert.ok(result.failures.some((failure) => failure.includes('party p2 coverage')));
-  assert.equal(result.metrics.summary.knownCells, 3);
+  assert.equal(result.passed, true);
+  assert.deepEqual(result.failures, []);
+  assert.equal(result.metrics.summary.knownCells, 4);
 });
 
 test('research analytics exposes a filterable matrix, provenance and review queue', () => {
@@ -68,5 +66,5 @@ test('research analytics exposes a filterable matrix, provenance and review queu
   assert.equal(result.scopeCounts.LEADER, 1);
   assert.equal(result.sourceVerificationCounts.candidate_unverified, 1);
   assert.deepEqual(result.unusedSources.map((source) => source.id), ['s2']);
-  assert.equal(result.reviewQueue.length, 2);
+  assert.equal(result.reviewQueue.length, 1);
 });

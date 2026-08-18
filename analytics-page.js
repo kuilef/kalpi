@@ -9,8 +9,6 @@
     return String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' }[char]));
   }
 
-  function pct(value) { return `${Math.round(Number(value || 0) * 100)}%`; }
-
   const LABELS = {
     known: 'подтверждённая позиция', mixed: 'противоречивые данные', historical: 'исторические данные', insufficient_data: 'недостаточно данных',
     PARTY: 'партия', COMPONENT_PARTY: 'составная партия', CURRENT_LIST: 'текущий список', FACTION: 'фракция', HISTORICAL: 'историческая позиция', LEADER: 'лидер', INDIVIDUAL_MK: 'депутат',
@@ -27,7 +25,7 @@
   function renderAnalytics({ gate, research }) {
     const summary = gate.metrics.summary;
     const gateHtml = gate.passed ? '' : `<p class="gate-fail"><strong>Порог готовности не пройден.</strong> ${escapeHtml(gate.failures.join(' · '))}</p>`;
-    return `<h2>Качество и границы прототипа</h2>${gateHtml}<p>В матрице ${summary.knownCells} из ${summary.totalCells} заполненных ячеек; средняя исходная достоверность — ${pct(summary.averageConfidence)}. Для расчёта рейтинга позиция со значением получает расчётную достоверность 100%, но исходный статус и источники сохраняются ниже.</p><dl class="completion-metrics"><div><dt>Покрытие</dt><dd>${summary.knownCells} / ${summary.totalCells}</dd></div><div><dt>Исходная достоверность</dt><dd>${pct(summary.averageConfidence)}</dd></div><div><dt>Очередь перепроверки</dt><dd>${research.reviewQueue.length}</dd></div></dl>`;
+    return `<h2>Качество и границы прототипа</h2>${gateHtml}<p>В матрице ${summary.knownCells} из ${summary.totalCells} заполненных ячеек. Источники, статус, принадлежность позиции и дата проверки доступны ниже.</p><dl class="completion-metrics"><div><dt>Покрытие</dt><dd>${summary.knownCells} / ${summary.totalCells}</dd></div><div><dt>Очередь перепроверки</dt><dd>${research.reviewQueue.length}</dd></div></dl>`;
   }
 
   function matrixCellClass(cell) {
@@ -51,12 +49,12 @@
   }
 
   function renderDetail(cell) {
-    if (!cell) return '<h2>Выберите позицию</h2><p>Нажмите на ячейку в таблице, чтобы увидеть объяснение, статус, достоверность, принадлежность позиции и связанные источники.</p>';
+    if (!cell) return '<h2>Выберите позицию</h2><p>Нажмите на ячейку в таблице, чтобы увидеть объяснение, статус, принадлежность позиции и связанные источники.</p>';
     const position = cell.position;
     const evidence = (cell.evidence || []).map((source) => source.url
       ? `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.title || source.id)}</a> <span>${escapeHtml(label(source.verification_status))}</span></li>`
       : `<li>${escapeHtml(source.title || source.id)} <span>${escapeHtml(label(source.verification_status))}</span></li>`).join('');
-    return `<h2>${escapeHtml(cell.party.name_ru || cell.party.id)} · ${escapeHtml(cell.question.short_title_ru || cell.question.id)}</h2><dl class="evidence-facts"><div><dt>Значение</dt><dd>${escapeHtml(position.value == null ? 'нет позиции' : position.value)}</dd></div><div><dt>Статус</dt><dd>${escapeHtml(label(position.status))}</dd></div><div><dt>Достоверность</dt><dd>${pct(position.confidence)}</dd></div><div><dt>Принадлежность позиции</dt><dd>${escapeHtml(label(position.entity_scope))}</dd></div><div><dt>Последняя проверка</dt><dd>${escapeHtml(position.last_verified || 'не указана')}</dd></div></dl><p>${escapeHtml(position.explanation_ru || 'Для этой пары пока нет достаточной позиции.')}</p><h3>Источники</h3>${evidence ? `<ul class="source-list">${evidence}</ul>` : '<p>Источники не указаны.</p>'}`;
+    return `<h2>${escapeHtml(cell.party.name_ru || cell.party.id)} · ${escapeHtml(cell.question.short_title_ru || cell.question.id)}</h2><dl class="evidence-facts"><div><dt>Значение</dt><dd>${escapeHtml(position.value == null ? 'нет позиции' : position.value)}</dd></div><div><dt>Статус</dt><dd>${escapeHtml(label(position.status))}</dd></div><div><dt>Принадлежность позиции</dt><dd>${escapeHtml(label(position.entity_scope))}</dd></div><div><dt>Последняя проверка</dt><dd>${escapeHtml(position.last_verified || 'не указана')}</dd></div></dl><p>${escapeHtml(position.explanation_ru || 'Для этой пары пока нет достаточной позиции.')}</p><h3>Источники</h3>${evidence ? `<ul class="source-list">${evidence}</ul>` : '<p>Источники не указаны.</p>'}`;
   }
 
   function renderProvenance(research) {
@@ -68,8 +66,8 @@
   }
 
   function renderReviewQueue(queue) {
-    const rows = queue.slice(0, 40).map((cell) => `<tr><td>${escapeHtml(cell.party.name_ru || cell.party.id)}</td><td>${escapeHtml(cell.question.short_title_ru || cell.question.id)}</td><td>${escapeHtml(label(cell.position.status))}</td><td>${pct(cell.position.confidence)}</td><td>${escapeHtml(label(cell.position.entity_scope))}</td></tr>`).join('');
-    return `<h2>Очередь перепроверки</h2><p>Сначала показаны пробелы, затем записи с достоверностью ниже 70%. Показаны первые ${Math.min(queue.length, 40)} из ${queue.length}.</p><div class="table-scroll"><table class="audit-table"><thead><tr><th>Партия</th><th>Вопрос</th><th>Статус</th><th>Достоверность</th><th>Принадлежность позиции</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const rows = queue.slice(0, 40).map((cell) => `<tr><td>${escapeHtml(cell.party.name_ru || cell.party.id)}</td><td>${escapeHtml(cell.question.short_title_ru || cell.question.id)}</td><td>${escapeHtml(label(cell.position.status))}</td><td>${escapeHtml(label(cell.position.entity_scope))}</td></tr>`).join('');
+    return `<h2>Очередь перепроверки</h2><p>Здесь показаны пары партия × вопрос, для которых пока недостаточно данных. Показаны первые ${Math.min(queue.length, 40)} из ${queue.length}.</p><div class="table-scroll"><table class="audit-table"><thead><tr><th>Партия</th><th>Вопрос</th><th>Статус</th><th>Принадлежность позиции</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
   function initBrowserPage() {

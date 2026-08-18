@@ -136,7 +136,7 @@
     }
     const releaseGate = config?.release_gate;
     if (releaseGate != null) {
-      for (const field of ['global_coverage_min', 'slice_coverage_min', 'global_original_confidence_min', 'slice_original_confidence_min']) {
+      for (const field of ['global_coverage_min', 'slice_coverage_min']) {
         if (!Number.isFinite(Number(releaseGate[field])) || Number(releaseGate[field]) < 0 || Number(releaseGate[field]) > 1) errors.push(`invalid release_gate.${field}`);
       }
     }

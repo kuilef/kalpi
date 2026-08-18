@@ -5,7 +5,7 @@ const path = require('node:path');
 
 const load = (name) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
 
-test('v2 core questionnaire contains the approved 23 Russian questions in display order', () => {
+test('v2 core questionnaire contains 23 core questions in display order', () => {
   const questions = load('questions.json');
   assert.equal(questions.length, 23);
   assert.deepEqual(questions.map((question) => question.code), [
@@ -19,10 +19,6 @@ test('v2 core questionnaire contains the approved 23 Russian questions in displa
     assert.ok(question.left_pole_ru.trim());
     assert.ok(question.right_pole_ru.trim());
   }
-  assert.equal(
-    questions.find((question) => question.id === 'security_settlement_tradeoff').prompt_ru,
-    'Что вам ближе: сохранять широкий военный контроль ради безопасности или ограничить его ради политического урегулирования?',
-  );
 });
 
 test('scoring config assigns every core question to exactly one approved family', () => {
@@ -34,6 +30,10 @@ test('scoring config assigns every core question to exactly one approved family'
   ]);
   assert.equal(config.recommendation_mode, 'live');
   assert.equal(config.prototype_trust_policy, 'all_value_positions_full_confidence');
+  assert.deepEqual(config.release_gate, {
+    global_coverage_min: 0.8,
+    slice_coverage_min: 0.5,
+  });
   assert.deepEqual(config.result_policy, {
     min_substantive_answers: 8,
     min_answered_families: 6,

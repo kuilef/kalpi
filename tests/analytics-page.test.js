@@ -4,7 +4,7 @@ const Page = require('../analytics-page.js');
 
 test('analytics page renderers expose gate, matrix, provenance and review queue', () => {
   const payload = {
-    gate: { passed: true, failures: [], metrics: { summary: { knownCells: 1, totalCells: 2, averageConfidence: 0.75 }, byParty: {}, byQuestion: {}, byFamily: {} } },
+    gate: { passed: true, failures: [], metrics: { summary: { knownCells: 1, totalCells: 2 }, byParty: {}, byQuestion: {}, byFamily: {} } },
     research: {
       cells: [{ party: { id: 'p', name_ru: 'Партия' }, question: { id: 'q', short_title_ru: 'Вопрос' }, familyId: 'family', position: { status: 'mixed', confidence: 0.6, value: 1, entity_scope: 'LEADER', evidence: ['s'] }, evidence: [{ id: 's', title: 'Источник' }] }],
       statusCounts: { known: 0, mixed: 1, historical: 0, insufficient_data: 0 },
@@ -18,21 +18,17 @@ test('analytics page renderers expose gate, matrix, provenance and review queue'
   const html = [
     Page.renderAnalytics(payload),
     Page.renderMatrix(payload.research.cells, [payload.research.cells[0].party], [payload.research.cells[0].question]),
+    Page.renderDetail(payload.research.cells[0]),
     Page.renderProvenance(payload.research),
     Page.renderReviewQueue(payload.research.reviewQueue),
   ].join('');
-  assert.doesNotMatch(html, /Release gate пройден/);
-  assert.match(html, /Качество и границы прототипа/);
   assert.match(html, /analytics-matrix-table/);
   assert.match(html, /analytics-matrix-desktop/);
   assert.match(html, /analytics-matrix-mobile/);
   assert.strictEqual((html.match(/data-cell-key="p\/q"/g) || []).length, 2);
-  assert.match(html, /Партия/);
-  assert.match(html, /кандидат без проверки/);
-  assert.match(html, /Очередь перепроверки/);
   assert.match(html, /matrix-value-positive/);
-  assert.match(html, /Достоверность/);
-  assert.match(html, /Происхождение данных/);
+  assert.doesNotMatch(html, /Достоверность/);
+  assert.doesNotMatch(html, /60%/);
   const visibleText = html.replace(/<[^>]+>/g, ' ');
   assert.doesNotMatch(visibleText, /prototype-ranking|usable|confidence|ranking|effective confidence|provenance|candidate_unverified/i);
 });

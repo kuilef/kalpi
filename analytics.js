@@ -6,38 +6,29 @@
   'use strict';
 
   function usable(position) {
-    return position && position.status !== 'insufficient_data' && position.value != null && Number(position.confidence) > 0;
+    return position && position.status !== 'insufficient_data' && position.value != null;
   }
 
   function computeDatasetAnalytics({ parties, questions, positions, scoringConfig }) {
     const activeParties = (parties || []).filter((party) => party.active !== false);
     const coreQuestions = (questions || []).filter((question) => question.status === 'core');
     const map = new Map((positions || []).map((position) => [`${position.party}/${position.question}`, position]));
-    const byParty = Object.fromEntries(activeParties.map((party) => [party.id, { knownCells: 0, totalCells: coreQuestions.length, averageConfidence: 0, _sum: 0 }]));
-    const byQuestion = Object.fromEntries(coreQuestions.map((question) => [question.id, { knownCells: 0, totalCells: activeParties.length, averageConfidence: 0, _sum: 0 }]));
+    const byParty = Object.fromEntries(activeParties.map((party) => [party.id, { knownCells: 0, totalCells: coreQuestions.length }]));
+    const byQuestion = Object.fromEntries(coreQuestions.map((question) => [question.id, { knownCells: 0, totalCells: activeParties.length }]));
     const gaps = [];
     let knownCells = 0;
-    let confidenceSum = 0;
 
     for (const party of activeParties) {
       for (const question of coreQuestions) {
         const position = map.get(`${party.id}/${question.id}`);
         if (usable(position)) {
-          const confidence = Number(position.confidence);
           knownCells += 1;
-          confidenceSum += confidence;
           byParty[party.id].knownCells += 1;
-          byParty[party.id]._sum += confidence;
           byQuestion[question.id].knownCells += 1;
-          byQuestion[question.id]._sum += confidence;
         } else {
           gaps.push({ partyId: party.id, questionId: question.id });
         }
       }
-    }
-    for (const item of [...Object.values(byParty), ...Object.values(byQuestion)]) {
-      item.averageConfidence = item.knownCells ? item._sum / item.knownCells : 0;
-      delete item._sum;
     }
     const byFamily = {};
     for (const family of scoringConfig?.families || []) {
@@ -47,11 +38,10 @@
       byFamily[family.id] = {
         knownCells: known.length,
         totalCells: cells.length,
-        averageConfidence: known.length ? known.reduce((sum, position) => sum + Number(position.confidence), 0) / known.length : 0,
       };
     }
     return {
-      summary: { knownCells, totalCells: activeParties.length * coreQuestions.length, averageConfidence: knownCells ? confidenceSum / knownCells : 0 },
+      summary: { knownCells, totalCells: activeParties.length * coreQuestions.length },
       byParty,
       byQuestion,
       byFamily,
@@ -64,30 +54,20 @@
     const gate = data?.scoringConfig?.release_gate || {};
     const coverageMin = Number(gate.global_coverage_min ?? 1);
     const sliceCoverageMin = Number(gate.slice_coverage_min ?? 1);
-    const confidenceMin = Number(gate.global_original_confidence_min ?? 1);
-    const sliceConfidenceMin = Number(gate.slice_original_confidence_min ?? 1);
     const failures = [];
     const failCoverage = (label, item, minimum) => {
       const coverage = item.totalCells ? item.knownCells / item.totalCells : 0;
       if (coverage < minimum) failures.push(`${label} coverage ${coverage.toFixed(3)} is below ${minimum.toFixed(3)}`);
     };
-    const failConfidence = (label, item, minimum) => {
-      if (item.knownCells && item.averageConfidence < minimum) failures.push(`${label} original confidence ${item.averageConfidence.toFixed(3)} is below ${minimum.toFixed(3)}`);
-    };
-
     failCoverage('global', analytics.summary, coverageMin);
-    failConfidence('global', analytics.summary, confidenceMin);
     for (const [partyId, item] of Object.entries(analytics.byParty)) {
       failCoverage(`party ${partyId}`, item, sliceCoverageMin);
-      failConfidence(`party ${partyId}`, item, sliceConfidenceMin);
     }
     for (const [questionId, item] of Object.entries(analytics.byQuestion)) {
       failCoverage(`question ${questionId}`, item, sliceCoverageMin);
-      failConfidence(`question ${questionId}`, item, sliceConfidenceMin);
     }
     for (const [familyId, item] of Object.entries(analytics.byFamily)) {
       failCoverage(`family ${familyId}`, item, sliceCoverageMin);
-      failConfidence(`family ${familyId}`, item, sliceConfidenceMin);
     }
 
     const parties = (data?.parties || []).filter((party) => party.active !== false);
@@ -148,13 +128,7 @@
       sourceVerificationCounts[verification] = (sourceVerificationCounts[verification] || 0) + 1;
       sourceTypeCounts[type] = (sourceTypeCounts[type] || 0) + 1;
     }
-    const reviewQueue = [...cells]
-      .filter((cell) => cell.position.status === 'insufficient_data' || Number(cell.position.confidence || 0) < 0.7)
-      .sort((left, right) => {
-        const leftGap = left.position.status === 'insufficient_data' ? 0 : 1;
-        const rightGap = right.position.status === 'insufficient_data' ? 0 : 1;
-        return leftGap - rightGap || Number(left.position.confidence || 0) - Number(right.position.confidence || 0);
-      });
+    const reviewQueue = cells.filter((cell) => cell.position.status === 'insufficient_data');
     return {
       cells,
       statusCounts,

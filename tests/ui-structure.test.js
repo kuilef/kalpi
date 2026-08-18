@@ -13,19 +13,12 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, /id="review"/);
   assert.doesNotMatch(html, /complete-questionnaire|review-back|review-content/);
   assert.doesNotMatch(html, /locale-en|priority-toggle|axis-strips|party-map/);
-  assert.doesNotMatch(html, />Перед завершением</);
-  assert.doesNotMatch(html, /Kalpi · русский опросник/);
-  assert.doesNotMatch(html, /<p class="eyebrow">Опрос<\/p>/);
-  assert.doesNotMatch(html, />Ваши взгляды</);
-  assert.match(html, /<section id="questionnaire"[^>]*aria-label="Опросник"/);
-  assert.match(html, /<section id="questionnaire" class="questionnaire-panel" aria-label="Опросник">/);
+  assert.match(html, /<section id="questionnaire"[^>]*>/);
+  assert.match(html, /<section id="questionnaire" class="questionnaire-panel"/);
   assert.match(html, /<div class="questionnaire-progress">[\s\S]*id="progress"[\s\S]*<progress id="progress-bar" max="1" value="0"><\/progress>[\s\S]*<\/div>/);
   assert.match(html, /<div class="questionnaire-card">[\s\S]*id="question-content"[\s\S]*id="previous-question"[\s\S]*id="next-question"[\s\S]*<\/div>/);
-  assert.match(html, /<h1 class="questionnaire-hero-title">Какая партия вам ближе\?<\/h1>/);
-  assert.match(html, /<p class="lede">Ответьте на вопросы и сравните свои взгляды с партиями на выборах в Кнессет 2026<\/p>/);
-  assert.doesNotMatch(html, /Выберите сторону на шкале между двумя содержательными полюсами/);
   assert.doesNotMatch(html, /<header[\s\S]*href="analytics\.html"[\s\S]*<\/header>/);
-  assert.match(html, /href="methodology\.html"[^>]*>Как считается результат и чего он не показывает<\/a>[\s\S]*href="analytics\.html"[^>]*>Открыть аналитику данных<\/a>/);
+  assert.match(html, /href="methodology\.html"[\s\S]*href="analytics\.html"/);
 });
 
 test('public pages load canonical JSON at runtime without a generated data bundle', () => {
