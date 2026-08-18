@@ -13,7 +13,7 @@ const question = {
 };
 
 test('question UI renders two poles and no preselected response', () => {
-  const html = UI.renderQuestion({ question, index: 0, total: 23, answer: undefined });
+  const html = UI.renderQuestion({ question, index: 0, total: 22, answer: undefined });
   assert.match(html, /<fieldset/);
   assert.equal((html.match(/type="radio"/g) || []).length, 6);
   assert.equal((html.match(/<label\b/g) || []).length, 6);
@@ -24,27 +24,27 @@ test('question UI renders two poles and no preselected response', () => {
 });
 
 test('question UI exposes plain response digits without legacy intensity markup', () => {
-  const html = UI.renderQuestion({ question, index: 0, total: 23, answer: undefined });
+  const html = UI.renderQuestion({ question, index: 0, total: 22, answer: undefined });
   assert.match(html, /class="choice-key" aria-hidden="true">1<\/span>/);
   assert.doesNotMatch(html, /choice-intensity/);
   assert.doesNotMatch(html, /choice-number/);
 });
 
 test('question UI renders unknown as a separate selected response', () => {
-  const html = UI.renderQuestion({ question, index: 4, total: 23, answer: null });
+  const html = UI.renderQuestion({ question, index: 4, total: 22, answer: null });
   assert.match(html, /value="unknown" data-shortcut="0" checked/);
 });
 
 test('question UI renders an enabled importance control before and after an answer', () => {
-  const selected = UI.renderQuestion({ question, index: 0, total: 23, answer: -1, important: true, importanceEnabled: true });
-  const unanswered = UI.renderQuestion({ question, index: 0, total: 23, answer: undefined, important: false, importanceEnabled: true });
+  const selected = UI.renderQuestion({ question, index: 0, total: 22, answer: -1, important: true, importanceEnabled: true });
+  const unanswered = UI.renderQuestion({ question, index: 0, total: 22, answer: undefined, important: false, importanceEnabled: true });
   assert.match(selected, /class="importance-toggle"[^>]*aria-pressed="true"/);
   assert.match(unanswered, /class="importance-toggle"[^>]*aria-pressed="false"/);
   assert.doesNotMatch(unanswered, /class="importance-toggle"[^>]*disabled/);
 });
 
 test('question ordinal identifies the currently open question rather than answered questions', () => {
-  assert.equal(UI.questionOrdinal(4, 23), '5 / 23');
+  assert.equal(UI.questionOrdinal(4, 22), '5 / 22');
 });
 
 test('progress counts explicit unknown as answered', () => {

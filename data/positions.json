@@ -61,20 +61,6 @@
   },
   {
     "party": "likud",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 0.5,
-    "confidence": 0.78,
-    "status": "known",
-    "entity_scope": "FACTION",
-    "evidence": [
-      "candidate_likud_src_kisch_core_standards_2026",
-      "candidate_likud_src_core_curriculum_vote_2023"
-    ],
-    "explanation_ru": "Актуальная позиция министра образования от Ликуда поддерживает расширение לימודי ליבה и общего базового содержания, при сохранении значительной автономии школ и неодинаковой глубины программы. Для фундаментальной дилеммы это даёт умеренный приоритет общему минимуму, а не полную унификацию.",
-    "last_verified": "2026-08-14"
-  },
-  {
-    "party": "likud",
     "question": "majority_institutional_limits_tradeoff",
     "value": -1,
     "confidence": 0.88,
@@ -387,20 +373,6 @@
   },
   {
     "party": "beyahad",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 1,
-    "confidence": 0.9,
-    "status": "known",
-    "entity_scope": "CURRENT_LIST",
-    "evidence": [
-      "candidate_beyahad_src_beyahad_program",
-      "candidate_beyahad_education_plan"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «Беяхад — официальный сайт и программа» и «ביחד נתקן את מערכת החינוך». Подтверждённые материалы прямо соответствует полюсу «Обязательный общий минимум основных предметов для всех школ». Субъект доказательства: нынешний список.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "beyahad",
     "question": "majority_institutional_limits_tradeoff",
     "value": 0.5,
     "confidence": 0.8,
@@ -691,21 +663,6 @@
       "candidate_shas_src_shas_draft_2026"
     ],
     "explanation_ru": "Проверено 2026-08-13: «חשיפה: התוכנית שמוביל ח\"כ אריה דרעי לעצירת מעצר תלמידי ישיבות בהוראת שעה | מאחורי הקלעים». Подтверждённые материалы прямо соответствует полюсу «Допустимы широкие групповые исключения, если они основаны на религиозном или общинном укладе». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "shas",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": -1,
-    "confidence": 0.76,
-    "status": "known",
-    "entity_scope": "PARTY",
-    "evidence": [
-      "candidate_shas_education_autonomy_coalition_2023",
-      "src_shas_core_funding_kan_2025",
-      "src_haredi_networks_budget_n12_2026"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «ההסכמים הקואליציוניים של הממשלה ה-37 | אוטונומיה לרשת החינוך של ש\"ס, איסור העסקת מורים תומכי טרור» и «למרות אישור הממשלה: העברת התקציב למערכת החינוך של ש\"ס תיתקל בקשיים משפטיים» и ещё 1 проверенный источник. Подтверждённые материалы прямо соответствует полюсу «Широкая свобода образовательных сообществ самостоятельно определять программу». Субъект доказательства: партия.",
     "last_verified": "2026-08-13"
   },
   {
@@ -1012,19 +969,6 @@
   },
   {
     "party": "utj",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": -0.5,
-    "confidence": 0.64,
-    "status": "known",
-    "entity_scope": "COMPONENT_PARTY",
-    "evidence": [
-      "src_haredi_networks_budget_n12_2026"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «הסיבה שהחרדים תומכים בתקציב 2026: המספרים». Подтверждённые материалы скорее соответствует полюсу «Широкая свобода образовательных сообществ самостоятельно определять программу». Субъект доказательства: партия-компонент.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "utj",
     "question": "majority_institutional_limits_tradeoff",
     "value": -1,
     "confidence": 0.84,
@@ -1318,17 +1262,6 @@
   },
   {
     "party": "raam",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
-  },
-  {
-    "party": "raam",
     "question": "majority_institutional_limits_tradeoff",
     "value": 0.5,
     "confidence": 0.58,
@@ -1606,19 +1539,6 @@
     ],
     "explanation_ru": "Проверено 2026-08-13: «Бен-Гвир — расширение службы харедим через адаптированные маршруты, без принуждения». Подтверждённые материалы отражает содержательно промежуточную позицию между полюсами вопроса. Субъект доказательства: партия.",
     "last_verified": "2026-08-13"
-  },
-  {
-    "party": "otzma",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": -0.5,
-    "confidence": 0.5,
-    "status": "historical",
-    "entity_scope": "HISTORICAL",
-    "evidence": [
-      "src_bengvir_core_funding_2022"
-    ],
-    "explanation_ru": "Историческое прямое заявление Бен-Гвира защищало государственное финансирование харедимных учреждений без полного לימודי ליבה, что указывает на приоритет автономии образовательного сообщества перед единым обязательным минимумом. Источник 2022 года не подтверждает текущую позицию партии, поэтому scope и status оставлены историческими, а confidence ограничен.",
-    "last_verified": "2026-08-14"
   },
   {
     "party": "otzma",
@@ -1909,19 +1829,6 @@
       "candidate_yisrael_beytenu_src_ndi_platform"
     ],
     "explanation_ru": "Проверено 2026-08-13: «НДИ — официальная программа». Подтверждённые материалы прямо соответствует полюсу «Обязанности должны быть максимально общими для всех граждан». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "yisrael_beytenu",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 1,
-    "confidence": 0.9,
-    "status": "known",
-    "entity_scope": "PARTY",
-    "evidence": [
-      "candidate_yisrael_beytenu_src_ndi_platform"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «НДИ — официальная программа». Подтверждённые материалы прямо соответствует полюсу «Обязательный общий минимум основных предметов для всех школ». Субъект доказательства: партия.",
     "last_verified": "2026-08-13"
   },
   {
@@ -2217,19 +2124,6 @@
   },
   {
     "party": "democrats",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 1,
-    "confidence": 0.9,
-    "status": "known",
-    "entity_scope": "PARTY",
-    "evidence": [
-      "src_democrats_platform"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «Демократы — официальный сайт». Подтверждённые материалы прямо соответствует полюсу «Обязательный общий минимум основных предметов для всех школ». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "democrats",
     "question": "majority_institutional_limits_tradeoff",
     "value": 1,
     "confidence": 0.9,
@@ -2514,19 +2408,6 @@
       "candidate_yashar_src_yashar_service_2026"
     ],
     "explanation_ru": "Проверено 2026-08-13: «ישר! לשירות ממלכתי לכל». Подтверждённые материалы прямо соответствует полюсу «Обязанности должны быть максимально общими для всех граждан». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "yashar",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 1,
-    "confidence": 0.9,
-    "status": "known",
-    "entity_scope": "PARTY",
-    "evidence": [
-      "candidate_yashar_src_yashar_education_2026"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «ישר! לחינוך ממלכתי ומצטיין». Подтверждённые материалы прямо соответствует полюсу «Обязательный общий минимум основных предметов для всех школ». Субъект доказательства: партия.",
     "last_verified": "2026-08-13"
   },
   {
@@ -2819,19 +2700,6 @@
       "candidate_religious_zionism_candidate_religious_zionism_reuters_draft_2026"
     ],
     "explanation_ru": "Проверено 2026-08-13: «Political struggle of far-right ally Smotrich shows faultline in Netanyahu coalition». Подтверждённые материалы отражает содержательно промежуточную позицию между полюсами вопроса. Субъект доказательства: фракция.",
-    "last_verified": "2026-08-13"
-  },
-  {
-    "party": "religious_zionism",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": -0.5,
-    "confidence": 0.58,
-    "status": "historical",
-    "entity_scope": "HISTORICAL",
-    "evidence": [
-      "src_rz_core_curriculum_interview_2022"
-    ],
-    "explanation_ru": "Проверено 2026-08-13: «סמוטריץ': \"אין צורך לחייב לימודי ליבה במגזר החרדי — כפייה רק תרחיק אותם\"». Материалы относятся к прошлому периоду или ограниченному субъекту; они скорее соответствует полюсу «Широкая свобода образовательных сообществ самостоятельно определять программу», но не подтверждают текущую позицию всей партии.",
     "last_verified": "2026-08-13"
   },
   {
@@ -3136,19 +3004,6 @@
   },
   {
     "party": "bait_zioni",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": 1,
-    "confidence": 0.94,
-    "status": "known",
-    "entity_scope": "CURRENT_LIST",
-    "evidence": [
-      "reresearch_bait_zioni_magen_david_2026"
-    ],
-    "explanation_ru": "Программа «Маген Давид», представленная нынешним объединённым списком 5 августа 2026 года, прямо предусматривает публичное финансирование только школ, преподающих לימודי ליבה. Для этой шкалы это означает явный приоритет общего обязательного минимума.",
-    "last_verified": "2026-08-15"
-  },
-  {
-    "party": "bait_zioni",
     "question": "majority_institutional_limits_tradeoff",
     "value": 0,
     "confidence": 0.64,
@@ -3437,17 +3292,6 @@
     ],
     "explanation_ru": "Проверено 2026-08-13: «Объединённый список против закона о призыве харедим». Материалы относятся к прошлому периоду или ограниченному субъекту; они скорее соответствует полюсу «Допустимы широкие групповые исключения, если они основаны на религиозном или общинном укладе», но не подтверждают текущую позицию всей партии.",
     "last_verified": "2026-08-13"
-  },
-  {
-    "party": "hadash_taal",
-    "question": "education_autonomy_standards_tradeoff",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
   },
   {
     "party": "hadash_taal",

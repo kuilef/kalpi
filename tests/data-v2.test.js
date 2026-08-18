@@ -5,11 +5,11 @@ const path = require('node:path');
 
 const load = (name) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
 
-test('v2 core questionnaire contains 23 core questions in display order', () => {
+test('v2 core questionnaire contains 22 core questions in display order', () => {
   const questions = load('questions.json');
-  assert.equal(questions.length, 23);
+  assert.equal(questions.length, 22);
   assert.deepEqual(questions.map((question) => question.code), [
-    'A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11',
+    'A01', 'A02', 'A03', 'A04', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11',
     'B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09', 'B10', 'B11', 'B12',
   ]);
   for (const [index, question] of questions.entries()) {
@@ -43,8 +43,23 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.deepEqual(config.answer_values, [-1, -0.5, 0, 0.5, 1]);
   assert.equal(config.user_importance_enabled, true);
   assert.equal(config.families.length, 12);
-  assert.equal(new Set(assigned).size, 23);
+  assert.equal(new Set(assigned).size, 22);
   assert.deepEqual(new Set(assigned), questionIds);
   assert.equal(config.families.find((family) => family.id === 'religion_lifestyle').policy_weight, 0.4);
   assert.equal(config.families.find((family) => family.id === 'october_7_accountability').family_type, 'standalone_policy');
+});
+
+test('education standards family keeps B07 as its only policy question', () => {
+  const questions = load('questions.json');
+  const positions = load('positions.json');
+  const config = load('scoring-config.json');
+  const education = config.families.find((family) => family.id === 'education_standards');
+
+  assert.equal(questions.some((question) => question.code === 'A05'), false);
+  assert.deepEqual(education.fundamental_questions, []);
+  assert.deepEqual(education.policy_questions, ['core_curriculum_funding']);
+  assert.equal(education.fundamental_weight, 0);
+  assert.equal(education.policy_weight, 1);
+  assert.equal(positions.some((position) => position.question === 'education_autonomy_standards_tradeoff'), false);
+  assert.equal(positions.filter((position) => position.question === 'core_curriculum_funding').length, 12);
 });
