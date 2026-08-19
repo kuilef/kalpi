@@ -2005,7 +2005,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "supreme_court_appointments",
-    "value": 0.5,
+    "value": 1,
     "confidence": 0.72,
     "status": "known",
     "entity_scope": "PARTY",
