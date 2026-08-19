@@ -102,19 +102,18 @@ a:hover { color:var(--ink); }
 .live-result > h2 { max-width:720px; margin-top:8px; }
 .result-score { margin:16px 0 0; color:var(--accent); font:500 clamp(3.2rem, 10vw, 6rem)/.85 Georgia,serif; }
 .result-summary { max-width:700px; margin:18px 0 0; color:var(--muted); line-height:1.55; }
-.near-ties { margin:30px 0; padding:16px 0; border-block:1px solid var(--rule); }
-.near-ties p { margin:8px 0 0; font:600 1rem/1.5 system-ui,sans-serif; }
 .result-ranking { margin-top:38px; }
+.ranking-note { margin:8px 0 0; color:var(--muted); font:.82rem/1.45 system-ui,sans-serif; }
 .result-ranking h4 { margin:25px 0 0; color:var(--muted); font:700 .86rem/1.3 system-ui,sans-serif; text-transform:uppercase; letter-spacing:.08em; }
 .result-ranking ol { margin:12px 0 0; padding:0; list-style:none; }
 .ranking-row { display:grid; grid-template-columns:32px minmax(110px,1fr) 65px 100px 55px; gap:10px; align-items:baseline; padding:10px 0; border-top:1px solid var(--rule); font:.88rem/1.35 system-ui,sans-serif; }
 .ranking-row strong { font-size:.96rem; }
 .ranking-row-ineligible { color:var(--muted); }
 .ranking-place { color:var(--accent); font-weight:700; }
-.result-highlights { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin:42px 0; padding-block:20px; border-block:1px solid var(--ink); }
-.result-highlights ul { margin:12px 0 0; padding:0; list-style:none; font:.9rem/1.45 system-ui,sans-serif; }
-.result-highlights li { padding:7px 0; border-top:1px solid var(--rule); }
 .family-profile { margin-top:40px; }
+.family-profile > h3 { margin-top:8px; }
+.profile-intro { max-width:700px; margin:8px 0 0; color:var(--muted); font:.84rem/1.45 system-ui,sans-serif; }
+.profile-subheading { margin-top:42px !important; padding-top:20px; border-top:1px solid var(--ink); }
 .family-result { padding:22px 0; border-top:1px solid var(--rule); }
 .family-result-heading { display:flex; gap:16px; align-items:baseline; justify-content:space-between; }
 .family-result-heading strong { color:var(--accent); font:700 1.15rem system-ui,sans-serif; }

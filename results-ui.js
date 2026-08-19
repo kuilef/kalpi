@@ -13,6 +13,10 @@
     return `${Math.round(Number(value || 0) * 100)}%`;
   }
 
+  function percentagePoints(value) {
+    return `${Math.round(Number(value || 0) * 100)} п.п.`;
+  }
+
   function ratio(value) {
     const numeric = Number(value);
     if (!Number.isFinite(numeric)) return 0;
@@ -70,8 +74,9 @@
     }).join(', ');
   }
 
-  function renderFamily(family, sourcesById, questionsById) {
+  function renderFamily(family, sourcesById, questionsById, { openQuestions = false } = {}) {
     const score = ratio(family.score);
+    const openAttribute = openQuestions ? ' open' : '';
     const questionHtml = (family.questions || []).map((question) => {
       const questionData = questionsById.get(question.questionId);
       const sourceHtml = renderSources(question, sourcesById);
@@ -80,7 +85,7 @@
       const title = questionData?.short_title_ru || question.questionId;
       const promptHtml = questionData?.prompt_ru ? `<p class="question-profile-prompt">${escapeHtml(questionData.prompt_ru)}</p>` : '';
       const axisHtml = renderPositionAxis(questionData, Number(question.userValue), partyValue);
-      return `<details class="question-evidence"><summary><span class="question-evidence-title">${escapeHtml(title)}</span><span class="question-evidence-meta">совпадение ${pct(question.evidenceSimilarity)} · покрытие ${pct(question.coverage)}</span></summary>${promptHtml}${axisHtml}<dl class="evidence-facts"><div><dt>Ваш ответ</dt><dd>${escapeHtml(answerLabel(questionData, Number(question.userValue)))}</dd></div><div><dt>Позиция партии</dt><dd>${escapeHtml(answerLabel(questionData, partyValue))}</dd></div><div><dt>Совпадение</dt><dd>${pct(question.evidenceSimilarity)}</dd></div><div><dt>Покрытие данных</dt><dd>${pct(question.coverage)}</dd></div></dl><div class="evidence-provenance"><p class="evidence-scope"><strong>Entity scope</strong>: ${escapeHtml(scope)}</p><p>${escapeHtml(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.')}</p>${sourceHtml ? `<p class="evidence-sources">Источники: ${sourceHtml}</p>` : ''}</div></details>`;
+      return `<details class="question-evidence"${openAttribute}><summary><span class="question-evidence-title">${escapeHtml(title)}</span><span class="question-evidence-meta">совпадение ${pct(question.evidenceSimilarity)} · покрытие ${pct(question.coverage)}</span></summary>${promptHtml}${axisHtml}<dl class="evidence-facts"><div><dt>Ваш ответ</dt><dd>${escapeHtml(answerLabel(questionData, Number(question.userValue)))}</dd></div><div><dt>Позиция партии</dt><dd>${escapeHtml(answerLabel(questionData, partyValue))}</dd></div><div><dt>Совпадение</dt><dd>${pct(question.evidenceSimilarity)}</dd></div><div><dt>Покрытие данных</dt><dd>${pct(question.coverage)}</dd></div></dl><div class="evidence-provenance"><p class="evidence-scope"><strong>Entity scope</strong>: ${escapeHtml(scope)}</p><p>${escapeHtml(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.')}</p>${sourceHtml ? `<p class="evidence-sources">Источники: ${sourceHtml}</p>` : ''}</div></details>`;
     }).join('');
     return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${pct(family.score)}</strong></div><div class="family-bar" aria-label="Совпадение ${pct(family.score)}"><progress class="family-progress" max="1" value="${score}">${pct(score)}</progress></div><p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
   }
@@ -107,14 +112,23 @@
     const leader = recommendation.leader;
     const ranked = recommendation.ranked || [];
     const eligible = ranked.filter((result) => result.eligible);
-    const ineligible = ranked.filter((result) => !result.eligible);
     const families = leader.families || [];
-    const matches = [...families].sort((left, right) => right.score - left.score).slice(0, 3);
     const disagreements = [...families].sort((left, right) => left.score - right.score).slice(0, 3);
-    const nearTies = recommendation.nearTies || [];
+    const disagreementIds = new Set(disagreements.map((family) => family.familyId));
+    const matches = [...families]
+      .sort((left, right) => right.score - left.score)
+      .filter((family) => !disagreementIds.has(family.familyId))
+      .slice(0, 3);
+    const topComparisonCount = Math.min(3, eligible.length);
+    const topComparisonGap = topComparisonCount >= 2
+      ? Number(eligible[0].score) - Number(eligible[topComparisonCount - 1].score)
+      : null;
+    const closeTopNote = topComparisonGap != null && topComparisonGap <= 0.05 + Number.EPSILON
+      ? `<p class="ranking-note">Топ-${topComparisonCount} близки: разница между первым и ${topComparisonCount === 2 ? 'вторым' : 'третьим'} местом — ${percentagePoints(topComparisonGap)}</p>`
+      : '';
     const questionsById = new Map(questions.map((question) => [question.id, question]));
 
-    return `<section class="live-result"><p class="eyebrow">Результат</p><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p>${nearTies.length ? `<section class="near-ties"><h3>Практически равные альтернативы</h3><p>${nearTies.map((result) => `${escapeHtml(result.party?.name_ru || result.partyId)} (${pct(result.score)})`).join(' · ')}</p></section>` : ''}<section class="result-ranking"><h3>Рейтинг партий</h3><ol>${eligible.map(renderRankingRow).join('')}</ol>${ineligible.length ? `<h4>Мало данных для рекомендации</h4><ol start="${eligible.length + 1}">${ineligible.map((result, index) => renderRankingRow(result, eligible.length + index)).join('')}</ol>` : ''}</section><section class="result-highlights"><div><h3>Сильнее всего совпадает</h3><ul>${matches.map((family) => `<li>${escapeHtml(family.label_ru || family.familyId)} · ${pct(family.score)}</li>`).join('')}</ul></div><div><h3>Сильнее всего расходится</h3><ul>${disagreements.map((family) => `<li>${escapeHtml(family.label_ru || family.familyId)} · ${pct(family.score)}</li>`).join('')}</ul></div></section><section class="family-profile"><p class="eyebrow">Тематический профиль</p><h3>Совпадения и расхождения по тематическим группам</h3>${families.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</section><p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
+    return `<section class="live-result"><p class="eyebrow">Результат</p><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${eligible.slice(0, 7).map(renderRankingRow).join('')}</ol></section><section class="family-profile"><p class="eyebrow">Тематический профиль</p><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</section><p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
   }
 
   return { renderDataNotReady, renderLiveResult };
