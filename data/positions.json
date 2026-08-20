@@ -232,13 +232,16 @@
   {
     "party": "likud",
     "question": "core_curriculum_funding",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
+    "value": -1,
+    "confidence": 0.72,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "reresearch_likud_kisch_core_funding_2026_08",
+      "candidate_likud_src_kisch_core_standards_2026"
+    ],
+    "explanation_ru": "Министр образования Йоав Киш (Ликуд) 13.08.2026 прямо сформулировал правило: «только тот, кто изучает 100% לימודי ליבה, получит 100% финансирования», и повторил принцип «чем больше лיבה — тем больше финансирование». Это прямо соответствует полюсу, где полное финансирование зависит от преподавания базовой программы. Confidence ограничен тем, что это актуальная позиция профильного министра от Ликуда, а не отдельный формальный пункт программы партии.",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "likud",
@@ -441,13 +444,16 @@
   {
     "party": "beyahad",
     "question": "social_support_redistribution_tradeoff",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
+    "value": 0.5,
+    "confidence": 0.6,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "reresearch_beyahad_yeshatid_economy_gaps",
+      "reresearch_beyahad_kantor_welfare_2026"
+    ],
+    "explanation_ru": "«Еш Атид», компонент нынешнего списка Беяхад, прямо называет сокращение социальных разрывов целью экономической политики и связывает её с перераспределением бюджетов, налоговыми послаблениями слабым группам и расширением социальных услуг. На официальном сайте Беяхад кандидат Олеся Кантор также ставит задачи социальной сетки безопасности и более равного общества. Это склоняет A11 к активному сокращению неравенства, но отсутствие единой актуальной программы всего списка именно по неравенству доходов ограничивает значение до +0.5 и confidence.",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "beyahad",
@@ -1038,13 +1044,15 @@
   {
     "party": "utj",
     "question": "social_support_redistribution_tradeoff",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
+    "value": -0.5,
+    "confidence": 0.58,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "reresearch_ynet_party_economic_platforms_2022"
+    ],
+    "explanation_ru": "Экономическая программа Яхадут ха-Тора 2022 сочетала расширение пособий и социальных услуг с существенным снижением подоходного налога, НДС и косвенных налогов, уменьшением вмешательства государства и сокращением лишних расходов. Она описывает широкую социальную защиту, но не ставит сокращение неравенства доходов самостоятельной целью; поэтому исторический сигнал умеренно соответствует левому полюсу A11. Из-за возраста источника позиция остаётся historical с невысоким confidence.",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "utj",
@@ -1585,13 +1593,15 @@
   {
     "party": "otzma",
     "question": "taxes_public_services_tradeoff",
-    "value": null,
-    "confidence": 0,
-    "status": "insufficient_data",
-    "entity_scope": "PARTY",
-    "evidence": [],
-    "explanation_ru": "",
-    "last_verified": null
+    "value": -0.5,
+    "confidence": 0.66,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "reresearch_otzma_bengvir_tax_relief_2025"
+    ],
+    "explanation_ru": "При утверждении бюджета-2026 Итамар Бен-Гвир прямо потребовал большего объёма налоговых послаблений, чем предложил Минфин. Это актуальный лидерский сигнал в сторону более низких налогов. Значение ограничено -0.5, а не -1, потому что заявление не сопровождалось требованием сокращать государственные услуги, а сама партия одновременно добивается значительных расходов на свои бюджетные приоритеты.",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "otzma",
@@ -2321,15 +2331,16 @@
   {
     "party": "democrats",
     "question": "nation_state_law_equality",
-    "value": -0.5,
-    "confidence": 0.9,
+    "value": -1,
+    "confidence": 0.93,
     "status": "known",
     "entity_scope": "PARTY",
     "evidence": [
-      "src_democrats_platform"
+      "src_democrats_platform",
+      "candidate_democrats_nation_state_equality_2026"
     ],
-    "explanation_ru": "Проверено 2026-08-13: «Демократы — официальный сайт». Подтверждённые материалы скорее соответствует полюсу «Добавить в него явное положение о равенстве граждан». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
+    "explanation_ru": "Текущая официальная программа Демократов прямо предусматривает изменение Закона о национальном государстве в духе Декларации независимости и закрепление полного гражданского равенства при сохранении еврейского характера государства. Это прямо соответствует полюсу «Добавить норму о равенстве».",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "democrats",
@@ -2440,15 +2451,16 @@
   {
     "party": "yashar",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 0.5,
-    "confidence": 0.8,
+    "value": 1,
+    "confidence": 0.86,
     "status": "known",
     "entity_scope": "PARTY",
     "evidence": [
-      "candidate_yashar_src_yashar_program"
+      "candidate_yashar_src_yashar_program",
+      "candidate_yashar_src_yashar_sagi_laws_2026"
     ],
-    "explanation_ru": "Проверено 2026-08-13: «מטרות המפלגה». Подтверждённые материалы скорее соответствует полюсу «Свобода выбора и равное юридическое признание». Субъект доказательства: партия.",
-    "last_verified": "2026-08-13"
+    "explanation_ru": "Официальные цели ЯШАР закрепляют равенство прав и возможностей, а в июле 2026 года Гади Айзенкот как председатель партии поддержал пакет «Законы Саги за равенство» и обязался включить его в основные принципы следующего правительства. Пакет предусматривает полный гражданский союз/брак независимо от пола и сексуальной ориентации с равными правами. В совокупности это прямо соответствует полюсу «Свобода выбора и равное юридическое признание».",
+    "last_verified": "2026-08-20"
   },
   {
     "party": "yashar",
