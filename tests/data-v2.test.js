@@ -42,6 +42,7 @@ test('scoring config assigns every core question to exactly one approved family'
   });
   assert.deepEqual(config.answer_values, [-1, -0.5, 0, 0.5, 1]);
   assert.equal(config.user_importance_enabled, true);
+  assert.equal(config.user_importance_family_multiplier, 2);
   assert.equal(config.families.length, 12);
   assert.equal(new Set(assigned).size, 22);
   assert.deepEqual(new Set(assigned), questionIds);
@@ -62,4 +63,13 @@ test('education standards family keeps B07 as its only policy question', () => {
   assert.equal(education.policy_weight, 1);
   assert.equal(positions.some((position) => position.question === 'education_autonomy_standards_tradeoff'), false);
   assert.equal(positions.filter((position) => position.question === 'core_curriculum_funding').length, 12);
+});
+
+test('canonical data declares a distinct position matrix version', () => {
+  const config = load('scoring-config.json');
+
+  assert.equal(typeof config.party_positions_version, 'string');
+  assert.equal(typeof config.position_matrix_version, 'string');
+  assert.notEqual(config.position_matrix_version, config.party_positions_version);
+  assert.equal(config.data_version, 'kalpi-data-prototype-v2');
 });

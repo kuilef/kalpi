@@ -36,6 +36,23 @@
     return String(value);
   }
 
+  function lowerFirst(value) {
+    const text = String(value || '');
+    return text ? text.charAt(0).toLowerCase() + text.slice(1) : text;
+  }
+
+  function userAnswerLabel(question, value) {
+    if (value == null) return 'Не знаю / недостаточно информации';
+    if (!question || !Number.isFinite(Number(value))) return 'Ответ не выбран';
+    const numeric = Number(value);
+    if (numeric === -1) return question.left_pole_ru || 'Левый полюс';
+    if (numeric === -0.5) return `Скорее ${lowerFirst(question.left_pole_ru)}`;
+    if (numeric === 0) return 'Промежуточная позиция';
+    if (numeric === 0.5) return `Скорее ${lowerFirst(question.right_pole_ru)}`;
+    if (numeric === 1) return question.right_pole_ru || 'Правый полюс';
+    return 'Ответ не выбран';
+  }
+
   function positionClass(value) {
     return String(value).replace('-', 'minus').replace('.', '_');
   }
@@ -75,7 +92,12 @@
   }
 
   function renderFamily(family, sourcesById, questionsById, { openQuestions = false } = {}) {
+    const hasScore = family.score != null;
     const score = ratio(family.score);
+    const scoreLabel = hasScore ? pct(family.score) : 'Нет данных для сравнения';
+    const scoreMarkup = hasScore
+      ? `<div class="family-bar" aria-label="Совпадение ${scoreLabel}"><progress class="family-progress" max="1" value="${score}">${scoreLabel}</progress></div>`
+      : `<p class="family-score-missing">${scoreLabel}</p>`;
     const openAttribute = openQuestions ? ' open' : '';
     const questionHtml = (family.questions || []).map((question) => {
       const questionData = questionsById.get(question.questionId);
@@ -87,7 +109,7 @@
       const axisHtml = renderPositionAxis(questionData, Number(question.userValue), partyValue);
       return `<details class="question-evidence"${openAttribute}><summary><span class="question-evidence-title">${escapeHtml(title)}</span><span class="question-evidence-meta">совпадение ${pct(question.evidenceSimilarity)} · покрытие ${pct(question.coverage)}</span></summary>${promptHtml}${axisHtml}<dl class="evidence-facts"><div><dt>Ваш ответ</dt><dd>${escapeHtml(answerLabel(questionData, Number(question.userValue)))}</dd></div><div><dt>Позиция партии</dt><dd>${escapeHtml(answerLabel(questionData, partyValue))}</dd></div><div><dt>Совпадение</dt><dd>${pct(question.evidenceSimilarity)}</dd></div><div><dt>Покрытие данных</dt><dd>${pct(question.coverage)}</dd></div></dl><div class="evidence-provenance"><p class="evidence-scope"><strong>Entity scope</strong>: ${escapeHtml(scope)}</p><p>${escapeHtml(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.')}</p>${sourceHtml ? `<p class="evidence-sources">Источники: ${sourceHtml}</p>` : ''}</div></details>`;
     }).join('');
-    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${pct(family.score)}</strong></div><div class="family-bar" aria-label="Совпадение ${pct(family.score)}"><progress class="family-progress" max="1" value="${score}">${pct(score)}</progress></div><p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
+    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${scoreLabel}</strong></div>${scoreMarkup}<p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
   }
 
   function renderRankingRow(result, index) {
@@ -104,7 +126,20 @@
     return reason;
   }
 
-  function renderLiveResult({ recommendation, questions = [], sourcesById }) {
+  function renderPriorityPicker({ questions = [], answers = {}, priorityQuestionIds = [] } = {}) {
+    if (!questions.length) return '';
+    const priorities = new Set(priorityQuestionIds);
+    const selectedCount = questions.filter((question) => priorities.has(question.id)).length;
+    const rows = questions.map((question) => {
+      const questionId = question.id;
+      const selected = priorities.has(questionId);
+      const answer = answers?.[questionId];
+      return `<article class="priority-question" data-priority-question-id="${escapeHtml(questionId)}"><div class="priority-question-heading"><div><h4 class="priority-question-title">${escapeHtml(question.short_title_ru || questionId)}</h4><p class="priority-question-answer">${escapeHtml(userAnswerLabel(question, answer))}</p></div><button class="priority-question-toggle" type="button" data-priority-toggle="${escapeHtml(questionId)}" aria-pressed="${selected}" aria-label="${selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}">${selected ? '★' : '☆'}</button></div><button class="priority-context-toggle" type="button" data-priority-context="${escapeHtml(questionId)}">Показать вопрос</button><p class="priority-question-prompt hidden" data-priority-prompt="${escapeHtml(questionId)}">${escapeHtml(question.prompt_ru || '')}</p></article>`;
+    }).join('');
+    return `<section class="priority-picker" aria-labelledby="priority-picker-heading"><div class="priority-picker-heading"><div><p class="eyebrow">После результата</p><h3 id="priority-picker-heading">Выберите важные вопросы</h3></div><span class="priority-picker-count" data-priority-count>${selectedCount} из ${questions.length}</span></div><p class="priority-picker-copy">Ваши ответы уже сохранены. Отметьте вопросы, которые относятся к темам, особенно важным для вас.</p><div class="priority-picker-tools"><span>☆ — отметить вопрос как важный</span><button class="priority-expand" type="button" data-priority-expand>Показать полные формулировки</button></div><div class="priority-question-list" data-priority-list>${rows}</div><div class="priority-picker-footer"><p class="priority-picker-status" data-priority-status aria-live="polite">Можно отметить несколько вопросов.</p><button class="primary" type="button" data-priority-apply>Пересчитать результат</button></div></section>`;
+  }
+
+  function renderLiveResult({ recommendation, questions = [], answers = {}, priorityQuestionIds = [], sourcesById }) {
     if (!recommendation?.ready || !recommendation.leader) {
       const reasons = (recommendation?.reasons || []).map(formatRecommendationReason).join('; ');
       return `<section class="live-result insufficient-user-result"><p class="eyebrow">Недостаточно данных о ваших взглядах</p><h2>Недостаточно содержательных ответов для рекомендации</h2><p>Для устойчивого сравнения нужны минимум 8 содержательных ответов в 6 тематических группах. Сейчас: ${escapeHtml(reasons || 'уточните ответы по нескольким темам')}.</p></section>`;
@@ -128,7 +163,9 @@
       : '';
     const questionsById = new Map(questions.map((question) => [question.id, question]));
 
-    return `<section class="live-result"><p class="eyebrow">Результат</p><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${eligible.slice(0, 7).map(renderRankingRow).join('')}</ol></section><section class="family-profile"><p class="eyebrow">Тематический профиль</p><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</section><p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
+    const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary">Где ваши ответы расходятся с мнением партии</summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</div></details>`;
+    const priorityPicker = renderPriorityPicker({ questions, answers, priorityQuestionIds });
+    return `<section class="live-result"><p class="eyebrow">Результат</p><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${eligible.slice(0, 7).map(renderRankingRow).join('')}</ol></section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
   }
 
   return { renderDataNotReady, renderLiveResult };

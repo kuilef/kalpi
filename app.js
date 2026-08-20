@@ -161,6 +161,52 @@
     host.innerHTML = `<p class="eyebrow">Debug</p><h2 id="debug-title">Покрытие данных v2</h2><p>Canonical matrix: ${analytics.summary.knownCells}/${analytics.summary.totalCells}.</p><details open><summary>По parties</summary><table><tbody>${Object.entries(analytics.byParty).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>По тематическим группам</summary><table><tbody>${Object.entries(analytics.byFamily).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>Пробелы (${analytics.gaps.length})</summary><ul>${analytics.gaps.map((gap) => `<li>${escapeHtml(gap.partyId)} × ${escapeHtml(gap.questionId)}</li>`).join('')}</ul></details><section class="debug-fixture"><h3>Синтетический fixture: трассировка score</h3><p>Только для проверки UI. Он не является canonical data и не смешивается с партийной матрицей.</p><p>${escapeHtml(fixture.party.name_ru)}: score ${Math.round((fixtureResult.score || 0) * 100)}%, coverage ${Math.round((fixtureResult.coverage || 0) * 100)}%.</p>${trace}</section>`;
   }
 
+  function bindPriorityControls() {
+    const host = $('results');
+    const toggles = [...host.querySelectorAll('[data-priority-toggle]')];
+    if (!toggles.length) return;
+    const count = host.querySelector('[data-priority-count]');
+    const status = host.querySelector('[data-priority-status]');
+    const updateCount = () => {
+      const selected = toggles.filter((button) => button.getAttribute('aria-pressed') === 'true').length;
+      if (count) count.textContent = `${selected} из ${toggles.length}`;
+      if (status) status.textContent = selected ? `Выбрано важных вопросов: ${selected}.` : 'Можно отметить несколько вопросов.';
+    };
+
+    toggles.forEach((button) => button.addEventListener('click', () => {
+      const questionId = button.dataset.priorityToggle;
+      State.togglePriorityQuestion(state, questionId);
+      saveState();
+      const selected = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(selected));
+      button.setAttribute('aria-label', selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный');
+      button.textContent = selected ? '★' : '☆';
+      updateCount();
+    }));
+
+    host.querySelectorAll('[data-priority-context]').forEach((button) => button.addEventListener('click', () => {
+      const prompt = button.closest('.priority-question')?.querySelector('[data-priority-prompt]');
+      if (!prompt) return;
+      const hidden = prompt.classList.toggle('hidden');
+      button.textContent = hidden ? 'Показать вопрос' : 'Скрыть вопрос';
+    }));
+
+    host.querySelector('[data-priority-expand]')?.addEventListener('click', (event) => {
+      const prompts = [...host.querySelectorAll('[data-priority-prompt]')];
+      const expand = prompts.some((prompt) => prompt.classList.contains('hidden'));
+      prompts.forEach((prompt) => prompt.classList.toggle('hidden', !expand));
+      host.querySelectorAll('[data-priority-context]').forEach((button) => {
+        button.textContent = expand ? 'Скрыть вопрос' : 'Показать вопрос';
+      });
+      event.currentTarget.textContent = expand ? 'Скрыть формулировки' : 'Показать полные формулировки';
+    });
+
+    host.querySelector('[data-priority-apply]')?.addEventListener('click', () => {
+      renderResults(false, true);
+    });
+    updateCount();
+  }
+
   async function renderResults(focusResults = true, revealResults = true) {
     const host = $('results');
     let analytics;
@@ -181,12 +227,13 @@
           const recommendation = Scoring.buildRecommendation({ parties: data.parties.filter((party) => party.active !== false), answers: state.answers, positions: data.positions, priorityQuestionIds: state.priorityQuestionIds, scoringConfig: data.scoringConfig });
           const labels = new Map((data.scoringConfig.families || []).map((family) => [family.id, family.label_ru]));
           recommendation.leader?.families.forEach((family) => { family.label_ru = labels.get(family.familyId); });
-          host.innerHTML = ResultsUi.renderLiveResult({ recommendation, questions: questions(), sourcesById });
+          host.innerHTML = ResultsUi.renderLiveResult({ recommendation, questions: questions(), answers: state.answers, priorityQuestionIds: state.priorityQuestionIds, sourcesById });
         }
       }
     } catch (error) {
       host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить данные.</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
+    bindPriorityControls();
     if (analytics) renderDebug(analytics);
     if (focusResults && revealResults) {
       host.focus({ preventScroll: true });
@@ -228,6 +275,7 @@
     }
     bindEvents();
     renderQuestion();
+    if (state.completedAt) renderResults(false, true);
   }
 
   init().catch((error) => {

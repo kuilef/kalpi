@@ -6,6 +6,7 @@ const config = {
   questionnaire_version: 'q-v2',
   scoring_version: 'score-v1',
   data_version: 'data-v2',
+  position_matrix_version: 'matrix-v1',
 };
 
 function memoryStorage() {
@@ -53,6 +54,26 @@ test('incompatible saved version starts a clean v2 state without deleting the st
   assert.deepEqual(restored.answers, {});
   assert.equal(restored.versionMismatch, true);
   assert.ok(storage.snapshot().has(State.STORAGE_KEY));
+});
+
+test('position-matrix migration preserves answers and refreshes data metadata', () => {
+  const storage = memoryStorage();
+  const previousConfig = { ...config, data_version: 'data-v1', position_matrix_version: 'matrix-v1' };
+  const state = State.createState(previousConfig);
+  State.setAnswer(state, 'a01', -1);
+  State.setCurrentQuestion(state, 'b01');
+  State.markCompleted(state);
+  State.save(storage, state);
+
+  const currentConfig = { ...config, data_version: 'data-v3', position_matrix_version: 'matrix-v2' };
+  const restored = State.load(storage, currentConfig);
+
+  assert.deepEqual(restored.answers, { a01: -1 });
+  assert.equal(restored.currentQuestionId, 'b01');
+  assert.ok(restored.completedAt);
+  assert.equal(restored.dataVersion, 'data-v3');
+  assert.equal(restored.positionMatrixVersion, 'matrix-v2');
+  assert.equal(restored.versionMismatch, false);
 });
 
 test('state persists unique priorities selected before an answer', () => {

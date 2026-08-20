@@ -74,6 +74,54 @@ test('live result exposes leader, near ties, full ranking, family profile, and e
   assert.doesNotMatch(html, /--family-score/);
 });
 
+test('missing family score is rendered as missing data rather than zero percent', () => {
+  const html = Results.renderLiveResult({
+    recommendation: recommendationForScores([0.8], [
+      { familyId: 'missing', label_ru: 'Нет данных', score: null, coverage: 0, questions: [] },
+    ]),
+    sourcesById: new Map(),
+  });
+
+  assert.match(html, /Нет данных для сравнения/);
+  assert.match(html, /Покрытие данных: 0%/);
+  assert.doesNotMatch(html, /<progress class="family-progress" max="1" value="0">/);
+});
+
+test('live result places a collapsed disagreement profile before compact priority selection', () => {
+  const html = Results.renderLiveResult({
+    questions: [
+      {
+        id: 'territory',
+        short_title_ru: 'Территория и разделение',
+        prompt_ru: 'Что вам ближе в отношении территории?',
+        left_pole_ru: 'Сохранять контроль',
+        right_pole_ru: 'Территориальное разделение',
+      },
+      {
+        id: 'inquiry',
+        short_title_ru: 'Расследование 7 октября',
+        prompt_ru: 'Как должна формироваться комиссия?',
+        left_pole_ru: 'Назначает председатель суда',
+        right_pole_ru: 'Определяется через Кнессет',
+      },
+    ],
+    answers: { territory: -0.5, inquiry: 1 },
+    priorityQuestionIds: ['inquiry'],
+    recommendation: recommendationForScores([0.71], [family('Разногласие', 0.39)]),
+    sourcesById: new Map(),
+  });
+
+  assert.match(html, /<details class="family-profile family-profile-details">/);
+  assert.match(html, /Где ваши ответы расходятся с мнением партии/);
+  assert.ok(html.indexOf('family-profile-details') < html.indexOf('priority-picker'));
+  assert.match(html, /Выберите важные вопросы/);
+  assert.match(html, /Скорее сохранять контроль/);
+  assert.match(html, /data-priority-question-id="inquiry"/);
+  assert.match(html, /data-priority-toggle="inquiry"[^>]*aria-pressed="true"/);
+  assert.match(html, /data-priority-context="territory"/);
+  assert.match(html, /Показать полные формулировки/);
+});
+
 test('thematic profile shows position markers and evidence provenance', () => {
   const html = Results.renderLiveResult({
     questions: [{

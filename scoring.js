@@ -5,6 +5,8 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
+  const SCORE_EPSILON = 1e-12;
+
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
@@ -40,8 +42,7 @@
     return Boolean(position && position.value != null && position.status !== 'insufficient_data');
   }
 
-  function calculateComponent({ questionIds, answers, positionMap, scoringConfig, priorityQuestionIds = [] }) {
-    const priorities = new Set(priorityQuestionIds);
+  function calculateComponent({ questionIds, answers, positionMap, scoringConfig }) {
     const questions = [];
     for (const questionId of questionIds || []) {
       if (!Object.prototype.hasOwnProperty.call(answers || {}, questionId)) continue;
@@ -59,7 +60,7 @@
 
       questions.push({
         questionId,
-        weight: priorities.has(questionId) ? 2 : 1,
+        weight: 1,
         userValue,
         partyValue,
         confidence,
@@ -75,28 +76,27 @@
     }
 
     if (!questions.length) return null;
+    const scoredQuestions = questions.filter((question) => question.rawSimilarity != null);
     return {
-      score: weightedMean(questions, (question) => question.evidenceSimilarity),
+      score: weightedMean(scoredQuestions, (question) => question.evidenceSimilarity),
       coverage: weightedMean(questions, (question) => question.coverage),
-      rawScore: weightedMean(questions.filter((question) => question.rawSimilarity != null), (question) => question.rawSimilarity),
+      rawScore: weightedMean(scoredQuestions, (question) => question.rawSimilarity),
       questions,
     };
   }
 
-  function calculateFamily({ family, answers, positionMap, scoringConfig, priorityQuestionIds = [] }) {
+  function calculateFamily({ family, answers, positionMap, scoringConfig }) {
     const fundamental = calculateComponent({
       questionIds: family.fundamental_questions,
       answers,
       positionMap,
       scoringConfig,
-      priorityQuestionIds,
     });
     const policy = calculateComponent({
       questionIds: family.policy_questions,
       answers,
       positionMap,
       scoringConfig,
-      priorityQuestionIds,
     });
     const components = [
       fundamental && { component: fundamental, weight: Number(family.fundamental_weight) || 0 },
@@ -104,23 +104,21 @@
     ].filter(Boolean);
     if (!components.length) return null;
 
-    const weightSum = components.reduce((sum, item) => sum + item.weight, 0);
-    const normalized = weightSum > 0
-      ? (selector) => components.reduce((sum, item) => sum + selector(item.component) * item.weight, 0) / weightSum
-      : (selector) => mean(components.map((item) => selector(item.component)));
+    const normalizeComponents = (items, selector) => {
+      if (!items.length) return null;
+      const weightSum = items.reduce((sum, item) => sum + item.weight, 0);
+      return weightSum > 0
+        ? items.reduce((sum, item) => sum + selector(item.component) * item.weight, 0) / weightSum
+        : mean(items.map((item) => selector(item.component)));
+    };
+    const scoreComponents = components.filter((item) => item.component.score != null);
     const rawComponents = components.map((item) => ({ component: item.component, weight: item.weight })).filter((item) => item.component.rawScore != null);
-    const rawWeightSum = rawComponents.reduce((sum, item) => sum + item.weight, 0);
-    const rawScore = rawComponents.length
-      ? (rawWeightSum > 0
-        ? rawComponents.reduce((sum, item) => sum + item.component.rawScore * item.weight, 0) / rawWeightSum
-        : mean(rawComponents.map((item) => item.component.rawScore)))
-      : null;
 
     return {
       familyId: family.id,
-      score: normalized((component) => component.score),
-      coverage: normalized((component) => component.coverage),
-      rawScore,
+      score: normalizeComponents(scoreComponents, (component) => component.score),
+      coverage: normalizeComponents(components, (component) => component.coverage),
+      rawScore: normalizeComponents(rawComponents, (component) => component.rawScore),
       fundamental,
       policy,
       questions: [...(fundamental?.questions || []), ...(policy?.questions || [])],
@@ -139,27 +137,37 @@
     const enabledPriorities = scoringConfig?.user_importance_enabled
       ? priorityQuestionIds.filter((questionId) => isSubstantiveAnswer(answers?.[questionId]))
       : [];
+    const prioritySet = new Set(enabledPriorities);
+    const priorityFamilyIds = new Set((scoringConfig?.families || [])
+      .filter((family) => [...(family.fundamental_questions || []), ...(family.policy_questions || [])]
+        .some((questionId) => prioritySet.has(questionId)))
+      .map((family) => family.id));
+    const configuredFamilyMultiplier = Number(scoringConfig?.user_importance_family_multiplier ?? 2);
+    const familyImportanceMultiplier = scoringConfig?.user_importance_enabled
+      ? (Number.isFinite(configuredFamilyMultiplier) ? Math.max(1, configuredFamilyMultiplier) : 2)
+      : 1;
     const familyResults = (scoringConfig?.families || [])
-      .map((family) => ({ family, result: calculateFamily({ family, answers, positionMap, scoringConfig, priorityQuestionIds: enabledPriorities }) }))
+      .map((family) => ({ family, result: calculateFamily({ family, answers, positionMap, scoringConfig }) }))
       .filter((item) => item.result);
-    const totalWeight = familyResults.reduce((sum, item) => sum + (Number(item.family.family_weight) || 0), 0);
-    const aggregate = (key) => {
-      if (!familyResults.length) return null;
-      if (totalWeight <= 0) return mean(familyResults.map((item) => item.result[key]));
-      return familyResults.reduce((sum, item) => sum + item.result[key] * (Number(item.family.family_weight) || 0), 0) / totalWeight;
+    const baseFamilyWeight = (item) => Number(item.family.family_weight) || 0;
+    const scoreFamilyWeight = (item) => baseFamilyWeight(item)
+      * (priorityFamilyIds.has(item.family.id) ? familyImportanceMultiplier : 1);
+    const totalWeight = familyResults.reduce((sum, item) => sum + baseFamilyWeight(item), 0);
+    const aggregate = (key, usePriorityWeights = false) => {
+      const items = key === 'score' || key === 'rawScore'
+        ? familyResults.filter((item) => item.result[key] != null)
+        : familyResults;
+      if (!items.length) return null;
+      const weightOf = usePriorityWeights ? scoreFamilyWeight : baseFamilyWeight;
+      const weightSum = items.reduce((sum, item) => sum + weightOf(item), 0);
+      if (weightSum <= 0) return mean(items.map((item) => item.result[key]));
+      return items.reduce((sum, item) => sum + item.result[key] * weightOf(item), 0) / weightSum;
     };
-    const rawFamilies = familyResults.filter((item) => item.result.rawScore != null);
-    const rawWeight = rawFamilies.reduce((sum, item) => sum + (Number(item.family.family_weight) || 0), 0);
-
     return {
       partyId,
-      score: aggregate('score'),
+      score: aggregate('score', true),
       coverage: aggregate('coverage'),
-      rawScore: rawFamilies.length
-        ? (rawWeight > 0
-          ? rawFamilies.reduce((sum, item) => sum + item.result.rawScore * (Number(item.family.family_weight) || 0), 0) / rawWeight
-          : mean(rawFamilies.map((item) => item.result.rawScore)))
-        : null,
+      rawScore: aggregate('rawScore', true),
       answeredFamilyWeight: totalWeight,
       families: familyResults.map((item) => item.result),
     };
@@ -172,7 +180,7 @@
       _index: index,
     })).sort((left, right) => {
       const scoreDifference = (right.score ?? -Infinity) - (left.score ?? -Infinity);
-      if (scoreDifference) return scoreDifference;
+      if (Math.abs(scoreDifference) > SCORE_EPSILON) return scoreDifference;
       const coverageDifference = (right.coverage ?? -Infinity) - (left.coverage ?? -Infinity);
       if (coverageDifference) return coverageDifference;
       return left._index - right._index;

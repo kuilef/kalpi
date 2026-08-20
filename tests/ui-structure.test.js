@@ -90,11 +90,27 @@ test('changing an answer after results are visible refreshes them without moving
   assert.match(app, /renderResults\(!keepResultsInPlace\);/);
 });
 
+test('completed saved sessions recalculate results after loading current party data', () => {
+  const app = read('app.js');
+  assert.match(app, /renderQuestion\(\);\s*if \(state\.completedAt\) renderResults\(false, true\);/);
+});
+
 test('app persists importance toggles and recalculates without moving focus to results', () => {
   const app = read('app.js');
   assert.match(app, /State\.togglePriorityQuestion\(state, question\.id\)/);
   assert.match(app, /renderResults\(false\)/);
   assert.match(app, /priorityQuestionIds: state\.priorityQuestionIds/);
+});
+
+test('results expose compact priority controls after the collapsed disagreement profile', () => {
+  const app = read('app.js');
+  const css = read('styles.css');
+  assert.match(app, /function bindPriorityControls\(\)/);
+  assert.match(app, /data-priority-toggle/);
+  assert.match(app, /data-priority-apply/);
+  assert.match(css, /\.family-profile-details/);
+  assert.match(css, /\.priority-question-list/);
+  assert.match(css, /\.priority-question-toggle/);
 });
 
 test('importance recalculation stays hidden before completion but final answer still reveals results', () => {

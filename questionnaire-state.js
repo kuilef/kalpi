@@ -12,6 +12,7 @@
       questionnaireVersion: config.questionnaire_version,
       scoringVersion: config.scoring_version,
       dataVersion: config.data_version,
+      positionMatrixVersion: config.position_matrix_version,
       answers: {},
       priorityQuestionIds: [],
       currentQuestionId: null,
@@ -22,18 +23,17 @@
     };
   }
 
-  function isCompatible(saved, config) {
+  function isAnswerStateCompatible(saved, config) {
     return saved
       && saved.questionnaireVersion === config.questionnaire_version
       && saved.scoringVersion === config.scoring_version
-      && saved.dataVersion === config.data_version
       && saved.answers && typeof saved.answers === 'object' && !Array.isArray(saved.answers);
   }
 
   function load(storage, config) {
     try {
       const saved = JSON.parse(storage.getItem(STORAGE_KEY) || 'null');
-      if (isCompatible(saved, config)) return createState(config, {
+      if (isAnswerStateCompatible(saved, config)) return createState(config, {
         answers: saved.answers,
         priorityQuestionIds: normalizePriorityQuestionIds(saved.priorityQuestionIds),
         currentQuestionId: typeof saved.currentQuestionId === 'string' ? saved.currentQuestionId : null,
@@ -81,6 +81,7 @@
       questionnaireVersion: state.questionnaireVersion,
       scoringVersion: state.scoringVersion,
       dataVersion: state.dataVersion,
+      positionMatrixVersion: state.positionMatrixVersion,
       answers: state.answers,
       priorityQuestionIds: normalizePriorityQuestionIds(state.priorityQuestionIds),
       currentQuestionId: state.currentQuestionId,
