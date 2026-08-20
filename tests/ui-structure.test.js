@@ -72,15 +72,21 @@ test('questionnaire starts from bootstrap data and defers party matrix and sourc
   assert.doesNotMatch(server, /Cache-Control.*no-cache/);
 });
 
-test('app advances on a response selection, renders results after the final answer, and maps keyboard digits 0 through 5 to the radio controls', () => {
+test('app waits for explicit next action after a response and maps keyboard controls', () => {
   const app = read('app.js');
+  const ui = read('questionnaire-ui.js');
   assert.match(app, /function advanceAfterAnswer\(\)/);
   assert.match(app, /if \(index === questions\(\)\.length - 1\) \{\s*State\.markCompleted\(state\);\s*saveState\(\);\s*renderResults\(!keepResultsInPlace\);/);
+  assert.match(app, /State\.setAnswer\(state, question\.id, input\.value === 'unknown' \? null : Number\(input\.value\)\);\s*saveState\(\);\s*\$\('next-question'\)\.disabled = false;/);
+  assert.doesNotMatch(app, /State\.setAnswer\(state, question\.id, input\.value === 'unknown' \? null : Number\(input\.value\)\);\s*saveState\(\);\s*advanceAfterAnswer\(\);/);
   assert.doesNotMatch(app, /function renderReview\(/);
   assert.doesNotMatch(app, /review-back|complete-questionnaire|review-content/);
   assert.match(app, /document\.addEventListener\('keydown'/);
   assert.match(app, /event\.key < '0' \|\| event\.key > '5'/);
+  assert.match(app, /event\.key === 'Enter'[\s\S]*?nextButton\.click\(\)/);
+  assert.match(app, /input\.focus\(\);\s*input\.checked = true;\s*input\.dispatchEvent\(new Event\('change', \{ bubbles: true \}\)\)/);
   assert.match(app, /input\.dispatchEvent\(new Event\('change', \{ bubbles: true \}\)\)/);
+  assert.match(ui, /Enter — далее/);
 });
 
 test('changing an answer after results are visible refreshes them without moving focus or scrolling', () => {
@@ -113,9 +119,30 @@ test('results expose compact priority controls after the collapsed disagreement 
   assert.match(css, /\.priority-question-toggle/);
 });
 
+test('results recalculate from priority controls and the apply button returns to the results section', () => {
+  const app = read('app.js');
+  assert.match(app, /host\.querySelector\('\[data-priority-apply\]'\)\?\.addEventListener\('click',[\s\S]*?renderResults\(true, true(?:, priorityPickerOpen)?\)/);
+  assert.match(app, /data-priority-toggle[\s\S]*?renderResults\(false, true\)/);
+});
+
+test('importance recalculation keeps the priority picker open when it was already expanded', () => {
+  const app = read('app.js');
+  assert.match(app, /const priorityPickerOpen = Boolean\(host\.querySelector\('\.priority-picker'\)\?\.open\);/);
+  assert.match(app, /renderResults\(false, true, priorityPickerOpen\);/);
+  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true, priorityPickerOpen = false\)/);
+  assert.match(app, /const priorityPicker = host\.querySelector\('\.priority-picker'\);\s*if \(priorityPicker\) priorityPicker\.open = priorityPickerOpen;/);
+});
+
+test('result disclosure headings share a prominent expandable treatment', () => {
+  const css = read('styles.css');
+  assert.match(css, /\.result-disclosure-summary \{[^}]*font:700 clamp\(1\.45rem, 3vw, 2rem\)/);
+  assert.match(css, /\.result-disclosure-summary::after \{[^}]*content:"＋"/);
+  assert.match(css, /\.priority-picker\[open\] \.result-disclosure-summary::after/);
+});
+
 test('importance recalculation stays hidden before completion but final answer still reveals results', () => {
   const app = read('app.js');
-  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true\)/);
+  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true(?:, priorityPickerOpen = false)?\)/);
   assert.match(app, /if \(revealResults\) host\.classList\.remove\('hidden'\);/);
   assert.match(app, /else host\.classList\.add\('hidden'\);/);
   assert.match(app, /renderResults\(false, state\.completedAt\)/);

@@ -133,7 +133,7 @@
     document.querySelectorAll('#question-content input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
       State.setAnswer(state, question.id, input.value === 'unknown' ? null : Number(input.value));
       saveState();
-      advanceAfterAnswer();
+      $('next-question').disabled = false;
     }));
     document.querySelector('.importance-toggle')?.addEventListener('click', () => {
       State.togglePriorityQuestion(state, question.id);
@@ -165,11 +165,9 @@
     const host = $('results');
     const toggles = [...host.querySelectorAll('[data-priority-toggle]')];
     if (!toggles.length) return;
-    const count = host.querySelector('[data-priority-count]');
     const status = host.querySelector('[data-priority-status]');
     const updateCount = () => {
       const selected = toggles.filter((button) => button.getAttribute('aria-pressed') === 'true').length;
-      if (count) count.textContent = `${selected} из ${toggles.length}`;
       if (status) status.textContent = selected ? `Выбрано важных вопросов: ${selected}.` : 'Можно отметить несколько вопросов.';
     };
 
@@ -182,6 +180,8 @@
       button.setAttribute('aria-label', selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный');
       button.textContent = selected ? '★' : '☆';
       updateCount();
+      const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
+      renderResults(false, true, priorityPickerOpen);
     }));
 
     host.querySelectorAll('[data-priority-context]').forEach((button) => button.addEventListener('click', () => {
@@ -202,12 +202,13 @@
     });
 
     host.querySelector('[data-priority-apply]')?.addEventListener('click', () => {
-      renderResults(false, true);
+      const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
+      renderResults(true, true, priorityPickerOpen);
     });
     updateCount();
   }
 
-  async function renderResults(focusResults = true, revealResults = true) {
+  async function renderResults(focusResults = true, revealResults = true, priorityPickerOpen = false) {
     const host = $('results');
     let analytics;
     if (revealResults) host.classList.remove('hidden');
@@ -234,6 +235,8 @@
       host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить данные.</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
     bindPriorityControls();
+    const priorityPicker = host.querySelector('.priority-picker');
+    if (priorityPicker) priorityPicker.open = priorityPickerOpen;
     if (analytics) renderDebug(analytics);
     if (focusResults && revealResults) {
       host.focus({ preventScroll: true });
@@ -256,10 +259,20 @@
       advanceAfterAnswer();
     });
     document.addEventListener('keydown', (event) => {
-      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.key < '0' || event.key > '5' || $('questionnaire').classList.contains('hidden')) return;
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || $('questionnaire').classList.contains('hidden')) return;
+      if (event.key === 'Enter') {
+        const answerInput = event.target?.closest?.('#question-content input[type="radio"]');
+        const nextButton = $('next-question');
+        if (!answerInput || nextButton.disabled) return;
+        event.preventDefault();
+        nextButton.click();
+        return;
+      }
+      if (event.key < '0' || event.key > '5') return;
       const input = document.querySelector(`#question-content input[data-shortcut="${event.key}"]`);
       if (!input) return;
       event.preventDefault();
+      input.focus();
       input.checked = true;
       input.dispatchEvent(new Event('change', { bubbles: true }));
     });

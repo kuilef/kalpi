@@ -112,9 +112,19 @@ test('live result places a collapsed disagreement profile before compact priorit
   });
 
   assert.match(html, /<details class="family-profile family-profile-details">/);
+  assert.match(html, /<summary class="family-profile-summary result-disclosure-summary">/);
   assert.match(html, /Где ваши ответы расходятся с мнением партии/);
+  assert.match(html, /Подробнее/);
+  assert.doesNotMatch(html, /Показать подробности/);
   assert.ok(html.indexOf('family-profile-details') < html.indexOf('priority-picker'));
-  assert.match(html, /Выберите важные вопросы/);
+  assert.match(html, /<details class="priority-picker"/);
+  assert.match(html, /<summary class="priority-picker-summary result-disclosure-summary">/);
+  assert.match(html, /Выберите важные для вас вопросы/);
+  assert.doesNotMatch(html, /data-priority-count/);
+  assert.doesNotMatch(html, /Открыть выбор вопросов/);
+  assert.doesNotMatch(html, /<details class="priority-picker" open>/);
+  assert.doesNotMatch(html, /<p class="eyebrow">Результат<\/p>/);
+  assert.doesNotMatch(html, /<p class="eyebrow">После результата<\/p>/);
   assert.match(html, /Скорее сохранять контроль/);
   assert.match(html, /data-priority-question-id="inquiry"/);
   assert.match(html, /data-priority-toggle="inquiry"[^>]*aria-pressed="true"/);

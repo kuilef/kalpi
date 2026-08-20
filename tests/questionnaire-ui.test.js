@@ -28,6 +28,9 @@ test('question UI exposes plain response digits without legacy intensity markup'
   assert.match(html, /class="choice-key" aria-hidden="true">1<\/span>/);
   assert.doesNotMatch(html, /choice-intensity/);
   assert.doesNotMatch(html, /choice-number/);
+  assert.match(html, /Enter — далее/);
+  assert.match(html, /нажмите ☆\./);
+  assert.ok(html.indexOf('class="unknown-choice"') < html.indexOf('class="keyboard-hint"'));
 });
 
 test('question UI renders unknown as a separate selected response', () => {
