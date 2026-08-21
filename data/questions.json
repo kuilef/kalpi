@@ -270,5 +270,67 @@
   "prompt_ru": "Как должна формироваться комиссия по расследованию событий 7 октября?",
   "left_pole_ru": "Состав комиссии назначает председатель Верховного суда",
   "right_pole_ru": "Состав определяется через Кнессет"
-}
+},
+{
+    "id": "law_of_return_grandchild_clause",
+    "code": "B13",
+    "kind": "policy",
+    "status": "core",
+    "scope": "permanent",
+    "display_order": 23,
+    "short_title_ru": "Пункт о внуке",
+    "prompt_ru": "Следует ли сохранять право на репатриацию для внуков евреев?",
+    "left_pole_ru": "Сохранить это право",
+    "right_pole_ru": "Отменить это право",
+    "explanation_ru": "Сейчас Закон о возвращении распространяет право на репатриацию в том числе на внуков евреев."
+  },
+  {
+    "id": "public_gender_separation",
+    "code": "B14",
+    "kind": "policy",
+    "status": "core",
+    "scope": "permanent",
+    "display_order": 24,
+    "short_title_ru": "Гендерное разделение",
+    "prompt_ru": "Допустимо ли разделение мужчин и женщин на публичных мероприятиях и при оказании общественных услуг?",
+    "left_pole_ru": "Допускать по запросу религиозных сообществ",
+    "right_pole_ru": "Публичные услуги и мероприятия должны быть без разделения по полу"
+  },
+  {
+    "id": "gaza_jewish_settlements",
+    "code": "B15",
+    "kind": "policy",
+    "status": "core",
+    "scope": "election_specific",
+    "display_order": 25,
+    "short_title_ru": "Поселения в Газе",
+    "prompt_ru": "Следует ли возобновить еврейские поселения в секторе Газа?",
+    "left_pole_ru": "Возобновить поселения",
+    "right_pole_ru": "Не возобновлять поселения"
+  },
+  {
+    "id": "non_orthodox_conversion_recognition",
+    "code": "B16",
+    "kind": "policy",
+    "status": "core",
+    "scope": "permanent",
+    "display_order": 26,
+    "short_title_ru": "Признание гиюра",
+    "prompt_ru": "Следует ли государству признавать реформистский и консервативный гиюр?",
+    "left_pole_ru": "Признавать наравне с ортодоксальным",
+    "right_pole_ru": "Сохранять преимущественное признание ортодоксального гиюра",
+    "explanation_ru": "Речь о государственном признании перехода в иудаизм, проведённого реформистскими и консервативными религиозными общинами."
+  },
+  {
+    "id": "arab_parties_government_participation",
+    "code": "B17",
+    "kind": "policy",
+    "status": "core",
+    "scope": "election_specific",
+    "display_order": 28,
+    "short_title_ru": "Арабские партии в правительстве",
+    "prompt_ru": "Допустимо ли формирование правительства при участии или поддержке арабских партий?",
+    "left_pole_ru": "Да",
+    "right_pole_ru": "Нет"
+  }
 ]

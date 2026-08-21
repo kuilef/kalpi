@@ -3555,5 +3555,823 @@
     ],
     "explanation_ru": "Депутаты ХАДАШ–ТААЛ проголосовали за законопроект о создании обычной государственной комиссии расследования событий 7 октября. Это соответствует модели, при которой состав комиссии назначает председатель Верховного суда.",
     "last_verified": "2026-08-18"
+  },
+  {
+    "party": "likud",
+    "question": "law_of_return_grandchild_clause",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_likud_preserve_2022",
+      "research_b13_likud_rz_utj_split_2022"
+    ],
+    "explanation_ru": "Поимённое голосование 09.07.2025 даёт более сильный и более свежий сигнал, чем споры 2022 года: 18 депутатов Ликуда голосовали против законопроекта, сужающего семейные права по Закону о возвращении, и только Май Голан — за. Поэтому текущая фракционная позиция оценивается как сохранение «пункта о внуке», несмотря на прежние коалиционные переговоры о его изменении.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "beyahad",
+    "question": "law_of_return_grandchild_clause",
+    "value": -0.5,
+    "confidence": 0.74,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_yeshatid_preserve_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021"
+    ],
+    "explanation_ru": "Еш Атид — текущий компонент Беяхад — последовательно выступал против отмены «пункта о внуке»: это есть и в прямом партийном ответе 2021 года, и в голосовании фракции в 2025 году. У Беннета/его прежней Ямины позиция была осторожнее — менять Закон о возвращении только при широком согласии. Поэтому для объединённого списка оценка умеренная, а не крайняя.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "shas",
+    "question": "law_of_return_grandchild_clause",
+    "value": 1,
+    "confidence": 0.92,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_repeal_vote_2025",
+      "research_b13_b14_b16_shas_likud_coalition_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021"
+    ],
+    "explanation_ru": "ШАС последовательно выступает за сужение действующего «пункта о внуке»: это закреплялось в коалиционном соглашении с Ликудом, а 09.07.2025 все девять участвовавших депутатов ШАС поддержали соответствующий законопроект. Это прямо соответствует полюсу отмены права для внуков.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "utj",
+    "question": "law_of_return_grandchild_clause",
+    "value": 1,
+    "confidence": 0.92,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_b16_utj_likud_coalition_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b13_likud_rz_utj_split_2022"
+    ],
+    "explanation_ru": "Яхадут ха-Тора прямо называла действующую норму серьёзной «лазейкой» и добивалась её изменения в коалиционном соглашении. В голосовании 09.07.2025 все шесть участвовавших депутатов Яхадут ха-Тора поддержали законопроект. Позиция уверенно соответствует отмене «пункта о внуке».",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "raam",
+    "question": "law_of_return_grandchild_clause",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "Ещё один целевой поиск 21.08.2026 по РААМ, Мансурy Аббасу, Закону о возвращении и «пункту о внуке» не выявил прямой позиции о сохранении или отмене права на репатриацию для внуков евреев. Общие взгляды партии на гражданское равенство и отсутствие явного участия в профильных голосованиях не экстраполируются на этот вопрос. Значение остаётся null.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "otzma",
+    "question": "law_of_return_grandchild_clause",
+    "value": 1,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_otzma_grandchild_conversion_2022"
+    ],
+    "explanation_ru": "Оцма Йехудит давно выступает за сужение Закона о возвращении; в голосовании 09.07.2025 участвовавший депутат партии Амихай Элиягу также поддержал законопроект. Это подтверждает прежнюю линию за отмену «пункта о внуке», хотя поимённое голосование охватило только одного депутата партии.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yisrael_beytenu",
+    "question": "law_of_return_grandchild_clause",
+    "value": -1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_repeal_vote_2025",
+      "research_b13_b16_party_questionnaire_ynet_2021"
+    ],
+    "explanation_ru": "НДИ прямо выступала против отмены «пункта о внуке», а 09.07.2025 все четыре участвовавших депутата партии голосовали против законопроекта об изменении нормы. Это устойчиво соответствует сохранению права.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "democrats",
+    "question": "law_of_return_grandchild_clause",
+    "value": -1,
+    "confidence": 0.84,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_democrats_labor_platform_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021"
+    ],
+    "explanation_ru": "Авода — один из прямых предшественников нынешних Демократов — программно выступала против отмены «пункта о внуке»; в 2025 году все четыре участвовавших депутата фракции Авода также голосовали против соответствующего законопроекта. Это сильное компонентное evidence в пользу сохранения нормы.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yashar",
+    "question": "law_of_return_grandchild_clause",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "research_b13_yashar_preserve_2026"
+    ],
+    "explanation_ru": "Руководитель направления интеграции репатриантов ЯШАР! Алекс Риф прямо заявила, что партия намерена сохранить Закон о возвращении и пункт о внуке.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "religious_zionism",
+    "question": "law_of_return_grandchild_clause",
+    "value": 1,
+    "confidence": 0.86,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b13_likud_rz_utj_split_2022"
+    ],
+    "explanation_ru": "В прямом партийном опроснике Религиозный сионизм однозначно требовал убрать «пункт о внуке»; та же линия подтверждалась в переговорах 2022 года. Прямого столь же свежего ответа 2026 года по точной формулировке не найдено, поэтому позиция остаётся исторической, хотя направление очень ясное.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "law_of_return_grandchild_clause",
+    "value": -0.5,
+    "confidence": 0.7,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b13_rollcall_2025",
+      "research_b13_b16_party_questionnaire_ynet_2021"
+    ],
+    "explanation_ru": "Хили Троппер, один из лидеров нынешнего Байт Циони, в составе Кахоль-Лаван/Государственного лагеря голосовал 09.07.2025 против законопроекта об изменении «пункта о внуке»; более ранняя позиция Кахоль-Лаван также была против отмены. Для нового объединения это лидерское, а не полноценное программное evidence, поэтому оценка умеренная.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "law_of_return_grandchild_clause",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [],
+    "explanation_ru": "Ещё один целевой поиск 21.08.2026 по ХАДАШ, ТААЛ и «пункту о внуке» не выявил прямой позиции нынешнего списка о сохранении или отмене права на репатриацию для внуков евреев. Общая секулярная/гражданская повестка компонентов недостаточна для конкретного ответа на B13. Значение остаётся null.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "likud",
+    "question": "public_gender_separation",
+    "value": -0.5,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_student_rights_law_2026",
+      "research_b14_rollcall_2026",
+      "research_b13_b14_b16_shas_likud_coalition_2022"
+    ],
+    "explanation_ru": "Текущие фракционные действия поддерживают расширение возможности добровольного гендерного разделения для религиозной аудитории. Дополнительно соглашение Ликуд–ШАС прямо предусматривало законодательное закрепление гендерно-раздельных культурных и учебных мероприятий. Из-за ограниченности этой модели конкретными религиозными контекстами оценка остаётся -0.5, а не -1.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "beyahad",
+    "question": "public_gender_separation",
+    "value": 0.5,
+    "confidence": 0.62,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Депутаты Еш Атид — компонента нынешнего Беяхад — голосовали за отклонение закона о расширении гендерно-раздельных академических программ. Для всего объединённого списка и более широкого B14 значение ограничено +0.5.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "shas",
+    "question": "public_gender_separation",
+    "value": -1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_student_rights_law_2026",
+      "research_b14_rollcall_2026",
+      "research_b13_b14_b16_shas_likud_coalition_2022"
+    ],
+    "explanation_ru": "ШАС поддерживает законодательную возможность гендерного разделения по запросу религиозной/харедной аудитории. Коалиционное соглашение с Ликудом прямо требовало разрешить раздельные культурные и учебные мероприятия, а актуальные действия фракции в 2026 году подтверждают направление. Это соответствует полюсу допуска разделения.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "utj",
+    "question": "public_gender_separation",
+    "value": -0.5,
+    "confidence": 0.72,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_student_rights_law_2026",
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Депутаты Яхадут ха-Тора поддержали расширение возможности добровольного гендерного разделения в академии по религиозным причинам. Поскольку B14 шире конкретного закона, используется -0.5.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "raam",
+    "question": "public_gender_separation",
+    "value": 0.5,
+    "confidence": 0.6,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_rollcall_tracker_2026"
+    ],
+    "explanation_ru": "Депутаты РААМ указаны среди противников расширения гендерно-раздельных академических программ. Это прямой, но узкий по предмету фракционный сигнал, поэтому +0.5.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "otzma",
+    "question": "public_gender_separation",
+    "value": -1,
+    "confidence": 0.88,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_student_rights_law_2026",
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Закон о расширении добровольных гендерно-раздельных академических программ был внесён депутатом Оцма Йехудит Лимор Сон Хар-Мелех и поддержан фракцией. Это прямое соответствие полюсу допустимости разделения по религиозному запросу.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yisrael_beytenu",
+    "question": "public_gender_separation",
+    "value": 1,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Депутаты НДИ, включая Либермана, голосовали за отклонение закона, расширявшего гендерно-раздельные академические программы. Это сильный текущий фракционный сигнал против такого разделения.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "democrats",
+    "question": "public_gender_separation",
+    "value": 1,
+    "confidence": 0.84,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "research_b14_rollcall_2026",
+      "research_b16_democrats_platform_2025"
+    ],
+    "explanation_ru": "Депутаты Аводы, вошедшей в нынешних Демократов, голосовали против расширения гендерно-раздельных академических программ; текущая программа Демократов также прямо выступает за гендерное равенство и против исключения женщин.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yashar",
+    "question": "public_gender_separation",
+    "value": 0.5,
+    "confidence": 0.6,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "reresearch_b14_yashar_women_exclusion_2026",
+      "candidate_yashar_src_yashar_program"
+    ],
+    "explanation_ru": "На партийной конференции ЯШАР! в феврале 2026 предотвращение исключения женщин (מניעת הדרת נשים) было прямо включено в темы для формирования программы следующего правительства, а Айзенкот назвал практическое равенство частью повестки партии. Это склоняет позицию к полюсу публичного пространства без разделения по полу. Поскольку источник не даёт буквального ответа на допустимость добровольного разделения по запросу религиозных сообществ во всех публичных услугах и мероприятиях, значение ограничено +0.5 и confidence умеренный.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "religious_zionism",
+    "question": "public_gender_separation",
+    "value": -1,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_student_rights_law_2026",
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Депутаты Религиозного сионизма поддержали закон, закрепляющий возможность добровольных гендерно-раздельных академических программ по религиозным причинам.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "public_gender_separation",
+    "value": 0.5,
+    "confidence": 0.66,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b14_rollcall_2026"
+    ],
+    "explanation_ru": "Хили Троппер, уже после объявления нынешнего объединения Байт Циони, голосовал за отклонение закона о расширении гендерно-раздельных академических программ. Это лидерское, а не формально программное evidence.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "public_gender_separation",
+    "value": 0.5,
+    "confidence": 0.68,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b14_rollcall_2026",
+      "research_b14_rollcall_tracker_2026"
+    ],
+    "explanation_ru": "Депутаты ХАДАШ–ТААЛ голосовали против расширения гендерно-раздельных академических программ. Поскольку B14 шире академической сферы, значение ограничено +0.5.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "likud",
+    "question": "gaza_jewish_settlements",
+    "value": -0.5,
+    "confidence": 0.8,
+    "status": "mixed",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "research_b15_likud_gaza_march_2026"
+    ],
+    "explanation_ru": "В 2026 году заметная часть Ликуда и партийные структуры поддерживали инициативы за возвращение поселений в Газу, однако тот же актуальный материал отмечает, что Нетаньяху неоднократно обещал не возобновлять поселения. Поэтому у партии сохраняется реальный внутренний конфликт; -0.5 отражает склонность партийного активного ядра к поселениям без объявления единой официальной линии.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "beyahad",
+    "question": "gaza_jewish_settlements",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_beyahad_bennett_ynet_2026"
+    ],
+    "explanation_ru": "В июльском интервью уже после объединения с Лапидом Нафтали Беннет прямо сказал, что у него нет территориальных устремлений в Газе и что Израиль не собирается строить там города, при этом ЦАХАЛ должен сохранять длительное военное присутствие. Это прямо соответствует отказу от возобновления гражданских поселений.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "shas",
+    "question": "gaza_jewish_settlements",
+    "value": 0.5,
+    "confidence": 0.7,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b15_shas_deri_against_gaza_settlement_2024"
+    ],
+    "explanation_ru": "Арье Дери в январе 2024 года выступил против публичных призывов вернуть еврейские поселения в Газу, называя их источником серьёзного дипломатического ущерба. Поскольку аргумент был прежде всего прагматическим, а свежего программного ответа ШАС 2026 года не найдено, позиция умеренная и помечена как historical.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "utj",
+    "question": "gaza_jewish_settlements",
+    "value": 0,
+    "confidence": 0.76,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b15_utj_goldknopf_2024",
+      "reresearch_b15_utj_gafni_against_gaza_settlements_2024"
+    ],
+    "explanation_ru": "В Яхадут ха-Тора есть прямой внутрисписочный раскол. Ицхак Гольдкнопф (Агудат Исраэль) поддерживал возможность еврейского поселения в Газе и позднее участвовал в инициативе по его продвижению; Моше Гафни (Дегель ха-Тора) прямо заявил, что в Газе селиться не нужно и следует развивать поселение в Галилее. Единой актуальной позиции списка 2026 года не найдено, поэтому 0 и mixed.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "raam",
+    "question": "gaza_jewish_settlements",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b15_raam_abbas_against_settlements_2025"
+    ],
+    "explanation_ru": "Мансур Аббас прямо критиковал линию на «оккупацию, выселение и поселения в Газе» и призывал её отвергнуть. Это однозначное лидерское evidence против возобновления еврейских поселений.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "otzma",
+    "question": "gaza_jewish_settlements",
+    "value": -1,
+    "confidence": 0.94,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "research_b15_likud_gaza_march_2026"
+    ],
+    "explanation_ru": "Оцма Йехудит и её лидер Итамар Бен-Гвир активно участвуют в актуальной кампании за восстановление еврейских поселений в Газе; в 2026 представители партии участвовали в мероприятиях движения за возвращение поселений.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yisrael_beytenu",
+    "question": "gaza_jewish_settlements",
+    "value": 1,
+    "confidence": 0.93,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "research_b15_yb_full_separation_2025",
+      "research_b15_yb_opposes_2024"
+    ],
+    "explanation_ru": "Официальная стратегия НДИ предусматривает полное гражданское и экономическое отделение Израиля от Газы и передачу гражданской ответственности внешним субъектам при сохранении свободы действий ЦАХАЛа. Это несовместимо с восстановлением израильских гражданских поселений и усиливает прежнюю позицию Либермана против такого шага.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "democrats",
+    "question": "gaza_jewish_settlements",
+    "value": 1,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b15_democrats_golan_2025"
+    ],
+    "explanation_ru": "Лидер Демократов Яир Голан прямо противопоставляет своей политической линии планы создания новых израильских поселений в Газе и выступает против них.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yashar",
+    "question": "gaza_jewish_settlements",
+    "value": 1,
+    "confidence": 0.82,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b15_yashar_eisenkot_2025",
+      "research_b15_yashar_current_2025"
+    ],
+    "explanation_ru": "Айзенкот прямо заявил, что не следует возвращать поселения ни в одну часть сектора Газа; после создания своей новой партии он вновь критиковал планы изолированных поселений в Газе.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "religious_zionism",
+    "question": "gaza_jewish_settlements",
+    "value": -1,
+    "confidence": 0.96,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b15_likud_gaza_march_2026"
+    ],
+    "explanation_ru": "Смотрич в 2026 году публично продвигал восстановление поселений в Газе и сообщил о подготовленных планах трёх поселений, ожидающих политического одобрения.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "gaza_jewish_settlements",
+    "value": 0,
+    "confidence": 0.64,
+    "status": "mixed",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "research_b15_tropper_against_gaza_settlements_2024",
+      "research_b15_hendel_gaza_settlements_2024"
+    ],
+    "explanation_ru": "У двух лидеров нынешнего Байт Циони есть противоположные исторические сигналы: Троппер прямо отвергал превращение поселений в Газе в цель войны, тогда как Гендель говорил, что не возражает против поселений в отдельных районах, хотя считает их нереалистичными и второстепенными. Единой актуальной позиции нового списка не найдено, поэтому 0 и mixed.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "gaza_jewish_settlements",
+    "value": 0.5,
+    "confidence": 0.76,
+    "status": "known",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "candidate_hadash_taal_jabareen_two_states_2026",
+      "research_b15_hadash_against_gaza_settlements_2025"
+    ],
+    "explanation_ru": "ХАДАШ как компонент списка публично поддерживает протест против создания еврейских поселений в Газе, а его нынешний лидер Джабарин выступает за прекращение оккупации и демонтаж поселений в рамках палестинского государства. Это уверенно склоняет позицию против поселений, но из-за отсутствия столь же прямого материала ТААЛ значение оставлено умеренным +0.5.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "likud",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 0.5,
+    "confidence": 0.68,
+    "status": "mixed",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b13_b16_utj_likud_coalition_2022",
+      "research_b13_b14_b16_shas_likud_coalition_2022",
+      "reresearch_b16_who_is_jew_vote_2026",
+      "reresearch_b16_likud_vote_against_2026"
+    ],
+    "explanation_ru": "Формальные коалиционные соглашения Ликуда 2022 года закрепляли государственный гиюр в системе, подчинённой Главному раввинату, что склоняет позицию к преимущественному признанию ортодоксального гиюра. Но в январе 2026 Ликуд голосовал против законопроекта, прямо отменявшего признание реформистского и консервативного гиюра. Поскольку современное объяснение коалиции было в значительной мере процедурно-тактическим, это не достаточно для разворота к -1 или 0, но делает позицию реально mixed и снижает confidence.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "beyahad",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 0,
+    "confidence": 0.68,
+    "status": "mixed",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b16_nissim_outline_2018"
+    ],
+    "explanation_ru": "Исторические позиции нынешних компонентов расходятся: Еш Атид прямо требовал признавать реформистский и консервативный гиюр так же, как ортодоксальный; Ямина Беннета поддерживала план Нисима, по которому государственный гиюр в Израиле оставался ортодоксальным/галахическим. Единой позиции объединённого Беяхад 2026 года по этому вопросу не найдено, поэтому 0 и mixed.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "shas",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "reresearch_b16_who_is_jew_vote_2026",
+      "research_b13_b14_b16_shas_likud_coalition_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b16_haredi_orthodox_2021",
+      "research_b13_otzma_grandchild_conversion_2022"
+    ],
+    "explanation_ru": "В январе 2026 депутаты ШАС поддержали законопроект, который прямо отменял признание реформистского и консервативного гиюра и оставлял признание через раввинские суды; ШАС и Яхадут ха-Тора были единственными фракциями, поддержавшими инициативу. Это актуализирует прежнюю последовательную линию ШАС на государственно-ортодоксальную модель и позволяет убрать статус historical.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "utj",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "reresearch_b16_who_is_jew_vote_2026",
+      "research_b13_b16_utj_likud_coalition_2022",
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b16_haredi_orthodox_2021",
+      "research_b13_otzma_grandchild_conversion_2022"
+    ],
+    "explanation_ru": "В январе 2026 депутаты Яхадут ха-Тора поддержали законопроект, который прямо отменял признание реформистского и консервативного гиюра и оставлял признание через раввинские суды; ЯТ и ШАС были единственными фракциями, поддержавшими инициативу. Это актуальное фракционное действие полностью соответствует прежней ортодоксальной линии и позволяет убрать статус historical.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "raam",
+    "question": "non_orthodox_conversion_recognition",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "Повторный целевой поиск 21.08.2026, включая январское голосование по законопроекту «Мיהו יהודי», не выявил прямой позиции РААМ о равном государственном признании реформистского и консервативного гиюра. Сообщения лишь отмечают, что арабские партии не ожидалось увидеть среди сторонников ограничительного закона; это не равно позитивной позиции РААМ по одному из полюсов. Значение поэтому остаётся null.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "otzma",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 1,
+    "confidence": 0.94,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b16_bengvir_who_is_jew_2025"
+    ],
+    "explanation_ru": "Бен-Гвир поддержал закон, отменяющий государственное признание реформистского и консервативного гиюра и оставляющий ортодоксальный стандарт.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yisrael_beytenu",
+    "question": "non_orthodox_conversion_recognition",
+    "value": -0.5,
+    "confidence": 0.8,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b16_bengvir_who_is_jew_2025",
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b16_nissim_outline_2018"
+    ],
+    "explanation_ru": "НДИ в прямом ответе приветствовала решение БАГАЦ о признании реформистских и консервативных гиюров, но одновременно поддержала компромиссный план Нисима, сохранявший государственный гиюр в Израиле ортодоксальным. Более свежие действия фракции против ужесточения критерия «кто еврей» удерживают позицию на стороне более широкого признания, но не на крайнем -1.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "democrats",
+    "question": "non_orthodox_conversion_recognition",
+    "value": -1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "PARTY",
+    "evidence": [
+      "research_b16_democrats_platform_2025"
+    ],
+    "explanation_ru": "Официальная программа Демократов прямо обещает признание государством гиюров всех еврейских течений — ортодоксального, реформистского и консервативного — при общих минимальных стандартах.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yashar",
+    "question": "non_orthodox_conversion_recognition",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "PARTY",
+    "evidence": [],
+    "explanation_ru": "Повторный поиск 21.08.2026 не нашёл прямой позиции ЯШАР! о равном государственном признании реформистского и консервативного гиюра. В партии состоит Матан Кахана, продвигавший реформу государственного гиюра, но его модель оставалась галахической/ортодоксальной и не равнозначна признанию реформистского и консервативного гиюра; кроме того, нет подтверждения, что новый список принял её как свою позицию. Значение остаётся null.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "religious_zionism",
+    "question": "non_orthodox_conversion_recognition",
+    "value": 1,
+    "confidence": 0.96,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b16_rz_rothman_2026",
+      "research_b13_b16_party_questionnaire_ynet_2021",
+      "research_b13_otzma_grandchild_conversion_2022"
+    ],
+    "explanation_ru": "Актуальная инициатива Симхи Ротмана 2026 года связывает признание гиюра для Закона о возвращении с галахическими/ортодоксальными стандартами и авторитетом Главного раввината; это продолжает прежнюю официальную линию партии. Позиция прямо соответствует преимущественному признанию ортодоксального гиюра.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "non_orthodox_conversion_recognition",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [],
+    "explanation_ru": "Повторный поиск 21.08.2026 не выявил единой позиции нынешнего Байт Циони по равному признанию реформистского и консервативного гиюра. У Йоаза Генделя и Хили Троппера есть исторические заявления за реформирование и расширение государственного гиюра, но найденные модели остаются внутри галахической/государственно-ортодоксальной рамки и не отвечают напрямую на B16. На новый список это также нельзя переносить автоматически, поэтому null сохраняется.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "non_orthodox_conversion_recognition",
+    "value": null,
+    "confidence": 0,
+    "status": "insufficient_data",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [],
+    "explanation_ru": "Повторный целевой поиск 21.08.2026, включая материалы вокруг январского голосования по законопроекту «Мיהו יהודי», не нашёл прямой позиции нынешнего ХАДАШ–ТААЛ по равному государственному признанию реформистского и консервативного гиюра. Общая секулярная повестка и отсутствие поддержки ограничительного закона не являются достаточным основанием выбрать один из полюсов. Значение остаётся null.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "likud",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.86,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "candidate_likud_jns_primary_judiciary_2026"
+    ],
+    "explanation_ru": "Накануне праймериз Ликуда в августе 2026 Нетаньяху прямо заявил, что хочет список, который не позволит оппозиции сформировать правительство, зависящее от арабских партий. Это текущая предвыборная позиция лидера.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "beyahad",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.96,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "research_b17_beyahad_no_arab_reliance_2026",
+      "research_b18_bennett_no_arab_support_2026"
+    ],
+    "explanation_ru": "После официального объединения Беннета и Лапида в Беяхад Беннет на прямой вопрос заявил, что правительство будет иметь большое сионистское большинство и не будет опираться на арабские партии. Это уже заявление в контексте нынешнего списка и прямо соответствует полюсу «Нет».",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "shas",
+    "question": "arab_parties_government_participation",
+    "value": -0.5,
+    "confidence": 0.54,
+    "status": "historical",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b17_shas_deri_raam_2021"
+    ],
+    "explanation_ru": "В 2021 году Арье Дери не исключал правительство, которое поддерживала бы РААМ извне, хотя предпочитал собственное большинство в 61 мандат. Это показывает принципиальную допустимость такой схемы в прошлом, но источник предшествует 7 октября и нынешней избирательной конфигурации, поэтому confidence низкий и статус historical.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "utj",
+    "question": "arab_parties_government_participation",
+    "value": -0.5,
+    "confidence": 0.6,
+    "status": "historical",
+    "entity_scope": "COMPONENT_PARTY",
+    "evidence": [
+      "research_b17_utj_gafni_raam_2022"
+    ],
+    "explanation_ru": "В 2022 году Моше Гафни (Дегель ха-Тора, компонент Яхадут ха-Тора) не исключал опору правительства на арабских депутатов и считал ошибкой блокирование внешней поддержки РААМ. Это прямое, но старое и компонентное свидетельство; после 7 октября актуального ответа всего списка не найдено.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "raam",
+    "question": "arab_parties_government_participation",
+    "value": -1,
+    "confidence": 0.98,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "reresearch_b17_raam_coalition_2026",
+      "research_b18_raam_joint_government_2026"
+    ],
+    "explanation_ru": "Мансур Аббас в июне 2026 прямо заявил, что РААМ ориентируется на коалиционное партнёрство и рассчитывает быть частью следующего правительства. Это свежий прямой ответ на B17 и подтверждает более ранние заявления о готовности к совместному правительству.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "otzma",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.68,
+    "status": "historical",
+    "entity_scope": "HISTORICAL",
+    "evidence": [
+      "research_b18_otzma_no_raam_2021"
+    ],
+    "explanation_ru": "Бен-Гвир исторически прямо отвергал правительство, формируемое при поддержке РААМ. Свежего отдельного заявления 2026 по точной формулировке B18 не найдено, поэтому статус historical.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yisrael_beytenu",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.94,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b18_yb_no_arab_parties_2026"
+    ],
+    "explanation_ru": "Либерман в феврале 2026 потребовал заранее закрепить красную линию: следующее правительство не должно формироваться при участии или поддержке арабских партий.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "democrats",
+    "question": "arab_parties_government_participation",
+    "value": -1,
+    "confidence": 0.97,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b18_democrats_golan_2026"
+    ],
+    "explanation_ru": "Яир Голан прямо заявил, что арабская партия является легитимным партнёром и что при необходимости он готов включить арабскую партию в будущую коалицию.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "yashar",
+    "question": "arab_parties_government_participation",
+    "value": -0.5,
+    "confidence": 0.78,
+    "status": "mixed",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b18_yashar_minority_2026"
+    ],
+    "explanation_ru": "Айзенкот допускает представление правительства при 58–59 сионистских мандатах без соглашения с арабскими партиями, оставляя им возможность поддержать, воздержаться или отсутствовать. Это допускает внешнюю поддержку, но не предполагает их включения в коалицию.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "religious_zionism",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.9,
+    "status": "known",
+    "entity_scope": "LEADER",
+    "evidence": [
+      "research_b18_yashar_minority_2026"
+    ],
+    "explanation_ru": "Смотрич в августе 2026 публично отверг сценарий правительства, которое сможет существовать благодаря голосам или поддержке арабских фракций.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "bait_zioni",
+    "question": "arab_parties_government_participation",
+    "value": 1,
+    "confidence": 0.95,
+    "status": "known",
+    "entity_scope": "CURRENT_LIST",
+    "evidence": [
+      "research_b18_bait_zioni_no_arab_parties_2026"
+    ],
+    "explanation_ru": "При создании Байт Циони в июле 2026 руководство списка сформулировало красную линию: широкое сионистское правительство без арабских партий.",
+    "last_verified": "2026-08-21"
+  },
+  {
+    "party": "hadash_taal",
+    "question": "arab_parties_government_participation",
+    "value": -0.5,
+    "confidence": 0.76,
+    "status": "known",
+    "entity_scope": "FACTION",
+    "evidence": [
+      "research_b18_hadash_taal_safety_net_2026"
+    ],
+    "explanation_ru": "ХАДАШ–ТААЛ ранее предлагал внешнюю парламентскую «сеть безопасности» правительству Беннета–Лапида; в 2026 этот эпизод был подтверждён руководством списка. Это показывает допустимость поддержки правительства, но не обязательно вхождение в коалицию.",
+    "last_verified": "2026-08-21"
   }
 ]
