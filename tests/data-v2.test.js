@@ -5,12 +5,13 @@ const path = require('node:path');
 
 const load = (name) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
 
-test('v2 core questionnaire contains 22 core questions in display order', () => {
+test('v2 core questionnaire contains 27 core questions in display order', () => {
   const questions = load('questions.json');
-  assert.equal(questions.length, 22);
+  assert.equal(questions.length, 27);
   assert.deepEqual(questions.map((question) => question.code), [
     'A01', 'A02', 'A03', 'A04', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11',
     'B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09', 'B10', 'B11', 'B12',
+    'B13', 'B14', 'B15', 'B16', 'B17',
   ]);
   for (const [index, question] of questions.entries()) {
     assert.equal(question.status, 'core');
@@ -43,10 +44,25 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.deepEqual(config.answer_values, [-1, -0.5, 0, 0.5, 1]);
   assert.equal(config.user_importance_enabled, true);
   assert.equal(config.user_importance_family_multiplier, 2);
-  assert.equal(config.families.length, 12);
-  assert.equal(new Set(assigned).size, 22);
+  assert.equal(config.families.length, 14);
+  assert.equal(new Set(assigned).size, 27);
   assert.deepEqual(new Set(assigned), questionIds);
+  assert.deepEqual(config.families.find((family) => family.id === 'religion_lifestyle').policy_questions, [
+    'civil_marriage', 'shabbat_public_transport', 'public_gender_separation',
+  ]);
+  assert.deepEqual(config.families.find((family) => family.id === 'territory_separation').policy_questions, [
+    'west_bank_sovereignty', 'gaza_jewish_settlements',
+  ]);
+  assert.deepEqual(config.families.find((family) => family.id === 'immigration_identity').policy_questions, [
+    'law_of_return_grandchild_clause', 'non_orthodox_conversion_recognition',
+  ]);
+  assert.deepEqual(config.families.find((family) => family.id === 'government_coalition').policy_questions, [
+    'arab_parties_government_participation',
+  ]);
   assert.equal(config.families.find((family) => family.id === 'religion_lifestyle').policy_weight, 0.4);
+  assert.equal(config.families.find((family) => family.id === 'immigration_identity').fundamental_weight, 0);
+  assert.equal(config.families.find((family) => family.id === 'immigration_identity').policy_weight, 1);
+  assert.equal(config.families.find((family) => family.id === 'government_coalition').family_weight, 1);
   assert.equal(config.families.find((family) => family.id === 'october_7_accountability').family_type, 'standalone_policy');
 });
 
@@ -71,5 +87,5 @@ test('canonical data declares a distinct position matrix version', () => {
   assert.equal(typeof config.party_positions_version, 'string');
   assert.equal(typeof config.position_matrix_version, 'string');
   assert.notEqual(config.position_matrix_version, config.party_positions_version);
-  assert.equal(config.data_version, 'kalpi-data-prototype-v2');
+  assert.equal(config.data_version, 'kalpi-data-prototype-v3');
 });

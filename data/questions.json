@@ -327,7 +327,7 @@
     "kind": "policy",
     "status": "core",
     "scope": "election_specific",
-    "display_order": 28,
+    "display_order": 27,
     "short_title_ru": "Арабские партии в правительстве",
     "prompt_ru": "Допустимо ли формирование правительства при участии или поддержке арабских партий?",
     "left_pole_ru": "Да",
