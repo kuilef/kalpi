@@ -30,6 +30,7 @@ test('question UI exposes plain response digits without legacy intensity markup'
   assert.doesNotMatch(html, /choice-number/);
   assert.match(html, /Enter — далее/);
   assert.match(html, /нажмите ☆\./);
+  assert.match(html, /<span class="desktop-keyboard-hint"> Enter — далее\.<\/span>/);
   assert.ok(html.indexOf('class="unknown-choice"') < html.indexOf('class="keyboard-hint"'));
 });
 

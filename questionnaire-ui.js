@@ -44,7 +44,7 @@
         <div class="poles"><p>${escapeHtml(question.left_pole_ru)}</p><p>${escapeHtml(question.right_pole_ru)}</p></div>
         <div class="scale" role="radiogroup" aria-label="Шкала ответа">${SCALE.map((item, index) => choice(item.value, item.label, index + 1)).join('')}</div>
         <div class="unknown-choice"><span class="unknown-radio"><input type="radio" name="${escapeHtml(question.id)}" id="${question.id}-unknown" value="unknown" data-shortcut="0"${answer === null ? ' checked' : ''}><label class="unknown-label" for="${question.id}-unknown"><span class="unknown-number" aria-hidden="true">0</span><span>Не знаю / недостаточно информации</span></label></span></div>
-        <p class="keyboard-hint">Можно отвечать клавишами 1–5; 0 — «Не знаю»; Enter — далее. Если вопрос особенно важен для вас, нажмите ☆.</p>
+        <p class="keyboard-hint">Можно отвечать клавишами 1–5; 0 — «Не знаю».<span class="desktop-keyboard-hint"> Enter — далее.</span> Если вопрос особенно важен для вас, нажмите ☆.</p>
       </fieldset>
     </article>`;
   }

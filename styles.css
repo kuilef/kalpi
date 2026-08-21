@@ -233,6 +233,7 @@ a:hover { color:var(--ink); }
   .analytics-filters { grid-template-columns:1fr; }
   .analytics-matrix-desktop { display:none; }
   .analytics-matrix-mobile { display:block; }
+  .desktop-keyboard-hint { display:none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

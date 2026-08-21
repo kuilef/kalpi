@@ -114,7 +114,9 @@
 
   function renderRankingRow(result, index) {
     const gap = result.gapFromLeader == null ? '—' : result.gapFromLeader === 0 ? 'лидер' : `−${pct(result.gapFromLeader)}`;
-    return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${escapeHtml(result.party?.name_ru || result.partyId)}</strong><span>${pct(result.score)}</span><span>данные ${pct(result.coverage)}</span><span>${gap}</span></li>`;
+    const isLikud = result.partyId === 'likud';
+    const partyName = `${escapeHtml(result.party?.name_ru || result.partyId)}${isLikud ? '<sup class="ranking-footnote-marker"><a href="#likud-data-note" aria-label="Сноска о данных Ликуда">*</a></sup>' : ''}`;
+    return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${partyName}</strong><span>${pct(result.score)}</span><span>данные ${pct(result.coverage)}</span><span>${gap}</span></li>`;
   }
 
   function formatRecommendationReason(reason) {
@@ -135,7 +137,7 @@
       const answer = answers?.[questionId];
       return `<article class="priority-question" data-priority-question-id="${escapeHtml(questionId)}"><div class="priority-question-heading"><div><h4 class="priority-question-title">${escapeHtml(question.short_title_ru || questionId)}</h4><p class="priority-question-answer">${escapeHtml(userAnswerLabel(question, answer))}</p></div><button class="priority-question-toggle" type="button" data-priority-toggle="${escapeHtml(questionId)}" aria-pressed="${selected}" aria-label="${selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}">${selected ? '★' : '☆'}</button></div><button class="priority-context-toggle" type="button" data-priority-context="${escapeHtml(questionId)}">Показать вопрос</button><p class="priority-question-prompt hidden" data-priority-prompt="${escapeHtml(questionId)}">${escapeHtml(question.prompt_ru || '')}</p></article>`;
     }).join('');
-    return `<details class="priority-picker" aria-labelledby="priority-picker-heading"><summary class="priority-picker-summary result-disclosure-summary"><span id="priority-picker-heading" class="result-disclosure-label">Выберите важные для вас вопросы</span></summary><div class="priority-picker-body"><p class="priority-picker-copy">Ваши ответы уже сохранены. Отметьте вопросы, которые относятся к темам, особенно важным для вас.</p><div class="priority-picker-tools"><span>☆ — отметить вопрос как важный</span><button class="priority-expand" type="button" data-priority-expand>Показать полные формулировки</button></div><div class="priority-question-list" data-priority-list>${rows}</div><div class="priority-picker-footer"><p class="priority-picker-status" data-priority-status aria-live="polite">Можно отметить несколько вопросов.</p><button class="primary" type="button" data-priority-apply>Пересчитать результат</button></div></div></details>`;
+    return `<details class="priority-picker" aria-labelledby="priority-picker-heading"><summary class="priority-picker-summary result-disclosure-summary"><span id="priority-picker-heading" class="result-disclosure-label">Выберите важные для вас вопросы</span></summary><div class="priority-picker-body"><p class="priority-picker-copy">Ваши ответы уже сохранены. Отметьте вопросы, которые относятся к темам, особенно важным для вас.</p><div class="priority-picker-tools"><span>☆ — отметить вопрос как важный</span><button class="priority-expand" type="button" data-priority-expand>Показать полные формулировки</button></div><div class="priority-question-list" data-priority-list>${rows}</div><div class="priority-picker-footer"><button class="primary" type="button" data-priority-apply>Пересчитать результат</button></div></div></details>`;
   }
 
   function renderLiveResult({ recommendation, questions = [], answers = {}, priorityQuestionIds = [], sourcesById }) {
@@ -164,7 +166,12 @@
 
     const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">Где ваши ответы расходятся с мнением партии</span><span class="result-disclosure-action">Подробнее</span></summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</div></details>`;
     const priorityPicker = renderPriorityPicker({ questions, answers, priorityQuestionIds });
-    return `<section class="live-result"><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${eligible.slice(0, 7).map(renderRankingRow).join('')}</ol></section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
+    const visibleRanking = eligible.slice(0, 7);
+    const includesLikud = visibleRanking.some((result) => result.partyId === 'likud');
+    const likudNote = includesLikud
+      ? '<p id="likud-data-note" class="ranking-footnote"><sup aria-hidden="true">*</sup> По Ликуду в основном использованы данные коалиционных голосований; опубликованной программы партии найти не удалось.</p>'
+      : '';
+    return `<section class="live-result"><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${visibleRanking.map(renderRankingRow).join('')}</ol>${likudNote}</section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
   }
 
   return { renderDataNotReady, renderLiveResult };

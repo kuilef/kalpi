@@ -165,11 +165,6 @@
     const host = $('results');
     const toggles = [...host.querySelectorAll('[data-priority-toggle]')];
     if (!toggles.length) return;
-    const status = host.querySelector('[data-priority-status]');
-    const updateCount = () => {
-      const selected = toggles.filter((button) => button.getAttribute('aria-pressed') === 'true').length;
-      if (status) status.textContent = selected ? `Выбрано важных вопросов: ${selected}.` : 'Можно отметить несколько вопросов.';
-    };
 
     toggles.forEach((button) => button.addEventListener('click', () => {
       const questionId = button.dataset.priorityToggle;
@@ -179,7 +174,6 @@
       button.setAttribute('aria-pressed', String(selected));
       button.setAttribute('aria-label', selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный');
       button.textContent = selected ? '★' : '☆';
-      updateCount();
       const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
       renderResults(false, true, priorityPickerOpen);
     }));
@@ -205,7 +199,6 @@
       const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
       renderResults(true, true, priorityPickerOpen);
     });
-    updateCount();
   }
 
   async function renderResults(focusResults = true, revealResults = true, priorityPickerOpen = false) {

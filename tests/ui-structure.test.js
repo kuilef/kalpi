@@ -157,6 +157,12 @@ test('stylesheet presents response choices as plain numeric segments', () => {
   assert.doesNotMatch(css, /\.choice-intensity/);
 });
 
+test('desktop-only Enter hint is hidden on narrow screens', () => {
+  const css = read('styles.css');
+  const mobile = css.match(/@media \(max-width:620px\) \{([\s\S]*?)\n\}/)?.[1] || '';
+  assert.match(mobile, /\.desktop-keyboard-hint \{\s*display:none;\s*\}/);
+});
+
 test('mobile answer poles use readable half-width labels aligned to scale edges', () => {
   const css = read('styles.css');
   const mobile = css.match(/@media \(max-width:620px\) \{([\s\S]*?)\n\}/)?.[1] || '';

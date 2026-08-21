@@ -132,6 +132,44 @@ test('live result places a collapsed disagreement profile before compact priorit
   assert.match(html, /Показать полные формулировки/);
 });
 
+test('priority picker does not render a selected-question count status', () => {
+  const html = Results.renderLiveResult({
+    questions: [{ id: 'q', short_title_ru: 'Тема', prompt_ru: 'Вопрос' }],
+    answers: { q: -1 },
+    priorityQuestionIds: ['q'],
+    recommendation: recommendationForScores([0.71]),
+    sourcesById: new Map(),
+  });
+
+  assert.doesNotMatch(html, /data-priority-status/);
+  assert.doesNotMatch(html, /Выбрано важных вопросов:/);
+});
+
+test('live result adds a Likud data footnote when Likud is visible in the ranking', () => {
+  const html = Results.renderLiveResult({
+    recommendation: {
+      ready: true,
+      leader: { party: { id: 'likud', name_ru: 'Ликуд' }, score: 0.8, coverage: 0.9, families: [] },
+      ranked: [{ partyId: 'likud', party: { id: 'likud', name_ru: 'Ликуд' }, score: 0.8, coverage: 0.9, gapFromLeader: 0, eligible: true }],
+      nearTies: [],
+    },
+    sourcesById: new Map(),
+  });
+
+  assert.match(html, /Ликуд<sup[^>]*><a[^>]*>\*<\/a><\/sup>/);
+  assert.match(html, /По Ликуду в основном использованы данные коалиционных голосований/);
+  assert.match(html, /опубликованной программы партии найти не удалось/);
+});
+
+test('live result does not add the Likud footnote when Likud is absent from the ranking', () => {
+  const html = Results.renderLiveResult({
+    recommendation: recommendationForScores([0.71]),
+    sourcesById: new Map(),
+  });
+
+  assert.doesNotMatch(html, /данные коалиционных голосований/);
+});
+
 test('thematic profile shows position markers and evidence provenance', () => {
   const html = Results.renderLiveResult({
     questions: [{
