@@ -91,7 +91,7 @@
     }).join(', ');
   }
 
-  function renderFamily(family, sourcesById, questionsById, { openQuestions = false } = {}) {
+  function renderFamily(family, sourcesById, questionsById, { openQuestions = false, comparableOnly = false } = {}) {
     const hasScore = family.score != null;
     const score = ratio(family.score);
     const scoreLabel = hasScore ? pct(family.score) : 'Нет данных для сравнения';
@@ -99,7 +99,8 @@
       ? `<div class="family-bar" aria-label="Совпадение ${scoreLabel}"><progress class="family-progress" max="1" value="${score}">${scoreLabel}</progress></div>`
       : `<p class="family-score-missing">${scoreLabel}</p>`;
     const openAttribute = openQuestions ? ' open' : '';
-    const questionHtml = (family.questions || []).map((question) => {
+    const visibleQuestions = (family.questions || []).filter((question) => !comparableOnly || question.partyValue != null);
+    const questionHtml = visibleQuestions.map((question) => {
       const questionData = questionsById.get(question.questionId);
       const sourceHtml = renderSources(question, sourcesById);
       const scope = question.position?.entity_scope || '—';
@@ -148,7 +149,7 @@
     const leader = recommendation.leader;
     const ranked = recommendation.ranked || [];
     const eligible = ranked.filter((result) => result.eligible);
-    const families = leader.families || [];
+    const families = (leader.families || []).filter((family) => family.score != null);
     const disagreements = [...families].sort((left, right) => left.score - right.score).slice(0, 3);
     const disagreementIds = new Set(disagreements.map((family) => family.familyId));
     const matches = [...families]
@@ -164,7 +165,7 @@
       : '';
     const questionsById = new Map(questions.map((question) => [question.id, question]));
 
-    const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">Где ваши ответы расходятся с мнением партии</span><span class="result-disclosure-action">Подробнее</span></summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById)).join('')}</div></details>`;
+    const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">Где ваши ответы расходятся с мнением партии</span><span class="result-disclosure-action">Подробнее</span></summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true, comparableOnly: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById, { comparableOnly: true })).join('')}</div></details>`;
     const priorityPicker = renderPriorityPicker({ questions, answers, priorityQuestionIds });
     const visibleRanking = eligible.slice(0, 7);
     const includesLikud = visibleRanking.some((result) => result.partyId === 'likud');

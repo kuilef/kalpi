@@ -161,6 +161,27 @@
     host.innerHTML = `<p class="eyebrow">Debug</p><h2 id="debug-title">Покрытие данных v2</h2><p>Canonical matrix: ${analytics.summary.knownCells}/${analytics.summary.totalCells}.</p><details open><summary>По parties</summary><table><tbody>${Object.entries(analytics.byParty).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>По тематическим группам</summary><table><tbody>${Object.entries(analytics.byFamily).map(([id, item]) => row(id, item)).join('')}</tbody></table></details><details><summary>Пробелы (${analytics.gaps.length})</summary><ul>${analytics.gaps.map((gap) => `<li>${escapeHtml(gap.partyId)} × ${escapeHtml(gap.questionId)}</li>`).join('')}</ul></details><section class="debug-fixture"><h3>Синтетический fixture: трассировка score</h3><p>Только для проверки UI. Он не является canonical data и не смешивается с партийной матрицей.</p><p>${escapeHtml(fixture.party.name_ru)}: score ${Math.round((fixtureResult.score || 0) * 100)}%, coverage ${Math.round((fixtureResult.coverage || 0) * 100)}%.</p>${trace}</section>`;
   }
 
+  function findPriorityToggle(host, questionId) {
+    return [...host.querySelectorAll('[data-priority-toggle]')]
+      .find((toggle) => toggle.dataset.priorityToggle === questionId) || null;
+  }
+
+  function capturePriorityViewport(host, questionId) {
+    const toggle = findPriorityToggle(host, questionId);
+    return toggle ? { questionId, top: toggle.getBoundingClientRect().top } : null;
+  }
+
+  function restorePriorityViewport(host, viewportSnapshot) {
+    if (!viewportSnapshot) return;
+    window.requestAnimationFrame(() => {
+      const toggle = findPriorityToggle(host, viewportSnapshot.questionId);
+      if (!toggle) return;
+      const topDelta = toggle.getBoundingClientRect().top - viewportSnapshot.top;
+      if (Math.abs(topDelta) > 0.5) window.scrollTo({ top: window.scrollY + topDelta, behavior: 'auto' });
+      toggle.focus({ preventScroll: true });
+    });
+  }
+
   function bindPriorityControls() {
     const host = $('results');
     const toggles = [...host.querySelectorAll('[data-priority-toggle]')];
@@ -168,6 +189,7 @@
 
     toggles.forEach((button) => button.addEventListener('click', () => {
       const questionId = button.dataset.priorityToggle;
+      const viewportSnapshot = capturePriorityViewport(host, questionId);
       State.togglePriorityQuestion(state, questionId);
       saveState();
       const selected = button.getAttribute('aria-pressed') !== 'true';
@@ -175,7 +197,7 @@
       button.setAttribute('aria-label', selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный');
       button.textContent = selected ? '★' : '☆';
       const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
-      renderResults(false, true, priorityPickerOpen);
+      renderResults(false, true, priorityPickerOpen, viewportSnapshot);
     }));
 
     host.querySelectorAll('[data-priority-context]').forEach((button) => button.addEventListener('click', () => {
@@ -201,7 +223,7 @@
     });
   }
 
-  async function renderResults(focusResults = true, revealResults = true, priorityPickerOpen = false) {
+  async function renderResults(focusResults = true, revealResults = true, priorityPickerOpen = false, viewportSnapshot = null) {
     const host = $('results');
     let analytics;
     if (revealResults) host.classList.remove('hidden');
@@ -230,6 +252,7 @@
     bindPriorityControls();
     const priorityPicker = host.querySelector('.priority-picker');
     if (priorityPicker) priorityPicker.open = priorityPickerOpen;
+    restorePriorityViewport(host, viewportSnapshot);
     if (analytics) renderDebug(analytics);
     if (focusResults && revealResults) {
       host.focus({ preventScroll: true });

@@ -74,7 +74,7 @@ test('live result exposes leader, near ties, full ranking, family profile, and e
   assert.doesNotMatch(html, /--family-score/);
 });
 
-test('missing family score is rendered as missing data rather than zero percent', () => {
+test('missing-score families are omitted from the thematic profile', () => {
   const html = Results.renderLiveResult({
     recommendation: recommendationForScores([0.8], [
       { familyId: 'missing', label_ru: 'Нет данных', score: null, coverage: 0, questions: [] },
@@ -82,8 +82,12 @@ test('missing family score is rendered as missing data rather than zero percent'
     sourcesById: new Map(),
   });
 
-  assert.match(html, /Нет данных для сравнения/);
-  assert.match(html, /Покрытие данных: 0%/);
+  const profileHtml = html.slice(
+    html.indexOf('<details class="family-profile'),
+    html.indexOf('<p class="analytics-link"')
+  );
+  assert.doesNotMatch(profileHtml, /Нет данных для сравнения/);
+  assert.doesNotMatch(profileHtml, /Покрытие данных: 0%/);
   assert.doesNotMatch(html, /<progress class="family-progress" max="1" value="0">/);
 });
 
@@ -234,6 +238,46 @@ test('thematic profile places expanded disagreements before collapsed matches', 
   assert.ok(html.indexOf('Разногласие 1') < html.indexOf('Совпадение 1'));
   assert.doesNotMatch(html, /Эти тематические группы показываем сразу/);
   assert.doesNotMatch(html, /Эти группы оставляем ниже/);
+});
+
+test('thematic profile hides questions and families without a comparable party position', () => {
+  const html = Results.renderLiveResult({
+    questions: [
+      { id: 'known', short_title_ru: 'Сравнимый вопрос', prompt_ru: 'Известная позиция' },
+      { id: 'missing', short_title_ru: 'Вопрос без позиции', prompt_ru: 'Нет позиции партии' },
+      { id: 'missing-family', short_title_ru: 'Тема без позиции', prompt_ru: 'Нет данных по теме' },
+    ],
+    recommendation: recommendationForScores([0.71], [
+      {
+        familyId: 'mixed',
+        label_ru: 'Смешанная тема',
+        score: 0.4,
+        coverage: 0.5,
+        questions: [
+          { questionId: 'known', userValue: -1, partyValue: 1, evidenceSimilarity: 0, coverage: 1 },
+          { questionId: 'missing', userValue: -1, partyValue: null, evidenceSimilarity: 0.5, coverage: 0 },
+        ],
+      },
+      {
+        familyId: 'missing-family',
+        label_ru: 'Тема без позиции',
+        score: null,
+        coverage: 0,
+        questions: [
+          { questionId: 'missing-family', userValue: -1, partyValue: null, evidenceSimilarity: 0.5, coverage: 0 },
+        ],
+      },
+    ]),
+    sourcesById: new Map(),
+  });
+  const profileHtml = html.slice(
+    html.indexOf('<details class="family-profile'),
+    html.indexOf('<details class="priority-picker')
+  );
+
+  assert.match(profileHtml, /Сравнимый вопрос/);
+  assert.doesNotMatch(profileHtml, /Вопрос без позиции/);
+  assert.doesNotMatch(profileHtml, /Тема без позиции/);
 });
 
 test('near-top note is omitted when the top three gap exceeds five percentage points', () => {

@@ -62,7 +62,9 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.equal(config.families.find((family) => family.id === 'religion_lifestyle').policy_weight, 0.4);
   assert.equal(config.families.find((family) => family.id === 'immigration_identity').fundamental_weight, 0);
   assert.equal(config.families.find((family) => family.id === 'immigration_identity').policy_weight, 1);
-  assert.equal(config.families.find((family) => family.id === 'government_coalition').family_weight, 1);
+  for (const familyId of ['education_standards', 'immigration_identity', 'october_7_accountability', 'government_coalition']) {
+    assert.equal(config.families.find((family) => family.id === familyId).family_weight, 0.5);
+  }
   assert.equal(config.families.find((family) => family.id === 'october_7_accountability').family_type, 'standalone_policy');
 });
 
@@ -87,5 +89,6 @@ test('canonical data declares a distinct position matrix version', () => {
   assert.equal(typeof config.party_positions_version, 'string');
   assert.equal(typeof config.position_matrix_version, 'string');
   assert.notEqual(config.position_matrix_version, config.party_positions_version);
-  assert.equal(config.data_version, 'kalpi-data-prototype-v3');
+  assert.equal(config.scoring_version, 'kalpi-family-score-v3');
+  assert.equal(config.data_version, 'kalpi-data-prototype-v4');
 });

@@ -128,9 +128,18 @@ test('results recalculate from priority controls and the apply button returns to
 test('importance recalculation keeps the priority picker open when it was already expanded', () => {
   const app = read('app.js');
   assert.match(app, /const priorityPickerOpen = Boolean\(host\.querySelector\('\.priority-picker'\)\?\.open\);/);
-  assert.match(app, /renderResults\(false, true, priorityPickerOpen\);/);
-  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true, priorityPickerOpen = false\)/);
+  assert.match(app, /renderResults\(false, true, priorityPickerOpen(?:, viewportSnapshot)?\);/);
+  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true, priorityPickerOpen = false, viewportSnapshot = null\)/);
   assert.match(app, /const priorityPicker = host\.querySelector\('\.priority-picker'\);\s*if \(priorityPicker\) priorityPicker\.open = priorityPickerOpen;/);
+});
+
+test('importance recalculation preserves the clicked toggle viewport and focus', () => {
+  const app = read('app.js');
+  assert.match(app, /function capturePriorityViewport\(host, questionId\)/);
+  assert.match(app, /getBoundingClientRect\(\)\.top/);
+  assert.match(app, /requestAnimationFrame\(/);
+  assert.match(app, /toggle\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(app, /renderResults\(false, true, priorityPickerOpen, viewportSnapshot\);/);
 });
 
 test('result disclosure headings share a prominent expandable treatment', () => {
@@ -142,7 +151,7 @@ test('result disclosure headings share a prominent expandable treatment', () => 
 
 test('importance recalculation stays hidden before completion but final answer still reveals results', () => {
   const app = read('app.js');
-  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true(?:, priorityPickerOpen = false)?\)/);
+  assert.match(app, /async function renderResults\(focusResults = true, revealResults = true(?:, priorityPickerOpen = false)?(?:, viewportSnapshot = null)?\)/);
   assert.match(app, /if \(revealResults\) host\.classList\.remove\('hidden'\);/);
   assert.match(app, /else host\.classList\.add\('hidden'\);/);
   assert.match(app, /renderResults\(false, state\.completedAt\)/);
