@@ -115,8 +115,7 @@
 
   function renderRankingRow(result, index) {
     const gap = result.gapFromLeader == null ? '—' : result.gapFromLeader === 0 ? 'лидер' : `−${pct(result.gapFromLeader)}`;
-    const isLikud = result.partyId === 'likud';
-    const partyName = `${escapeHtml(result.party?.name_ru || result.partyId)}${isLikud ? '<sup class="ranking-footnote-marker"><a href="#likud-data-note" aria-label="Сноска о данных Ликуда">*</a></sup>' : ''}`;
+    const partyName = escapeHtml(result.party?.name_ru || result.partyId);
     return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${partyName}</strong><span>${pct(result.score)}</span><span>данные ${pct(result.coverage)}</span><span>${gap}</span></li>`;
   }
 
@@ -168,11 +167,7 @@
     const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">Где ваши ответы расходятся с мнением партии</span><span class="result-disclosure-action">Подробнее</span></summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true, comparableOnly: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById, { comparableOnly: true })).join('')}</div></details>`;
     const priorityPicker = renderPriorityPicker({ questions, answers, priorityQuestionIds });
     const visibleRanking = eligible.slice(0, 7);
-    const includesLikud = visibleRanking.some((result) => result.partyId === 'likud');
-    const likudNote = includesLikud
-      ? '<p id="likud-data-note" class="ranking-footnote"><sup aria-hidden="true">*</sup> По Ликуду в основном использованы данные коалиционных голосований; опубликованной программы партии найти не удалось.</p>'
-      : '';
-    return `<section class="live-result"><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${visibleRanking.map(renderRankingRow).join('')}</ol>${likudNote}</section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
+    return `<section class="live-result"><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${visibleRanking.map(renderRankingRow).join('')}</ol></section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
   }
 
   return { renderDataNotReady, renderLiveResult };

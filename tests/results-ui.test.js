@@ -149,7 +149,7 @@ test('priority picker does not render a selected-question count status', () => {
   assert.doesNotMatch(html, /Выбрано важных вопросов:/);
 });
 
-test('live result adds a Likud data footnote when Likud is visible in the ranking', () => {
+test('live result does not add a Likud footnote when Likud is visible in the ranking', () => {
   const html = Results.renderLiveResult({
     recommendation: {
       ready: true,
@@ -160,9 +160,10 @@ test('live result adds a Likud data footnote when Likud is visible in the rankin
     sourcesById: new Map(),
   });
 
-  assert.match(html, /Ликуд<sup[^>]*><a[^>]*>\*<\/a><\/sup>/);
-  assert.match(html, /По Ликуду в основном использованы данные коалиционных голосований/);
-  assert.match(html, /опубликованной программы партии найти не удалось/);
+  assert.match(html, /Ликуд/);
+  assert.doesNotMatch(html, /ranking-footnote-marker/);
+  assert.doesNotMatch(html, /likud-data-note/);
+  assert.doesNotMatch(html, /данные коалиционных голосований/);
 });
 
 test('live result does not add the Likud footnote when Likud is absent from the ranking', () => {
