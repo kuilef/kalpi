@@ -142,6 +142,12 @@ test('importance recalculation preserves the clicked toggle viewport and focus',
   assert.match(app, /renderResults\(false, true, priorityPickerOpen, viewportSnapshot\);/);
 });
 
+test('importance rerender restores selected answer focus for Enter navigation', () => {
+  const app = read('app.js');
+  assert.match(app, /function focusSelectedAnswer\(\)\s*\{[\s\S]*?input\[type="radio"\]:checked[\s\S]*?focus\(\{ preventScroll: true \}\)/);
+  assert.match(app, /renderQuestion\(\);\s*focusSelectedAnswer\(\);\s*renderResults\(false, state\.completedAt\)/);
+});
+
 test('result disclosure headings share a prominent expandable treatment', () => {
   const css = read('styles.css');
   assert.match(css, /\.result-disclosure-summary \{[^}]*font:700 clamp\(1\.45rem, 3vw, 2rem\)/);

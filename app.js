@@ -97,6 +97,10 @@
     progressBar.value = total ? ordinal / total : 0;
   }
 
+  function focusSelectedAnswer() {
+    document.querySelector('#question-content input[type="radio"]:checked')?.focus({ preventScroll: true });
+  }
+
   function advanceAfterAnswer() {
     const keepResultsInPlace = Boolean(state.completedAt);
     const index = currentIndex();
@@ -139,6 +143,7 @@
       State.togglePriorityQuestion(state, question.id);
       saveState();
       renderQuestion();
+      focusSelectedAnswer();
       renderResults(false, state.completedAt);
     });
   }
