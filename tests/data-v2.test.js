@@ -5,13 +5,13 @@ const path = require('node:path');
 
 const load = (name) => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', name), 'utf8'));
 
-test('v2 core questionnaire contains 27 core questions in display order', () => {
+test('v2 core questionnaire contains 26 core questions in display order after removing B14', () => {
   const questions = load('questions.json');
-  assert.equal(questions.length, 27);
+  assert.equal(questions.length, 26);
   assert.deepEqual(questions.map((question) => question.code), [
     'A01', 'A02', 'A03', 'A04', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11',
     'B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09', 'B10', 'B11', 'B12',
-    'B13', 'B14', 'B15', 'B16', 'B17',
+    'B13', 'B14', 'B15', 'B16',
   ]);
   for (const [index, question] of questions.entries()) {
     assert.equal(question.status, 'core');
@@ -20,6 +20,34 @@ test('v2 core questionnaire contains 27 core questions in display order', () => 
     assert.ok(question.left_pole_ru.trim());
     assert.ok(question.right_pole_ru.trim());
   }
+});
+
+test('B14 removal keeps stable question ids and applies the new giyur wording before renumbering', () => {
+  const questions = load('questions.json');
+  const positions = load('positions.json');
+  const config = load('scoring-config.json');
+  const byId = new Map(questions.map((question) => [question.id, question]));
+  const gaza = byId.get('gaza_jewish_settlements');
+  const conversion = byId.get('non_orthodox_conversion_recognition');
+  const arabParties = byId.get('arab_parties_government_participation');
+
+  assert.equal(byId.has('public_gender_separation'), false);
+  assert.equal(positions.some((position) => position.question === 'public_gender_separation'), false);
+  assert.deepEqual(
+    [gaza, conversion, arabParties].map((question) => [question.id, question.code, question.display_order]),
+    [
+      ['gaza_jewish_settlements', 'B14', 24],
+      ['non_orthodox_conversion_recognition', 'B15', 25],
+      ['arab_parties_government_participation', 'B16', 26],
+    ],
+  );
+  assert.equal(conversion.prompt_ru, 'Следует ли сохранять признание реформистского и консервативного гиюра для целей Закона о возвращении?');
+  assert.equal(conversion.left_pole_ru, 'Сохранять признание');
+  assert.equal(conversion.right_pole_ru, 'Признавать только гиюр по ортодоксальным стандартам');
+  assert.equal(conversion.explanation_ru, 'Сейчас реформистский и консервативный гиюр признаётся для целей Закона о возвращении, но не обязательно признаётся Главным раввинатом в вопросах религиозного личного статуса.');
+  assert.deepEqual(config.families.find((family) => family.id === 'religion_lifestyle').policy_questions, [
+    'civil_marriage', 'shabbat_public_transport',
+  ]);
 });
 
 test('scoring config assigns every core question to exactly one approved family', () => {
@@ -45,10 +73,10 @@ test('scoring config assigns every core question to exactly one approved family'
   assert.equal(config.user_importance_enabled, true);
   assert.equal(config.user_importance_family_multiplier, 2);
   assert.equal(config.families.length, 14);
-  assert.equal(new Set(assigned).size, 27);
+  assert.equal(new Set(assigned).size, 26);
   assert.deepEqual(new Set(assigned), questionIds);
   assert.deepEqual(config.families.find((family) => family.id === 'religion_lifestyle').policy_questions, [
-    'civil_marriage', 'shabbat_public_transport', 'public_gender_separation',
+    'civil_marriage', 'shabbat_public_transport',
   ]);
   assert.deepEqual(config.families.find((family) => family.id === 'territory_separation').policy_questions, [
     'west_bank_sovereignty', 'gaza_jewish_settlements',
