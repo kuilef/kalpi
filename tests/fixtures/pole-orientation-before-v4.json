@@ -2,8 +2,15 @@
   "candidateQuestionIds": [
     "security_settlement_tradeoff", "territory_separation_tradeoff", "religion_lifestyle_tradeoff", "majority_institutional_limits_tradeoff", "jewish_state_civic_equality_tradeoff", "traditional_norms_personal_freedom_tradeoff", "taxes_public_services_tradeoff", "market_regulation_tradeoff", "social_support_redistribution_tradeoff", "west_bank_sovereignty", "supreme_court_appointments", "knesset_supreme_court_final_say", "gaza_jewish_settlements"
   ],
+  "copyOverrides": {
+    "security_settlement_tradeoff": {
+      "prompt_ru": "Следует ли Израилю сохранять военный контроль в Иудее и Самарии, на юге Ливана и в секторе Газа?",
+      "left_pole_ru": "Нет, нужно сократить военное присутствие в обмен на политические договоренности",
+      "right_pole_ru": "Да, это обеспечивает безопасность"
+    }
+  },
   "questions": {
-    "security_settlement_tradeoff": {"left_pole_ru":"Сохранять контроль ради безопасности","right_pole_ru":"Сокращать контроль ради политического урегулирования","otherFieldsDigest":"d42c3f1d4f7842f398f5b8295b3a71eaaf151c268f7c6a0b1236601b5862fc96"},
+    "security_settlement_tradeoff": {"left_pole_ru":"Сохранять контроль ради безопасности","right_pole_ru":"Сокращать контроль ради политического урегулирования","otherFieldsDigest":"d42c3f1d4f7842f398f5b8295b3a71eaaf151c268f7c6a0b1236601b5862fc96","copyOverrideFieldsDigest":"36c85a5f486cd20c0d29ab43b83820a867974017cff4c6d34786522c76eed271"},
     "territory_separation_tradeoff": {"left_pole_ru":"Сохранять контроль над большей частью территории","right_pole_ru":"Территориальное разделение с палестинцами","otherFieldsDigest":"6a42530f42bc5126353589ca36bdb6eb9945449f6a7f9b4100e63979cc2d57dc"},
     "religion_lifestyle_tradeoff": {"left_pole_ru":"Единые религиозно-традиционные нормы","right_pole_ru":"Свобода граждан и местных сообществ выбирать образ жизни","otherFieldsDigest":"ad801e31c107eba3f6ef83c465be50ecfd53f74964ebfc5b9ea9a96f8981fcef"},
     "majority_institutional_limits_tradeoff": {"left_pole_ru":"Свобода парламентского большинства проводить свою программу","right_pole_ru":"Широкие полномочия независимых институтов ограничивать решения большинства","otherFieldsDigest":"cf92ced3ebb689fef3d782ac3028453f9c8fcc96bc8c7ae6d567b73bbb00fa39"},

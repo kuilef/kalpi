@@ -24,9 +24,25 @@ test('canonical pole orientation swaps only approved poles and negates only thei
   for (const questionId of fixture.candidateQuestionIds) {
     const beforeQuestion = fixture.questions[questionId];
     const question = questions.find((item) => item.id === questionId);
-    assert.equal(question.left_pole_ru, beforeQuestion.right_pole_ru);
-    assert.equal(question.right_pole_ru, beforeQuestion.left_pole_ru);
-    assert.equal(digest(omit(question, ['left_pole_ru', 'right_pole_ru'])), beforeQuestion.otherFieldsDigest);
+    const copyOverride = fixture.copyOverrides?.[questionId];
+    if (copyOverride) {
+      assert.deepEqual(
+        {
+          prompt_ru: question.prompt_ru,
+          left_pole_ru: question.left_pole_ru,
+          right_pole_ru: question.right_pole_ru,
+        },
+        copyOverride,
+      );
+      assert.equal(
+        digest(omit(question, ['prompt_ru', 'left_pole_ru', 'right_pole_ru'])),
+        beforeQuestion.copyOverrideFieldsDigest,
+      );
+    } else {
+      assert.equal(question.left_pole_ru, beforeQuestion.right_pole_ru);
+      assert.equal(question.right_pole_ru, beforeQuestion.left_pole_ru);
+      assert.equal(digest(omit(question, ['left_pole_ru', 'right_pole_ru'])), beforeQuestion.otherFieldsDigest);
+    }
 
     const rows = positions.filter((position) => position.question === questionId);
     assert.deepEqual(Object.fromEntries(rows.map((position) => [position.party, position.value])), Object.fromEntries(

@@ -22,6 +22,23 @@ test('v2 core questionnaire contains 26 core questions in display order after re
   }
 });
 
+test('A01 names the military-control tradeoff without changing its answer direction', () => {
+  const a01 = load('questions.json').find((question) => question.id === 'security_settlement_tradeoff');
+
+  assert.deepEqual(
+    {
+      prompt_ru: a01.prompt_ru,
+      left_pole_ru: a01.left_pole_ru,
+      right_pole_ru: a01.right_pole_ru,
+    },
+    {
+      prompt_ru: 'Следует ли Израилю сохранять военный контроль в Иудее и Самарии, на юге Ливана и в секторе Газа?',
+      left_pole_ru: 'Нет, нужно сократить военное присутствие в обмен на политические договоренности',
+      right_pole_ru: 'Да, это обеспечивает безопасность',
+    },
+  );
+});
+
 test('B14 removal keeps stable question ids and applies the new giyur wording before renumbering', () => {
   const questions = load('questions.json');
   const positions = load('positions.json');
