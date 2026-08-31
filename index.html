@@ -15,7 +15,20 @@
   </header>
 
   <main class="shell">
-    <section id="questionnaire" class="questionnaire-panel" aria-label="Опросник">
+    <section id="questionnaire-intro" class="panel questionnaire-intro" aria-labelledby="questionnaire-intro-title">
+      <p class="eyebrow">Опросник</p>
+      <h2 id="questionnaire-intro-title">Как это работает</h2>
+      <p class="lede">На каждом экране — две позиции и шкала между ними. Выберите, какая позиция вам ближе. Если вы ещё не сформировали мнение или не хватает информации, выберите «Не знаю».</p>
+      <div class="intro-actions"><button id="start-questionnaire" class="primary" type="button">Начать опрос</button></div>
+      <p class="keyboard-hint">Можно отвечать клавишами 1–5; 0 — «Не знаю».<span class="desktop-keyboard-hint"> Enter — далее.</span> Если вопрос особенно важен для вас, нажмите ☆.</p>
+      <div class="intro-note">
+        <p>Kalpi сравнивает позиции партий по выбранным вопросам. Это не прогноз выборов: коалиции, голосования и состав правительства после выборов могут измениться.</p>
+        <p><a href="methodology.html">Как считается результат и чего он не показывает</a></p>
+        <p><a href="analytics.html">Открыть аналитику данных</a></p>
+      </div>
+    </section>
+
+    <section id="questionnaire" class="questionnaire-panel hidden" aria-label="Опросник">
       <div class="questionnaire-progress">
         <div class="section-heading">
           <p id="progress" class="progress-text" aria-live="polite">1 / 22</p>
@@ -36,12 +49,6 @@
     <section id="debug" class="panel hidden" aria-labelledby="debug-title"></section>
     <section id="developer-warnings" class="warning-panel hidden" aria-live="assertive"></section>
   </main>
-
-  <footer class="site-footer shell">
-    <p>Kalpi сравнивает позиции партий по выбранным вопросам. Коалиции и голосования после выборов могут измениться: результат не предсказывает будущую политику партии или состав правительства.</p>
-    <p><a href="methodology.html">Как считается результат и чего он не показывает</a></p>
-    <p><a href="analytics.html">Открыть аналитику данных</a></p>
-  </footer>
 
   <script src="data-loader.js"></script>
   <script src="data-validation.js"></script>

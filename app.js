@@ -97,6 +97,12 @@
     progressBar.value = total ? ordinal / total : 0;
   }
 
+  function showQuestionnaire() {
+    $('questionnaire-intro').classList.add('hidden');
+    $('questionnaire').classList.remove('hidden');
+    renderQuestion();
+  }
+
   function focusSelectedAnswer() {
     document.querySelector('#question-content input[type="radio"]:checked')?.focus({ preventScroll: true });
   }
@@ -266,6 +272,7 @@
   }
 
   function bindEvents() {
+    $('start-questionnaire').addEventListener('click', showQuestionnaire);
     $('previous-question').addEventListener('click', () => {
       const index = currentIndex();
       if (index <= 0) return;
@@ -308,8 +315,12 @@
       $('state-notice').textContent = 'Версия опросника изменилась: начат новый сеанс, предыдущая запись в браузере сохранена.';
     }
     bindEvents();
-    renderQuestion();
-    if (state.completedAt) renderResults(false, true);
+    if (state.completedAt) {
+      $('questionnaire-intro').classList.add('hidden');
+      renderResults(false, true);
+      return;
+    }
+    if (Object.keys(state.answers).length) $('start-questionnaire').textContent = 'Продолжить';
   }
 
   init().catch((error) => {

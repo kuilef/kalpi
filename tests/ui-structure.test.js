@@ -14,12 +14,27 @@ test('v2 page exposes the single-question flow, direct results, and opt-in debug
   assert.doesNotMatch(html, /complete-questionnaire|review-back|review-content/);
   assert.doesNotMatch(html, /locale-en|priority-toggle|axis-strips|party-map/);
   assert.match(html, /<section id="questionnaire"[^>]*>/);
-  assert.match(html, /<section id="questionnaire" class="questionnaire-panel"/);
+  assert.match(html, /<section id="questionnaire" class="questionnaire-panel(?: hidden)?"/);
   assert.match(html, /<div class="questionnaire-progress">[\s\S]*id="progress"[\s\S]*<progress id="progress-bar" max="1" value="0"><\/progress>[\s\S]*<\/div>/);
   assert.match(html, /id="progress"[^>]*>1 \/ 22<\/p>/);
   assert.match(html, /<div class="questionnaire-card">[\s\S]*id="question-content"[\s\S]*id="previous-question"[\s\S]*id="next-question"[\s\S]*<\/div>/);
   assert.doesNotMatch(html, /<header[\s\S]*href="analytics\.html"[\s\S]*<\/header>/);
   assert.match(html, /href="methodology\.html"[\s\S]*href="analytics\.html"/);
+});
+
+test('questionnaire waits on a clear start screen before it renders the first question', () => {
+  const html = read('index.html');
+  const app = read('app.js');
+
+  assert.match(html, /<section id="questionnaire-intro"[^>]*>/);
+  assert.match(html, /id="start-questionnaire"[^>]*>Начать опрос<\/button>/);
+  assert.match(html, /На каждом экране — две позиции и шкала между ними\./);
+  assert.match(html, /Можно отвечать клавишами 1–5; 0 — «Не знаю»\./);
+  assert.match(html, /Kalpi сравнивает позиции партий по выбранным вопросам\./);
+  assert.match(html, /<section id="questionnaire" class="questionnaire-panel hidden"/);
+  assert.match(app, /function showQuestionnaire\(\)/);
+  assert.match(app, /\$\('start-questionnaire'\)\.addEventListener\('click', showQuestionnaire\)/);
+  assert.match(app, /if \(state\.completedAt\) \{\s*\$\('questionnaire-intro'\)\.classList\.add\('hidden'\);\s*renderResults\(false, true\);/);
 });
 
 test('public pages load canonical JSON at runtime without a generated data bundle', () => {
@@ -98,7 +113,7 @@ test('changing an answer after results are visible refreshes them without moving
 
 test('completed saved sessions recalculate results after loading current party data', () => {
   const app = read('app.js');
-  assert.match(app, /renderQuestion\(\);\s*if \(state\.completedAt\) renderResults\(false, true\);/);
+  assert.match(app, /if \(state\.completedAt\) \{\s*\$\('questionnaire-intro'\)\.classList\.add\('hidden'\);\s*renderResults\(false, true\);/);
 });
 
 test('app persists importance toggles and recalculates without moving focus to results', () => {
