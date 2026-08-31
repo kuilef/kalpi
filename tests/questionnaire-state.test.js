@@ -76,6 +76,49 @@ test('position-matrix migration preserves answers and refreshes data metadata', 
   assert.equal(restored.versionMismatch, false);
 });
 
+test('pole-orientation migration negates only migrated answers and preserves completed-session metadata', () => {
+  const storage = memoryStorage();
+  storage.setItem(State.STORAGE_KEY, JSON.stringify({
+    questionnaireVersion: 'kalpi-ru-core-2026-08-21-v3',
+    scoringVersion: 'score-v1',
+    dataVersion: 'data-v4',
+    positionMatrixVersion: 'matrix-v2',
+    answers: {
+      security_settlement_tradeoff: -1,
+      west_bank_sovereignty: -0.5,
+      gaza_jewish_settlements: 0,
+      palestinian_state_option: 0.5,
+      law_of_return_grandchild_clause: 1,
+      unknown: null,
+    },
+    priorityQuestionIds: ['security_settlement_tradeoff', 'palestinian_state_option'],
+    currentQuestionId: 'gaza_jewish_settlements',
+    completedAt: '2026-08-31T10:00:00.000Z',
+    updatedAt: '2026-08-31T10:01:00.000Z',
+  }));
+
+  const restored = State.load(storage, {
+    questionnaire_version: 'kalpi-ru-core-2026-08-31-v4',
+    scoring_version: 'score-v1',
+    data_version: 'data-v5',
+    position_matrix_version: 'matrix-v3',
+  });
+
+  assert.deepEqual(restored.answers, {
+    security_settlement_tradeoff: 1,
+    west_bank_sovereignty: 0.5,
+    gaza_jewish_settlements: 0,
+    palestinian_state_option: 0.5,
+    law_of_return_grandchild_clause: 1,
+    unknown: null,
+  });
+  assert.deepEqual(restored.priorityQuestionIds, ['security_settlement_tradeoff', 'palestinian_state_option']);
+  assert.equal(restored.currentQuestionId, 'gaza_jewish_settlements');
+  assert.equal(restored.completedAt, '2026-08-31T10:00:00.000Z');
+  assert.equal(restored.updatedAt, '2026-08-31T10:01:00.000Z');
+  assert.equal(restored.versionMismatch, false);
+});
+
 test('state persists unique priorities selected before an answer', () => {
   const storage = memoryStorage();
   const state = State.createState(config);

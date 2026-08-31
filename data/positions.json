@@ -2,7 +2,7 @@
   {
     "party": "likud",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "LEADER",
@@ -16,7 +16,7 @@
   {
     "party": "likud",
     "question": "territory_separation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.92,
     "status": "known",
     "entity_scope": "PARTY",
@@ -33,7 +33,7 @@
   {
     "party": "likud",
     "question": "religion_lifestyle_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.75,
     "status": "mixed",
     "entity_scope": "PARTY",
@@ -65,7 +65,7 @@
   {
     "party": "likud",
     "question": "majority_institutional_limits_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.88,
     "status": "known",
     "entity_scope": "FACTION",
@@ -79,7 +79,7 @@
   {
     "party": "likud",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "mixed",
     "entity_scope": "PARTY",
@@ -95,7 +95,7 @@
   {
     "party": "likud",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.72,
     "status": "mixed",
     "entity_scope": "PARTY",
@@ -111,7 +111,7 @@
   {
     "party": "likud",
     "question": "taxes_public_services_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "LEADER",
@@ -126,7 +126,7 @@
   {
     "party": "likud",
     "question": "market_regulation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.93,
     "status": "known",
     "entity_scope": "PARTY",
@@ -169,7 +169,7 @@
   {
     "party": "likud",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.95,
     "status": "known",
     "entity_scope": "PARTY",
@@ -255,7 +255,7 @@
   {
     "party": "likud",
     "question": "supreme_court_appointments",
-    "value": -1,
+    "value": 1,
     "confidence": 0.88,
     "status": "known",
     "entity_scope": "FACTION",
@@ -269,7 +269,7 @@
   {
     "party": "likud",
     "question": "knesset_supreme_court_final_say",
-    "value": -1,
+    "value": 1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -330,7 +330,7 @@
   {
     "party": "beyahad",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.64,
     "status": "mixed",
     "entity_scope": "CURRENT_LIST",
@@ -359,7 +359,7 @@
   {
     "party": "beyahad",
     "question": "religion_lifestyle_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -387,7 +387,7 @@
   {
     "party": "beyahad",
     "question": "majority_institutional_limits_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -413,7 +413,7 @@
   {
     "party": "beyahad",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -427,7 +427,7 @@
   {
     "party": "beyahad",
     "question": "taxes_public_services_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -441,7 +441,7 @@
   {
     "party": "beyahad",
     "question": "market_regulation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -454,7 +454,7 @@
   {
     "party": "beyahad",
     "question": "social_support_redistribution_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.6,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -565,7 +565,7 @@
   {
     "party": "beyahad",
     "question": "supreme_court_appointments",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -632,7 +632,7 @@
   {
     "party": "shas",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "FACTION",
@@ -645,7 +645,7 @@
   {
     "party": "shas",
     "question": "territory_separation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "FACTION",
@@ -658,7 +658,7 @@
   {
     "party": "shas",
     "question": "religion_lifestyle_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -684,7 +684,7 @@
   {
     "party": "shas",
     "question": "majority_institutional_limits_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -697,7 +697,7 @@
   {
     "party": "shas",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.72,
     "status": "known",
     "entity_scope": "FACTION",
@@ -711,7 +711,7 @@
   {
     "party": "shas",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -725,7 +725,7 @@
   {
     "party": "shas",
     "question": "taxes_public_services_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.7,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -739,7 +739,7 @@
   {
     "party": "shas",
     "question": "market_regulation_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.6,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -752,7 +752,7 @@
   {
     "party": "shas",
     "question": "social_support_redistribution_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "FACTION",
@@ -778,7 +778,7 @@
   {
     "party": "shas",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -859,7 +859,7 @@
   {
     "party": "shas",
     "question": "supreme_court_appointments",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "FACTION",
@@ -872,7 +872,7 @@
   {
     "party": "shas",
     "question": "knesset_supreme_court_final_say",
-    "value": -1,
+    "value": 1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "FACTION",
@@ -929,7 +929,7 @@
   {
     "party": "utj",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.68,
     "status": "known",
     "entity_scope": "FACTION",
@@ -943,7 +943,7 @@
   {
     "party": "utj",
     "question": "territory_separation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "FACTION",
@@ -958,7 +958,7 @@
   {
     "party": "utj",
     "question": "religion_lifestyle_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -986,7 +986,7 @@
   {
     "party": "utj",
     "question": "majority_institutional_limits_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -999,7 +999,7 @@
   {
     "party": "utj",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.72,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1013,7 +1013,7 @@
   {
     "party": "utj",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1028,7 +1028,7 @@
   {
     "party": "utj",
     "question": "taxes_public_services_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.64,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1041,7 +1041,7 @@
   {
     "party": "utj",
     "question": "market_regulation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.74,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1054,7 +1054,7 @@
   {
     "party": "utj",
     "question": "social_support_redistribution_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.58,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1081,7 +1081,7 @@
   {
     "party": "utj",
     "question": "west_bank_sovereignty",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1162,7 +1162,7 @@
   {
     "party": "utj",
     "question": "supreme_court_appointments",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1175,7 +1175,7 @@
   {
     "party": "utj",
     "question": "knesset_supreme_court_final_say",
-    "value": -1,
+    "value": 1,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "LEADER",
@@ -1231,7 +1231,7 @@
   {
     "party": "raam",
     "question": "security_settlement_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1244,7 +1244,7 @@
   {
     "party": "raam",
     "question": "territory_separation_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1281,7 +1281,7 @@
   {
     "party": "raam",
     "question": "majority_institutional_limits_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.58,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1295,7 +1295,7 @@
   {
     "party": "raam",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "LEADER",
@@ -1308,7 +1308,7 @@
   {
     "party": "raam",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.5,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1322,7 +1322,7 @@
   {
     "party": "raam",
     "question": "taxes_public_services_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.48,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1346,7 +1346,7 @@
   {
     "party": "raam",
     "question": "social_support_redistribution_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.5,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1373,7 +1373,7 @@
   {
     "party": "raam",
     "question": "west_bank_sovereignty",
-    "value": 1,
+    "value": -1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1441,7 +1441,7 @@
   {
     "party": "raam",
     "question": "supreme_court_appointments",
-    "value": 1,
+    "value": -1,
     "confidence": 0.52,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1454,7 +1454,7 @@
   {
     "party": "raam",
     "question": "knesset_supreme_court_final_say",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.58,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1505,7 +1505,7 @@
   {
     "party": "otzma",
     "question": "security_settlement_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1519,7 +1519,7 @@
   {
     "party": "otzma",
     "question": "territory_separation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1534,7 +1534,7 @@
   {
     "party": "otzma",
     "question": "religion_lifestyle_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1561,7 +1561,7 @@
   {
     "party": "otzma",
     "question": "majority_institutional_limits_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1575,7 +1575,7 @@
   {
     "party": "otzma",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1589,7 +1589,7 @@
   {
     "party": "otzma",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1603,7 +1603,7 @@
   {
     "party": "otzma",
     "question": "taxes_public_services_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.66,
     "status": "known",
     "entity_scope": "LEADER",
@@ -1616,7 +1616,7 @@
   {
     "party": "otzma",
     "question": "market_regulation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.5,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -1653,7 +1653,7 @@
   {
     "party": "otzma",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1733,7 +1733,7 @@
   {
     "party": "otzma",
     "question": "supreme_court_appointments",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1746,7 +1746,7 @@
   {
     "party": "otzma",
     "question": "knesset_supreme_court_final_say",
-    "value": -1,
+    "value": 1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -1815,7 +1815,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "territory_separation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1828,7 +1828,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "religion_lifestyle_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1854,7 +1854,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "majority_institutional_limits_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1868,7 +1868,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1881,7 +1881,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1907,7 +1907,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "market_regulation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1920,7 +1920,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "social_support_redistribution_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -1946,7 +1946,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2025,7 +2025,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "supreme_court_appointments",
-    "value": 1,
+    "value": -1,
     "confidence": 0.72,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2039,7 +2039,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "knesset_supreme_court_final_say",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2093,7 +2093,7 @@
   {
     "party": "democrats",
     "question": "security_settlement_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2106,7 +2106,7 @@
   {
     "party": "democrats",
     "question": "territory_separation_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2119,7 +2119,7 @@
   {
     "party": "democrats",
     "question": "religion_lifestyle_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2145,7 +2145,7 @@
   {
     "party": "democrats",
     "question": "majority_institutional_limits_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2171,7 +2171,7 @@
   {
     "party": "democrats",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.95,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2184,7 +2184,7 @@
   {
     "party": "democrats",
     "question": "taxes_public_services_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2210,7 +2210,7 @@
   {
     "party": "democrats",
     "question": "social_support_redistribution_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2236,7 +2236,7 @@
   {
     "party": "democrats",
     "question": "west_bank_sovereignty",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2315,7 +2315,7 @@
   {
     "party": "democrats",
     "question": "supreme_court_appointments",
-    "value": 1,
+    "value": -1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2328,7 +2328,7 @@
   {
     "party": "democrats",
     "question": "knesset_supreme_court_final_say",
-    "value": 1,
+    "value": -1,
     "confidence": 0.95,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2381,7 +2381,7 @@
   {
     "party": "yashar",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2395,7 +2395,7 @@
   {
     "party": "yashar",
     "question": "territory_separation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "LEADER",
@@ -2408,7 +2408,7 @@
   {
     "party": "yashar",
     "question": "religion_lifestyle_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.85,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2461,7 +2461,7 @@
   {
     "party": "yashar",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.86,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2488,7 +2488,7 @@
   {
     "party": "yashar",
     "question": "market_regulation_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2528,7 +2528,7 @@
   {
     "party": "yashar",
     "question": "west_bank_sovereignty",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "LEADER",
@@ -2606,7 +2606,7 @@
   {
     "party": "yashar",
     "question": "supreme_court_appointments",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.86,
     "status": "known",
     "entity_scope": "LEADER",
@@ -2673,7 +2673,7 @@
   {
     "party": "religious_zionism",
     "question": "security_settlement_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2687,7 +2687,7 @@
   {
     "party": "religious_zionism",
     "question": "territory_separation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2700,7 +2700,7 @@
   {
     "party": "religious_zionism",
     "question": "religion_lifestyle_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "FACTION",
@@ -2727,7 +2727,7 @@
   {
     "party": "religious_zionism",
     "question": "majority_institutional_limits_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2741,7 +2741,7 @@
   {
     "party": "religious_zionism",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "FACTION",
@@ -2755,7 +2755,7 @@
   {
     "party": "religious_zionism",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "FACTION",
@@ -2768,7 +2768,7 @@
   {
     "party": "religious_zionism",
     "question": "taxes_public_services_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "LEADER",
@@ -2783,7 +2783,7 @@
   {
     "party": "religious_zionism",
     "question": "market_regulation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2797,7 +2797,7 @@
   {
     "party": "religious_zionism",
     "question": "social_support_redistribution_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.58,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -2824,7 +2824,7 @@
   {
     "party": "religious_zionism",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2904,7 +2904,7 @@
   {
     "party": "religious_zionism",
     "question": "supreme_court_appointments",
-    "value": -1,
+    "value": 1,
     "confidence": 0.84,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2918,7 +2918,7 @@
   {
     "party": "religious_zionism",
     "question": "knesset_supreme_court_final_say",
-    "value": -1,
+    "value": 1,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "PARTY",
@@ -2973,7 +2973,7 @@
   {
     "party": "bait_zioni",
     "question": "security_settlement_tradeoff",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.72,
     "status": "known",
     "entity_scope": "LEADER",
@@ -2987,7 +2987,7 @@
   {
     "party": "bait_zioni",
     "question": "territory_separation_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.78,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -3000,7 +3000,7 @@
   {
     "party": "bait_zioni",
     "question": "religion_lifestyle_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.45,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3057,7 +3057,7 @@
   {
     "party": "bait_zioni",
     "question": "traditional_norms_personal_freedom_tradeoff",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.4,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3082,7 +3082,7 @@
   {
     "party": "bait_zioni",
     "question": "market_regulation_tradeoff",
-    "value": -1,
+    "value": 1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -3119,7 +3119,7 @@
   {
     "party": "bait_zioni",
     "question": "west_bank_sovereignty",
-    "value": -1,
+    "value": 1,
     "confidence": 0.5,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3265,7 +3265,7 @@
   {
     "party": "hadash_taal",
     "question": "security_settlement_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "FACTION",
@@ -3279,7 +3279,7 @@
   {
     "party": "hadash_taal",
     "question": "territory_separation_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -3293,7 +3293,7 @@
   {
     "party": "hadash_taal",
     "question": "religion_lifestyle_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.75,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -3320,7 +3320,7 @@
   {
     "party": "hadash_taal",
     "question": "majority_institutional_limits_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.64,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -3334,7 +3334,7 @@
   {
     "party": "hadash_taal",
     "question": "jewish_state_civic_equality_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "CURRENT_LIST",
@@ -3361,7 +3361,7 @@
   {
     "party": "hadash_taal",
     "question": "taxes_public_services_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.78,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3375,7 +3375,7 @@
   {
     "party": "hadash_taal",
     "question": "market_regulation_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -3389,7 +3389,7 @@
   {
     "party": "hadash_taal",
     "question": "social_support_redistribution_tradeoff",
-    "value": 1,
+    "value": -1,
     "confidence": 0.84,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3416,7 +3416,7 @@
   {
     "party": "hadash_taal",
     "question": "west_bank_sovereignty",
-    "value": 1,
+    "value": -1,
     "confidence": 0.8,
     "status": "known",
     "entity_scope": "FACTION",
@@ -3494,7 +3494,7 @@
   {
     "party": "hadash_taal",
     "question": "supreme_court_appointments",
-    "value": 1,
+    "value": -1,
     "confidence": 0.7,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",
@@ -3507,7 +3507,7 @@
   {
     "party": "hadash_taal",
     "question": "knesset_supreme_court_final_say",
-    "value": 1,
+    "value": -1,
     "confidence": 0.58,
     "status": "historical",
     "entity_scope": "HISTORICAL",
@@ -3728,7 +3728,7 @@
   {
     "party": "likud",
     "question": "gaza_jewish_settlements",
-    "value": -0.5,
+    "value": 0.5,
     "confidence": 0.8,
     "status": "mixed",
     "entity_scope": "PARTY",
@@ -3741,7 +3741,7 @@
   {
     "party": "beyahad",
     "question": "gaza_jewish_settlements",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "LEADER",
@@ -3754,7 +3754,7 @@
   {
     "party": "shas",
     "question": "gaza_jewish_settlements",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.7,
     "status": "historical",
     "entity_scope": "LEADER",
@@ -3781,7 +3781,7 @@
   {
     "party": "raam",
     "question": "gaza_jewish_settlements",
-    "value": 1,
+    "value": -1,
     "confidence": 0.9,
     "status": "known",
     "entity_scope": "LEADER",
@@ -3794,7 +3794,7 @@
   {
     "party": "otzma",
     "question": "gaza_jewish_settlements",
-    "value": -1,
+    "value": 1,
     "confidence": 0.94,
     "status": "known",
     "entity_scope": "PARTY",
@@ -3807,7 +3807,7 @@
   {
     "party": "yisrael_beytenu",
     "question": "gaza_jewish_settlements",
-    "value": 1,
+    "value": -1,
     "confidence": 0.93,
     "status": "known",
     "entity_scope": "PARTY",
@@ -3821,7 +3821,7 @@
   {
     "party": "democrats",
     "question": "gaza_jewish_settlements",
-    "value": 1,
+    "value": -1,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "LEADER",
@@ -3834,7 +3834,7 @@
   {
     "party": "yashar",
     "question": "gaza_jewish_settlements",
-    "value": 1,
+    "value": -1,
     "confidence": 0.82,
     "status": "known",
     "entity_scope": "LEADER",
@@ -3848,7 +3848,7 @@
   {
     "party": "religious_zionism",
     "question": "gaza_jewish_settlements",
-    "value": -1,
+    "value": 1,
     "confidence": 0.96,
     "status": "known",
     "entity_scope": "LEADER",
@@ -3875,7 +3875,7 @@
   {
     "party": "hadash_taal",
     "question": "gaza_jewish_settlements",
-    "value": 0.5,
+    "value": -0.5,
     "confidence": 0.76,
     "status": "known",
     "entity_scope": "COMPONENT_PARTY",

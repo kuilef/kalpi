@@ -249,9 +249,9 @@ Kalpi вынужден агрегировать это разнообразие 
 Канонические данные для работы приложения находятся в JSON-файлах:
 
 - `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице;
-- `data/questions.json` — 27 вопросов, их типы, порядок и русские формулировки;
+- `data/questions.json` — 26 вопросов, их типы, порядок и русские формулировки;
 - `data/scoring-config.json` — версии, шкала ответов, тематические группы, веса и проверка готовности релиза;
-- `data/positions.json` — полная матрица `party × question`: 304 из 324 ячеек содержат позицию, 20 остаются `insufficient_data`;
+- `data/positions.json` — полная матрица `party × question`: 292 из 312 ячеек содержат позицию, 20 остаются `insufficient_data`;
 - `data/sources.json` — архив источников, доступных для ручной проверки.
 
 Новые партийные позиции нельзя переносить в канонические данные только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для `known`, `mixed` и `historical` нужны источник, дата, подтверждающие материалы и объяснение. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие подтверждающих материалов; это не центральная позиция.
@@ -264,11 +264,11 @@ Kalpi вынужден агрегировать это разнообразие 
 
 ```text
 schema_version:             kalpi-questionnaire-schema-v2
-questionnaire_version:      kalpi-ru-core-2026-08-21-v3
+questionnaire_version:      kalpi-ru-core-2026-08-31-v4
 party_positions_version:    kalpi-positions-prototype-v2
-position_matrix_version:    kalpi-position-matrix-2026-08-21-v2
+position_matrix_version:    kalpi-position-matrix-2026-08-31-v3
 scoring_version:            kalpi-family-score-v3
-data_version:               kalpi-data-prototype-v4
+data_version:               kalpi-data-prototype-v5
 recommendation_mode:        live
 prototype_trust_policy:     all_value_positions_full_confidence
 user_importance_enabled:    true
@@ -276,7 +276,7 @@ user_importance_enabled:    true
 
 `recommendation_mode: live` не отменяет проверку готовности релиза: приложение выполняет её при открытии результата и возвращается к `data_not_ready`, если данные деградировали.
 
-Изменение только партийной матрицы не сбрасывает ответы, сохранённые в браузере: состояние переносится на новую `position_matrix_version`, а результат пересчитывается по актуальным позициям.
+Изменение только партийной матрицы не сбрасывает ответы, сохранённые в браузере: состояние переносится на новую `position_matrix_version`, а результат пересчитывается по актуальным позициям. При смене ориентации полюсов вопроса Kalpi переносит совместимое состояние отдельной миграцией: инвертирует числовые ответы только затронутых вопросов, сохраняет «Не знаю», приоритеты, текущий вопрос и факт завершения.
 
 ## Запуск
 

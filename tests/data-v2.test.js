@@ -117,6 +117,9 @@ test('canonical data declares a distinct position matrix version', () => {
   assert.equal(typeof config.party_positions_version, 'string');
   assert.equal(typeof config.position_matrix_version, 'string');
   assert.notEqual(config.position_matrix_version, config.party_positions_version);
+  assert.equal(config.questionnaire_version, 'kalpi-ru-core-2026-08-31-v4');
+  assert.equal(config.party_positions_version, 'kalpi-positions-prototype-v2');
+  assert.equal(config.position_matrix_version, 'kalpi-position-matrix-2026-08-31-v3');
   assert.equal(config.scoring_version, 'kalpi-family-score-v3');
-  assert.equal(config.data_version, 'kalpi-data-prototype-v4');
+  assert.equal(config.data_version, 'kalpi-data-prototype-v5');
 });
