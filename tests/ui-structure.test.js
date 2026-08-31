@@ -37,6 +37,15 @@ test('questionnaire waits on a clear start screen before it renders the first qu
   assert.match(app, /if \(state\.completedAt\) \{\s*\$\('questionnaire-intro'\)\.classList\.add\('hidden'\);\s*renderResults\(false, true\);/);
 });
 
+test('intro keeps the type system to an editorial display serif and one interface sans-serif', () => {
+  const html = read('index.html');
+  const css = read('styles.css');
+
+  assert.doesNotMatch(html, /<p class="eyebrow">Опросник<\/p>/);
+  assert.match(css, /html \{[^}]*font-family:system-ui, sans-serif/);
+  assert.match(css, /h1,h2,\.result-score,\.result-disclosure-summary \{[^}]*font-family:Georgia, 'Times New Roman', serif/);
+});
+
 test('public pages load canonical JSON at runtime without a generated data bundle', () => {
   const html = read('index.html');
   const analyticsHtml = read('analytics.html');
