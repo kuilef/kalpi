@@ -1,266 +1,283 @@
 # Kalpi (קלפי)
 
-Kalpi ("избирательная урна" - קלפי) — политический опросник для выбора кандидата на выборах в Кнессет в 2026 году. Текущая ветка содержит модель расчёта, публичный рейтинг и отдельную страницу аудита данных: [analytics.html](analytics.html).
+[English](README.md) · [Русский](README.ru.md) · [עברית](README.he.md)
 
-## Что работает сейчас
+Kalpi (קלפי, “ballot box”) is a political questionnaire for comparing your views with party positions for the 2026 Knesset election. The site includes the [questionnaire](index.html), an [explanation of the methodology](methodology.html), and [data analytics](analytics.html).
 
-- 27 основных вопросов, показываемых по одному;
-- два типа вопросов: фундаментальные вопросы о компромиссах и конкретные вопросы о политических мерах;
-- шкала из пяти содержательных ответов: `-1`, `-0.5`, `0`, `+0.5`, `+1`;
-- отдельный ответ «Не знаю / недостаточно информации», который хранится как `null` и не равен промежуточной позиции;
-- автоматический переход к следующему вопросу после ответа, немедленный результат после последнего ответа, возврат к предыдущим вопросам и сохранение состояния в браузере;
-- структура из 14 тематических групп: обычно фундаментальные вопросы имеют вес `0.6`, конкретные вопросы о политических мерах — `0.4`; policy-only группы используют `policy_weight: 1`, но их отдельный `family_weight` равен `0.5`;
-- рейтинг по 12 партиям: ближайшая партия, почти равные альтернативы в пределах 3 п.п., совпадение, покрытие и отставание от лидера;
-- подробная трассировка по тематическим группам и вопросам с исходным статусом, охватом сущности и ссылками на подтверждающие материалы;
-- публичная страница аналитики с проверкой готовности релиза, тепловой матрицей, фильтрами, карточкой ячейки и очередью перепроверки;
+The interface is available in Russian, English, and Hebrew. Hebrew uses right-to-left (RTL) layout. The figures and implementation details below were checked against the repository on September 6, 2026.
 
-Результат опроса описывает близость заявленных позиций, а не совет голосовать за партию.
+## What works now
 
-## Методология
+- 26 core questions, presented one at a time;
+- two question types: fundamental trade-offs and specific policy questions;
+- five substantive answers: `-1`, `-0.5`, `0`, `+0.5`, `+1`;
+- a separate “Don't know / not enough information” answer, stored as `null`, distinct from an intermediate position;
+- automatic advance after answering, results immediately after the last answer, navigation back to earlier questions, and state saved in the browser;
+- 14 thematic groups: fundamental questions usually have a component weight of `0.6` and policy questions `0.4`; policy-only groups use `policy_weight: 1`, with a separate `family_weight` of `0.5`;
+- comparison with 12 parties; results show up to seven parties that meet the coverage threshold, with their match score, data coverage, and gap from the leader; a note highlights close results when the top three eligible parties (or two, if only two are available) are within 5 percentage points;
+- detailed breakdowns by thematic group and question, including original status, entity scope, and links to supporting evidence;
+- a public analytics page with a release readiness check, a heatmap, filters, cell details, and a review queue.
 
-### Что измеряет Kalpi
+The result describes the closeness of stated positions; it is not advice to vote for a party.
 
-Kalpi — это приложение для рекомендаций по голосованию (Voting Advice Application - VAA): инструмент, который сопоставляет политические предпочтения пользователя с публично зафиксированными позициями партий.
+## Methodology
 
-Kalpi не пытается определить, какая политика «объективно правильная», и не предполагает, что избиратель должен самостоятельно разбираться в экономике, военной стратегии, конституционном праве и других профессиональных областях.
+### What Kalpi measures
 
-Вместо этого используется такая модель политического выбора:
+Kalpi is a Voting Advice Application (VAA): a tool that compares a user's political preferences with publicly documented party positions.
 
-> **интересы и ценности → предпочтительные цели и допустимые компромиссы → отношение к ключевым политическим решениям → сопоставление с партиями**
+Kalpi does not try to determine which policies are “objectively correct.” Nor does it assume that voters must independently master economics, military strategy, constitutional law, or other specialist fields.
 
-Гражданину не обязательно знать оптимальный технический способ решения каждой государственной задачи, чтобы иметь осмысленные предпочтения относительно целей государства, распределения приоритетов и допустимых компромиссов. В политической теории эта идея описывается как *разделение демократического труда*: граждане участвуют в выборе общественных целей и представителей, а разработка конкретных способов их достижения в значительной степени делегируется политикам, государственным институтам и специалистам. См. [Stanford Encyclopedia of Philosophy — Democracy, §4.2.5](https://plato.stanford.edu/entries/democracy/#DivDemLab).
+Instead, it uses the following model of political choice:
 
-Подход также учитывает проблему **эпистемической зависимости**: в сложном обществе человек неизбежно опирается на знания специалистов, которые он не способен полностью проверить самостоятельно. См. John Hardwig, [*Epistemic Dependence*](https://doi.org/10.2307/2026523), и Alvin Goldman, [*Experts: Which Ones Should You Trust?*](https://doi.org/10.1111/j.1933-1592.2001.tb00093.x).
+> **interests and values → preferred goals and acceptable trade-offs → views on key political decisions → comparison with parties**
 
-### Два уровня вопросов
+Citizens do not need to know the technically optimal solution to every public problem to have meaningful preferences about state goals, priorities, and acceptable trade-offs. Political theory describes this as a *division of democratic labor*: citizens help choose collective goals and representatives, while much of the work of developing specific ways to achieve those goals is delegated to politicians, public institutions, and specialists. See [Stanford Encyclopedia of Philosophy — Democracy, §4.2.5](https://plato.stanford.edu/entries/democracy/#DivDemLab).
 
-Опросник содержит два взаимодополняющих типа вопросов.
+The approach also recognizes **epistemic dependence**: in a complex society, people inevitably rely on expertise they cannot fully verify themselves. See John Hardwig, [*Epistemic Dependence*](https://doi.org/10.2307/2026523), and Alvin Goldman, [*Experts: Which Ones Should You Trust?*](https://doi.org/10.1111/j.1933-1592.2001.tb00093.x).
 
-**Фундаментальные предпочтения и компромиссы**
+### Two levels of questions
 
-Они измеряют относительно устойчивые политические приоритеты, например:
+The questionnaire includes two complementary types of questions.
 
-- территориальный компромисс ↔ сохранение контроля;
-- свобода образа жизни ↔ единые религиозные нормы;
-- власть парламентского большинства ↔ независимые ограничения власти;
-- низкие налоги ↔ более широкий объём государственных услуг;
-- автономия сообществ ↔ единые государственные стандарты.
+**Fundamental preferences and trade-offs**
 
-Мы стараемся не задавать вопросы вроде «Важна ли вам безопасность?» или «Важно ли равенство?». Такие ценности привлекательны почти для всех и поэтому плохо различают политические предпочтения.
+These measure relatively stable political priorities, such as:
 
-Вместо этого вопрос по возможности формулируется как **конфликт двух легитимных целей**. Пользователь выбирает не между «хорошим» и «плохим», а показывает, чему он отдаёт больший приоритет, когда одновременно получить всё невозможно.
+- territorial compromise ↔ maintaining control;
+- freedom of lifestyle ↔ uniform religious rules;
+- parliamentary majority power ↔ independent limits on power;
+- lower taxes ↔ more extensive public services;
+- community autonomy ↔ common state standards.
 
-**Конкретные вопросы о политических мерах**
+We try to avoid questions such as “Is security important to you?” or “Is equality important?” Almost everyone finds such values appealing, so they do little to distinguish political preferences.
 
-Абстрактных ценностей недостаточно. Две партии могут декларировать одинаковые цели, но предлагать принципиально разные способы их достижения.
+Where possible, a question instead presents a **conflict between two legitimate goals**. Users express which goal they prioritize when both cannot be fully achieved, rather than choosing between “good” and “bad.”
 
-Поэтому Kalpi также спрашивает отношение к некоторым конкретным политическим решениям — например, к гражданскому браку, призыву харедим, палестинскому государству, полномочиям Верховного суда или общественному транспорту в шаббат.
+**Specific policy questions**
 
-Конкретный вопрос включается в основную анкету только если он:
+Abstract values are not enough. Two parties may declare the same goals while proposing fundamentally different ways of achieving them.
 
-- понятен неспециалисту;
-- представляет самостоятельный политический выбор, а не узкую техническую деталь;
-- существенно различает реальные партии;
-- достаточно важен для современного израильского политического конфликта;
-- позволяет достоверно установить позиции партий по публичным источникам.
+Kalpi therefore also asks about specific political decisions, such as civil marriage, conscription of Haredim, a Palestinian state, Supreme Court powers, and public transport on Shabbat.
 
-Выбор вопросов не является нейтральным: набор утверждений определяет структуру политического пространства и создаёт неявные веса для разных тем. Поэтому список вопросов не рассматривается как произвольный набор популярных политических сюжетов.
+A policy question belongs in the core questionnaire only if it:
 
-Исследования VAA также показывают, что универсальная одномерная или заранее заданная двухмерная схема не всегда адекватно описывает реальные различия между партиями. Kalpi поэтому группирует вопросы по содержательным тематическим группам, а не сводит всю политику к одной шкале «лево — право». См. [Otjes & Louwerse, *Spatial models in voting advice applications*](https://doi.org/10.1016/j.electstud.2014.04.004).
+- is understandable to a nonspecialist;
+- represents a political choice in its own right, rather than a narrow technical detail;
+- meaningfully distinguishes actual parties;
+- is sufficiently important to contemporary Israeli political conflict;
+- allows party positions to be established reliably from public sources.
 
-### Шкала и «не знаю»
+Question selection is not neutral: the set of statements shapes the political space and creates implicit weights for different topics. The questionnaire is therefore not treated as an arbitrary collection of popular political issues.
 
-Пять содержательных ответов показывают положение пользователя между левым и правым полюсами конкретного вопроса:
+VAA research also shows that a universal one-dimensional or predetermined two-dimensional model does not always capture actual differences between parties adequately. Kalpi therefore organizes questions into substantive thematic groups instead of reducing all politics to a single left–right scale. See [Otjes & Louwerse, *Spatial models in voting advice applications*](https://doi.org/10.1016/j.electstud.2014.04.004).
+
+### The answer scale and “don't know”
+
+Five substantive answers place the user between the left and right poles of each question:
 
 ```text
--1    полностью ближе к левому полюсу
--0.5  скорее ближе к левому полюсу
- 0    промежуточная позиция между двумя полюсами
-+0.5  скорее ближе к правому полюсу
-+1    полностью ближе к правому полюсу
+-1    fully aligned with the left pole
+-0.5  leaning toward the left pole
+ 0    an intermediate position between the two poles
++0.5  leaning toward the right pole
++1    fully aligned with the right pole
 ```
 
-Kalpi принципиально различает:
+Kalpi distinguishes between:
 
-> **Промежуточная позиция** — пользователь понимает вопрос и осознанно занимает место между двумя полюсами.
+> **An intermediate position** — the user understands the question and deliberately takes a position between its two poles.
 
-и
+and:
 
-> **Не знаю / недостаточно информации** — пользователь не хочет заявлять позицию по этому вопросу.
+> **Don't know / not enough information** — the user does not wish to state a position on this question.
 
-Второй ответ хранится как `null` и не используется для сопоставления с партиями. Мы не интерпретируем отсутствие мнения как центр шкалы. В текущем интерфейсе это отдельная кнопка с клавишей `0`, тогда как промежуточная позиция имеет значение `0` на содержательной шкале.
+The latter is stored as `null` and is excluded from comparison with parties. An absence of opinion is not interpreted as the middle of the scale. In the interface, this is a separate button with the keyboard shortcut `0`, whereas the intermediate substantive answer has the numerical value `0`.
 
-Такое различие важно для опросов: промежуточная позиция и ответ «не знаю» отражают разные состояния респондента, а их смешение может искажать результаты. См. [Pew Research Center — How “Don't know” response options affect cross-national surveys](https://www.pewresearch.org/decoded/2023/09/06/how-adding-a-dont-know-response-option-can-affect-cross-national-survey-results/).
+This distinction matters in surveys: an intermediate position and “don't know” reflect different respondent states, and combining them can distort results. See [Pew Research Center — How “Don't know” response options affect cross-national surveys](https://www.pewresearch.org/decoded/2023/09/06/how-adding-a-dont-know-response-option-can-affect-cross-national-survey-results/).
 
-### Модель тематических групп
+### The thematic group model
 
-Каждый вопрос относится ровно к одной тематической группе. Внутри неё фундаментальные и конкретные вопросы сначала усредняются отдельно. Если присутствуют оба компонента, они объединяются с весами из `data/scoring-config.json`; для большинства тематических групп это `0.6 / 0.4`. Затем результаты групп объединяются с `family_weight`.
+Each question belongs to exactly one thematic group. Within a group, fundamental and policy questions are averaged separately. When both components are present, they are combined using weights from `data/scoring-config.json`, usually `0.6 / 0.4`. Group results are then combined using `family_weight`.
 
-В текущем наборе `education_standards`, `immigration_identity`, `october_7_accountability` и `government_coalition` являются policy-only группами: в них нет фундаментального компонента, поэтому конкретные вопросы усредняются с `policy_weight: 1`, а сама тематическая группа получает `family_weight: 0.5`. Это не индивидуальный приоритет вопроса, а раздельные веса компонента и тематической группы.
+In the current dataset, `education_standards`, `immigration_identity`, `october_7_accountability`, and `government_coalition` are policy-only groups. They have no fundamental component, so policy questions are averaged with `policy_weight: 1`, while the group itself has `family_weight: 0.5`. These are separate component and group weights, not an individual question priority.
 
-Для известной позиции партии сопоставление по одному вопросу рассчитывается так:
+For a known party position, similarity on one question is calculated as:
 
 ```text
 raw_similarity = 1 - abs(user_value - party_value) / 2
 ```
 
-Любая содержательная позиция (`value` не `null`) учитывается с полным весом. Служебное поле `confidence` в JSON не влияет на рейтинг, покрытие или release gate и не выводится в публичном интерфейсе. `insufficient_data` остаётся отсутствующей позицией: такая ячейка исключается из среднего `score`, но сохраняется в расчёте `coverage` с нулевым покрытием.
+Every substantive position (`value` other than `null`) is counted at full weight. The JSON metadata field `confidence` does not affect ranking, coverage, or the release gate, and is not shown in the public interface. `insufficient_data` remains a missing position: the cell is excluded from the average `score`, but remains in the `coverage` calculation with zero coverage.
 
-Для ответа пользователя `null` вопрос не участвует в компоненте и не увеличивает объём использованной информации. Рейтинг строится только после минимум восьми содержательных ответов в шести тематических группах; партия допускается в рейтинг при покрытии для конкретного пользователя не ниже 50%.
+A user's `null` answer does not participate in the component and adds no information. A ranking requires at least eight substantive answers across six thematic groups; a party must have at least 50% coverage for that user's answers to qualify.
 
-### Важность вопросов
+### Question importance
 
-В общей методологии политическая близость и важность вопроса — разные вещи: совпадение по теме, которая человеку безразлична, не обязательно должно иметь тот же эффект, что совпадение по вопросу, определяющему его голос.
+Political closeness and question importance are different things: agreement on a topic a person does not care about need not have the same influence as agreement on an issue that determines their vote.
 
-Текущий `scoring-config.json` содержит `"user_importance_enabled": true` и множитель тематической группы `"user_importance_family_multiplier": 2`. Пользователь может отметить отвеченный вопрос как важный: тематическая группа этого вопроса получает вес `2` вместо `1` в итоговом сопоставлении. Несколько важных вопросов одной группы не складываются. Покрытие данных не зависит от важности, а тематические оси от неё не меняются.
+The current `scoring-config.json` sets `"user_importance_enabled": true` and `"user_importance_family_multiplier": 2`. Users can mark a question with a substantive answer as important: the base `family_weight` of its entire thematic group is multiplied by `2` in the overall comparison. A weight of `1` becomes `2`, and `0.5` becomes `1`. Multiple important questions in the same group do not stack. Data coverage and within-group results are unaffected by importance.
 
-### Требования к формулировкам
+### Wording requirements
 
-При создании вопросов Kalpi старается соблюдать стандартные принципы составления опросов:
+Kalpi aims to follow standard survey design principles:
 
-- один вопрос должен измерять преимущественно одну идею;
-- используется простой и конкретный язык;
-- исключаются по возможности наводящие и эмоционально асимметричные формулировки;
-- обе стороны компромисса описываются в их разумной, а не карикатурной форме;
-- спорное предположение не должно быть незаметно встроено в вопрос;
-- технический механизм не спрашивается там, где пользователь способен осмысленно выбрать только цель или принцип.
+- each question should primarily measure one idea;
+- wording should be simple and concrete;
+- leading or emotionally asymmetric wording should be avoided where possible;
+- both sides of a trade-off should be presented reasonably, not as caricatures;
+- a disputed premise should not be silently embedded in a question;
+- users should not be asked to choose a technical mechanism when they can meaningfully choose only a goal or principle.
 
-Формулировка сама по себе может влиять на ответы, а вопросы с двумя утверждениями затрудняют интерпретацию результата. См. [Pew Research Center — Writing Survey Questions](https://www.pewresearch.org/writing-survey-questions/).
+Wording itself can affect answers, while questions containing two statements make results harder to interpret. See [Pew Research Center — Writing Survey Questions](https://www.pewresearch.org/writing-survey-questions/).
 
-### Что означает результат
+### What the result means
 
-Текущий результат следует интерпретировать так:
+The result should be read as:
 
-> **«При выбранных вопросах, указанных вами позициях и их важности эта партия наиболее близка к вашим заявленным политическим предпочтениям».**
+> **“Given these questions, your stated positions, and their importance to you, this party is closest to your stated political preferences.”**
 
-Он не означает:
+It does not mean:
 
-> «Эта партия объективно лучше остальных» или «Вам следует голосовать за эту партию».
+> “This party is objectively better than the others” or “You should vote for this party.”
 
-Политический выбор зависит также от доверия к политикам, компетентности, вероятности выполнения обещаний, качества кандидатов, коррупционных рисков, возможных коалиций и способности партии реализовать заявленную программу. Kalpi задуман как инструмент структурирования собственного выбора, а не как автоматическая система принятия решения вместо избирателя.
+Political choice also depends on trust, competence, the likelihood of promises being kept, candidate quality, corruption risks, potential coalitions, and a party's ability to implement its platform. Kalpi is intended to help users organize their own choice, not to make the decision for them.
 
-## Ограничения и возможные источники смещения
+## Limitations and potential sources of bias
 
-Kalpi не является объективным измерителем того, за какую партию человеку «следует» голосовать. Результат зависит не только от ответов пользователя, но и от конструкции опросника, выбранных источников, способа кодирования партий и алгоритма сопоставления.
+Kalpi is not an objective measure of which party someone “should” vote for. Results depend on the questionnaire design, selected sources, party position coding, and matching algorithm, as well as on users' answers.
 
-Результат следует рассматривать как **оценку близости при заданной модели**, а не как окончательную рекомендацию.
+Treat the result as **an estimate of closeness under a specified model**, not a definitive recommendation.
 
-### 1. Выбор вопросов уже влияет на результат
+### 1. Question selection already affects the result
 
-Невозможно включить в короткий опросник все политические вопросы. Если в анкете много вопросов о судебной системе и мало вопросов об экономике, первая область автоматически получает больше влияния на итоговое совпадение. Даже при одинаковом формальном весе каждого вопроса их количество создаёт скрытые веса тематических областей.
+A short questionnaire cannot cover every political issue. With a simple average across all questions, topics with more questions have more influence on the final match score. Kalpi's thematic groups reduce this effect, but their composition, base weights, and the questions selected within each group still affect the result.
 
-Поэтому при проектировании Kalpi проверяются тематическое покрытие, баланс между основными политическими областями, отсутствие почти одинаковых вопросов и способность каждого вопроса различать реальные партии. См. König & Nyhuis, [*Assessing the applicability of vote advice applications for estimating party positions*](https://doi.org/10.1177/1354068818790111), а также Garzia & Marschall, [*Research on Voting Advice Applications: State of the Art and Future Directions*](https://doi.org/10.1002/poi3.140).
+When revising the questionnaire, it is therefore important to assess topic coverage, balance across major policy areas, near-duplicate questions, and each question's ability to distinguish actual parties. See König & Nyhuis, [*Assessing the applicability of vote advice applications for estimating party positions*](https://doi.org/10.1177/1354068818790111), and Garzia & Marschall, [*Research on Voting Advice Applications: State of the Art and Future Directions*](https://doi.org/10.1002/poi3.140).
 
-### 2. Формулировка вопроса может менять ответы
+### 2. Question wording can change answers
 
-Даже при неизменной теме ответы могут зависеть от формулировки и подачи. Например, «Следует ли усилить полномочия Верховного суда?» и «Следует ли ограничить возможность парламентского большинства проводить свою программу?» могут касаться одного институционального конфликта, но психологически представляют его по-разному.
+Even on the same topic, responses can depend on wording and presentation. “Should the Supreme Court's powers be strengthened?” and “Should the parliamentary majority's ability to implement its program be limited?” may concern the same institutional conflict but frame it differently.
 
-Kalpi пытается уменьшить этот эффект нейтральным языком, разумным представлением обеих сторон конфликта, отказом от эмоционально нагруженных слов и разделением независимых утверждений на отдельные вопросы. Полностью устранить эффект подачи невозможно.
+Kalpi tries to reduce this effect through neutral language, reasonable presentations of both sides, avoidance of emotionally loaded terms, and separate questions for independent statements. Framing effects cannot be eliminated entirely.
 
-### 3. Кодирование позиции партии содержит неопределённость
+### 3. Coding party positions involves uncertainty
 
-Позиция партии не всегда существует в виде однозначного ответа «полностью за» или «полностью против». Источники могут противоречить друг другу: официальная программа, заявления председателя, заявления отдельных депутатов, голосования в Кнессете, коалиционные соглашения и фактические действия правительства.
+A party's position is not always an unambiguous “fully support” or “fully oppose.” Sources may conflict: official platforms, statements by party leaders or individual members of the Knesset, parliamentary votes, coalition agreements, and government actions.
 
-Поэтому позиция должна сопровождаться информацией о происхождении данных: источником, датой, цитатой или описанием подтверждений и объяснением спорных случаев. Отсутствие надёжных данных не должно автоматически интерпретироваться как центристская позиция партии.
+Positions therefore need provenance: a source, date, quotation or description of supporting evidence, and an explanation of disputed cases. A lack of reliable data must not automatically be interpreted as a centrist party position.
 
-### 4. Заявления и действия партии — не одно и то же
+### 4. Party statements and actions are different
 
-Предвыборная программа показывает заявленные намерения, но не гарантирует будущих действий. Партия может изменить позицию, пойти на коалиционный компромисс, отказаться от обещания, проголосовать иначе ради другого соглашения или не иметь возможности реализовать программу.
+An election platform states intentions but does not guarantee future action. A party may change its position, compromise in coalition talks, abandon a promise, vote differently as part of another agreement, or lack the means to implement its program.
 
-Поэтому Kalpi измеряет совместимость заявленных и наблюдаемых политических позиций, а не вероятность выполнения конкретного обещания. При наличии достаточных данных полезно сопоставлять программы, официальные заявления, законодательную активность и реальные голосования.
+Kalpi therefore measures compatibility with stated and observed political positions, not the probability of a promise being fulfilled. Where sufficient data exists, platforms and official statements should be compared with legislative activity and actual votes.
 
-### 5. Коррелирующие вопросы могут дважды считать одну позицию
+### 5. Correlated questions can count the same position twice
 
-Ответы по гражданскому браку, транспорту в шаббат, полномочиям Главного раввината и муниципальной автономии могут в значительной степени отражать одно фундаментальное отношение к религии и государству. Если каждый вопрос независимо получает полный вес, одна ценность пользователя может оказаться посчитана несколько раз.
+Answers about civil marriage, Shabbat transport, Chief Rabbinate powers, and municipal autonomy may largely reflect the same underlying view of religion and state. If every question receives a full independent weight, the same value may be counted several times.
 
-Поэтому при развитии расчёта нужно контролировать тематическое дублирование, корреляцию вопросов, суммарный вес каждой области и возможность искусственного усиления одной позиции большим числом похожих вопросов. Модель тематических групп текущей ветки — один из способов сделать эту структуру явной, но она не устраняет проблему автоматически.
+As the model develops, it is necessary to monitor thematic duplication, correlations, each area's total weight, and whether a large number of similar questions artificially amplifies one position. Kalpi's thematic group model makes this structure explicit, but does not automatically solve the problem.
 
-### 6. «Не знаю» уменьшает информацию
+### 6. “Don't know” reduces information
 
-Ответ `null` намеренно не даёт партии ни преимущества, ни штрафа по вопросу и не превращает незнание в центр шкалы. Аналогично, отсутствующая позиция партии не добавляет нейтральный балл: она исключается из среднего `score` и уменьшает `coverage`. Следствие очевидно: чем больше вопросов пользователь пропускает или отмечает как неизвестные, тем меньше информации доступно для сопоставления.
+A `null` answer deliberately gives a party neither an advantage nor a penalty and does not turn uncertainty into the midpoint of the scale. Likewise, a missing party position adds no neutral score: it is excluded from the average `score` and reduces `coverage`. The more questions users leave unanswered or mark as unknown, the less information is available for comparison.
 
-Поэтому будущий результат должен показывать не только совпадение, но и покрытие, например `18 из 27 вопросов`. Результат на основании 18 содержательных ответов информативнее результата на основании четырёх. В текущем механизме расчёта неизвестная позиция партии также снижает покрытие; при этом она не считается содержательной центральной позицией.
+Results show the match score and party data coverage specifically for the user's substantive answers. `coverage` is the weighted share of available party positions, accounting for components and thematic groups; it is not the share of answered questions in the whole questionnaire. It uses base weights without the importance multiplier. Even high coverage based on few answers does not mean the comparison represents all of the user's views, which is why separate answer-count and thematic-group thresholds apply.
 
-### 7. Небольшая разница между партиями может быть незначимой
+### 7. Small differences between parties may not be meaningful
 
-Если алгоритм показывает:
+If the algorithm shows:
 
 ```text
-Партия A — 78%
-Партия B — 77%
+Party A — 78%
+Party B — 77%
 ```
 
-это не доказывает, что партия A существенно лучше соответствует пользователю. Разница может измениться из-за одного спорного кодирования, изменения веса, другой разумной формулировки расчёта, нового источника или одного дополнительного ответа пользователя.
+this does not prove that Party A is a substantially better match. The difference may change because of one disputed coding decision, a weight adjustment, another reasonable scoring formula, a new source, or one additional user answer.
 
-Близкие результаты лучше представлять как группу приблизительно одинаково подходящих партий, а не создавать ложную точность.
+Close results are better presented as a group of approximately similar matches than as a falsely precise ranking.
 
-### 8. Итог зависит от выбранной функции расстояния
+### 8. Results depend on the distance function
 
-Любой алгоритм сопоставления содержит нормативные решения: насколько хуже полное расхождение, чем частичное; линейно ли растёт цена расхождения; как нормализовать покрытие; как учитывать фундаментальные и конкретные вопросы; как обращаться с отсутствующей позицией партии.
+Every matching algorithm contains normative choices: how much worse total disagreement is than partial disagreement; whether the cost of disagreement grows linearly; how to normalize coverage; how to combine fundamental and policy questions; and how to handle missing party positions.
 
-Нет единственной математически правильной функции. Формула должна быть простой, опубликованной, воспроизводимой и проверяемой анализом чувствительности. Для текущей ветки формула опубликована выше.
+There is no single mathematically correct function. The formula should be simple, public, reproducible, and open to sensitivity analysis. The formula used here is published above.
 
-### 9. Политические позиции меняются со временем
+### 9. Political positions change over time
 
-Kalpi представляет позиции партий на определённую дату. Особенно быстро могут меняться позиции по войне и безопасности, коалиционным вопросам, конкретным законопроектам и текущим институциональным конфликтам.
+Kalpi represents party positions as of a particular date. Positions can change especially quickly on war and security, coalitions, specific bills, and current institutional disputes.
 
-Каждая версия данных должна иметь дату исследования и, желательно, историю изменений. Старые данные нельзя незаметно использовать как описание текущей позиции партии.
+Each data version should have a research date and, ideally, a change history. Old data must not silently be presented as a party's current position.
 
-### 10. Партия — не единый человек
+### 10. A party is not a single person
 
-Внутри одной партии могут существовать серьёзные разногласия. Позиция председателя, большинства фракции, конкретного депутата и официальной программы не всегда совпадает.
+There can be serious disagreements within a party. The views of its leader, most of its parliamentary faction, an individual member of the Knesset, and its official platform do not always coincide.
 
-Kalpi вынужден агрегировать это разнообразие до одной позиции партии, поскольку пользователь голосует за партийный список, а не за математически однородного политического агента. Это неизбежное упрощение модели, поэтому в данных фиксируются `entity_scope` и происхождение источника.
+Kalpi must aggregate this diversity into a single party position because users vote for a party list rather than a mathematically homogeneous political actor. This is an unavoidable simplification, so the data records `entity_scope` and source provenance.
 
-### 11. Kalpi плохо измеряет качество политиков
+### 11. Kalpi does not adequately measure politicians' quality
 
-Совпадение по политическим позициям — только один компонент выбора. Опросник почти не способен напрямую оценить компетентность руководства, качество управления, коррупционные риски, честность, способность реализовывать программу, качество кандидатов, институциональную культуру и вероятность участия в определённой коалиции.
+Agreement on political positions is only one part of a voting decision. The questionnaire has little ability to directly assess leadership competence, governance quality, corruption risks, honesty, ability to deliver a program, candidate quality, institutional culture, or the likelihood of joining a particular coalition.
 
-Человек может рационально предпочесть партию с совпадением 75% партии с совпадением 85%, если значительно больше доверяет её способности управлять государством. Kalpi не должен скрывать это ограничение.
+Someone may reasonably prefer a party with a 75% match over one with an 85% match if they have much greater trust in its ability to govern. Kalpi should not conceal this limitation.
 
-### 12. Коалиционная система Израиля усложняет интерпретацию
+### 12. Israel's coalition system complicates interpretation
 
-Голос за партию в парламентской системе влияет не только на её собственную программу, но и на размер фракции, вероятную коалицию, распределение министерств, переговорную силу, возможность формирования правительства и способность блокировать решения других партий.
+A vote for a party in a parliamentary system affects more than its own platform: it influences faction size, likely coalitions, ministerial allocations, bargaining power, government formation, and the ability to block other parties' decisions.
 
-Поэтому наиболее близкая пользователю партия не всегда является его оптимальным выбором с точки зрения стратегического голосования. Kalpi отвечает на вопрос «Какие партии ближе всего к моим политическим предпочтениям?», а не на вопрос «Какой голос максимизирует вероятность желаемого состава следующего правительства?». Вторая задача требует отдельной модели, зависящей от текущих опросов, электорального порога и возможных коалиций.
+The closest party is therefore not always the optimal choice for strategic voting. Kalpi asks “Which parties are closest to my political preferences?”, not “Which vote maximizes the probability of my preferred next government?” The latter requires a separate model based on current polls, the electoral threshold, and possible coalitions.
 
-### 13. Опросник не заменяет собственное решение пользователя
+### 13. The questionnaire does not replace the user's own decision
 
-Главная функция Kalpi — уменьшить стоимость получения политической информации. Он помогает сформулировать собственные предпочтения, увидеть важные вопросы, сравнить их с позициями партий, обнаружить неожиданные совпадения и понять, какие партии стоит изучить подробнее.
+Kalpi's main purpose is to reduce the effort required to obtain political information. It helps users articulate their preferences, identify important issues, compare them with party positions, discover unexpected agreement, and decide which parties to investigate further.
 
-Итог следует формулировать не как «Вам следует голосовать за X», а как «На основании ваших ответов наиболее близки к вашим политическим предпочтениям X, Y и Z». После этого пользователь может отдельно учитывать качество кандидатов, доверие, коалиционные сценарии и другие факторы, которые не входят в модель.
+The result should say “Based on your answers, X, Y, and Z are closest to your political preferences,” rather than “You should vote for X.” Users can then separately consider candidate quality, trust, coalition scenarios, and other factors outside the model.
 
-### Прозрачность и воспроизводимость
+### Transparency and reproducibility
 
-Чтобы эти ограничения можно было проверять, Kalpi стремится публиковать:
+To make these limitations open to scrutiny, the repository provides:
 
-- полный список вопросов и их полюса;
-- структуру тематических групп и веса компонентов;
-- позиции партий, когда они подтверждены;
-- источник, дату, охват и подтверждающие материалы каждой позиции;
-- формулу расчёта и правила обработки `unknown`;
-- покрытие и статус данных;
-- версии опросника, позиций, расчёта и данных.
+- the full question list and its poles;
+- thematic group structure and component weights;
+- party positions where supported by evidence;
+- sources, dates, scope, and supporting evidence for each position;
+- the scoring formula and handling of `null` answers and `insufficient_data` status;
+- coverage and data status;
+- questionnaire, position, scoring, and data versions.
 
-Результат Kalpi должен быть не только получаемым, но и доступным для аудита, воспроизводимым и оспоримым. Неопределённость лучше показать пользователю, чем скрывать её за псевдоточной цифрой.
+Kalpi results should be auditable, reproducible, and open to challenge. Uncertainty is better shown to users than hidden behind a falsely precise number.
 
-## Данные и границы подтверждений
+## Data and evidence boundaries
 
-Канонические данные для работы приложения находятся в JSON-файлах:
+Canonical application data is stored in JSON files:
 
-- `data/parties.json` — 12 активных партий/списков, участвующих в текущей матрице;
-- `data/questions.json` — 26 вопросов, их типы, порядок и русские формулировки;
-- `data/scoring-config.json` — версии, шкала ответов, тематические группы, веса и проверка готовности релиза;
-- `data/positions.json` — полная матрица `party × question`: 292 из 312 ячеек содержат позицию, 20 остаются `insufficient_data`;
-- `data/sources.json` — архив источников, доступных для ручной проверки.
+- `data/parties.json` — the 12 active parties/lists in the current matrix;
+- `data/questions.json` — 26 questions, their types, order, and Russian wording;
+- `data/scoring-config.json` — versions, answer scale, thematic groups, weights, and release readiness checks;
+- `data/positions.json` — the complete `party × question` matrix: 292 of 312 cells contain a position, while 20 remain `insufficient_data`;
+- `data/sources.json` — the source archive available for manual review.
 
-Новые партийные позиции нельзя переносить в канонические данные только на основании общего образа партии, названия, предположения или заявления лидера без подходящего `entity_scope`. Для `known`, `mixed` и `historical` нужны источник, дата, подтверждающие материалы и объяснение. `insufficient_data` означает `value: null`, `confidence: 0` и отсутствие подтверждающих материалов; это не центральная позиция.
+New party positions must not enter canonical data solely on the basis of a party's general image, name, assumptions, or a leader's statement without an appropriate `entity_scope`. `known`, `mixed`, and `historical` require a source, date, supporting evidence, and explanation. `insufficient_data` means `value: null`, `confidence: 0`, and no supporting evidence; it is not a centrist position.
 
-Текущие JSON-файлы являются единственным источником production-данных. После ручной проверки обновляйте `data/sources.json` и `data/positions.json` напрямую.
+The current JSON files are the sole source of production data. After manual review, update `data/sources.json` and `data/positions.json` directly.
 
-## Текущие версии и проверка готовности релиза
+## Languages and translations
 
-Актуальные значения находятся в `data/scoring-config.json`:
+Russian wording is stored in the source HTML/JS files and canonical data. English and Hebrew translations are in `locales/`:
+
+- `ui-en.json` / `ui-he.json` — shared interface text;
+- `app-en.json` / `app-he.json` — questionnaire and result strings;
+- `pages-en.json` / `pages-he.json` — page text;
+- `data-en.json` / `data-he.json` — translations of text from the data.
+
+Switching languages preserves the user's answers; party positions, formulas, and weights are shared across languages.
+
+Documentation is available in English in [README.md](README.md), Russian in [README.ru.md](README.ru.md), and Hebrew in [README.he.md](README.he.md). Update all three when behavior or methodology changes. Do not translate identifiers, commands, paths, or formulas.
+
+## Current versions and release readiness
+
+Current values are in `data/scoring-config.json`:
 
 ```text
 schema_version:             kalpi-questionnaire-schema-v2
@@ -274,21 +291,25 @@ prototype_trust_policy:     all_value_positions_full_confidence
 user_importance_enabled:    true
 ```
 
-`recommendation_mode: live` не отменяет проверку готовности релиза: приложение выполняет её при открытии результата и возвращается к `data_not_ready`, если данные деградировали.
+The configuration's `near_tie_points: 0.03` defines a computed flag for parties within 3 percentage points of the leader; the interface note about close top results uses a separate 5-point threshold.
 
-Изменение только партийной матрицы не сбрасывает ответы, сохранённые в браузере: состояние переносится на новую `position_matrix_version`, а результат пересчитывается по актуальным позициям. При смене ориентации полюсов вопроса Kalpi переносит совместимое состояние отдельной миграцией: инвертирует числовые ответы только затронутых вопросов, сохраняет «Не знаю», приоритеты, текущий вопрос и факт завершения.
+`recommendation_mode: live` does not bypass the release readiness check: the application runs it when opening results and returns to `data_not_ready` if the data no longer passes.
 
-## Запуск
+Changes to the party matrix alone do not reset browser-saved answers: state is migrated to the new `position_matrix_version`, and results are recalculated from current positions. When question pole orientation changes, Kalpi migrates compatible state through a dedicated migration: it inverts numerical answers only for affected questions, preserving “don't know,” priorities, the current question, and completion status.
 
-На Windows можно запустить `start.bat` двойным кликом или из PowerShell:
+## Running locally
+
+Local serving requires Python 3; JavaScript checks require Node.js.
+
+On Windows, double-click `start.bat`, or run this from PowerShell:
 
 ```powershell
 python tools/serve.py --no-browser
 ```
 
-Затем откройте адрес, который напечатает сервер. Локальный HTTP-сервер нужен, чтобы приложение могло загружать `data/*.json`; прямое открытие `index.html` через `file://` не поддерживается.
+Open the address printed by the server. A local HTTP server is required to load `data/*.json`; opening `index.html` directly through `file://` is not supported.
 
-## Проверка
+## Validation
 
 ```powershell
 node --test tests/*.test.js
@@ -297,4 +318,4 @@ python tests/sync_position_matrix.test.py
 node tools/release-gate-report.js --check
 ```
 
-Полный отчёт gate и synthetic fixtures можно записать командой `node tools/release-gate-report.js --write docs/release-gate-report.md`.
+Write the full gate report and synthetic fixtures with `node tools/release-gate-report.js --write docs/release-gate-report.md`.
