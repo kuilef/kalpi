@@ -62,6 +62,21 @@ test('public pages load canonical JSON at runtime without a generated data bundl
   assert.match(html, /<script src="language-ui\.js\?v=[^"]+"><\/script>/);
 });
 
+test('main page exposes English default social metadata and localized share entry points', () => {
+  const html = read('index.html');
+  assert.match(html, /<html lang="en" dir="ltr">/);
+  assert.match(html, /<title data-i18n="Сравни свои взгляды с партиями Израиля на выборах в Кнессет 2026">Compare your views with Israel’s parties in the 2026 Knesset election<\/title>/);
+  assert.match(html, /<meta name="description" content="Answer the questions and compare your views with the parties in the 2026 Knesset election">/);
+  assert.match(html, /<meta property="og:title" content="Compare your views with Israel’s parties in the 2026 Knesset election">/);
+  assert.match(html, /<meta property="og:locale" content="en_US">/);
+  for (const locale of ['en', 'he', 'ru']) {
+    const entry = read(`${locale}/index.html`);
+    assert.match(entry, new RegExp(`<html lang="${locale}"`));
+    assert.match(entry, /<meta property="og:title"/);
+    assert.match(entry, new RegExp(`index\.html\\?lang=${locale}`));
+  }
+});
+
 test('public analytics page has accessible filter and detail hosts', () => {
   const html = read('analytics.html');
   for (const id of ['analytics-party-filter', 'analytics-family-filter', 'analytics-status-filter', 'analytics-scope-filter', 'analytics-verification-filter', 'analytics-summary', 'analytics-matrix', 'analytics-detail', 'analytics-provenance', 'analytics-review-queue']) {

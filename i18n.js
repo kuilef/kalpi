@@ -5,8 +5,8 @@
 })(typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
 
-  const SUPPORTED_LOCALES = Object.freeze(['en', 'ru', 'he']);
-  const DEFAULT_LOCALE = 'ru';
+  const SUPPORTED_LOCALES = Object.freeze(['en', 'he', 'ru']);
+  const DEFAULT_LOCALE = 'en';
   const STORAGE_KEY = 'kalpiPrototypeLocaleV1';
   const catalogs = { ru: Object.create(null), en: Object.create(null), he: Object.create(null) };
   const missing = new Set();

@@ -11,10 +11,12 @@ const { buildCloudflareSite, isSafeOutputDirectory } = require('../tools/build_c
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const EXPECTED_FILES = [
   'index.html',
+  ...['en', 'he', 'ru'].map((locale) => `${locale}/index.html`),
   'analytics.html',
   'methodology.html',
   'styles.css',
   'i18n.js',
+  'share-metadata.js',
   'language-ui.js',
   ...['en', 'he'].flatMap((locale) => ['pages', 'ui', 'data', 'app'].map((group) => `locales/${group}-${locale}.json`)),
   'data-loader.js',
@@ -45,6 +47,7 @@ test('buildCloudflareSite copies only the public runtime allowlist', () => {
 
     assert.deepEqual(result.files, [...EXPECTED_FILES].sort());
     assert.equal(fs.existsSync(path.join(outputDir, 'index.html')), true);
+    for (const locale of ['en', 'he', 'ru']) assert.equal(fs.existsSync(path.join(outputDir, locale, 'index.html')), true);
     assert.equal(fs.existsSync(path.join(outputDir, 'data', 'positions.json')), true);
     assert.equal(fs.existsSync(path.join(outputDir, 'tests')), false);
     assert.equal(fs.existsSync(path.join(outputDir, 'README.md')), false);

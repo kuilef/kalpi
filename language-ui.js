@@ -25,6 +25,7 @@
     const locale = I18n.getLocale();
     document.documentElement.lang = locale;
     document.documentElement.dir = I18n.isRtl(locale) ? 'rtl' : 'ltr';
+    window.KalpiShareMetadata?.apply(document, locale);
     root.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = I18n.text(element.dataset.i18n); });
     root.querySelectorAll('[data-i18n-html]').forEach((element) => { element.innerHTML = I18n.text(element.dataset.i18nHtml); });
     for (const attribute of ['aria-label', 'title']) {
@@ -88,7 +89,7 @@
     nav.className = 'language-switcher';
     nav.setAttribute('aria-label', 'Language / Язык / שפה');
     nav.dir = 'ltr';
-    for (const locale of ['ru', 'en', 'he']) {
+    for (const locale of ['en', 'he', 'ru']) {
       const button = document.createElement('button');
       button.type = 'button';
       button.dataset.language = locale;

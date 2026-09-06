@@ -3,6 +3,9 @@ const assert = require('node:assert/strict');
 const I18n = require('../i18n.js');
 
 test('URL language overrides stored choice, invalid choices fall back safely', () => {
+  assert.deepEqual(I18n.SUPPORTED_LOCALES, ['en', 'he', 'ru']);
+  assert.equal(I18n.DEFAULT_LOCALE, 'en');
+  assert.equal(I18n.loadLocale({ getItem: () => null }, ''), 'en');
   const storage = { getItem: () => 'he' };
   assert.equal(I18n.loadLocale(storage, '?lang=en'), 'en');
   assert.equal(I18n.loadLocale(storage, '?lang=invalid'), 'he');
