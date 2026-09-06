@@ -12,12 +12,26 @@
     return String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' }[char]));
   }
 
+  function roundedPercentage(value) {
+    const percentage = Math.round(Number(value || 0) * 100);
+    return Object.is(percentage, -0) ? 0 : percentage;
+  }
+
   function pct(value) {
-    return `${Math.round(Number(value || 0) * 100)}%`;
+    return `${roundedPercentage(value)}%`;
   }
 
   function percentagePoints(value) {
-    return t('{count} п.п.', { count: Math.round(Number(value || 0) * 100) });
+    return t('{count} п.п.', { count: roundedPercentage(value) });
+  }
+
+  function rankingGap(value) {
+    if (value == null) return '—';
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return '—';
+    if (numeric === 0) return t('лидер');
+    const percentage = roundedPercentage(Math.max(0, numeric));
+    return percentage === 0 ? '0%' : `−${percentage}%`;
   }
 
   function ratio(value) {
@@ -118,7 +132,7 @@
   }
 
   function renderRankingRow(result, index) {
-    const gap = result.gapFromLeader == null ? '—' : result.gapFromLeader === 0 ? t('лидер') : `−${pct(result.gapFromLeader)}`;
+    const gap = rankingGap(result.gapFromLeader);
     const partyName = escapeHtml(t(result.party?.name_ru || result.partyId));
     return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${partyName}</strong><span>${pct(result.score)}</span><span>${escapeHtml(t('данные {coverage}', { coverage: pct(result.coverage) }))}</span><span>${gap}</span></li>`;
   }

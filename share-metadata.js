@@ -13,8 +13,8 @@
       alternates: Object.freeze(['he_IL', 'ru_RU']),
     }),
     he: Object.freeze({
-      title: 'השוו את עמדותיכם למפלגות בישראל בבחירות לכנסת 2026',
-      description: 'ענו על השאלות והשוו את עמדותיכם למפלגות בבחירות לכנסת 2026',
+      title: 'השוו את העמדות שלכם למפלגות בישראל בבחירות לכנסת ה־26',
+      description: 'ענו על השאלות והשוו את העמדות שלכם למפלגות בבחירות לכנסת ה־26',
       locale: 'he_IL',
       alternates: Object.freeze(['en_US', 'ru_RU']),
     }),

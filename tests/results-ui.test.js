@@ -219,6 +219,16 @@ test('live result shows only the top seven eligible parties and notes a close to
   assert.match(html, /5 п\.п\./);
 });
 
+test('live result does not render a negative zero ranking gap', () => {
+  const html = Results.renderLiveResult({
+    recommendation: recommendationForScores([0.71, 0.7099]),
+    sourcesById: new Map(),
+  });
+
+  assert.match(html, /0%/);
+  assert.doesNotMatch(html, /−0%/);
+});
+
 test('thematic profile places expanded disagreements before collapsed matches', () => {
   const families = [
     family('Разногласие 1', 0.1),

@@ -9,7 +9,12 @@ test('share metadata has localized titles, descriptions and Open Graph locales',
     locale: 'en_US',
     alternates: ['he_IL', 'ru_RU'],
   });
-  assert.equal(ShareMetadata.get('he').locale, 'he_IL');
+  assert.deepEqual(ShareMetadata.get('he'), {
+    title: 'השוו את העמדות שלכם למפלגות בישראל בבחירות לכנסת ה־26',
+    description: 'ענו על השאלות והשוו את העמדות שלכם למפלגות בבחירות לכנסת ה־26',
+    locale: 'he_IL',
+    alternates: ['en_US', 'ru_RU'],
+  });
   assert.equal(ShareMetadata.get('ru').locale, 'ru_RU');
   assert.equal(ShareMetadata.get('unknown').title, ShareMetadata.get('en').title);
 });
@@ -35,7 +40,7 @@ test('share metadata updates document title and social meta tags', () => {
     },
   };
   ShareMetadata.apply(document, 'he');
-  assert.equal(document.title, 'השוו את עמדותיכם למפלגות בישראל בבחירות לכנסת 2026');
+  assert.equal(document.title, 'השוו את העמדות שלכם למפלגות בישראל בבחירות לכנסת ה־26');
   assert.equal(nodes.get('description').content, ShareMetadata.get('he').description);
   assert.equal(nodes.get('og:title').content, document.title);
   assert.equal(nodes.get('og:locale').content, 'he_IL');
