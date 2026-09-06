@@ -5,6 +5,9 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
+  const I18n = typeof module === 'object' && module.exports ? require('./i18n.js') : globalThis.KalpiI18n;
+  const t = (text, params) => I18n.text(text, params);
+
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' }[char]));
   }
@@ -14,7 +17,7 @@
   }
 
   function percentagePoints(value) {
-    return `${Math.round(Number(value || 0) * 100)} п.п.`;
+    return t('{count} п.п.', { count: Math.round(Number(value || 0) * 100) });
   }
 
   function ratio(value) {
@@ -26,31 +29,31 @@
   const ANSWER_VALUES = [-1, -0.5, 0, 0.5, 1];
 
   function answerLabel(question, value) {
-    if (value == null) return 'Нет подтверждённой позиции';
+    if (value == null) return t('Нет подтверждённой позиции');
     if (!question) return String(value);
-    if (value === -1) return 'Полностью ближе к левому полюсу';
-    if (value === -0.5) return 'Скорее ближе к левому полюсу';
-    if (value === 0) return 'Промежуточная позиция';
-    if (value === 0.5) return 'Скорее ближе к правому полюсу';
-    if (value === 1) return 'Полностью ближе к правому полюсу';
+    if (value === -1) return t('Полностью ближе к левому полюсу');
+    if (value === -0.5) return t('Скорее ближе к левому полюсу');
+    if (value === 0) return t('Промежуточная позиция');
+    if (value === 0.5) return t('Скорее ближе к правому полюсу');
+    if (value === 1) return t('Полностью ближе к правому полюсу');
     return String(value);
   }
 
   function lowerFirst(value) {
     const text = String(value || '');
-    return text ? text.charAt(0).toLowerCase() + text.slice(1) : text;
+    return I18n.getLocale() === 'ru' && text ? text.charAt(0).toLowerCase() + text.slice(1) : text;
   }
 
   function userAnswerLabel(question, value) {
-    if (value == null) return 'Не знаю / недостаточно информации';
-    if (!question || !Number.isFinite(Number(value))) return 'Ответ не выбран';
+    if (value == null) return t('Не знаю / недостаточно информации');
+    if (!question || !Number.isFinite(Number(value))) return t('Ответ не выбран');
     const numeric = Number(value);
-    if (numeric === -1) return question.left_pole_ru || 'Левый полюс';
-    if (numeric === -0.5) return `Скорее ${lowerFirst(question.left_pole_ru)}`;
-    if (numeric === 0) return 'Промежуточная позиция';
-    if (numeric === 0.5) return `Скорее ${lowerFirst(question.right_pole_ru)}`;
-    if (numeric === 1) return question.right_pole_ru || 'Правый полюс';
-    return 'Ответ не выбран';
+    if (numeric === -1) return t(question.left_pole_ru || 'Левый полюс');
+    if (numeric === -0.5) return t('Скорее {position}', { position: lowerFirst(t(question.left_pole_ru)) });
+    if (numeric === 0) return t('Промежуточная позиция');
+    if (numeric === 0.5) return t('Скорее {position}', { position: lowerFirst(t(question.right_pole_ru)) });
+    if (numeric === 1) return t(question.right_pole_ru || 'Правый полюс');
+    return t('Ответ не выбран');
   }
 
   function positionClass(value) {
@@ -62,11 +65,12 @@
     const marker = (name, label, value) => value === value && value === Number(value)
       ? `<span class="position-marker position-marker-${name}" data-position-marker="${name}" aria-hidden="true">${label}</span>`
       : '';
-    const slots = ANSWER_VALUES.map((value) => `<span class="position-axis-slot position-axis-slot-${positionClass(value)}"><span class="position-axis-tick" aria-hidden="true"></span>${userValue === value ? marker('user', 'В', value) : ''}${partyValue === value ? marker('party', 'П', value) : ''}</span>`).join('');
-    return `<div class="position-axis" role="group" aria-label="Положение ответов на шкале вопроса"><div class="position-axis-poles"><span><b>Левый полюс</b>${escapeHtml(question.left_pole_ru)}</span><span><b>Правый полюс</b>${escapeHtml(question.right_pole_ru)}</span></div><div class="position-axis-track">${slots}</div><div class="position-axis-legend"><span><i class="position-marker position-marker-user" aria-hidden="true">В</i> Вы: ${escapeHtml(answerLabel(question, userValue))}</span><span><i class="position-marker position-marker-party" aria-hidden="true">П</i> Партия: ${escapeHtml(answerLabel(question, partyValue))}</span></div></div>`;
+    const slots = ANSWER_VALUES.map((value) => `<span class="position-axis-slot position-axis-slot-${positionClass(value)}"><span class="position-axis-tick" aria-hidden="true"></span>${userValue === value ? marker('user', escapeHtml(t('В')), value) : ''}${partyValue === value ? marker('party', escapeHtml(t('П')), value) : ''}</span>`).join('');
+    return `<div class="position-axis" role="group" aria-label="${escapeHtml(t('Положение ответов на шкале вопроса'))}"><div class="position-axis-poles"><span><b>${escapeHtml(t('Левый полюс'))}</b>${escapeHtml(t(question.left_pole_ru))}</span><span><b>${escapeHtml(t('Правый полюс'))}</b>${escapeHtml(t(question.right_pole_ru))}</span></div><div class="position-axis-track">${slots}</div><div class="position-axis-legend"><span><i class="position-marker position-marker-user" aria-hidden="true">${escapeHtml(t('В'))}</i> ${escapeHtml(t('Вы:'))} ${escapeHtml(answerLabel(question, userValue))}</span><span><i class="position-marker position-marker-party" aria-hidden="true">${escapeHtml(t('П'))}</i> ${escapeHtml(t('Партия:'))} ${escapeHtml(answerLabel(question, partyValue))}</span></div></div>`;
   }
 
   function substantiveAnswerLabel(count) {
+    if (I18n.getLocale() !== 'ru') return t(count === 1 ? '{count} содержательный ответ' : '{count} содержательных ответов', { count });
     const lastTwo = count % 100;
     const last = count % 10;
     if (lastTwo < 11 || lastTwo > 14) {
@@ -79,14 +83,14 @@
   function renderDataNotReady({ questions, answers, coverage }) {
     const substantive = (questions || []).filter((question) => typeof answers?.[question.id] === 'number').length;
     const unknown = (questions || []).filter((question) => answers?.[question.id] === null).length;
-    return `<section class="data-not-ready-result"><h2>Данные партий ещё не готовы для рекомендации</h2><p>Ваши ответы сохранены. Мы не показываем рейтинг, пока матрица позиций партий не прошла установленную проверку покрытия и источников.</p><dl class="completion-metrics"><div><dt>Содержательные ответы</dt><dd>${substantiveAnswerLabel(substantive)}</dd></div><div><dt>Не знаю</dt><dd>${unknown} ответ «Не знаю»</dd></div><div><dt>Матрица позиций</dt><dd>${coverage?.knownCells || 0} / ${coverage?.totalCells || 0}</dd></div></dl></section>`;
+    return `<section class="data-not-ready-result"><h2>${escapeHtml(t('Данные партий ещё не готовы для рекомендации'))}</h2><p>${escapeHtml(t('Ваши ответы сохранены. Мы не показываем рейтинг, пока матрица позиций партий не прошла установленную проверку покрытия и источников.'))}</p><dl class="completion-metrics"><div><dt>${escapeHtml(t('Содержательные ответы'))}</dt><dd>${substantiveAnswerLabel(substantive)}</dd></div><div><dt>${escapeHtml(t('Не знаю'))}</dt><dd>${escapeHtml(t('{count} ответ «Не знаю»', { count: unknown }))}</dd></div><div><dt>${escapeHtml(t('Матрица позиций'))}</dt><dd>${coverage?.knownCells || 0} / ${coverage?.totalCells || 0}</dd></div></dl></section>`;
   }
 
   function renderSources(question, sourcesById) {
     return (question.position?.evidence || []).map((sourceId) => {
       const source = sourcesById.get(sourceId);
       if (!source) return `<span>${escapeHtml(sourceId)}</span>`;
-      const label = escapeHtml(source.title || source.id);
+      const label = `<bdi dir="auto">${escapeHtml(t(source.title || source.id))}</bdi>`;
       return source.url ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${label}</a>` : `<span>${label}</span>`;
     }).join(', ');
   }
@@ -94,9 +98,9 @@
   function renderFamily(family, sourcesById, questionsById, { openQuestions = false, comparableOnly = false } = {}) {
     const hasScore = family.score != null;
     const score = ratio(family.score);
-    const scoreLabel = hasScore ? pct(family.score) : 'Нет данных для сравнения';
+    const scoreLabel = hasScore ? pct(family.score) : t('Нет данных для сравнения');
     const scoreMarkup = hasScore
-      ? `<div class="family-bar" aria-label="Совпадение ${scoreLabel}"><progress class="family-progress" max="1" value="${score}">${scoreLabel}</progress></div>`
+      ? `<div class="family-bar" aria-label="${escapeHtml(t('Совпадение {score}', { score: scoreLabel }))}"><progress class="family-progress" max="1" value="${score}">${scoreLabel}</progress></div>`
       : `<p class="family-score-missing">${scoreLabel}</p>`;
     const openAttribute = openQuestions ? ' open' : '';
     const visibleQuestions = (family.questions || []).filter((question) => !comparableOnly || question.partyValue != null);
@@ -106,25 +110,25 @@
       const scope = question.position?.entity_scope || '—';
       const partyValue = question.partyValue == null ? null : Number(question.partyValue);
       const title = questionData?.short_title_ru || question.questionId;
-      const promptHtml = questionData?.prompt_ru ? `<p class="question-profile-prompt">${escapeHtml(questionData.prompt_ru)}</p>` : '';
+      const promptHtml = questionData?.prompt_ru ? `<p class="question-profile-prompt">${escapeHtml(t(questionData.prompt_ru))}</p>` : '';
       const axisHtml = renderPositionAxis(questionData, Number(question.userValue), partyValue);
-      return `<details class="question-evidence"${openAttribute}><summary><span class="question-evidence-title">${escapeHtml(title)}</span><span class="question-evidence-meta">совпадение ${pct(question.evidenceSimilarity)} · покрытие ${pct(question.coverage)}</span></summary>${promptHtml}${axisHtml}<dl class="evidence-facts"><div><dt>Ваш ответ</dt><dd>${escapeHtml(answerLabel(questionData, Number(question.userValue)))}</dd></div><div><dt>Позиция партии</dt><dd>${escapeHtml(answerLabel(questionData, partyValue))}</dd></div><div><dt>Совпадение</dt><dd>${pct(question.evidenceSimilarity)}</dd></div><div><dt>Покрытие данных</dt><dd>${pct(question.coverage)}</dd></div></dl><div class="evidence-provenance"><p class="evidence-scope"><strong>Entity scope</strong>: ${escapeHtml(scope)}</p><p>${escapeHtml(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.')}</p>${sourceHtml ? `<p class="evidence-sources">Источники: ${sourceHtml}</p>` : ''}</div></details>`;
+      return `<details class="question-evidence"${openAttribute}><summary><span class="question-evidence-title">${escapeHtml(t(title))}</span><span class="question-evidence-meta">${escapeHtml(t('совпадение {match} · покрытие {coverage}', { match: pct(question.evidenceSimilarity), coverage: pct(question.coverage) }))}</span></summary>${promptHtml}${axisHtml}<dl class="evidence-facts"><div><dt>${escapeHtml(t('Ваш ответ'))}</dt><dd>${escapeHtml(answerLabel(questionData, Number(question.userValue)))}</dd></div><div><dt>${escapeHtml(t('Позиция партии'))}</dt><dd>${escapeHtml(answerLabel(questionData, partyValue))}</dd></div><div><dt>${escapeHtml(t('Совпадение'))}</dt><dd>${pct(question.evidenceSimilarity)}</dd></div><div><dt>${escapeHtml(t('Покрытие данных'))}</dt><dd>${pct(question.coverage)}</dd></div></dl><div class="evidence-provenance"><p class="evidence-scope"><strong>${escapeHtml(t('Entity scope'))}</strong>: ${escapeHtml(I18n.getLocale() === 'ru' ? scope : t(({ PARTY: 'партия', COMPONENT_PARTY: 'составная партия', CURRENT_LIST: 'текущий список', FACTION: 'фракция', HISTORICAL: 'историческая позиция', LEADER: 'Лидер партии', INDIVIDUAL_MK: 'депутат' })[scope] || scope))}</p><p>${escapeHtml(t(question.position?.explanation_ru || 'Позиция партии по этому вопросу отсутствует.'))}</p>${sourceHtml ? `<p class="evidence-sources">${escapeHtml(t('Источники:'))} ${sourceHtml}</p>` : ''}</div></details>`;
     }).join('');
-    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(family.label_ru || family.familyId)}</h3><strong>${scoreLabel}</strong></div>${scoreMarkup}<p>Покрытие данных: ${pct(family.coverage)}</p>${questionHtml}</article>`;
+    return `<article class="family-result"><div class="family-result-heading"><h3>${escapeHtml(t(family.label_ru || family.familyId))}</h3><strong>${scoreLabel}</strong></div>${scoreMarkup}<p>${escapeHtml(t('Покрытие данных: {coverage}', { coverage: pct(family.coverage) }))}</p>${questionHtml}</article>`;
   }
 
   function renderRankingRow(result, index) {
-    const gap = result.gapFromLeader == null ? '—' : result.gapFromLeader === 0 ? 'лидер' : `−${pct(result.gapFromLeader)}`;
-    const partyName = escapeHtml(result.party?.name_ru || result.partyId);
-    return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${partyName}</strong><span>${pct(result.score)}</span><span>данные ${pct(result.coverage)}</span><span>${gap}</span></li>`;
+    const gap = result.gapFromLeader == null ? '—' : result.gapFromLeader === 0 ? t('лидер') : `−${pct(result.gapFromLeader)}`;
+    const partyName = escapeHtml(t(result.party?.name_ru || result.partyId));
+    return `<li class="ranking-row${result.eligible ? '' : ' ranking-row-ineligible'}"><span class="ranking-place">${index + 1}</span><strong>${partyName}</strong><span>${pct(result.score)}</span><span>${escapeHtml(t('данные {coverage}', { coverage: pct(result.coverage) }))}</span><span>${gap}</span></li>`;
   }
 
   function formatRecommendationReason(reason) {
     const substantiveMatch = /^need (\d+) substantive answers$/.exec(String(reason));
-    if (substantiveMatch) return `нужно минимум ${substantiveMatch[1]} содержательных ответов`;
+    if (substantiveMatch) return t('нужно минимум {count} содержательных ответов', { count: substantiveMatch[1] });
     const familiesMatch = /^need (\d+) answered families$/.exec(String(reason));
-    if (familiesMatch) return `нужно ответить минимум в ${familiesMatch[1]} тематических группах`;
-    if (reason === 'no party meets minimum result coverage') return 'ни одна партия не достигла минимального покрытия данных';
+    if (familiesMatch) return t('нужно ответить минимум в {count} тематических группах', { count: familiesMatch[1] });
+    if (reason === 'no party meets minimum result coverage') return t('ни одна партия не достигла минимального покрытия данных');
     return reason;
   }
 
@@ -135,15 +139,15 @@
       const questionId = question.id;
       const selected = priorities.has(questionId);
       const answer = answers?.[questionId];
-      return `<article class="priority-question" data-priority-question-id="${escapeHtml(questionId)}"><div class="priority-question-heading"><div><h4 class="priority-question-title">${escapeHtml(question.short_title_ru || questionId)}</h4><p class="priority-question-answer">${escapeHtml(userAnswerLabel(question, answer))}</p></div><button class="priority-question-toggle" type="button" data-priority-toggle="${escapeHtml(questionId)}" aria-pressed="${selected}" aria-label="${selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'}">${selected ? '★' : '☆'}</button></div><button class="priority-context-toggle" type="button" data-priority-context="${escapeHtml(questionId)}">Показать вопрос</button><p class="priority-question-prompt hidden" data-priority-prompt="${escapeHtml(questionId)}">${escapeHtml(question.prompt_ru || '')}</p></article>`;
+      return `<article class="priority-question" data-priority-question-id="${escapeHtml(questionId)}"><div class="priority-question-heading"><div><h4 class="priority-question-title">${escapeHtml(t(question.short_title_ru || questionId))}</h4><p class="priority-question-answer">${escapeHtml(userAnswerLabel(question, answer))}</p></div><button class="priority-question-toggle" type="button" data-priority-toggle="${escapeHtml(questionId)}" aria-pressed="${selected}" aria-label="${escapeHtml(selected ? t('Убрать отметку «Важно»') : t('Отметить вопрос как важный'))}">${selected ? '★' : '☆'}</button></div><button class="priority-context-toggle" type="button" data-priority-context="${escapeHtml(questionId)}">${escapeHtml(t('Показать вопрос'))}</button><p class="priority-question-prompt hidden" data-priority-prompt="${escapeHtml(questionId)}">${escapeHtml(t(question.prompt_ru || ''))}</p></article>`;
     }).join('');
-    return `<details class="priority-picker" aria-labelledby="priority-picker-heading"><summary class="priority-picker-summary result-disclosure-summary"><span id="priority-picker-heading" class="result-disclosure-label">Выберите важные для вас вопросы</span></summary><div class="priority-picker-body"><p class="priority-picker-copy">Ваши ответы уже сохранены. Отметьте вопросы, которые относятся к темам, особенно важным для вас.</p><div class="priority-picker-tools"><span>☆ — отметить вопрос как важный</span><button class="priority-expand" type="button" data-priority-expand>Показать полные формулировки</button></div><div class="priority-question-list" data-priority-list>${rows}</div><div class="priority-picker-footer"><button class="primary" type="button" data-priority-apply>Пересчитать результат</button></div></div></details>`;
+    return `<details class="priority-picker" aria-labelledby="priority-picker-heading"><summary class="priority-picker-summary result-disclosure-summary"><span id="priority-picker-heading" class="result-disclosure-label">${escapeHtml(t('Выберите важные для вас вопросы'))}</span></summary><div class="priority-picker-body"><p class="priority-picker-copy">${escapeHtml(t('Ваши ответы уже сохранены. Отметьте вопросы, которые относятся к темам, особенно важным для вас.'))}</p><div class="priority-picker-tools"><span>${escapeHtml(t('☆ — отметить вопрос как важный'))}</span><button class="priority-expand" type="button" data-priority-expand>${escapeHtml(t('Показать полные формулировки'))}</button></div><div class="priority-question-list" data-priority-list>${rows}</div><div class="priority-picker-footer"><button class="primary" type="button" data-priority-apply>${escapeHtml(t('Пересчитать результат'))}</button></div></div></details>`;
   }
 
   function renderLiveResult({ recommendation, questions = [], answers = {}, priorityQuestionIds = [], sourcesById }) {
     if (!recommendation?.ready || !recommendation.leader) {
       const reasons = (recommendation?.reasons || []).map(formatRecommendationReason).join('; ');
-      return `<section class="live-result insufficient-user-result"><p class="eyebrow">Недостаточно данных о ваших взглядах</p><h2>Недостаточно содержательных ответов для рекомендации</h2><p>Для устойчивого сравнения нужны минимум 8 содержательных ответов в 6 тематических группах. Сейчас: ${escapeHtml(reasons || 'уточните ответы по нескольким темам')}.</p></section>`;
+      return `<section class="live-result insufficient-user-result"><p class="eyebrow">${escapeHtml(t('Недостаточно данных о ваших взглядах'))}</p><h2>${escapeHtml(t('Недостаточно содержательных ответов для рекомендации'))}</h2><p>${escapeHtml(t('Для устойчивого сравнения нужны минимум 8 содержательных ответов в 6 тематических группах. Сейчас: {reasons}.', { reasons: reasons || t('уточните ответы по нескольким темам') }))}</p></section>`;
     }
     const leader = recommendation.leader;
     const ranked = recommendation.ranked || [];
@@ -160,14 +164,14 @@
       ? Number(eligible[0].score) - Number(eligible[topComparisonCount - 1].score)
       : null;
     const closeTopNote = topComparisonGap != null && topComparisonGap <= 0.05 + Number.EPSILON
-      ? `<p class="ranking-note">Топ-${topComparisonCount} близки: разница между первым и ${topComparisonCount === 2 ? 'вторым' : 'третьим'} местом — ${percentagePoints(topComparisonGap)}</p>`
+      ? `<p class="ranking-note">${escapeHtml(t('Топ-{count} близки: разница между первым и {place} местом — {gap}', { count: topComparisonCount, place: t(topComparisonCount === 2 ? 'вторым' : 'третьим'), gap: percentagePoints(topComparisonGap) }))}</p>`
       : '';
     const questionsById = new Map(questions.map((question) => [question.id, question]));
 
-    const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">Где ваши ответы расходятся с мнением партии</span><span class="result-disclosure-action">Подробнее</span></summary><div class="family-profile-body"><h3>Сильнее всего расходится</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true, comparableOnly: true })).join('')}<h3 class="profile-subheading">Сильнее всего совпадает</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById, { comparableOnly: true })).join('')}</div></details>`;
+    const profile = `<details class="family-profile family-profile-details"><summary class="family-profile-summary result-disclosure-summary"><span class="result-disclosure-label">${escapeHtml(t('Где ваши ответы расходятся с мнением партии'))}</span><span class="result-disclosure-action">${escapeHtml(t('Подробнее'))}</span></summary><div class="family-profile-body"><h3>${escapeHtml(t('Сильнее всего расходится'))}</h3>${disagreements.map((family) => renderFamily(family, sourcesById, questionsById, { openQuestions: true, comparableOnly: true })).join('')}<h3 class="profile-subheading">${escapeHtml(t('Сильнее всего совпадает'))}</h3>${matches.map((family) => renderFamily(family, sourcesById, questionsById, { comparableOnly: true })).join('')}</div></details>`;
     const priorityPicker = renderPriorityPicker({ questions, answers, priorityQuestionIds });
     const visibleRanking = eligible.slice(0, 7);
-    return `<section class="live-result"><h2>Ближе всего по вашим ответам: ${escapeHtml(leader.party?.name_ru || leader.partyId)}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: ${pct(leader.coverage)}.</p><section class="result-ranking"><h3>Рейтинг партий</h3>${closeTopNote}<ol>${visibleRanking.map(renderRankingRow).join('')}</ol></section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">Открыть подробную аналитику данных</a></p></section>`;
+    return `<section class="live-result"><h2>${escapeHtml(t('Ближе всего по вашим ответам: {party}', { party: t(leader.party?.name_ru || leader.partyId) }))}</h2><p class="result-score">${pct(leader.score)}</p><p class="result-summary">${escapeHtml(t('Совпадение по указанным политическим предпочтениям; это не совет голосовать за партию. Покрытие именно ваших ответов: {coverage}.', { coverage: pct(leader.coverage) }))}</p><section class="result-ranking"><h3>${escapeHtml(t('Рейтинг партий'))}</h3>${closeTopNote}<ol>${visibleRanking.map(renderRankingRow).join('')}</ol></section>${profile}${priorityPicker}<p class="analytics-link"><a href="analytics.html">${escapeHtml(t('Открыть подробную аналитику данных'))}</a></p></section>`;
   }
 
   return { renderDataNotReady, renderLiveResult };

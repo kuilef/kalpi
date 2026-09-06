@@ -3,42 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kalpi — аналитика данных</title>
-  <link rel="stylesheet" href="styles.css">
+  <title data-i18n="Kalpi — аналитика данных">Kalpi — аналитика данных</title>
+  <link rel="stylesheet" href="styles.css?v=20260906-languages">
+  <script src="i18n.js?v=20260906-languages"></script>
+  <script src="language-ui.js?v=20260906-languages"></script>
 </head>
 <body class="analytics-page">
   <header class="site-header">
     <div class="shell">
-      <h1>Как устроена партийная матрица</h1>
-      <p class="lede">Здесь видны покрытие, исходные статусы и происхождение данных. Для расчёта рейтинга учитываются позиции с содержательным значением, а ограничения данных показаны через статус, принадлежность позиции и источники.</p>
-      <p class="header-link"><a href="index.html">Вернуться к опроснику</a></p>
+      <h1 data-i18n="Как устроена партийная матрица">Как устроена партийная матрица</h1>
+      <p class="lede" data-i18n="Здесь видны покрытие, исходные статусы и происхождение данных. Для расчёта рейтинга учитываются позиции с содержательным значением, а ограничения данных показаны через статус, принадлежность позиции и источники.">Здесь видны покрытие, исходные статусы и происхождение данных. Для расчёта рейтинга учитываются позиции с содержательным значением, а ограничения данных показаны через статус, принадлежность позиции и источники.</p>
+      <p class="header-link"><a href="index.html" data-i18n="Вернуться к опроснику">Вернуться к опроснику</a></p>
     </div>
   </header>
   <main class="shell">
     <section id="analytics-summary" class="panel" aria-live="polite"></section>
     <section class="panel" aria-labelledby="analytics-filter-title">
-      <h2 id="analytics-filter-title">Исследовать матрицу</h2>
+      <h2 id="analytics-filter-title" data-i18n="Исследовать матрицу">Исследовать матрицу</h2>
       <div class="analytics-filters">
-        <label>Партия <select id="analytics-party-filter"><option value="">Все партии</option></select></label>
-        <label>Тема <select id="analytics-family-filter"><option value="">Все темы</option></select></label>
-        <label>Статус <select id="analytics-status-filter"><option value="">Все статусы</option></select></label>
-        <label>Принадлежность позиции <select id="analytics-scope-filter"><option value="">Все варианты</option></select></label>
-        <label>Проверка источника <select id="analytics-verification-filter"><option value="">Все источники</option></select></label>
+        <label><span data-i18n="Партия">Партия</span> <select id="analytics-party-filter"><option value="" data-i18n="Все партии">Все партии</option></select></label>
+        <label><span data-i18n="Тема">Тема</span> <select id="analytics-family-filter"><option value="" data-i18n="Все темы">Все темы</option></select></label>
+        <label><span data-i18n="Статус">Статус</span> <select id="analytics-status-filter"><option value="" data-i18n="Все статусы">Все статусы</option></select></label>
+        <label><span data-i18n="Принадлежность позиции">Принадлежность позиции</span> <select id="analytics-scope-filter"><option value="" data-i18n="Все варианты">Все варианты</option></select></label>
+        <label><span data-i18n="Проверка источника">Проверка источника</span> <select id="analytics-verification-filter"><option value="" data-i18n="Все источники">Все источники</option></select></label>
       </div>
     </section>
     <section class="panel analytics-matrix-panel" aria-labelledby="analytics-matrix-title">
-      <h2 id="analytics-matrix-title">Матрица исходных данных</h2>
-      <p class="lede">Выберите ячейку, чтобы прочитать её объяснение и увидеть первичные метаданные.</p>
+      <h2 id="analytics-matrix-title" data-i18n="Матрица исходных данных">Матрица исходных данных</h2>
+      <p class="lede" data-i18n="Выберите ячейку, чтобы прочитать её объяснение и увидеть первичные метаданные.">Выберите ячейку, чтобы прочитать её объяснение и увидеть первичные метаданные.</p>
       <div id="analytics-matrix" class="table-scroll"></div>
     </section>
     <section id="analytics-detail" class="panel" aria-live="polite" tabindex="-1"></section>
     <section id="analytics-provenance" class="panel"></section>
     <section id="analytics-review-queue" class="panel"></section>
   </main>
-  <footer class="site-footer shell"><p>Kalpi показывает исследовательскую матрицу, а не прогноз поведения партий или совет, за кого голосовать.</p></footer>
-  <script src="data-loader.js"></script>
-  <script src="data-validation.js"></script>
-  <script src="analytics.js"></script>
-  <script src="analytics-page.js"></script>
+  <footer class="site-footer shell"><p data-i18n="Kalpi показывает исследовательскую матрицу, а не прогноз поведения партий или совет, за кого голосовать.">Kalpi показывает исследовательскую матрицу, а не прогноз поведения партий или совет, за кого голосовать.</p></footer>
+  <script src="data-loader.js?v=20260906-languages"></script>
+  <script src="data-validation.js?v=20260906-languages"></script>
+  <script src="analytics.js?v=20260906-languages"></script>
+  <script src="analytics-page.js?v=20260906-languages"></script>
 </body>
 </html>

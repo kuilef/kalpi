@@ -32,6 +32,22 @@ button:focus-visible, input:focus-visible + label, select:focus-visible, a:focus
 .shell { width:min(900px, calc(100% - 32px)); margin-inline:auto; }
 .analytics-page main.shell { width:min(1050px, calc(100% - 32px)); }
 .site-header { padding:44px 0 34px; border-bottom:1px solid var(--ink); }
+.language-switcher { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:4px; margin-bottom:22px; }
+.language-switcher button { min-height:40px; padding:8px 12px; color:var(--muted); background:transparent; border:1px solid transparent; border-radius:2px; }
+.language-switcher button[aria-pressed="true"] { color:var(--ink); border-color:var(--ink); }
+.language-switcher button:hover { background:var(--metric-bg); }
+[lang="en"] .questionnaire-hero-title { white-space:normal; }
+[lang="he"] h1, [lang="he"] h2, [lang="he"] .result-disclosure-summary { font-family:Arial, sans-serif; line-height:1.2; }
+[lang="he"] .questionnaire-hero-title { white-space:normal; }
+[lang="he"] .question-title { letter-spacing:normal; }
+/* Answer values and shortcuts retain their physical left-to-right meaning in every language. */
+.poles, .scale, .position-axis-poles, .position-axis-track, .progress-text { direction:ltr; }
+[dir="rtl"] .poles p, [dir="rtl"] .position-axis-poles > span { direction:rtl; }
+[dir="rtl"] .poles p:first-child, [dir="rtl"] .position-axis-poles > span:first-child { text-align:left; }
+[dir="rtl"] .poles p:last-child, [dir="rtl"] .position-axis-poles > span:last-child { text-align:right; }
+.ranking-row > span, .evidence-facts dd, .completion-metrics dd { unicode-bidi:plaintext; }
+.source-list a, .evidence-sources a { unicode-bidi:plaintext; }
+.matrix-cell { direction:ltr; }
 .eyebrow, .question-code { margin:0 0 9px; color:var(--accent); font:700 .78rem/1.3 system-ui, sans-serif; letter-spacing:.12em; text-transform:uppercase; }
 h1,h2,h3,p { overflow-wrap:anywhere; }
 h1,h2,.result-score,.result-disclosure-summary { font-family:Georgia, 'Times New Roman', serif; }

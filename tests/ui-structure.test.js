@@ -28,6 +28,8 @@ test('questionnaire waits on a clear start screen before it renders the first qu
 
   assert.match(html, /<section id="questionnaire-intro"[^>]*>/);
   assert.match(html, /id="start-questionnaire"[^>]*>Начать опрос<\/button>/);
+  assert.match(html, /id="start-questionnaire"[^>]*disabled/);
+  assert.match(app, /\$\('start-questionnaire'\)\.disabled = false/);
   assert.match(html, /На каждом экране — две позиции и шкала между ними\./);
   assert.match(html, /Можно отвечать клавишами 1–5; 0 — «Не знаю»\./);
   assert.match(html, /Kalpi сравнивает позиции партий по выбранным вопросам\./);
@@ -50,12 +52,14 @@ test('public pages load canonical JSON at runtime without a generated data bundl
   const html = read('index.html');
   const analyticsHtml = read('analytics.html');
   for (const script of ['data-loader.js', 'data-validation.js', 'scoring.js', 'analytics.js', 'questionnaire-state.js', 'questionnaire-ui.js', 'results-ui.js', 'app.js']) {
-    assert.match(html, new RegExp(`<script src="${script.replace('.', '\\.')}"`));
+    assert.match(html, new RegExp(`<script src="${script.replace('.', '\\.')}(?:\\?v=[^"]+)?"`));
   }
   for (const page of [html, analyticsHtml]) assert.doesNotMatch(page, /data\/default-data\.js/);
   assert.equal(fs.existsSync(path.join(__dirname, '..', 'data', 'default-data.js')), false);
   assert.equal(fs.existsSync(path.join(__dirname, '..', 'tools', 'build_data_bundle.py')), false);
-  assert.doesNotMatch(html, /axis-strips\.js|i18n\.js|baseline-data\.js/);
+  assert.doesNotMatch(html, /axis-strips\.js|baseline-data\.js/);
+  assert.match(html, /<script src="i18n\.js\?v=[^"]+"><\/script>/);
+  assert.match(html, /<script src="language-ui\.js\?v=[^"]+"><\/script>/);
 });
 
 test('public analytics page has accessible filter and detail hosts', () => {

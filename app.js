@@ -9,6 +9,8 @@
   const QuestionnaireUi = window.KalpiQuestionnaireUi;
   const ResultsUi = window.KalpiResultsUi;
   const DebugFixture = window.KalpiDebugFixture;
+  const I18n = window.KalpiI18n;
+  const t = (source, params) => I18n.text(source, params);
   const $ = (id) => document.getElementById(id);
   const debugEnabled = new URLSearchParams(location.search).get('debug') === '1';
   let data;
@@ -86,7 +88,7 @@
       return;
     }
     host.classList.remove('hidden');
-    host.innerHTML = `<strong>Ошибка данных (${errors.length})</strong><ul>${errors.map((error) => `<li>${escapeHtml(error)}</li>`).join('')}</ul>`;
+    host.innerHTML = `<strong>${escapeHtml(t('Ошибка данных ({count})', { count: errors.length }))}</strong><ul>${errors.map((error) => `<li>${escapeHtml(error)}</li>`).join('')}</ul>`;
   }
 
   function updateProgress() {
@@ -139,7 +141,7 @@
     });
     $('previous-question').disabled = index === 0;
     $('next-question').disabled = !hasAnswer(question.id);
-    $('next-question').textContent = index === allQuestions.length - 1 ? 'Показать результат' : 'Далее';
+    $('next-question').textContent = t(index === allQuestions.length - 1 ? 'Показать результат' : 'Далее');
     document.querySelectorAll('#question-content input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
       State.setAnswer(state, question.id, input.value === 'unknown' ? null : Number(input.value));
       saveState();
@@ -205,7 +207,7 @@
       saveState();
       const selected = button.getAttribute('aria-pressed') !== 'true';
       button.setAttribute('aria-pressed', String(selected));
-      button.setAttribute('aria-label', selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный');
+      button.setAttribute('aria-label', t(selected ? 'Убрать отметку «Важно»' : 'Отметить вопрос как важный'));
       button.textContent = selected ? '★' : '☆';
       const priorityPickerOpen = Boolean(host.querySelector('.priority-picker')?.open);
       renderResults(false, true, priorityPickerOpen, viewportSnapshot);
@@ -215,7 +217,7 @@
       const prompt = button.closest('.priority-question')?.querySelector('[data-priority-prompt]');
       if (!prompt) return;
       const hidden = prompt.classList.toggle('hidden');
-      button.textContent = hidden ? 'Показать вопрос' : 'Скрыть вопрос';
+      button.textContent = t(hidden ? 'Показать вопрос' : 'Скрыть вопрос');
     }));
 
     host.querySelector('[data-priority-expand]')?.addEventListener('click', (event) => {
@@ -223,9 +225,9 @@
       const expand = prompts.some((prompt) => prompt.classList.contains('hidden'));
       prompts.forEach((prompt) => prompt.classList.toggle('hidden', !expand));
       host.querySelectorAll('[data-priority-context]').forEach((button) => {
-        button.textContent = expand ? 'Скрыть вопрос' : 'Показать вопрос';
+        button.textContent = t(expand ? 'Скрыть вопрос' : 'Показать вопрос');
       });
-      event.currentTarget.textContent = expand ? 'Скрыть формулировки' : 'Показать полные формулировки';
+      event.currentTarget.textContent = t(expand ? 'Скрыть формулировки' : 'Показать полные формулировки');
     });
 
     host.querySelector('[data-priority-apply]')?.addEventListener('click', () => {
@@ -258,13 +260,14 @@
         }
       }
     } catch (error) {
-      host.innerHTML = `<p class="gate-fail"><strong>Не удалось загрузить данные.</strong> ${escapeHtml(error?.message || error)}</p>`;
+      host.innerHTML = `<p class="gate-fail"><strong>${escapeHtml(t('Не удалось загрузить данные.'))}</strong> ${escapeHtml(error?.message || error)}</p>`;
     }
     bindPriorityControls();
     const priorityPicker = host.querySelector('.priority-picker');
     if (priorityPicker) priorityPicker.open = priorityPickerOpen;
     restorePriorityViewport(host, viewportSnapshot);
     if (analytics) renderDebug(analytics);
+    I18n.applyPage?.(host);
     if (focusResults && revealResults) {
       host.focus({ preventScroll: true });
       window.scrollTo({ top: host.offsetTop - 12, behavior: 'smooth' });
@@ -307,25 +310,54 @@
   }
 
   async function init() {
+    await I18n.ready;
     await loadDataset();
     state = State.load(window.localStorage, data.scoringConfig);
     if (!state.currentQuestionId || !questions().some((question) => question.id === state.currentQuestionId)) State.setCurrentQuestion(state, questions()[0].id);
     if (state.versionMismatch) {
       $('state-notice').classList.remove('hidden');
-      $('state-notice').textContent = 'Версия опросника изменилась: начат новый сеанс, предыдущая запись в браузере сохранена.';
+      $('state-notice').textContent = t('Версия опросника изменилась: начат новый сеанс, предыдущая запись в браузере сохранена.');
     }
     bindEvents();
+    $('start-questionnaire').disabled = false;
+    window.addEventListener('kalpi:languagechange', (event) => {
+      event.detail.waitUntil(refreshLanguage());
+    });
     if (state.completedAt) {
       $('questionnaire-intro').classList.add('hidden');
       renderResults(false, true);
       return;
     }
-    if (Object.keys(state.answers).length) $('start-questionnaire').textContent = 'Продолжить';
+    if (Object.keys(state.answers).length) $('start-questionnaire').textContent = t('Продолжить');
+  }
+
+  async function refreshLanguage() {
+    const host = $('results');
+    const scroll = { left: window.scrollX, top: window.scrollY, behavior: 'instant' };
+    const disclosures = [...host.querySelectorAll('details')].map((element) => element.open);
+    const prompts = [...host.querySelectorAll('[data-priority-prompt]')].map((element) => element.classList.contains('hidden'));
+    if (Object.keys(state.answers).length) $('start-questionnaire').textContent = t('Продолжить');
+    if (state.versionMismatch) $('state-notice').textContent = t('Версия опросника изменилась: начат новый сеанс, предыдущая запись в браузере сохранена.');
+    if (!$('questionnaire').classList.contains('hidden')) renderQuestion();
+    if (host.innerHTML) {
+      await renderResults(false, !host.classList.contains('hidden'));
+      host.querySelectorAll('details').forEach((element, index) => { if (index < disclosures.length) element.open = disclosures[index]; });
+      host.querySelectorAll('[data-priority-prompt]').forEach((element, index) => {
+        if (index < prompts.length) element.classList.toggle('hidden', prompts[index]);
+      });
+      host.querySelectorAll('[data-priority-context]').forEach((button) => {
+        const hidden = button.closest('.priority-question').querySelector('[data-priority-prompt]').classList.contains('hidden');
+        button.textContent = t(hidden ? 'Показать вопрос' : 'Скрыть вопрос');
+      });
+      const expand = host.querySelector('[data-priority-expand]');
+      if (expand && prompts.length && prompts.every((hidden) => !hidden)) expand.textContent = t('Скрыть формулировки');
+    }
+    window.scrollTo(scroll);
   }
 
   init().catch((error) => {
     const host = $('developer-warnings');
     host.classList.remove('hidden');
-    host.innerHTML = `<strong>Не удалось загрузить данные.</strong><p>${escapeHtml(error?.message || error)}. Запустите Kalpi через локальный HTTP-сервер.</p>`;
+    host.innerHTML = `<strong>${escapeHtml(t('Не удалось загрузить данные.'))}</strong><p>${escapeHtml(error?.message || error)}. ${escapeHtml(t('Запустите Kalpi через локальный HTTP-сервер.'))}</p>`;
   });
 })();
